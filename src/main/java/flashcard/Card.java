@@ -68,6 +68,9 @@ public class Card {
         return this.CardID;
     }
 
+    /**
+     * @return String, a string example of the instance of this card.
+     */
     public String toString(){
         return "Card - ID: " + this.CardID + ". Front: " + this.CardFront + ". Back: " + this.CardBack;
     }
