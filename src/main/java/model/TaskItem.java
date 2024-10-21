@@ -5,8 +5,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -29,8 +32,10 @@ public class TaskItem {
 
     private CheckBox checkBox; // Checkbox for task completion
     private Label label; // Label to display task description and due date
-    private Button deleteButton;
+    private ImageView deleteIcon; // ImageView for the trash icon
     private Task task; // Store reference to Task
+
+    private static final String TRASH_ICON_PATH = "deleteIcon.png"; // Update with the correct path
 
 
 
@@ -52,12 +57,23 @@ public class TaskItem {
             label.setText(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
         });
 
-        // Create delete button
-        deleteButton = new Button("Delete");
-        deleteButton.setOnAction(deleteHandler);
+        // Create delete icon
+        InputStream iconStream = getClass().getClassLoader().getResourceAsStream(TRASH_ICON_PATH);
+        if (iconStream == null) {
+            System.err.println("Error: Image resource not found!");
+            deleteIcon = new ImageView(); // Handle missing icon scenario
+        } else {
+            deleteIcon = new ImageView(new Image(iconStream));
+        }
+
+        deleteIcon.setFitHeight(20); // Set the height of the icon
+        deleteIcon.setFitWidth(20); // Set the width of the icon
+        deleteIcon.setOnMouseClicked(e -> {
+            deleteHandler.handle(new ActionEvent()); // Trigger delete action
+        });
 
         // Set button ID or any additional properties to identify the task for deletion
-        deleteButton.setUserData(this);
+        deleteIcon.setUserData(this);
     }
 
     /**
@@ -67,7 +83,7 @@ public class TaskItem {
      * @return An HBox containing the checkbox and label.
      */
     public HBox getView() {
-        HBox hBox = new HBox(checkBox, label, deleteButton);
+        HBox hBox = new HBox(checkBox, label, deleteIcon);
         hBox.setSpacing(10);
         hBox.setUserData(this); // Set the TaskItem as user data for later reference
         return hBox;
