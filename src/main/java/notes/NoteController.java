@@ -5,7 +5,6 @@ import javafx.scene.control.TextArea;
 
 public class NoteController {
 
-
     private TextArea textArea;
     private NoteModel model;
 
@@ -14,19 +13,26 @@ public class NoteController {
 
     }
 
-    private void onSave() {
+    protected void onSave() {
 
     }
 
-    private void onLoad() {
-
-    }
-
-    private void onClose() {
+    protected void onClose() {
         System.exit(0);
     }
 
-    private void onAbout() {
+    protected void decrementFontSize(double change) {
+        model.setFontSize(model.getFontSize()-change);
+    }
+
+    protected void incrementFontSize(double change) {
+        model.setFontSize(model.getFontSize()+change);
 
     }
+
+    protected void append(String text) {
+        textArea.appendText(text + "\n");
+    }
+
+
 }

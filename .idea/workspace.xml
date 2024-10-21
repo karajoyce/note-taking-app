@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="tried starting on MVC model of note editor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="trying to get started on the mvc model (scrapping fxml)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/notes/noteui.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/noteui.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +120,7 @@
       <workItem from="1729470594760" duration="700000" />
       <workItem from="1729471398702" duration="70000" />
       <workItem from="1729471476324" duration="103000" />
-      <workItem from="1729471591131" duration="10384000" />
+      <workItem from="1729471591131" duration="13665000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -163,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729471273043</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="trying to get started on the mvc model (scrapping fxml)">
+      <option name="closed" value="true" />
+      <created>1729544715864</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729544715865</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +173,7 @@
     <MESSAGE value="constructor based off uml class diagram" />
     <MESSAGE value="added some docstrings and getters and setters" />
     <MESSAGE value="tried starting on MVC model of note editor" />
-    <option name="LAST_COMMIT_MESSAGE" value="tried starting on MVC model of note editor" />
+    <MESSAGE value="trying to get started on the mvc model (scrapping fxml)" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to get started on the mvc model (scrapping fxml)" />
   </component>
 </project>

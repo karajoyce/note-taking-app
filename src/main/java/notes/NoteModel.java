@@ -9,8 +9,6 @@
 
 package notes;
 
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
 
 public class NoteModel {
 
