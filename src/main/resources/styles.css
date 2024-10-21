@@ -1,7 +1,28 @@
 .button {
     -fx-background-color: #b19f93;
     -fx-border-color: #b19f93;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
 }
 .cardview {
     -fx-background-color: #eedfd6;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+.hbox {
+    -fx-padding: 15px;
+    -fx-spacing: 20px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+.cardsection {
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-font-size: 25px;
+}
+.textflow{
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-font-size: 25px;
+    -fx-alignment: center;
 }
