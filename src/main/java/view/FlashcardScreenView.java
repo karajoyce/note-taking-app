@@ -35,48 +35,47 @@ public class FlashcardScreenView extends StackPane {
 
         // General class things/size
         this.getStyleClass().add("cardview");
-        this.setMinWidth(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100);
-        this.setMinHeight(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100);
+        this.setMaxHeight(Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+        this.setMaxWidth(Toolkit.getDefaultToolkit().getScreenSize().getWidth());
+        //-------------------------END
+
+        //-------------------------
+        // Main box to hold elements
+        HBox fullBox = new HBox();
+        this.getChildren().add(fullBox);
+        fullBox.getStyleClass().add("bigbox");
+        fullBox.setMaxWidth(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-50);
+        fullBox.setMaxHeight(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-50);
+
         //-------------------------END
 
         //-------------------------
         // Set up flashcard middle section
-        HBox cardSection = new HBox();
+        VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
-        this.getChildren().add(cardSection);
-        cardSection.setAlignment(Pos.CENTER);
+        fullBox.getChildren().add(cardSection);
+        cardSection.setAlignment(Pos.CENTER_LEFT);
+        cardSection.maxWidth(fullBox.getWidth()*0.666667);
+        cardSection.maxHeight(fullBox.getHeight());
+
+        HBox fCard = new HBox();
         Text frontText = new Text(this.deck.get(0).getCardFront());
         frontText.getStyleClass().add("textflow");
-        cardSection.getChildren().add(frontText);
+        fCard.getChildren().add(frontText);
         frontText.setTextAlignment(TextAlignment.CENTER);
-        cardSection.maxWidth(500);
-        cardSection.maxHeight(500);
-        //-------------------------END
-
-        //-------------------------
-        // Fake things until I can connect the real things
-        VBox motiv = new VBox();
-        this.getChildren().add(motiv);
-        motiv.getStyleClass().add("fake");
-        motiv.setAlignment(Pos.TOP_RIGHT);
-        Text motivM = new Text("You miss 100% of the shots you don't take!");
-        motiv.getChildren().add(motivM);
-        motiv.maxWidth(Toolkit.getDefaultToolkit().getScreenSize().getWidth()/3);
-        motiv.maxHeight(Toolkit.getDefaultToolkit().getScreenSize().getHeight()/3);
-
-        VBox todolist = new VBox();
-        this.getChildren().add(todolist);
-        todolist.getStyleClass().add("fake");
-        todolist.setAlignment(Pos.BOTTOM_RIGHT);
-        Text todoL = new Text("Pick up kids.");
-        todolist.getChildren().add(todoL);
-        todolist.maxWidth(Toolkit.getDefaultToolkit().getScreenSize().getWidth()/3);
-        todolist.maxHeight(Toolkit.getDefaultToolkit().getScreenSize().getHeight()/3 *2);
+//        fCard.setMinWidth(500);
+//        fCard.setMinHeight(300);
+        cardSection.getChildren().add(fCard);
 
 
-        //-------------------------END
+        HBox bottomButtons = new HBox();
+        bottomButtons.getStyleClass().add("hbox");
+        cardSection.getChildren().add(bottomButtons);
+        bottomButtons.setAlignment(Pos.BOTTOM_CENTER);
+//        bottomButtons.setMinHeight(200);
+//        bottomButtons.setMinWidth(500);
 
-        //-------------------------
+
         // Bottom Buttons set up
         Button next = new Button(" > ");
         Button back = new Button(" < ");
@@ -96,14 +95,21 @@ public class FlashcardScreenView extends StackPane {
         flip.setMaxHeight(45);
         flip.setMinHeight(45);
 
-        HBox bottomButtons = new HBox();
-        bottomButtons.getStyleClass().add("hbox");
-        this.getChildren().add(bottomButtons);
-        bottomButtons.setAlignment(Pos.BOTTOM_CENTER);
-
         bottomButtons.getChildren().add(back);
         bottomButtons.getChildren().add(flip);
         bottomButtons.getChildren().add(next);
+        //-------------------------END
+
+        //-------------------------
+
+        VBox todolist = new VBox();
+        fullBox.getChildren().add(todolist);
+        todolist.getStyleClass().add("fake");
+        todolist.setAlignment(Pos.TOP_RIGHT);
+        Text todoL = new Text("Pick up kids.");
+        todolist.getChildren().add(todoL);
+        todolist.maxWidth(fullBox.getWidth()*333333);
+        todolist.minHeight(fullBox.getHeight());
         //-------------------------END
     }
 }
