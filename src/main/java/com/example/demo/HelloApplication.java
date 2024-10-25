@@ -12,6 +12,7 @@ public class HelloApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Flashcard");
+        stage.setFullScreen(true);
         stage.show();
     }
 
