@@ -36,13 +36,14 @@ Sara Shakeel, gvk731, 11367521
 }
 .fake{
     -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
-    -fx-font-size: 15px;
+    -fx-font-size: 25px;
     -fx-border-color: black;
+    -fx-padding: 15px;
 }
-.texflow {
+.textflow {
     -fx-border-color: purple;
-    -fx-padding: 10px;
-    -fx-wrap-text: wrap;
+    -fx-padding: 20px;
+    -fx-font-size: 40px;
 }
 .bigbox {
     -fx-border-color: darkgreen;
