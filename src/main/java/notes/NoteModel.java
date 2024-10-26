@@ -10,14 +10,22 @@
 package notes;
 
 
+import javafx.scene.control.TextArea;
+
 public class NoteModel {
 
+    private TextArea textArea;
     private double fontSize;
     private String text = "Test\n";
 
     public NoteModel() {
+        this.textArea = new TextArea();
         fontSize = 12;      /* default size */
 
+    }
+
+    protected TextArea getTextArea() {
+        return this.textArea;
     }
 
     public double getFontSize() {
