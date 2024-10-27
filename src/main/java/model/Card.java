@@ -19,8 +19,6 @@ public class Card {
     // The back of the flashcard, the answer to the front.
     private String CardBack;
 
-    // An ID to index and reference this specific flashcard.
-    private final int CardID;
 
     /**
      * @param front: the front of the flashcard
@@ -30,7 +28,6 @@ public class Card {
         // CardID will be generated here from the list of Cards latest one.
         this.CardFront = front;
         this.CardBack = back;
-        this.CardID = 0;
     }
 
     /**
@@ -62,16 +59,9 @@ public class Card {
     }
 
     /**
-     * @return int, the ID for the card
-     */
-    public int getCardID() {
-        return this.CardID;
-    }
-
-    /**
      * @return String, a string example of the instance of this card.
      */
     public String toString(){
-        return "Card - ID: " + this.CardID + ". Front: " + this.CardFront + ". Back: " + this.CardBack;
+        return "Card - Front: " + this.CardFront + ". Back: " + this.CardBack;
     }
 }

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import view.FlashcardScreenView;
+import view.NotebookScreenView;
 
 public class HelloApplication extends Application {
     @Override

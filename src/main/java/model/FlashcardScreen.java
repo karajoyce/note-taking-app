@@ -16,7 +16,19 @@ import java.util.ArrayList;
 public class FlashcardScreen {
 
     ArrayList<Card> deck;
-//    MotivationalMessageView msg;
-//    ToDoListView tList;
+    //    ToDoListView tList;
+
+    public FlashcardScreen(){
+        // this needs to access database for proper deck based on controller button function
+        this.deck = new ArrayList<>();
+    }
+
+    public ArrayList<Card> getDeck(){
+        return this.deck;
+    }
+
+    public void addCard(String front, String back){
+        this.deck.add(new Card(front, back));
+    }
 
 }

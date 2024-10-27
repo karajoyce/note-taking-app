@@ -6,10 +6,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import model.Card;
 import java.awt.*;
-import model.FlashcardScreen;
 
 /**
 
@@ -22,16 +19,12 @@ import model.FlashcardScreen;
 
  **/
 
-public class FlashcardScreenView extends StackPane {
+public class NotebookScreenView extends StackPane {
 
-    private boolean isBack = false;
-    private FlashcardScreen flashcardModel = new FlashcardScreen();
-
-    public FlashcardScreenView() {
+    public NotebookScreenView() {
 
         //-------------------------
         // Deck initialization, needs to change
-        flashcardModel.getDeck().add(new Card("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood."));
         double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
 
@@ -50,21 +43,11 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------END
 
         //-------------------------
-        // Deck selection pane
-        VBox deckSelection = new VBox();
-        deckSelection.getStyleClass().add("deck");
-        deckSelection.setAlignment(Pos.CENTER);
-        deckSelection.setMinWidth(screenWidth*0.15);
-        deckSelection.setMinHeight(screenHeight);
-        fullBox.getChildren().add(deckSelection);
-        //-------------------------END
-
-        //-------------------------
         // Set up flashcard middle section
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth(screenWidth*0.6);
+        cardSection.setMinWidth(screenWidth*0.666667);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -88,18 +71,6 @@ public class FlashcardScreenView extends StackPane {
         pageBack.setAlignment(Pos.CENTER);
         topButtons.getChildren().add(pageBack);
 
-        if (!isBack) {
-            Text frontText = new Text(this.flashcardModel.getDeck().get(0).getCardFront());
-            frontText.setWrappingWidth(cardSection.getMinWidth() - 40);
-            fCard.getChildren().add(frontText);
-            frontText.setTextAlignment(TextAlignment.CENTER);
-        } else {
-            Text backText = new Text(this.flashcardModel.getDeck().get(0).getCardBack());
-            backText.setWrappingWidth(cardSection.getMinHeight() - 40);
-            fCard.getChildren().add(backText);
-            backText.setTextAlignment(TextAlignment.CENTER);
-        }
-        cardSection.getChildren().add(fCard);
 
         // Buttons for card control
         HBox bottomButtons = new HBox();
@@ -138,7 +109,7 @@ public class FlashcardScreenView extends StackPane {
         todolist.getStyleClass().add("fake");
         todolist.setAlignment(Pos.TOP_LEFT);
         Text todoL = new Text("Pick up kids     Oct 14: 10AM");
-        todolist.setMinWidth((screenWidth*0.25));
+        todolist.setMinWidth((screenWidth*0.333333));
         todolist.setMinHeight(screenHeight);
         todolist.getChildren().add(todoL);
         fullBox.getChildren().add(todolist);
