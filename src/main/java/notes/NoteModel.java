@@ -9,39 +9,24 @@
 
 package notes;
 
+import org.fxmisc.richtext.StyleClassedTextArea;
 
-import javafx.scene.control.TextArea;
-
+/**
+ * The Model class of the text editor (MVC Model)
+ * Holds the data required such as font size and the text area
+ * itself so the controller and the view can access it
+ */
 public class NoteModel {
 
-    private TextArea textArea;
-    private double fontSize;
-    private String text = "Test\n";
+    private StyleClassedTextArea textArea = new StyleClassedTextArea();
+    private double fontsize;
 
     public NoteModel() {
-        this.textArea = new TextArea();
-        fontSize = 12;      /* default size */
+        fontsize = 12;  /* default */
 
     }
 
-    protected TextArea getTextArea() {
-        return this.textArea;
+    public StyleClassedTextArea getTextArea() {
+        return textArea;
     }
-
-    public double getFontSize() {
-        return fontSize;
-    }
-
-    public void setFontSize(double fontSize) {
-        this.fontSize = fontSize;
-    }
-
-    public String getText() {
-        return this.text;
-    }
-
-    public void setText(String string) {
-        this.text = string;
-    }
-
 }

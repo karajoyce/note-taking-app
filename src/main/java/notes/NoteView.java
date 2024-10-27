@@ -1,76 +1,72 @@
+/**
+ CMPT 370, T05, Team 4, Prof. Jon Lovering
+ Kara Leier, kjl061, 11293306
+ Nathan Balilis, ncb421, 11295020
+ Trushank Lakdawala, nus429, 11350445
+ Jinny Kim, yek738, 11304174
+ Sara Shakeel, gvk731, 11367521
+ */
+
 package notes;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
+import javafx.scene.control.*;
+
+import javafx.stage.Stage;
+import org.fxmisc.richtext.StyleClassedTextArea;
 
 
-public class NoteView {
+/**
+ * The View class of the text editor (MVC Model).
+ * Creates stuff to put on display (menus, tool bars, buttons)
+ */
+public class NoteView  {
+    private NoteController noteController;
 
-    private BorderPane panel;
+    private StyleClassedTextArea textArea = new StyleClassedTextArea();
 
-    private Button saveButton;
-    private Button closeButton;
-    private Button decrementFontSizeButton;
-    private Button incrementFontSizeButton;
+    public StyleClassedTextArea getTextArea() {
+        return textArea;
+    }
 
-    public NoteView(NoteModel model, NoteController controller) {
-        panel = new BorderPane();
-        TextArea textArea = model.getTextArea();
+    public NoteView(NoteController controller) {
+        noteController = controller;
 
-        // Default values
-        textArea.setPrefHeight(400);
-        textArea.setPrefWidth(500);
-        textArea.setText(model.getText());
-        textArea.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, model.getFontSize()));
-
-        saveButton = new Button("Save");
-        closeButton = new Button("Close");
-
-        decrementFontSizeButton = new Button("Smaller");
-        incrementFontSizeButton = new Button("Larger");
-
-        HBox buttonBox = new HBox();
-
-        buttonBox.getChildren().addAll(saveButton, closeButton, incrementFontSizeButton, decrementFontSizeButton);
-
-        panel.setTop(buttonBox);
-        panel.setCenter(textArea);
-
-        saveButton.setOnAction(actionEvent -> controller.onSave());
-        closeButton.setOnAction(actionEvent -> controller.onClose());
-        incrementFontSizeButton.setOnAction(actionEvent -> controller.incrementFontSize());
-        decrementFontSizeButton.setOnAction(actionEvent -> controller.decrementFontSize());
-
+        controller.noteModel.getTextArea().setPrefWidth(800);
+        controller.noteModel.getTextArea().setPrefHeight(800);
 
     }
 
-    public Button getSaveButton() {
-        return saveButton;
+    protected MenuBar createMenuBar(Stage stage) {
+        Menu fileMenu = new Menu("File");
+        MenuItem openItem = new MenuItem("Open");
+        MenuItem saveItem = new MenuItem("Save");
+        fileMenu.getItems().addAll(openItem, saveItem);
+
+        openItem.setOnAction(actionEvent -> noteController.openFile(stage));
+        saveItem.setOnAction(actionEvent -> noteController.saveFile(stage));
+
+        MenuBar menuBar = new MenuBar();
+        menuBar.getMenus().add(fileMenu);
+
+        return menuBar;
     }
 
-    public Button getCloseButton() {
-        return closeButton;
+    protected ToolBar createToolBar(Stage stage) {
+        Button toggleBoldButton = new Button("B");
+        toggleBoldButton.setStyle("-fx-font-weight: bold;");
+        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleStyle("bold"));
+
+        Button toggleItalicButton = new Button("I");
+        toggleItalicButton.setStyle("-fx-font-style: italic;");
+        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleStyle("italic"));
+
+        Button toggleUnderlineButton = new Button("U");
+        toggleUnderlineButton.setStyle("-fx-font-underline: true;");
+        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleStyle("underline"));
+
+        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton);
+        return toolBar;
     }
-
-    public Button getDecrementFontSizeButton() {
-        return decrementFontSizeButton;
-    }
-
-    public Button getIncrementFontSizeButton() {
-        return incrementFontSizeButton;
-    }
-
-    public BorderPane getPanel() {
-        return panel;
-    }
-
-
 
 
 }

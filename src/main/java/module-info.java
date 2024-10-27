@@ -2,6 +2,10 @@
 module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
+    //requires richtextfx.fat;
+    requires org.fxmisc.richtext;
+    requires reactfx;
+    requires org.fxmisc.flowless;
 
 
     opens com.example.demo to javafx.fxml;
