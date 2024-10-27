@@ -48,3 +48,8 @@ Sara Shakeel, gvk731, 11367521
 .bigbox {
     -fx-border-color: darkgreen;
 }
+.deck {
+    -fx-border-color: orange;
+    -fx-padding: 15px;
+    -fx-font-size: 25px;
+}

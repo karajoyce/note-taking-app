@@ -53,10 +53,17 @@ public class FlashcardScreenView extends StackPane {
         // Deck selection pane
         VBox deckSelection = new VBox();
         deckSelection.getStyleClass().add("deck");
-        deckSelection.setAlignment(Pos.CENTER);
+        deckSelection.setAlignment(Pos.TOP_CENTER);
         deckSelection.setMinWidth(screenWidth*0.15);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
+
+        // Buttons for decks
+        Button deckButton = new Button("Test Desk"); // this should be a deck name later
+        deckButton.setAlignment(Pos.CENTER);
+        deckButton.setMinWidth(deckSelection.getMinWidth()-40);
+        deckButton.setMinHeight(80);
+        deckSelection.getChildren().add(deckButton);
         //-------------------------END
 
         //-------------------------
