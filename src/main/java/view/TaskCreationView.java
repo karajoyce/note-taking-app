@@ -28,6 +28,7 @@ public class TaskCreationView {
     private TextField taskDescriptionInput; // Input field for the task description
     private DatePicker dueDatePicker; // Date picker for selecting the due date
     private Button createTaskButton; // Button to create the task
+    public GridPane grid;
 
     /**
      * Constructs a TaskCreationView with a given primary stage and a callback
@@ -40,7 +41,7 @@ public class TaskCreationView {
         primaryStage.setTitle("Create New Task");
 
         // Layout
-        GridPane grid = new GridPane();
+        grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
@@ -93,5 +94,9 @@ public class TaskCreationView {
     public void clearInputs() {
         taskDescriptionInput.clear();
         dueDatePicker.setValue(null);
+    }
+
+    public GridPane getTaskCreationView() {
+        return grid;
     }
 }

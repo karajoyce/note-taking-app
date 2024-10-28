@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Task;
 import model.TaskItem;
@@ -20,11 +22,12 @@ import java.util.ArrayList;
  Sara Shakeel, gvk731, 11367521
  **/
 
-public class ToDoListView {
+public class ToDoListView extends VBox {
 
     private ListView<HBox> taskListView;
     private Button addTaskButton;
-    private ArrayList<Task> tasks; // Maintain the list of tasks
+    private ArrayList<Task> tasks;
+    public GridPane grid;// Maintain the list of tasks
 
 
 
@@ -34,13 +37,13 @@ public class ToDoListView {
      *
      * @param primaryStage The primary stage for this application, where the UI will be displayed.
      */
-    public ToDoListView(Stage primaryStage) {
-        primaryStage.setTitle("To-Do List");
+    public ToDoListView() {
+        //primaryStage.setTitle("To-Do List");
 
         tasks = new ArrayList<>(); // Initialize the tasks list
 
         // Layout
-        GridPane grid = new GridPane();
+        grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
@@ -55,9 +58,10 @@ public class ToDoListView {
 
         // Set up the layout
         grid.getChildren().addAll(taskListView, addTaskButton);
-        Scene scene = new Scene(grid, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //Scene scene = new Scene(grid, 400, 300);
+        //primaryStage.setScene(scene);
+        //primaryStage.show();
+
     }
 
     /**
@@ -119,5 +123,9 @@ public class ToDoListView {
                 break;
             }
         }
+    }
+
+    public GridPane getToDoListView() {
+        return grid;
     }
 }

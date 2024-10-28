@@ -9,6 +9,7 @@ package controller;
  Sara Shakeel, gvk731, 11367521
  **/
 
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.ToDoList;
 import view.ToDoListView;
@@ -17,7 +18,7 @@ import view.ToDoListView;
  * Controls the main To-Do List application, managing the interaction
  * between the ToDoList model and the ToDoListView.
  */
-public class ToDoListController {
+public class ToDoListController  {
 
     private ToDoList toDoList; // The model representing the list of tasks
     private ToDoListView toDoListView; // The view for displaying the to-do list
@@ -28,9 +29,9 @@ public class ToDoListController {
      * @param toDoList The ToDoList instance that holds the tasks.
      * @param primaryStage The primary stage for the application where the to-do list view will be displayed.
      */
-    public ToDoListController(ToDoList toDoList, Stage primaryStage) {
+    public ToDoListController(ToDoList toDoList, ToDoListView toDoListView) {
         this.toDoList = toDoList;
-        this.toDoListView = new ToDoListView(primaryStage);
+        this.toDoListView = toDoListView;
         updateTaskListView(); // Populate the view with current tasks
 
         // Set the action for the "Add Task" button

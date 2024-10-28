@@ -11,16 +11,49 @@ package model;
 
 import controller.ToDoListController;
 import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import view.TaskCreationView;
+import view.ToDoListView;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class MainUI extends Application {
     @Override
     public void start(Stage primaryStage) {
+        primaryStage.setTitle("To-Do List");
+
+        BorderPane pane = new BorderPane();
+
+        HBox h = new HBox();
+
+
+        // Create and set up the To-Do List
         ToDoList toDoList = new ToDoList();
-        new ToDoListController(toDoList, primaryStage);
+        ToDoListView toDoListView = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+
+        // Create a VBox to hold the To-Do List and push it to the bottom
+        VBox bottomRightContainer = new VBox();
+        bottomRightContainer.setAlignment(Pos.CENTER_RIGHT); // Align to the bottom right
+        bottomRightContainer.getChildren().add(toDoListView.getToDoListView());
+
+        pane.setTop(h);
+        pane.setRight(bottomRightContainer); // Add the VBox to the right side of the pane
+
+        //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);
+        Scene scene = new Scene(pane, 1000, 1000);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 }
+
+

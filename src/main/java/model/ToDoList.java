@@ -9,6 +9,9 @@ package model;
  Sara Shakeel, gvk731, 11367521
  **/
 
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
