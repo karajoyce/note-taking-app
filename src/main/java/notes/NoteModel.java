@@ -9,7 +9,10 @@
 
 package notes;
 
-import org.fxmisc.richtext.StyleClassedTextArea;
+import org.fxmisc.richtext.InlineCssTextArea;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * The Model class of the text editor (MVC Model)
@@ -18,15 +21,63 @@ import org.fxmisc.richtext.StyleClassedTextArea;
  */
 public class NoteModel {
 
-    private StyleClassedTextArea textArea = new StyleClassedTextArea();
+    private InlineCssTextArea textArea = new InlineCssTextArea();
+    private Set<String> currStyle = new HashSet<>();
+    private boolean boldEnabled;
+    private boolean italicEnabled;
+    private boolean underlineEnabled;
+
     private double fontsize;
 
     public NoteModel() {
         fontsize = 12;  /* default */
 
+        boldEnabled = false;
+        italicEnabled = false;
+        underlineEnabled = false;
+
+        /* prevents text from going off the screen and scrolling horizontally */
+        textArea.setWrapText(true);
+
     }
 
-    public StyleClassedTextArea getTextArea() {
+    public Set<String> getCurrStyle() {
+        return this.currStyle;
+    }
+
+    public boolean isBoldEnabled() {
+        return boldEnabled;
+    }
+
+    public void toggleBold() {
+        this.boldEnabled = !boldEnabled;
+    }
+
+    public boolean isItalicEnabled() {
+        return italicEnabled;
+    }
+
+    public void toggleItalic() {
+        this.italicEnabled = !italicEnabled;
+    }
+
+    public boolean isUnderlineEnabled() {
+        return underlineEnabled;
+    }
+
+    public void toggleUnderline() {
+        this.underlineEnabled = !underlineEnabled;
+    }
+
+    public double getFontsize() {
+        return fontsize;
+    }
+
+    public void setFontsize(double fontsize) {
+        this.fontsize = fontsize;
+    }
+
+    public InlineCssTextArea getTextArea() {
         return textArea;
     }
 }

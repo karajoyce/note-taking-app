@@ -12,7 +12,6 @@ package notes;
 import javafx.scene.control.*;
 
 import javafx.stage.Stage;
-import org.fxmisc.richtext.StyleClassedTextArea;
 
 
 /**
@@ -21,12 +20,6 @@ import org.fxmisc.richtext.StyleClassedTextArea;
  */
 public class NoteView  {
     private NoteController noteController;
-
-    private StyleClassedTextArea textArea = new StyleClassedTextArea();
-
-    public StyleClassedTextArea getTextArea() {
-        return textArea;
-    }
 
     public NoteView(NoteController controller) {
         noteController = controller;
@@ -54,15 +47,15 @@ public class NoteView  {
     protected ToolBar createToolBar(Stage stage) {
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");
-        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleStyle("bold"));
+        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
 
         Button toggleItalicButton = new Button("I");
         toggleItalicButton.setStyle("-fx-font-style: italic;");
-        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleStyle("italic"));
+        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
 
         Button toggleUnderlineButton = new Button("U");
         toggleUnderlineButton.setStyle("-fx-font-underline: true;");
-        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleStyle("underline"));
+        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
 
         ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton);
         return toolBar;

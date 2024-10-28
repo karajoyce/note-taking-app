@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Collection;
 
 /**
  * The Controller class of the text editor (MVC Model)
@@ -33,11 +32,14 @@ public class NoteController {
     public NoteController(NoteModel model) {
         noteModel = model;
 
+        noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
+
     }
 
-    /** error message when doing file stuff
+    /**
+     * error message when doing file stuff
      *
-     * @param title title of the alert
+     * @param title   title of the alert
      * @param message message displayed to user
      */
     private void displayError(String title, String message) {
@@ -48,7 +50,9 @@ public class NoteController {
         alert.showAndWait();
     }
 
-    /** Open a file from the computer's filesystem */
+    /**
+     * Open a file from the computer's filesystem
+     */
     protected void openFile(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Text File");
@@ -64,7 +68,9 @@ public class NoteController {
         }
     }
 
-    /** Save a document */
+    /**
+     * Save the document you're working on
+     */
     protected void saveFile(Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Text File");
@@ -80,28 +86,108 @@ public class NoteController {
         }
     }
 
-    /** Rich text editing toggles for styling .
-     * e.g. bold, underline, italics.
-     * @param styleClass a style (e.g. bold)
-     */
-    protected void toggleStyle(String styleClass) {
-
+    protected void toggleBold() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        if (start == end) {
-            return; /* Nothing to do. exit! */
+        noteModel.toggleBold();
+
+        if (start != end) {
+            noteModel.getTextArea().setStyle(start, end, convertCss());
+            //return;
         }
 
-        /* Detect the style within the selected text */
-        Collection<String> styles = noteModel.getTextArea().getStyleAtPosition(start);
-        if (styles.contains(styleClass)) {
-            noteModel.getTextArea().setStyleClass(start, end, ""); /* Disable style if enabled already */
+        /* Toggles whether or not the next characters that the user types
+        is bold or not
+         */
+
+        if (noteModel.getCurrStyle().contains("-fx-font-weight: bold;")) {
+            noteModel.getCurrStyle().remove("-fx-font-weight: bold;");
         } else {
-            noteModel.getTextArea().setStyleClass(start, end, styleClass); /* Enable style if disabled */
+            noteModel.getCurrStyle().add("-fx-font-weight: bold;");
         }
     }
 
+    protected void toggleItalic() {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        noteModel.toggleItalic();
+
+        if (start != end) {
+
+            noteModel.getTextArea().setStyle(start, end, convertCss());
+            //return;
+        }
+
+
+        /* Toggles whether or not the next characters that the user types
+        is italic or not
+         */
+        if (noteModel.getCurrStyle().contains("-fx-font-style: italic;")) {
+            noteModel.getCurrStyle().remove("-fx-font-style: italic;");
+        } else {
+            noteModel.getCurrStyle().add("-fx-font-style: italic;");
+        }
+    }
+
+    protected void toggleUnderline() {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        noteModel.toggleUnderline();
+        if (start != end) {
+            /* Must I really check and change each individual character */
+            for (int i = start; i < end; i++) {
+                noteModel.getTextArea().setStyle(i, convertCss());
+                //return;
+            }
+        }
+
+
+        /* Toggles whether or not the next characters that the user types
+        is underlined or not
+         */
+        if (noteModel.getCurrStyle().contains("-fx-underline: true;")) {
+            noteModel.getCurrStyle().remove("-fx-underline: true;");
+        } else {
+            noteModel.getCurrStyle().add("-fx-underline: true;");
+        }
+    }
+
+    private String convertCss() {
+        StringBuilder css = new StringBuilder();
+
+        if (noteModel.isBoldEnabled()) {
+            css.append("-fx-font-weight: bold;");
+            System.out.println("was bold!");
+        } else {
+            css.append("-fx-font-weight: normal;");
+        }
+
+        if (noteModel.isItalicEnabled()) {
+            css.append("-fx-font-style: italic;");
+            System.out.println("was italic!");
+        } else {
+            css.append("-fx-font-style: normal;");
+        }
+
+        if (noteModel.isUnderlineEnabled()) {
+            css.append("-fx-underline: true");
+            System.out.println("was underlined!");
+        } else {
+            css.append("-fx-underline: false");
+        }
+
+        return css.toString();
+    }
+
+    protected void applyCurrentStyleToNewText() {
+        int caretPosition = noteModel.getTextArea().getCaretPosition();
+        noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
+    }
 
 }

@@ -17,19 +17,14 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import org.fxmisc.richtext.StyleClassedTextArea;
+import org.fxmisc.richtext.InlineCssTextArea;
 
 /**
  * Runs the application of the text editor
  */
 public class NoteMain extends Application{
     /* The MVC model classes: */
-    private NoteModel model = new NoteModel();
-    private NoteController controller = new NoteController(model);
-    private NoteView view = new NoteView(controller);
 
-    /** Text area for user text input */
-    private StyleClassedTextArea textArea = model.getTextArea();
 
     public static void main(String[] args) {
         launch(args);
@@ -37,6 +32,11 @@ public class NoteMain extends Application{
 
     @Override
     public void start(Stage stage) {
+        NoteModel model = new NoteModel();
+        NoteController controller = new NoteController(model);
+        NoteView view = new NoteView(controller);
+
+        InlineCssTextArea textArea = model.getTextArea();
 
         MenuBar menuBar = view.createMenuBar(stage);
         ToolBar toolBar = view.createToolBar(stage);
@@ -47,7 +47,7 @@ public class NoteMain extends Application{
 
         Scene scene = new Scene(root, 800, 800);
 
-        scene.getStylesheets().add(getClass().getResource("noteStyle.css").toString());
+        scene.getStylesheets().add(getClass().getResource("/noteStyle.css").toExternalForm());
 
         stage.setTitle("NoteMain");
         stage.setScene(scene);
