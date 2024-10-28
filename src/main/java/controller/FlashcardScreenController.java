@@ -14,15 +14,17 @@ import view.FlashcardScreenView;
 
 public class FlashcardScreenController {
 
-    private FlashcardScreen fCard = new FlashcardScreen(); // The model that represents the cards/deck
-    private FlashcardScreenView fCardView = new FlashcardScreenView(); // The view of the screen
+    private FlashcardScreen fCardModel; // The model that represents the cards/deck
+    private FlashcardScreenView fCardView; // The view of the screen
 
 
     /**
      * Constructor
      */
     public FlashcardScreenController(){
-
+        fCardModel = new FlashcardScreen();
+        fCardView = new FlashcardScreenView();
     }
+
 
 }

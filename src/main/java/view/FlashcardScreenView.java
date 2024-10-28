@@ -7,9 +7,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 import model.Card;
-import java.awt.*;
 import model.FlashcardScreen;
+import java.util.ArrayList;
 
 /**
 
@@ -26,14 +27,17 @@ public class FlashcardScreenView extends StackPane {
 
     private boolean isBack = false;
     private FlashcardScreen flashcardModel = new FlashcardScreen();
+    private ArrayList<Card> deck = flashcardModel.getDeck();
 
     public FlashcardScreenView() {
 
         //-------------------------
         // Deck initialization, needs to change
         flashcardModel.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
-        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
-        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+//        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
+//        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
 
         // General class things/size
         this.getStyleClass().add("cardview");
@@ -113,12 +117,12 @@ public class FlashcardScreenView extends StackPane {
         topButtons.getChildren().add(rightBar);
 
         if (!isBack) {
-            Text frontText = new Text(this.flashcardModel.getDeck().get(0).getCardFront());
+            Text frontText = new Text(this.deck.get(0).getCardFront());
             frontText.setWrappingWidth(cardSection.getMinWidth() - 40);
             fCard.getChildren().add(frontText);
             frontText.setTextAlignment(TextAlignment.CENTER);
         } else {
-            Text backText = new Text(this.flashcardModel.getDeck().get(0).getCardBack());
+            Text backText = new Text(this.deck.get(0).getCardBack());
             backText.setWrappingWidth(cardSection.getMinHeight() - 40);
             fCard.getChildren().add(backText);
             backText.setTextAlignment(TextAlignment.CENTER);
@@ -137,6 +141,7 @@ public class FlashcardScreenView extends StackPane {
         Button next = new Button(" > ");
         Button back = new Button(" < ");
         Button flip = new Button(" ⭯ ");
+        Button edit = new Button(" ✎ ");
 
         next.setMaxWidth(80);
         next.setMinWidth(80);
@@ -144,6 +149,7 @@ public class FlashcardScreenView extends StackPane {
         back.setMinWidth(80);
         flip.setMaxWidth(80);
         flip.setMinWidth(80);
+        edit.setMinWidth(80);
 
         next.setMaxHeight(50);
         next.setMinHeight(50);
@@ -151,9 +157,11 @@ public class FlashcardScreenView extends StackPane {
         back.setMinHeight(50);
         flip.setMaxHeight(50);
         flip.setMinHeight(50);
+        edit.setMinHeight(50);
 
         bottomButtons.getChildren().add(back);
         bottomButtons.getChildren().add(flip);
+        bottomButtons.getChildren().add(edit);
         bottomButtons.getChildren().add(next);
         //-------------------------END
 
@@ -167,5 +175,9 @@ public class FlashcardScreenView extends StackPane {
         todolist.getChildren().add(todoL);
         fullBox.getChildren().add(todolist);
         //-------------------------END
+    }
+
+    public void updateDeckList(Card newCard){
+        this.deck.add(newCard);
     }
 }

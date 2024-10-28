@@ -18,7 +18,7 @@ public class Card {
 
     // The back of the flashcard, the answer to the front.
     private String CardBack;
-    int cardID;
+    int cardID; // ID of the card
 
 
     /**
@@ -58,6 +58,13 @@ public class Card {
      */
     public void setCardBack(String cardBack) {
         CardBack = cardBack;
+    }
+
+    /**
+     * return: card ID
+     */
+    public int getCardID() {
+        return this.cardID;
     }
 
     /**
