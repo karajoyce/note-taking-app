@@ -10,6 +10,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import model.Card;
 import model.FlashcardScreen;
+
 import java.util.ArrayList;
 
 /**
@@ -28,6 +29,13 @@ public class FlashcardScreenView extends StackPane {
     private boolean isBack = false;
     private FlashcardScreen flashcardModel = new FlashcardScreen();
     private ArrayList<Card> deck = flashcardModel.getDeck();
+    private Button next; // button to page next on flashcards
+    private Button flip; // button to turn over flashcard
+    private Button edit; // button to edit a flashcard
+    private Button back; // button to move backwards in the deck
+//    private ToDoListView toDoListV;
+//    private ToDoListController toDoCont;
+//    private ToDoList toDoList;
 
     public FlashcardScreenView() {
 
@@ -38,6 +46,10 @@ public class FlashcardScreenView extends StackPane {
         double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
         double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
 //        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+
+//        toDoListV = new ToDoListView();
+//        toDoList = new ToDoList();
+//        toDoCont = new ToDoListController(toDoList, toDoListV);
 
         // General class things/size
         this.getStyleClass().add("cardview");
@@ -138,10 +150,10 @@ public class FlashcardScreenView extends StackPane {
 
 
         // Bottom Buttons set up
-        Button next = new Button(" > ");
-        Button back = new Button(" < ");
-        Button flip = new Button(" ⭯ ");
-        Button edit = new Button(" ✎ ");
+        next = new Button(" > ");
+        back = new Button(" < ");
+        flip = new Button(" ⭯ ");
+        edit = new Button(" ✎ ");
 
         next.setMaxWidth(80);
         next.setMinWidth(80);
@@ -167,17 +179,44 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         VBox todolist = new VBox();
-        todolist.getStyleClass().add("fake");
-        todolist.setAlignment(Pos.TOP_LEFT);
-        Text todoL = new Text("Pick up kids     Oct 14: 10AM");
+//        todolist.getChildren().add(toDoListV.getToDoListView());
+        todolist.setAlignment(Pos.TOP_CENTER); // this isn't working
         todolist.setMinWidth((screenWidth*0.25));
         todolist.setMinHeight(screenHeight);
+        todolist.getStyleClass().add("fake");
+        Text todoL = new Text("Pick up kids     Oct 14: 10AM");
         todolist.getChildren().add(todoL);
         fullBox.getChildren().add(todolist);
         //-------------------------END
     }
-
+    /**
+     * Will update the deck if any new cards are added.
+     */
     public void updateDeckList(Card newCard){
         this.deck.add(newCard);
+    }
+    /**
+     * An event handler for the edit button
+     */
+    public void setEditCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        edit.setOnAction(handler);
+    }
+    /**
+     * An event handler for the next button
+     */
+    public void setNextCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        next.setOnAction(handler);
+    }
+    /**
+     * An event handler for the flip button
+     */
+    public void setFlipCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        flip.setOnAction(handler);
+    }
+    /**
+     * An event handler for the back button
+     */
+    public void setBackCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        back.setOnAction(handler);
     }
 }
