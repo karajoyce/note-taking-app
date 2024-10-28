@@ -18,16 +18,18 @@ public class Card {
 
     // The back of the flashcard, the answer to the front.
     private String CardBack;
+    int cardID;
 
 
     /**
      * @param front: the front of the flashcard
      * @param back: the back of the flashcard
      */
-    public Card(String front, String back) {
+    public Card(String front, String back, int cID) {
         // CardID will be generated here from the list of Cards latest one.
         this.CardFront = front;
         this.CardBack = back;
+        this.cardID = cID;
     }
 
     /**

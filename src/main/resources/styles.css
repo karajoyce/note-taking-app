@@ -53,3 +53,7 @@ Sara Shakeel, gvk731, 11367521
     -fx-padding: 15px;
     -fx-font-size: 25px;
 }
+.topbar {
+    -fx-start-margin: 0;
+    -fx-end-margin: 0;
+}

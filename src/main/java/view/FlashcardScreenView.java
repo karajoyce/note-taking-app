@@ -31,7 +31,7 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         // Deck initialization, needs to change
-        flashcardModel.getDeck().add(new Card("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood."));
+        flashcardModel.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
         double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
 
@@ -87,13 +87,30 @@ public class FlashcardScreenView extends StackPane {
         topButtons.setMinHeight(cardSection.getMinHeight()*(1.0/8.0));
         topButtons.getStyleClass().add("hbox");
         cardSection.getChildren().add(topButtons);
-        topButtons.setAlignment(Pos.CENTER_LEFT);
 
+        VBox leftBar = new VBox();
+        leftBar.setMinHeight(topButtons.getMinHeight()-18);
+        leftBar.setMinWidth((cardSection.getMinWidth()-50)/2);
+        leftBar.getStyleClass().add("topbar");
         Button pageBack = new Button(" <-- ");
         pageBack.setMinHeight(50);
         pageBack.setMinWidth(80);
         pageBack.setAlignment(Pos.CENTER);
-        topButtons.getChildren().add(pageBack);
+        leftBar.setAlignment(Pos.CENTER_LEFT);
+        leftBar.getChildren().add(pageBack);
+        topButtons.getChildren().add(leftBar);
+
+        VBox rightBar = new VBox();
+        rightBar.setMinHeight(topButtons.getMinHeight()-18);
+        rightBar.setMinWidth((cardSection.getMinWidth()-50)/2);
+        rightBar.getStyleClass().add("topbar");
+        Button removeCard = new Button(" X ");
+        removeCard.setMinHeight(50);
+        removeCard.setMinWidth(80);
+        removeCard.setAlignment(Pos.CENTER);
+        rightBar.setAlignment(Pos.CENTER_RIGHT);
+        rightBar.getChildren().add(removeCard);
+        topButtons.getChildren().add(rightBar);
 
         if (!isBack) {
             Text frontText = new Text(this.flashcardModel.getDeck().get(0).getCardFront());

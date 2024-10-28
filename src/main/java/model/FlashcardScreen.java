@@ -15,12 +15,13 @@ import java.util.ArrayList;
 
 public class FlashcardScreen {
 
-    ArrayList<Card> deck;
-    //    ToDoListView tList;
+    ArrayList<Card> deck; // storing the deck of cards
+    int cardCounter;
 
     public FlashcardScreen(){
         // this needs to access database for proper deck based on controller button function
         this.deck = new ArrayList<>();
+        this.cardCounter = 1;
     }
 
     public ArrayList<Card> getDeck(){
@@ -28,7 +29,7 @@ public class FlashcardScreen {
     }
 
     public void addCard(String front, String back){
-        this.deck.add(new Card(front, back));
+        this.deck.add(new Card(front, back, cardCounter++));
     }
 
 }
