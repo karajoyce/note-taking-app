@@ -26,8 +26,8 @@ import java.util.ArrayList;
 public class FlashcardScreenView extends StackPane {
 
     private boolean isBack = false;
-    private FlashcardScreen flashcardModel = new FlashcardScreen();
-    private ArrayList<Card> deck = flashcardModel.getDeck();
+    private FlashcardScreen flashcardModel;
+    private ArrayList<Card> deck;
     private Button next; // button to page next on flashcards
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
@@ -44,10 +44,6 @@ public class FlashcardScreenView extends StackPane {
     public FlashcardScreenView() {
 
         //-------------------------
-        // Deck initialization, needs to change
-        flashcardModel.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
-        flashcardModel.addCard("What does HTML stand for?", "Hyper Text Markup Language");
-
         // Bottom Buttons set up
         next = new Button(" > ");
         back = new Button(" < ");
@@ -57,15 +53,12 @@ public class FlashcardScreenView extends StackPane {
         pageBack = new Button(" <-- ");
         removeCard = new Button(" X ");
 
-        runDeckUpdate();
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
 //        toDoCont = new ToDoListController(toDoList, toDoListV);
     }
 
     public void runDeckUpdate(){
-
-        System.out.println("run deck update");
 
         // General class things/size
         this.getStyleClass().add("cardview");
@@ -145,15 +138,16 @@ public class FlashcardScreenView extends StackPane {
         topButtons.getChildren().add(rightBar);
 
         if (!isBack) {
-            Text frontText = new Text(this.deck.get(0).getCardFront());
+            Text frontText = new Text(this.currentCard.getCardFront());
             frontText.setWrappingWidth(cardSection.getMinWidth() - 40);
             fCard.getChildren().add(frontText);
             frontText.setTextAlignment(TextAlignment.CENTER);
         } else {
-            Text backText = new Text(this.deck.get(0).getCardBack());
+            Text backText = new Text(this.currentCard.getCardBack());
             backText.setWrappingWidth(cardSection.getMinHeight() - 40);
             fCard.getChildren().add(backText);
             backText.setTextAlignment(TextAlignment.CENTER);
+            fCard.setStyle("-fx-background-color: #c3c7d7");
         }
         cardSection.getChildren().add(fCard);
 
@@ -230,20 +224,46 @@ public class FlashcardScreenView extends StackPane {
         back.setOnAction(handler);
     }
 
+    /**
+     * Method to tell the card to flip itself.
+     */
     public void flipIsBack(){
         isBack = !isBack;
-        System.out.println("FLIP");
-        System.out.println(isBack);
     }
     /**
      * Update current card by either adding (true) or subtracting (false)
      */
-    public void setCurrentCard(boolean bool){
-        int ID;
-        if (bool){
-            ID = currentCard.getCardID() + 1;
+    public void setCurrentCard(boolean bool) {
+        Card newCard = null;
+        // If bool is true, they want to move forward
+        if (bool) {
+            // Set up new ID
+            int ID = currentCard.getCardID() + 1;
+            // Case for hitting the end and wrapping to the beginning
+            newCard = this.deck.getFirst();
+            // Loop to find the next card
+            for (Card card : this.deck) {
+                // check card null exception
+                if (card.getCardID() == ID) {
+                    newCard = card;
+                }
+            }
         } else {
-            ID = currentCard.getCardID() - 1;
+            // Set up new ID
+            int ID = currentCard.getCardID() - 1;
+            // Case for hitting the beginning and wrapping to the end
+            newCard = this.deck.getLast();
+            // Loop to find the next card
+            for (Card card : this.deck) {
+                // check card null exception
+                if (card.getCardID() == ID) {
+                    newCard = card;
+                }
+            }
+        }
+
+        if (newCard != null) {
+            currentCard = newCard;
         }
     }
 
@@ -254,5 +274,12 @@ public class FlashcardScreenView extends StackPane {
             }
         }
         return null;
+    }
+
+    public void setCardModel(FlashcardScreen model){
+        currentCard = model.getDeck().getFirst();
+        flashcardModel = model;
+        this.deck = model.getDeck();
+        runDeckUpdate();
     }
 }

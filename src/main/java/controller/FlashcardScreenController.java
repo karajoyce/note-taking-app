@@ -27,9 +27,10 @@ public class FlashcardScreenController {
         fCardModel = model;
         fCardView = view;
 
+        fCardView.setCardModel(model);
+
         // set an action for the flip card button
         fCardView.setFlipCardButton(e -> {
-            System.out.println("Flip Cont");
             fCardView.flipIsBack();
             fCardView.runDeckUpdate();
         });

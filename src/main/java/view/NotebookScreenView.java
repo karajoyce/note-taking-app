@@ -21,14 +21,21 @@ import java.awt.*;
 
 public class NotebookScreenView extends StackPane {
 
+    // Deck initialization, needs to change
+    double screenHeight;
+    double screenWidth;
+
     public NotebookScreenView() {
 
         //-------------------------
         // Deck initialization, needs to change
-        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
-        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
 
-        // General class things/size
+        runScreenUpdate();
+    }
+
+    public void runScreenUpdate(){
         this.getStyleClass().add("cardview");
         //-------------------------END
 
@@ -65,12 +72,6 @@ public class NotebookScreenView extends StackPane {
         cardSection.getChildren().add(topButtons);
         topButtons.setAlignment(Pos.CENTER_LEFT);
 
-        Button pageBack = new Button(" <-- ");
-        pageBack.setMinHeight(50);
-        pageBack.setMinWidth(80);
-        pageBack.setAlignment(Pos.CENTER);
-        topButtons.getChildren().add(pageBack);
-
 
         // Buttons for card control
         HBox bottomButtons = new HBox();
@@ -79,39 +80,14 @@ public class NotebookScreenView extends StackPane {
         cardSection.getChildren().add(bottomButtons);
         bottomButtons.setAlignment(Pos.CENTER);
 
-
-        // Bottom Buttons set up
-        Button next = new Button(" > ");
-        Button back = new Button(" < ");
-        Button flip = new Button(" ⭯ ");
-
-        next.setMaxWidth(80);
-        next.setMinWidth(80);
-        back.setMaxWidth(80);
-        back.setMinWidth(80);
-        flip.setMaxWidth(80);
-        flip.setMinWidth(80);
-
-        next.setMaxHeight(50);
-        next.setMinHeight(50);
-        back.setMaxHeight(50);
-        back.setMinHeight(50);
-        flip.setMaxHeight(50);
-        flip.setMinHeight(50);
-
-        bottomButtons.getChildren().add(back);
-        bottomButtons.getChildren().add(flip);
-        bottomButtons.getChildren().add(next);
         //-------------------------END
 
         //-------------------------
         VBox todolist = new VBox();
         todolist.getStyleClass().add("fake");
         todolist.setAlignment(Pos.TOP_LEFT);
-        Text todoL = new Text("Pick up kids     Oct 14: 10AM");
         todolist.setMinWidth((screenWidth*0.333333));
         todolist.setMinHeight(screenHeight);
-        todolist.getChildren().add(todoL);
         fullBox.getChildren().add(todolist);
         //-------------------------END
     }

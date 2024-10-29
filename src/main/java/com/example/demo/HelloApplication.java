@@ -14,8 +14,14 @@ public class HelloApplication extends Application {
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
+        // Deck initialization, needs to change
+        // get from file system here, and upload
+        fCard.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
+        fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
+
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
+        NotebookScreenView nView = new NotebookScreenView();
 
 
         Scene scene = new Scene(fCardView);
