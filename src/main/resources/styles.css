@@ -1,0 +1,59 @@
+/**
+
+CMPT 370, T05, Team 4, Prof. Jon Lovering
+Author: Kara Leier, kjl061, 11293306
+Nathan Balilis, ncb421, 11295020
+Trushank Lakdawala, nus429, 11350445
+Jinny Kim, yek738, 11304174
+Sara Shakeel, gvk731, 11367521
+
+ **/
+
+.button {
+    -fx-background-color: #b19f93;
+    -fx-border-color: #b19f93;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+.cardview {
+    -fx-background-color: #eedfd6;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+.hbox {
+    -fx-padding: 15px;
+    -fx-spacing: 20px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+.cardsection {
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-font-size: 25px;
+    -fx-border-color: blue;
+    -fx-spacing: 5;
+}
+.fake{
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-font-size: 25px;
+    -fx-border-color: black;
+    -fx-padding: 15px;
+}
+.textflow {
+    -fx-padding: 20px;
+    -fx-font-size: 40px;
+    -fx-background-color: #a7acbd;
+}
+.bigbox {
+    -fx-border-color: darkgreen;
+}
+.deck {
+    -fx-border-color: orange;
+    -fx-padding: 15px;
+    -fx-font-size: 25px;
+}
+.topbar {
+    -fx-start-margin: 0;
+    -fx-end-margin: 0;
+}
