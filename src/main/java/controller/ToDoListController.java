@@ -27,7 +27,6 @@ public class ToDoListController  {
      * Constructs a ToDoListController with the specified ToDoList and primary stage.
      *
      * @param toDoList The ToDoList instance that holds the tasks.
-     * @param primaryStage The primary stage for the application where the to-do list view will be displayed.
      */
     public ToDoListController(ToDoList toDoList, ToDoListView toDoListView) {
         this.toDoList = toDoList;

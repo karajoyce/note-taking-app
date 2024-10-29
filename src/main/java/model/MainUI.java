@@ -42,7 +42,6 @@ public class MainUI extends Application {
         bottomRightContainer.setAlignment(Pos.CENTER_RIGHT); // Align to the bottom right
         bottomRightContainer.getChildren().add(toDoListView.getToDoListView());
 
-        pane.setTop(h);
         pane.setRight(bottomRightContainer); // Add the VBox to the right side of the pane
 
         //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);

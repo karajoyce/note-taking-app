@@ -34,8 +34,7 @@ public class ToDoListView extends VBox {
     /**
      * Constructs a ToDoListView that sets up the user interface
      * for the to-do list application.
-     *
-     * @param primaryStage The primary stage for this application, where the UI will be displayed.
+     *.
      */
     public ToDoListView() {
         //primaryStage.setTitle("To-Do List");
