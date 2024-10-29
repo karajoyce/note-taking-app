@@ -54,7 +54,7 @@ public class NoteView  {
         toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
 
         Button toggleUnderlineButton = new Button("U");
-        toggleUnderlineButton.setStyle("-fx-font-underline: true;");
+        toggleUnderlineButton.setStyle("-fx-underline: true;");
         toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
 
         ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton);

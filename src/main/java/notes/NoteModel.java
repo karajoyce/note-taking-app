@@ -21,14 +21,25 @@ import java.util.Set;
  */
 public class NoteModel {
 
+    /** the main text area of the text editor */
     private InlineCssTextArea textArea = new InlineCssTextArea();
+
+    /** the list of styles that is being applied to the typed text */
     private Set<String> currStyle = new HashSet<>();
+
+    /** if bold is enabled, true. otherwise, false */
     private boolean boldEnabled;
+
+    /** If italics is enabled, true. otherwise, false */
     private boolean italicEnabled;
+
+    /** if underline enabled, true. otherwise, false */
     private boolean underlineEnabled;
 
+    /** the font size of the text being written */
     private double fontsize;
 
+    /** Constructor */
     public NoteModel() {
         fontsize = 12;  /* default */
 
@@ -41,6 +52,7 @@ public class NoteModel {
 
     }
 
+    /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {
         return this.currStyle;
     }

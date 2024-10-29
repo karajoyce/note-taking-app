@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * The Controller class of the text editor (MVC Model)
@@ -86,21 +89,47 @@ public class NoteController {
         }
     }
 
+    /**
+     * On the event of clicking the Bold button, if:
+     * (1) User has selected a chunk of text, toggle bold but retain previous set styles.
+     * (2) User has not selected text, toggle bold for the subsequent times they type until
+     * it is toggled again.
+     */
     protected void toggleBold() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        noteModel.toggleBold();
+        boolean currentlySetToBold = noteModel.isBoldEnabled();
 
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
         if (start != end) {
-            noteModel.getTextArea().setStyle(start, end, convertCss());
-            //return;
+
+            for (int i = start; i < end; i++) {
+                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+
+                if (currentlySetToBold) {
+                    styles.add("-fx-font-weight: normal;");
+                } else {
+                    styles.add("-fx-font-weight: bold;");
+                }
+
+                styles = retainStyles(styles, "-fx-underline: true;");
+                styles = retainStyles(styles, "-fx-font-style: italic;");
+
+                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
+            }
+            noteModel.toggleBold();
+            return;
+
         }
 
         /* Toggles whether or not the next characters that the user types
         is bold or not
          */
+
+        noteModel.toggleBold();
 
         if (noteModel.getCurrStyle().contains("-fx-font-weight: bold;")) {
             noteModel.getCurrStyle().remove("-fx-font-weight: bold;");
@@ -109,23 +138,47 @@ public class NoteController {
         }
     }
 
+    /**
+     * On the event of clicking the Italic button, if:
+     * (1) User has selected a chunk of text, toggle italics but retain previous set styles.
+     * (2) User has not selected text, toggle italics for the subsequent times they type until
+     * it is toggled again.
+     */
     protected void toggleItalic() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        noteModel.toggleItalic();
+        boolean currentlySetToItalic = noteModel.isItalicEnabled();
 
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
         if (start != end) {
 
-            noteModel.getTextArea().setStyle(start, end, convertCss());
-            //return;
+            for (int i = start; i < end; i++) {
+                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+
+                if (currentlySetToItalic) {
+                    styles.add("-fx-font-style: normal;");
+                } else {
+                    styles.add("-fx-font-style: italic;");
+                }
+
+                styles = retainStyles(styles, "-fx-font-weight: bold;");
+                styles = retainStyles(styles, "-fx-underline: true;");
+
+                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
+            }
+            noteModel.toggleItalic();
+            return;
+
         }
 
 
         /* Toggles whether or not the next characters that the user types
         is italic or not
          */
+        noteModel.toggleItalic();
         if (noteModel.getCurrStyle().contains("-fx-font-style: italic;")) {
             noteModel.getCurrStyle().remove("-fx-font-style: italic;");
         } else {
@@ -133,24 +186,47 @@ public class NoteController {
         }
     }
 
+    /**
+     * On the event of clicking the Underline button, if:
+     * (1) User has selected a chunk of text, toggle underline but retain previous set styles.
+     * (2) User has not selected text, toggle underline for the subsequent times they type until
+     * it is toggled again.
+     */
     protected void toggleUnderline() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        noteModel.toggleUnderline();
+        boolean currentlySetToUnderlined = noteModel.isUnderlineEnabled();
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+        * toggle the desired style */
         if (start != end) {
-            /* Must I really check and change each individual character */
+
             for (int i = start; i < end; i++) {
-                noteModel.getTextArea().setStyle(i, convertCss());
-                //return;
+                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+
+                if (currentlySetToUnderlined) {
+                    styles.add("-fx-underline: false;");
+                } else {
+                    styles.add("-fx-underline: true;");
+                }
+
+                styles = retainStyles(styles, "-fx-font-weight: bold;");
+                styles = retainStyles(styles, "-fx-font-style: italic;");
+
+                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
             }
+            noteModel.toggleUnderline();
+            return;
+
         }
 
-
-        /* Toggles whether or not the next characters that the user types
-        is underlined or not
+        /* If the user has not selected text, they will change the formatting for the
+        next character they type
          */
+        noteModel.toggleUnderline();
+
         if (noteModel.getCurrStyle().contains("-fx-underline: true;")) {
             noteModel.getCurrStyle().remove("-fx-underline: true;");
         } else {
@@ -158,33 +234,27 @@ public class NoteController {
         }
     }
 
-    private String convertCss() {
-        StringBuilder css = new StringBuilder();
-
-        if (noteModel.isBoldEnabled()) {
-            css.append("-fx-font-weight: bold;");
-            System.out.println("was bold!");
+    /**
+     * Helper function that reduces redundant code when toggling styles/formatting.
+     * Adds styles we want to keep/retain into a list to return
+     * @param styleList list of styles we want to apply to a character
+     * @param style string of CSS formatting we're searching for
+     * @return modified styleList
+     */
+    private Collection<String> retainStyles(Collection<String> styleList, String style) {
+        if (styleList.contains(style)) {
+            styleList.add(style);
         } else {
-            css.append("-fx-font-weight: normal;");
+            styleList.remove(style);
         }
 
-        if (noteModel.isItalicEnabled()) {
-            css.append("-fx-font-style: italic;");
-            System.out.println("was italic!");
-        } else {
-            css.append("-fx-font-style: normal;");
-        }
+        return styleList;
 
-        if (noteModel.isUnderlineEnabled()) {
-            css.append("-fx-underline: true");
-            System.out.println("was underlined!");
-        } else {
-            css.append("-fx-underline: false");
-        }
-
-        return css.toString();
     }
 
+    /**
+     * Function that applies the current applied styles/formatting to the text the user types
+     */
     protected void applyCurrentStyleToNewText() {
         int caretPosition = noteModel.getTextArea().getCaretPosition();
         noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
