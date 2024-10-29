@@ -1,10 +1,9 @@
-package view;
+package com.example.demo.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.Card;
 import javafx.scene.control.TextField;
 
 public class EditCardView {

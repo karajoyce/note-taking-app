@@ -1,4 +1,4 @@
-package view;
+package com.example.demo.view;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,8 +8,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
-import model.Card;
-import model.FlashcardScreen;
+import com.example.demo.model.Card;
+import com.example.demo.model.FlashcardScreen;
 import java.util.ArrayList;
 
 /**
