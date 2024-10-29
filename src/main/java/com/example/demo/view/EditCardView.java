@@ -1,10 +1,9 @@
-package view;
+package com.example.demo.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.Card;
 import javafx.scene.control.TextField;
 
 public class EditCardView {
@@ -35,7 +34,7 @@ public class EditCardView {
 
         // Set up the layout
         grid.getChildren().addAll(frontCard, backCard, updateCardButton);
-        Scene scene = new Scene(grid, 300, 200);
+        Scene scene = new Scene(grid, 500, 350);
         stage.setScene(scene);
 
         updateCardButton.setOnAction(e -> {

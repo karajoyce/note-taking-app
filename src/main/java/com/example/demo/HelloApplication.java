@@ -1,12 +1,12 @@
 package com.example.demo;
 
-import controller.FlashcardScreenController;
+import com.example.demo.controller.FlashcardScreenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.FlashcardScreen;
-import view.FlashcardScreenView;
-import view.NotebookScreenView;
+import com.example.demo.model.FlashcardScreen;
+import com.example.demo.view.FlashcardScreenView;
+import com.example.demo.view.NotebookScreenView;
 
 public class HelloApplication extends Application {
     @Override

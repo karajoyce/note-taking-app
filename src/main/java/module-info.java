@@ -7,10 +7,9 @@ module com.example.demo {
     requires com.google.gson;
 
 
-
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
 //    exports controller;
-    exports model;
-    exports view;
+    exports com.example.demo.model;
+    exports com.example.demo.view;
 }

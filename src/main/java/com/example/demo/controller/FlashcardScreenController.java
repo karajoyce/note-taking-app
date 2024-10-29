@@ -1,6 +1,6 @@
-package controller;
+package com.example.demo.controller;
 
-/**
+/*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
  Kara Leier, kjl061, 11293306
  Nathan Balilis, ncb421, 11295020
@@ -10,14 +10,13 @@ package controller;
  */
 
 import javafx.stage.Stage;
-import model.FlashcardScreen;
-import view.EditCardView;
-import view.FlashcardScreenView;
+import com.example.demo.model.FlashcardScreen;
+import com.example.demo.view.FlashcardScreenView;
 
 public class FlashcardScreenController {
 
-    private FlashcardScreen fCardModel; // The model that represents the cards/deck
-    private FlashcardScreenView fCardView; // The view of the screen
+    private FlashcardScreen fCardModel; // The com.example.demo.model that represents the cards/deck
+    private FlashcardScreenView fCardView; // The com.example.demo.view of the screen
 
 
     /**
@@ -37,11 +36,17 @@ public class FlashcardScreenController {
 
         fCardView.setNextCardButton(e -> {
             fCardView.setCurrentCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
             fCardView.runDeckUpdate();
         });
 
         fCardView.setBackCardButton(e -> {
             fCardView.setCurrentCard(false);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
             fCardView.runDeckUpdate();
         });
 

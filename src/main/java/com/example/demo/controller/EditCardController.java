@@ -1,9 +1,9 @@
-package controller;
+package com.example.demo.controller;
 
 import javafx.stage.Stage;
-import model.Card;
-import model.FlashcardScreen;
-import view.EditCardView;
+import com.example.demo.model.Card;
+import com.example.demo.model.FlashcardScreen;
+import com.example.demo.view.EditCardView;
 
 public class EditCardController {
 
