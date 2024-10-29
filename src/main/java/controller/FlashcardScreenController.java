@@ -46,7 +46,7 @@ public class FlashcardScreenController {
         });
 
         fCardView.setEditCardButton(e -> {
-            new EditCardController(fCardView.getCurrentCard(), new EditCardView(), new Stage());
+            new EditCardController(fCardView.getCurrentCard(), fCardModel, this, new Stage());
             fCardView.runDeckUpdate();
         });
     }
