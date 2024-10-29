@@ -3,6 +3,9 @@ module com.example.demo {
     requires javafx.fxml;
     requires java.datatransfer;
     requires java.desktop;
+    requires java.sql;
+    requires com.google.gson;
+
 
 
     opens com.example.demo to javafx.fxml;
