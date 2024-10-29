@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="got font styles to change but there's some bugs i have to fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" afterDir="false" />
-    </list>
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +116,7 @@
       <workItem from="1729470594760" duration="700000" />
       <workItem from="1729471398702" duration="70000" />
       <workItem from="1729471476324" duration="103000" />
-      <workItem from="1729471591131" duration="66956000" />
+      <workItem from="1729471591131" duration="67317000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -196,11 +190,30 @@
       <option name="project" value="LOCAL" />
       <updated>1730093626948</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
+      <option name="closed" value="true" />
+      <created>1730173742290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730173742290</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="skeleton based off uml class diagram" />
@@ -212,6 +225,7 @@
     <MESSAGE value="all text size gets edited... no.." />
     <MESSAGE value="it was working until css ruined my life" />
     <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="got font styles to change but there's some bugs i have to fix" />
+    <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
+    <option name="LAST_COMMIT_MESSAGE" value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
   </component>
 </project>
