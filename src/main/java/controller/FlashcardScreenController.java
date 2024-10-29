@@ -9,7 +9,9 @@ package controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import javafx.stage.Stage;
 import model.FlashcardScreen;
+import view.EditCardView;
 import view.FlashcardScreenView;
 
 public class FlashcardScreenController {
@@ -21,10 +23,31 @@ public class FlashcardScreenController {
     /**
      * Constructor
      */
-    public FlashcardScreenController(){
-        fCardModel = new FlashcardScreen();
-        fCardView = new FlashcardScreenView();
-    }
+    public FlashcardScreenController(FlashcardScreen model, FlashcardScreenView view){
+        fCardModel = model;
+        fCardView = view;
 
+        // set an action for the flip card button
+        fCardView.setFlipCardButton(e -> {
+            System.out.println("Flip Cont");
+            fCardView.flipIsBack();
+            fCardView.runDeckUpdate();
+        });
+
+        fCardView.setNextCardButton(e -> {
+            fCardView.setCurrentCard(true);
+            fCardView.runDeckUpdate();
+        });
+
+        fCardView.setBackCardButton(e -> {
+            fCardView.setCurrentCard(false);
+            fCardView.runDeckUpdate();
+        });
+
+        fCardView.setEditCardButton(e -> {
+            new EditCardController(fCardView.getCurrentCard(), new EditCardView(), new Stage());
+            fCardView.runDeckUpdate();
+        });
+    }
 
 }

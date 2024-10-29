@@ -10,7 +10,6 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import model.Card;
 import model.FlashcardScreen;
-
 import java.util.ArrayList;
 
 /**
@@ -33,6 +32,11 @@ public class FlashcardScreenView extends StackPane {
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
     private Button back; // button to move backwards in the deck
+
+    private Button deckButton;
+    private Button pageBack;
+    private Button removeCard;
+    private Card currentCard = null;
 //    private ToDoListView toDoListV;
 //    private ToDoListController toDoCont;
 //    private ToDoList toDoList;
@@ -42,17 +46,32 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------
         // Deck initialization, needs to change
         flashcardModel.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
-//        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
-//        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+        flashcardModel.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
+        // Bottom Buttons set up
+        next = new Button(" > ");
+        back = new Button(" < ");
+        flip = new Button(" ⭯ ");
+        edit = new Button(" ✎ ");
+        deckButton = new Button("Test Desk"); // this should be a deck name later
+        pageBack = new Button(" <-- ");
+        removeCard = new Button(" X ");
+
+        runDeckUpdate();
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
 //        toDoCont = new ToDoListController(toDoList, toDoListV);
+    }
+
+    public void runDeckUpdate(){
+
+        System.out.println("run deck update");
 
         // General class things/size
         this.getStyleClass().add("cardview");
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
+        this.getChildren().clear();
         //-------------------------END
 
         //-------------------------
@@ -75,7 +94,6 @@ public class FlashcardScreenView extends StackPane {
         fullBox.getChildren().add(deckSelection);
 
         // Buttons for decks
-        Button deckButton = new Button("Test Desk"); // this should be a deck name later
         deckButton.setAlignment(Pos.CENTER);
         deckButton.setMinWidth(deckSelection.getMinWidth()-40);
         deckButton.setMinHeight(80);
@@ -108,7 +126,6 @@ public class FlashcardScreenView extends StackPane {
         leftBar.setMinHeight(topButtons.getMinHeight()-18);
         leftBar.setMinWidth((cardSection.getMinWidth()-50)/2);
         leftBar.getStyleClass().add("topbar");
-        Button pageBack = new Button(" <-- ");
         pageBack.setMinHeight(50);
         pageBack.setMinWidth(80);
         pageBack.setAlignment(Pos.CENTER);
@@ -120,7 +137,6 @@ public class FlashcardScreenView extends StackPane {
         rightBar.setMinHeight(topButtons.getMinHeight()-18);
         rightBar.setMinWidth((cardSection.getMinWidth()-50)/2);
         rightBar.getStyleClass().add("topbar");
-        Button removeCard = new Button(" X ");
         removeCard.setMinHeight(50);
         removeCard.setMinWidth(80);
         removeCard.setAlignment(Pos.CENTER);
@@ -147,13 +163,6 @@ public class FlashcardScreenView extends StackPane {
         bottomButtons.getStyleClass().add("hbox");
         cardSection.getChildren().add(bottomButtons);
         bottomButtons.setAlignment(Pos.CENTER);
-
-
-        // Bottom Buttons set up
-        next = new Button(" > ");
-        back = new Button(" < ");
-        flip = new Button(" ⭯ ");
-        edit = new Button(" ✎ ");
 
         next.setMaxWidth(80);
         next.setMinWidth(80);
@@ -194,6 +203,7 @@ public class FlashcardScreenView extends StackPane {
      */
     public void updateDeckList(Card newCard){
         this.deck.add(newCard);
+        runDeckUpdate();
     }
     /**
      * An event handler for the edit button
@@ -218,5 +228,31 @@ public class FlashcardScreenView extends StackPane {
      */
     public void setBackCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         back.setOnAction(handler);
+    }
+
+    public void flipIsBack(){
+        isBack = !isBack;
+        System.out.println("FLIP");
+        System.out.println(isBack);
+    }
+    /**
+     * Update current card by either adding (true) or subtracting (false)
+     */
+    public void setCurrentCard(boolean bool){
+        int ID;
+        if (bool){
+            ID = currentCard.getCardID() + 1;
+        } else {
+            ID = currentCard.getCardID() - 1;
+        }
+    }
+
+    public Card getCurrentCard(){
+        for (Card card: this.deck){
+            if (currentCard.getCardID() == card.getCardID()){
+                return card;
+            }
+        }
+        return null;
     }
 }

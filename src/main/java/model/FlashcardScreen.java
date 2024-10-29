@@ -34,9 +34,10 @@ public class FlashcardScreen {
 
     public void removeCard(int cardID){
         this.getDeck().remove(cardID-1);
+        cardCounter--;
     }
 
-    public void editTask(int cardID, String front, String back){
+    public void editCard(int cardID, String front, String back){
         for (Card card: deck){
             if (card.getCardID() == cardID){
                 card.setCardBack(back);
