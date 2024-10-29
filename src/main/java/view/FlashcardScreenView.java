@@ -282,4 +282,8 @@ public class FlashcardScreenView extends StackPane {
         this.deck = model.getDeck();
         runDeckUpdate();
     }
+
+    public boolean checkBack(){
+        return isBack;
+    }
 }

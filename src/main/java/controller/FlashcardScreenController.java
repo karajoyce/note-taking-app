@@ -1,6 +1,6 @@
 package controller;
 
-/**
+/*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
  Kara Leier, kjl061, 11293306
  Nathan Balilis, ncb421, 11295020
@@ -37,11 +37,17 @@ public class FlashcardScreenController {
 
         fCardView.setNextCardButton(e -> {
             fCardView.setCurrentCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
             fCardView.runDeckUpdate();
         });
 
         fCardView.setBackCardButton(e -> {
             fCardView.setCurrentCard(false);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
             fCardView.runDeckUpdate();
         });
 

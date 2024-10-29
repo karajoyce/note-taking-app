@@ -35,7 +35,7 @@ public class EditCardView {
 
         // Set up the layout
         grid.getChildren().addAll(frontCard, backCard, updateCardButton);
-        Scene scene = new Scene(grid, 300, 200);
+        Scene scene = new Scene(grid, 500, 350);
         stage.setScene(scene);
 
         updateCardButton.setOnAction(e -> {
