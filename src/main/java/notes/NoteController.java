@@ -9,7 +9,7 @@
 
 package notes;
 
-
+import java.util.*;
 import javafx.scene.control.Alert;
 
 import javafx.stage.FileChooser;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -36,6 +37,7 @@ public class NoteController {
         noteModel = model;
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
+
 
     }
 
@@ -106,20 +108,7 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            for (int i = start; i < end; i++) {
-                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
-
-                if (currentlySetToBold) {
-                    styles.add("-fx-font-weight: normal;");
-                } else {
-                    styles.add("-fx-font-weight: bold;");
-                }
-
-                styles = retainStyles(styles, "-fx-underline: true;");
-                styles = retainStyles(styles, "-fx-font-style: italic;");
-
-                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
-            }
+            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ", currentlySetToBold, start, end);
             noteModel.toggleBold();
             return;
 
@@ -128,13 +117,13 @@ public class NoteController {
         /* Toggles whether or not the next characters that the user types
         is bold or not
          */
-
         noteModel.toggleBold();
-
-        if (noteModel.getCurrStyle().contains("-fx-font-weight: bold;")) {
-            noteModel.getCurrStyle().remove("-fx-font-weight: bold;");
+        if (noteModel.getCurrStyle().contains("-fx-font-weight: bold; ")) {
+            noteModel.getCurrStyle().remove("-fx-font-weight: bold; ");
+            noteModel.getCurrStyle().add("-fx-font-weight: normal; ");
         } else {
-            noteModel.getCurrStyle().add("-fx-font-weight: bold;");
+            noteModel.getCurrStyle().remove("-fx-font-weight: normal; ");
+            noteModel.getCurrStyle().add("-fx-font-weight: bold; ");
         }
     }
 
@@ -155,34 +144,22 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            for (int i = start; i < end; i++) {
-                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
-
-                if (currentlySetToItalic) {
-                    styles.add("-fx-font-style: normal;");
-                } else {
-                    styles.add("-fx-font-style: italic;");
-                }
-
-                styles = retainStyles(styles, "-fx-font-weight: bold;");
-                styles = retainStyles(styles, "-fx-underline: true;");
-
-                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
-            }
+            retainStyles("-fx-font-style: italic; ", "-fx-font-style: normal; ", currentlySetToItalic, start, end);
             noteModel.toggleItalic();
             return;
 
         }
 
-
         /* Toggles whether or not the next characters that the user types
         is italic or not
          */
         noteModel.toggleItalic();
-        if (noteModel.getCurrStyle().contains("-fx-font-style: italic;")) {
-            noteModel.getCurrStyle().remove("-fx-font-style: italic;");
+        if (noteModel.getCurrStyle().contains("-fx-font-style: italic; ")) {
+            noteModel.getCurrStyle().remove("-fx-font-style: italic; ");
+            noteModel.getCurrStyle().add("-fx-font-style: normal; ");
         } else {
-            noteModel.getCurrStyle().add("-fx-font-style: italic;");
+            noteModel.getCurrStyle().remove("-fx-font-style: normal; ");
+            noteModel.getCurrStyle().add("-fx-font-style: italic; ");
         }
     }
 
@@ -203,20 +180,8 @@ public class NoteController {
         * toggle the desired style */
         if (start != end) {
 
-            for (int i = start; i < end; i++) {
-                Collection<String> styles = new HashSet<String>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+            retainStyles("-fx-underline: true; ", "-fx-underline: false; ", currentlySetToUnderlined, start, end);
 
-                if (currentlySetToUnderlined) {
-                    styles.add("-fx-underline: false;");
-                } else {
-                    styles.add("-fx-underline: true;");
-                }
-
-                styles = retainStyles(styles, "-fx-font-weight: bold;");
-                styles = retainStyles(styles, "-fx-font-style: italic;");
-
-                noteModel.getTextArea().setStyle(i, i+1, String.join(" ", styles));
-            }
             noteModel.toggleUnderline();
             return;
 
@@ -227,28 +192,87 @@ public class NoteController {
          */
         noteModel.toggleUnderline();
 
-        if (noteModel.getCurrStyle().contains("-fx-underline: true;")) {
-            noteModel.getCurrStyle().remove("-fx-underline: true;");
+        if (noteModel.getCurrStyle().contains("-fx-underline: true; ")) {
+            noteModel.getCurrStyle().remove("-fx-underline: true; ");
+            noteModel.getCurrStyle().add("-fx-underline: false; ");
         } else {
-            noteModel.getCurrStyle().add("-fx-underline: true;");
+            noteModel.getCurrStyle().remove("-fx-underline: false; ");
+            noteModel.getCurrStyle().add("-fx-underline: true; ");
         }
     }
 
     /**
      * Helper function that reduces redundant code when toggling styles/formatting.
      * Adds styles we want to keep/retain into a list to return
-     * @param styleList list of styles we want to apply to a character
-     * @param style string of CSS formatting we're searching for
+     * @param style string of CSS formatting we're removing
      * @return modified styleList
      */
-    private Collection<String> retainStyles(Collection<String> styleList, String style) {
-        if (styleList.contains(style)) {
-            styleList.add(style);
-        } else {
-            styleList.remove(style);
-        }
+    private void retainStyles(String style, String opStyle, boolean state, int start, int end) {
 
-        return styleList;
+        String[] arrayOfCss;
+
+        for (int i = start; i < end; i++) {
+            Set<String> newSet = new HashSet<>();
+            /* Split up CSS styles by the semicolon */
+            arrayOfCss = noteModel.getTextArea().getStyleOfChar(i).split("[;]");
+
+            /* Add the semicolon back */
+            for (int j = 0; j < arrayOfCss.length; j++) {
+
+                /* Add to the new set if it isn't the one we want to remove */
+                if (!arrayOfCss[j].startsWith(style)) {
+                    newSet.add(arrayOfCss[j].strip() + ";");
+                }
+                newSet.remove(";"); /* Remove any empty spaces */
+            }
+
+            System.out.println(newSet);
+            if (state) {
+                newSet.add(opStyle);
+            } else {
+                newSet.add(style);
+            }
+            noteModel.getTextArea().setStyle(i, i+1, String.join(" ", newSet));
+
+        }
+    }
+
+    /* MUST CHANGE CHANGEFONTSIZE */
+
+    /**
+     * Change font size according to dropbox menu
+     * @param fontSize font size option from dropdown menu
+     */
+    protected void changeFontSize(String fontSize) {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        //noteModel.setFontsize(fontSize);
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
+        if (start != end) {
+
+            for (int i = start; i < end; i++) {
+                Collection<String> styles = new HashSet<>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+
+                styles.removeIf(style -> style.startsWith("-fx-font-size"));
+
+                styles.add("-fx-font-size: " + fontSize + "; ");
+
+                noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", styles));
+            }
+            return;
+
+        }
+        noteModel.setFontsize(fontSize);
+
+        /* If the user has not selected text, they will change the formatting for the
+        next character they type
+         */
+        noteModel.getCurrStyle().removeIf(style -> style.startsWith("-fx-font-size"));
+        noteModel.getCurrStyle().add("-fx-font-size: " + fontSize + "; ");
 
     }
 

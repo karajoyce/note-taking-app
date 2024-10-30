@@ -51,6 +51,7 @@ public class NoteMain extends Application{
 
         stage.setTitle("NoteMain");
         stage.setScene(scene);
+        System.out.println(model.getCurrStyle());
         stage.show();
 
 

@@ -45,6 +45,7 @@ public class NoteView  {
     }
 
     protected ToolBar createToolBar(Stage stage) {
+        /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");
         toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
@@ -57,7 +58,16 @@ public class NoteView  {
         toggleUnderlineButton.setStyle("-fx-underline: true;");
         toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
 
-        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton);
+        /* Font size */
+        ComboBox<String> fontSizeMenu = new ComboBox<>();
+        fontSizeMenu.getItems().addAll("10px", "11px", "12px", "14px", "18px", "24px", "30px", "36px", "48px");
+        fontSizeMenu.setValue(noteController.noteModel.getFontsize());
+
+        fontSizeMenu.setOnAction(actionEvent -> noteController.changeFontSize(fontSizeMenu.getValue()));
+
+        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton,
+                new Label("Font Size:"), fontSizeMenu);
+
         return toolBar;
     }
 

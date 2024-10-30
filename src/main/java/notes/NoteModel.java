@@ -37,20 +37,31 @@ public class NoteModel {
     private boolean underlineEnabled;
 
     /** the font size of the text being written */
-    private double fontsize;
+    private String fontsize = "12px";
+
+    /** font style. e.g. Verdana, Times New Roman, etc. */
+    private String fontType;
 
     /** Constructor */
     public NoteModel() {
-        fontsize = 12;  /* default */
 
         boldEnabled = false;
         italicEnabled = false;
         underlineEnabled = false;
 
+        fontType = "-fx-font-family: 'Times New Roman', Times, serif; ";
+
+        currStyle.add("-fx-font-size: 12px; ");
+        currStyle.add("-fx-font-weight: normal; ");
+        currStyle.add("-fx-font-style: normal; ");
+        currStyle.add("-fx-underline: false; ");
+        currStyle.add(fontType);
+
         /* prevents text from going off the screen and scrolling horizontally */
         textArea.setWrapText(true);
 
     }
+
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {
@@ -81,11 +92,11 @@ public class NoteModel {
         this.underlineEnabled = !underlineEnabled;
     }
 
-    public double getFontsize() {
+    public String getFontsize() {
         return fontsize;
     }
 
-    public void setFontsize(double fontsize) {
+    public void setFontsize(String fontsize) {
         this.fontsize = fontsize;
     }
 
