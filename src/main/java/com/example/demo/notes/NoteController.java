@@ -7,12 +7,11 @@
  Sara Shakeel, gvk731, 11367521
  */
 
-package notes;
+package com.example.demo.notes;
 
 import java.util.*;
 import javafx.scene.control.Alert;
 
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 

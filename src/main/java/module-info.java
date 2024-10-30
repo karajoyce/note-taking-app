@@ -8,7 +8,6 @@ module com.example.demo {
     requires com.google.gson;
 
     requires org.fxmisc.richtext;
-    requires reactfx;
     requires org.fxmisc.flowless;
 
 
@@ -16,4 +15,5 @@ module com.example.demo {
     exports com.example.demo;
     exports com.example.demo.model;
     exports com.example.demo.view;
+    exports com.example.demo.notes;
 }

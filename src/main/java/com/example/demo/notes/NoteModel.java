@@ -7,7 +7,7 @@
  Sara Shakeel, gvk731, 11367521
  */
 
-package notes;
+package com.example.demo.notes;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
