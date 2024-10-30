@@ -3,6 +3,7 @@ package view;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -29,6 +30,7 @@ public class TaskCreationView {
     private DatePicker dueDatePicker; // Date picker for selecting the due date
     private Button createTaskButton; // Button to create the task
     public GridPane grid;
+    private Label titleLabel; // Title label for the "Create New Task" window
 
     /**
      * Constructs a TaskCreationView with a given primary stage and a callback
@@ -46,9 +48,15 @@ public class TaskCreationView {
         grid.setVgap(8);
         grid.setHgap(10);
 
+        // Title label
+        titleLabel = new Label("Create New Task");
+        titleLabel.getStyleClass().add("task-title"); // Apply custom CSS class
+        GridPane.setConstraints(titleLabel, 0, 0, 2, 1); // Span across two columns
+
         // Task input
         taskDescriptionInput = new TextField();
         taskDescriptionInput.setPromptText("Task Description");
+        taskDescriptionInput.getStyleClass().add("task-description-input"); // Apply custom CSS class
         GridPane.setConstraints(taskDescriptionInput, 0, 0);
 
         dueDatePicker = new DatePicker();
@@ -56,6 +64,8 @@ public class TaskCreationView {
 
         createTaskButton = new Button("Create Task");
         GridPane.setConstraints(createTaskButton, 0, 1);
+
+        grid.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
 
         // Set up the layout
         grid.getChildren().addAll(taskDescriptionInput, dueDatePicker, createTaskButton);

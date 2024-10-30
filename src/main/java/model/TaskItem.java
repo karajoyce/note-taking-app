@@ -54,7 +54,14 @@ public class TaskItem {
         this.task = task;
         checkBox = new CheckBox();
         checkBox.setSelected(task.isCompleted());
+
+        // Add the custom CSS style class to the CheckBox
+        checkBox.getStyleClass().add("checkbox");
+
         label = new Label(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
+
+        // Add the custom CSS style class to the Label
+        label.getStyleClass().add("label");
 
         // Set action for the checkbox to toggle task completion
         checkBox.setOnAction(e -> {
@@ -95,6 +102,9 @@ public class TaskItem {
         HBox hBox = new HBox(checkBox, label);
         hBox.setSpacing(10);
         hBox.setUserData(this); // Set the TaskItem as user data for later reference
+
+        // Set the background color of the HBox to pink
+        hBox.setStyle("-fx-background-color: pink; -fx-padding: 10; -fx-background-radius: 5;");
 
         // Allow the label to grow and take up remaining space, pushing delete icon to the right
         HBox.setHgrow(label, Priority.ALWAYS);
