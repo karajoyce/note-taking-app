@@ -23,15 +23,13 @@ import org.fxmisc.richtext.InlineCssTextArea;
  * Runs the application of the text editor
  */
 public class NoteMain extends Application{
-    /* The MVC model classes: */
-
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) {
+        /* Initialize (MVC) */
         NoteModel model = new NoteModel();
         NoteController controller = new NoteController(model);
         NoteView view = new NoteView(controller);

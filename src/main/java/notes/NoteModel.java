@@ -49,7 +49,8 @@ public class NoteModel {
         italicEnabled = false;
         underlineEnabled = false;
 
-        fontType = "-fx-font-family: 'Times New Roman', Times, serif; ";
+        //fontType = "-fx-font-family: 'Times New Roman', Times, serif; ";
+        fontType = "-fx-font-family: Arial, Helvetica, sans-serif; ";
 
         currStyle.add("-fx-font-size: 12px; ");
         currStyle.add("-fx-font-weight: normal; ");
