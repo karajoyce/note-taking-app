@@ -336,4 +336,33 @@ public class NoteController {
         }
     }
 
+    /**
+     * Change paragraph text alignment
+     * @param pos text alignment position (left, center, right)
+     */
+    protected void setTextAlignment(String pos) {
+        /* Get the paragraph indexes of user's selected text */
+        int start = noteModel.getTextArea().getCaretSelectionBind().getAnchorParIndex();
+        int end = noteModel.getTextArea().getCaretSelectionBind().getParagraphIndex();
+        System.out.println(start + "    " + end);
+
+        /* If there's no selected text */
+        if (start == end) {
+            noteModel.getTextArea().setParagraphStyle(noteModel.getTextArea().getCurrentParagraph(),
+                    "-fx-text-alignment: " + pos + "; ");
+            return;
+        }
+
+        if (start < end) {
+            for (int i = start; i < end; i++) {
+                noteModel.getTextArea().setParagraphStyle(i, "-fx-text-alignment: " + pos + ";");
+            }
+        } else {
+            for (int i = end; i < start; i++) {
+                noteModel.getTextArea().setParagraphStyle(i, "-fx-text-alignment: " + pos + ";");
+            }
+        }
+
+    }
+
 }

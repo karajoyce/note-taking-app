@@ -18,3 +18,11 @@ Sara Shakeel, gvk731, 11367521
 .underline {
     -fx-underline: true;
 }
+
+.strikethrough {
+    -fx-strikethrough: true;
+}
+
+.alignment {
+    -fx-text-alignment: left;
+}

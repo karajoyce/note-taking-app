@@ -69,8 +69,20 @@ public class NoteView  {
 
         fontSizeMenu.setOnAction(actionEvent -> noteController.changeFontSize(fontSizeMenu.getValue()));
 
+        /* Text alignment
+        * Replace the text to images? */
+        Button alignLeftButton = new Button("Left");
+        alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
+
+        Button alignCenterButton = new Button("Center");
+        alignCenterButton.setOnAction(actionEvent -> noteController.setTextAlignment("center"));
+
+        Button alignRightButton = new Button("Right");
+        alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
+
         ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,
-                new Label("Font Size:"), fontSizeMenu);
+                new Label("Font Size:"), fontSizeMenu,
+                alignLeftButton, alignCenterButton, alignRightButton);
 
         return toolBar;
     }
