@@ -1,0 +1,44 @@
+/* stylesToDoList.css */
+
+.list-view {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #d0d0d0;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-family: "Arial";
+}
+
+.list-view .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #d9e7ff;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: #a3c2ff;
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #b19f93;
+    -fx-border-color: #b19f93;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+}
+
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #66BB6A, #388E3C); /* Lighter green on hover */
+}
+
+.button:pressed {
+    -fx-background-color: #1B5E20; /* Dark green when pressed */
+}
