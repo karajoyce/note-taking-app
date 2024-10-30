@@ -22,7 +22,8 @@ import java.util.ArrayList;
  Sara Shakeel, gvk731, 11367521
  **/
 
-public class ToDoListView extends VBox {
+public class
+ToDoListView extends VBox {
 
     private ListView<HBox> taskListView;
     private Button addTaskButton;

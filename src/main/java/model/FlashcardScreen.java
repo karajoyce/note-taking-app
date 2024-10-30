@@ -1,5 +1,7 @@
 package model;
 
+import FilerSystem.FlashCardStorage;
+
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,9 @@ public class FlashcardScreen {
     }
 
     public void addCard(String front, String back){
-        this.deck.add(new Card(front, back, cardCounter++));
+         Card newcard = new Card(front, back, cardCounter++);
+
+         FlashCardStorage.SaveFlashCard(newcard);
     }
 
     public void removeCard(int cardID){
