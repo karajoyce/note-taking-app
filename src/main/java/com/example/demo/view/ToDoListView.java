@@ -1,15 +1,12 @@
-package view;
+package com.example.demo.view;
 
-import javafx.scene.Scene;
+import com.example.demo.model.Task;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import model.Task;
-import model.TaskItem;
+import com.example.demo.model.TaskItem;
 
 import java.util.ArrayList;
 

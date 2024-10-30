@@ -1,4 +1,4 @@
-package model;
+package com.example.demo.model;
 
 /**
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -9,13 +9,13 @@ package model;
  Sara Shakeel, gvk731, 11367521
  **/
 
-import controller.ToDoListController;
+import com.example.demo.controller.ToDoListController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import view.ToDoListView;
+import com.example.demo.view.ToDoListView;
 
 public class MainUI extends Application {
     @Override
@@ -23,9 +23,6 @@ public class MainUI extends Application {
         primaryStage.setTitle("To-Do List");
 
         BorderPane pane = new BorderPane();
-
-        HBox h = new HBox();
-
 
         // Create and set up the To-Do List
         ToDoList toDoList = new ToDoList();
