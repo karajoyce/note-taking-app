@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="nvm it only works for underline im depressed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" afterDir="false" />
-    </list>
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="FIXED THE PROBLEM FOR REAL FOR REAL" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +116,7 @@
       <workItem from="1729470594760" duration="700000" />
       <workItem from="1729471398702" duration="70000" />
       <workItem from="1729471476324" duration="103000" />
-      <workItem from="1729471591131" duration="88417000" />
+      <workItem from="1729471591131" duration="88771000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -217,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730257373685</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="FIXED THE PROBLEM FOR REAL FOR REAL">
+      <option name="closed" value="true" />
+      <created>1730267668770</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730267668770</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +251,7 @@
     <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
     <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
     <MESSAGE value="nvm it only works for underline im depressed" />
-    <option name="LAST_COMMIT_MESSAGE" value="nvm it only works for underline im depressed" />
+    <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIXED THE PROBLEM FOR REAL FOR REAL" />
   </component>
 </project>

@@ -20,9 +20,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -37,7 +34,6 @@ public class NoteController {
         noteModel = model;
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
-
 
     }
 
@@ -203,9 +199,11 @@ public class NoteController {
 
     /**
      * Helper function that reduces redundant code when toggling styles/formatting.
-     * Adds styles we want to keep/retain into a list to return
-     * @param style string of CSS formatting we're removing
-     * @return modified styleList
+     * @param style style to remove
+     * @param opStyle alternative style to remove
+     * @param state current style's state
+     * @param start starting index of text selection
+     * @param end ending index of text selection
      */
     private void retainStyles(String style, String opStyle, boolean state, int start, int end) {
 
@@ -242,8 +240,6 @@ public class NoteController {
 
         }
     }
-
-    /* MUST CHANGE CHANGEFONTSIZE */
 
     /**
      * Change font size according to dropbox menu
