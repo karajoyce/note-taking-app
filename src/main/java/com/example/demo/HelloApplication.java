@@ -1,12 +1,24 @@
 package com.example.demo;
 
-import controller.FlashcardScreenController;
+/*
+
+ CMPT 370, T05, Team 4, Prof. Jon Lovering
+ Author: Kara Leier, kjl061, 11293306
+ Nathan Balilis, ncb421, 11295020
+ Trushank Lakdawala, nus429, 11350445
+ Jinny Kim, yek738, 11304174
+ Sara Shakeel, gvk731, 11367521
+
+ */
+
+import com.example.demo.controller.FlashcardScreenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
-import model.FlashcardScreen;
-import view.FlashcardScreenView;
-import view.NotebookScreenView;
+import com.example.demo.model.FlashcardScreen;
+import com.example.demo.view.FlashcardScreenView;
+import com.example.demo.view.NotebookScreenView;
 
 public class HelloApplication extends Application {
     @Override
@@ -22,7 +34,6 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
-
 
         Scene scene = new Scene(fCardView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
