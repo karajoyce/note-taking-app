@@ -32,7 +32,7 @@ public class FlashcardScreenController {
         // set an action for the flip card button
         fCardView.setFlipCardButton(e -> {
             fCardView.flipIsBack();
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setNextCardButton(e -> {
@@ -40,7 +40,7 @@ public class FlashcardScreenController {
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setBackCardButton(e -> {
@@ -48,12 +48,12 @@ public class FlashcardScreenController {
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setEditCardButton(e -> {
             new EditCardController(fCardView.getCurrentCard(), fCardModel, this, new Stage());
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setDeleteButton(e -> {
@@ -61,12 +61,12 @@ public class FlashcardScreenController {
             if (fCardModel.getDeck().size()==1){
                 fCardModel.removeCard(fCardView.getCurrentCard());
                 fCardView.setCurrentCard(null);
-                fCardView.runDeckUpdate();
+                deckUpdate();
             } else {
                 Card temp = fCardView.getCurrentCard();
                 fCardView.setChangeCard(true);
                 fCardModel.removeCard(temp);
-                fCardView.runDeckUpdate();
+                deckUpdate();
             }
         });
     }
