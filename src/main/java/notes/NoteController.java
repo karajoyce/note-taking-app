@@ -12,6 +12,7 @@ package notes;
 import java.util.*;
 import javafx.scene.control.Alert;
 
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -341,7 +342,6 @@ public class NoteController {
         /* Get the paragraph indexes of user's selected text */
         int start = noteModel.getTextArea().getCaretSelectionBind().getAnchorParIndex();
         int end = noteModel.getTextArea().getCaretSelectionBind().getParagraphIndex();
-        System.out.println(start + "    " + end);
 
         /* If there's no selected text */
         if (start == end) {
@@ -362,6 +362,11 @@ public class NoteController {
 
     }
 
+    /**
+     * Change the font type (font family) for either the selected text or
+     * next characters the user types
+     * @param font font type/family (e.g. Verdana, 'Times New Roman', etc.)
+     */
     protected void changeFontType(String font) {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
@@ -388,12 +393,9 @@ public class NoteController {
                 }
 
                 switch (font) {
-                    case "Times New Roman":
-                        newSet.add("-fx-font-family: 'Times New Roman', Times, serif;");
-                        break;
-
-                    default:
-                        newSet.add("-fx-font-family: " + font + ";");
+                    case "Times New Roman" -> newSet.add("-fx-font-family: 'Times New Roman', Times, serif;");
+                    case "Courier New" -> newSet.add("-fx-font-family: 'Courier New';");
+                    default -> newSet.add("-fx-font-family: " + font + ";");
                 }
 
                 noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", newSet));
@@ -407,7 +409,14 @@ public class NoteController {
         next character they type
          */
         noteModel.getCurrStyle().removeIf(style -> style.startsWith("-fx-font-family"));
-        noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
+
+        switch (font) {
+            case "Times New Roman" -> noteModel.getCurrStyle().add("-fx-font-family: 'Times New Roman'; ");
+            case "Courier New" -> noteModel.getCurrStyle().add("-fx-font-family: 'Courier New'; ");
+            case "Comic Sans MS" -> noteModel.getCurrStyle().add("-fx-font-family: 'Comic Sans MS'; ");
+            default -> noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
+        }
+        System.out.println(noteModel.getCurrStyle());
     }
 
 }

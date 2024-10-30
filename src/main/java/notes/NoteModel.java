@@ -55,6 +55,7 @@ public class NoteModel {
 
         fontType = "Arial";
 
+        /* Default current style */
         currStyle.add("-fx-font-size: 12px; ");
         currStyle.add("-fx-font-weight: normal; ");
         currStyle.add("-fx-font-style: normal; ");

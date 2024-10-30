@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="added ability to change paragraph alignment">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="time to work on fonts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +119,7 @@
       <workItem from="1729470594760" duration="700000" />
       <workItem from="1729471398702" duration="70000" />
       <workItem from="1729471476324" duration="103000" />
-      <workItem from="1729471591131" duration="93190000" />
+      <workItem from="1729471591131" duration="94293000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -259,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730271294229</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="time to work on fonts">
+      <option name="closed" value="true" />
+      <created>1730272221621</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1730272221621</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +299,7 @@
     <MESSAGE value="updated default font family" />
     <MESSAGE value="added strikethrough option" />
     <MESSAGE value="added ability to change paragraph alignment" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ability to change paragraph alignment" />
+    <MESSAGE value="time to work on fonts" />
+    <option name="LAST_COMMIT_MESSAGE" value="time to work on fonts" />
   </component>
 </project>
