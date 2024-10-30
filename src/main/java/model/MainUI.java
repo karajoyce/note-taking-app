@@ -13,14 +13,9 @@ import controller.ToDoListController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import view.TaskCreationView;
 import view.ToDoListView;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class MainUI extends Application {
     @Override
@@ -46,6 +41,8 @@ public class MainUI extends Application {
 
         //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);
         Scene scene = new Scene(pane, 1000, 1000);
+        // Load and apply CSS stylesheet
+        scene.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

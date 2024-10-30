@@ -76,6 +76,12 @@ public class ToDoListView extends VBox {
                 // Handle delete action using the task object
                 deleteTask(task);
             });
+
+            // Customize each item's HBox style
+            HBox itemView = taskItem.getView();
+            itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
+
+
             taskListView.getItems().add(taskItem.getView()); // Add the HBox view to the list
         }
     }
