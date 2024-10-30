@@ -69,6 +69,13 @@ public class NoteView  {
 
         fontSizeMenu.setOnAction(actionEvent -> noteController.changeFontSize(fontSizeMenu.getValue()));
 
+        /* Fonts */
+
+        ComboBox<String>fontMenu = new ComboBox<>();
+        fontMenu.getItems().addAll("Arial", "Times New Roman", "Courier New", "Comic Sans MS", "Verdana");
+        fontMenu.setValue(noteController.noteModel.getFontType());
+        fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
+
         /* Text alignment
         * Replace the text to images? */
         Button alignLeftButton = new Button("Left");
@@ -81,7 +88,7 @@ public class NoteView  {
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
         ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,
-                new Label("Font Size:"), fontSizeMenu,
+                new Label("Font:"), fontMenu, new Label("Font size:"), fontSizeMenu,
                 alignLeftButton, alignCenterButton, alignRightButton);
 
         return toolBar;

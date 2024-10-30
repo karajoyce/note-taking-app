@@ -53,14 +53,14 @@ public class NoteModel {
         underlineEnabled = false;
         strikethroughEnabled = false;
 
-        fontType = "-fx-font-family: Arial, Helvetica, sans-serif; ";
+        fontType = "Arial";
 
         currStyle.add("-fx-font-size: 12px; ");
         currStyle.add("-fx-font-weight: normal; ");
         currStyle.add("-fx-font-style: normal; ");
         currStyle.add("-fx-underline: false; ");
         currStyle.add("-fx-strikethrough: false; ");
-        currStyle.add(fontType);
+        currStyle.add("-fx-font-family: " + fontType + "; ");
 
         /* prevents text from going off the screen and scrolling horizontally */
         textArea.setWrapText(true);
@@ -71,6 +71,14 @@ public class NoteModel {
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {
         return this.currStyle;
+    }
+
+    public String getFontType() {
+        return this.fontType;
+    }
+
+    public void setFontType(String font) {
+        this.fontType = font;
     }
 
     public boolean isBoldEnabled() {

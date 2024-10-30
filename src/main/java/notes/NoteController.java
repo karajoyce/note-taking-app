@@ -308,11 +308,8 @@ public class NoteController {
 
                 newSet.add("-fx-font-size: " + fontSize + ";");
 
-                //Collection<String> styles = new HashSet<>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
-
                 noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", newSet));
             }
-
             return;
 
         }
@@ -363,6 +360,54 @@ public class NoteController {
             }
         }
 
+    }
+
+    protected void changeFontType(String font) {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        String[] arrayCss;
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
+        if (start != end) {
+
+            for (int i = start; i < end; i++) {
+                Set<String> newSet = new HashSet<>();
+                arrayCss = noteModel.getTextArea().getStyleOfChar(i).split("[;]");
+
+                /* Add the semicolon back */
+                for (int j = 0; j < arrayCss.length; j++) {
+
+                    /* Add to the new set if it isn't the one we want to remove */
+                    if (!arrayCss[j].strip().startsWith("-fx-font-family")) {
+                        newSet.add(arrayCss[j].strip() + ";");
+                    }
+                    newSet.remove(";"); /* Remove any empty spaces */
+                }
+
+                switch (font) {
+                    case "Times New Roman":
+                        newSet.add("-fx-font-family: 'Times New Roman', Times, serif;");
+                        break;
+
+                    default:
+                        newSet.add("-fx-font-family: " + font + ";");
+                }
+
+                noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", newSet));
+            }
+            return;
+
+        }
+        noteModel.setFontType(font);
+
+        /* If the user has not selected text, they will change the formatting for the
+        next character they type
+         */
+        noteModel.getCurrStyle().removeIf(style -> style.startsWith("-fx-font-family"));
+        noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
     }
 
 }
