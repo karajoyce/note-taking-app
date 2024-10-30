@@ -9,6 +9,7 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.model.Card;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
@@ -35,7 +36,7 @@ public class FlashcardScreenController {
         });
 
         fCardView.setNextCardButton(e -> {
-            fCardView.setCurrentCard(true);
+            fCardView.setChangeCard(true);
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
@@ -43,7 +44,7 @@ public class FlashcardScreenController {
         });
 
         fCardView.setBackCardButton(e -> {
-            fCardView.setCurrentCard(false);
+            fCardView.setChangeCard(false);
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
@@ -54,6 +55,24 @@ public class FlashcardScreenController {
             new EditCardController(fCardView.getCurrentCard(), fCardModel, this, new Stage());
             fCardView.runDeckUpdate();
         });
+
+        fCardView.setDeleteButton(e -> {
+
+            if (fCardModel.getDeck().size()==1){
+                fCardModel.removeCard(fCardView.getCurrentCard());
+                fCardView.setCurrentCard(null);
+                fCardView.runDeckUpdate();
+            } else {
+                Card temp = fCardView.getCurrentCard();
+                fCardView.setChangeCard(true);
+                fCardModel.removeCard(temp);
+                fCardView.runDeckUpdate();
+            }
+        });
+    }
+
+    public void deckUpdate(){
+        fCardView.runDeckUpdate();
     }
 
 }

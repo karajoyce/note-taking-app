@@ -16,13 +16,20 @@ public class EditCardController {
         currentCard = card;
         fModel = model;
         fControl = controller;
-        editView = new EditCardView(stage, this::addCard);
+        editView = new EditCardView(stage, this::editCard);
         stage.show();
     }
 
-    public void addCard(){
+    public void editCard(){
         String frontCard = editView.getFrontDescription();
         String backCard = editView.getBackDescription();
-        // todo
+
+        if (!frontCard.isEmpty()) {
+            currentCard.setCardFront(frontCard);
+        }
+        if (!backCard.isEmpty()) {
+            currentCard.setCardBack(backCard);
+        }
+        fControl.deckUpdate();
     }
 }

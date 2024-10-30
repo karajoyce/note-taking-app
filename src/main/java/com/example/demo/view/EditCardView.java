@@ -1,8 +1,11 @@
 package com.example.demo.view;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
@@ -27,14 +30,34 @@ public class EditCardView {
         backCard = new TextField();
         backCard.setPromptText("Enter the back of the card");
 
-        GridPane.setConstraints(frontCard, 0, 0);
-        GridPane.setConstraints(backCard, 1, 0);
-        updateCardButton = new Button("Create Card");
-        GridPane.setConstraints(updateCardButton, 0, 1);
+        // set up rows and columns
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getRowConstraints().add(new RowConstraints(100));
+        grid.getRowConstraints().add(new RowConstraints(100));
+
+        // place things in said rows and columns
+        grid.setAlignment(Pos.CENTER);
+        frontCard.setPrefHeight(100);
+        backCard.setPrefHeight(100);
+
+        GridPane.setConstraints(frontCard, 1, 0);
+        GridPane.setColumnSpan(frontCard, 3);
+        GridPane.setConstraints(backCard, 1, 1);
+        GridPane.setColumnSpan(backCard, 3);
+        updateCardButton = new Button("Update Card");
+        updateCardButton.getStyleClass().add("editbutton");
+        updateCardButton.setMinWidth(150);
+        GridPane.setConstraints(updateCardButton, 2, 3);
 
         // Set up the layout
         grid.getChildren().addAll(frontCard, backCard, updateCardButton);
         Scene scene = new Scene(grid, 500, 350);
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        grid.getStyleClass().add("grid");
         stage.setScene(scene);
 
         updateCardButton.setOnAction(e -> {
@@ -52,12 +75,12 @@ public class EditCardView {
         return backCard.getText();
     }
 
-    public void clearInput(){
-        frontCard.clear();
-        backCard.clear();
-    }
+//    public void clearInput(){
+//        frontCard.clear();
+//        backCard.clear();
+//    }
 
-    public GridPane getGrid(){
-        return grid;
-    }
+//    public GridPane getGrid(){
+//        return grid;
+//    }
 }
