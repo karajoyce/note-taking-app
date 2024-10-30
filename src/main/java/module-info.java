@@ -2,7 +2,11 @@
 module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
-    //requires richtextfx.fat;
+    requires java.datatransfer;
+    requires java.desktop;
+    requires java.sql;
+    requires com.google.gson;
+
     requires org.fxmisc.richtext;
     requires reactfx;
     requires org.fxmisc.flowless;
@@ -10,17 +14,6 @@ module com.example.demo {
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
-    exports notes;
+    exports com.example.demo.model;
+    exports com.example.demo.view;
 }
-
-/*
-open module notes {
-        requires javafx.controls;
-        requires javafx.fxml;
-
-
-        //opens notes to javafx.fxml;
-        exports notes;
-
-}
-*/
