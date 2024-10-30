@@ -1,5 +1,7 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.XPController;
+import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -31,8 +33,13 @@ public class FlashcardScreenView extends StackPane {
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
     private Button back; // button to move backwards in the deck
-    //Defining a progress bar for the XP system
-    private ProgressBar progressBar;
+
+    //Adding XP Bar and System
+    private XPModel xpModel;
+    private XPView xpView;
+    private XPController xpController;
+    private Button xpToggleButton;
+    private boolean isTrackingXP = false;
 
     private Button deckButton;
     private Button pageBack;
@@ -54,10 +61,11 @@ public class FlashcardScreenView extends StackPane {
         deckButton = new Button("Test Desk"); // this should be a deck name later
         pageBack = new Button(" <-- ");
         removeCard = new Button(" X ");
-        //Defining a progress bar for the XP system
-        progressBar = new ProgressBar();
 
-
+        //Initializing XP bar and system;
+        xpModel = new XPModel(100);
+        xpView = new XPView();
+        xpController = new XPController(xpModel, xpView);
 
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
@@ -197,13 +205,11 @@ public class FlashcardScreenView extends StackPane {
         //Adding a Spacer for the XP Bar
         Region spacer = new Region();
         VBox.setVgrow(spacer, Priority.ALWAYS);
+        //BUTTON FOR NOW MAYBE CHANGE LATER;
+        xpToggleButton = new Button("START XP TRACKING ");
+        xpToggleButton.setOnAction(e -> toggleXPtracking());
 
-        //XP bar
-        ProgressBar xpBar = new ProgressBar(0);
-        xpBar.setProgress(0.75);
-        xpBar.setPrefWidth(1000);
-
-        todolist.getChildren().addAll(todoL, spacer, xpBar);
+        todolist.getChildren().addAll(todoL, spacer, xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
@@ -301,5 +307,27 @@ public class FlashcardScreenView extends StackPane {
 
     public boolean checkBack(){
         return isBack;
+    }
+
+
+    //Adding XP tracking when entering this screen
+    public void startXPtracking(){
+        xpController.startXPTimer();
+    }
+
+    public void stopXPtracking(){
+        xpController.stopXPTimer();
+    }
+    //BUTTON FUNCTIONS FOR XP TRACKING FOR NOW
+    private void toggleXPtracking(){
+        if (isTrackingXP){
+            stopXPtracking();
+            xpToggleButton.setText("START XP TRACKING");
+        }
+        else{
+            startXPtracking();
+            xpToggleButton.setText("STOP XP TRACKING");
+        }
+        isTrackingXP = !isTrackingXP;
     }
 }
