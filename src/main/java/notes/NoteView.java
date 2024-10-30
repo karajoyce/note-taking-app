@@ -51,12 +51,16 @@ public class NoteView  {
         toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
 
         Button toggleItalicButton = new Button("I");
-        toggleItalicButton.setStyle("-fx-font-style: italic;");
+        toggleItalicButton.setStyle("-fx-font-style: italic; -fx-font-family: Arial, Helvetica, sans-serif;");
         toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
 
         Button toggleUnderlineButton = new Button("U");
         toggleUnderlineButton.setStyle("-fx-underline: true;");
         toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
+
+        Button toggleStrikethroughButton = new Button("S");
+        toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;"); /* For some reason strikethrough doesn't show up on the button */
+        toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
 
         /* Font size */
         ComboBox<String> fontSizeMenu = new ComboBox<>();
@@ -65,7 +69,7 @@ public class NoteView  {
 
         fontSizeMenu.setOnAction(actionEvent -> noteController.changeFontSize(fontSizeMenu.getValue()));
 
-        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton,
+        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,
                 new Label("Font Size:"), fontSizeMenu);
 
         return toolBar;

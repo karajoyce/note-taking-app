@@ -36,6 +36,9 @@ public class NoteModel {
     /** if underline enabled, true. otherwise, false */
     private boolean underlineEnabled;
 
+    /** if strikethrough enabled, true. otherwise, false */
+    private boolean strikethroughEnabled;
+
     /** the font size of the text being written */
     private String fontsize = "12px";
 
@@ -48,14 +51,15 @@ public class NoteModel {
         boldEnabled = false;
         italicEnabled = false;
         underlineEnabled = false;
+        strikethroughEnabled = false;
 
-        //fontType = "-fx-font-family: 'Times New Roman', Times, serif; ";
         fontType = "-fx-font-family: Arial, Helvetica, sans-serif; ";
 
         currStyle.add("-fx-font-size: 12px; ");
         currStyle.add("-fx-font-weight: normal; ");
         currStyle.add("-fx-font-style: normal; ");
         currStyle.add("-fx-underline: false; ");
+        currStyle.add("-fx-strikethrough: false; ");
         currStyle.add(fontType);
 
         /* prevents text from going off the screen and scrolling horizontally */
@@ -91,6 +95,14 @@ public class NoteModel {
 
     public void toggleUnderline() {
         this.underlineEnabled = !underlineEnabled;
+    }
+
+    public boolean isStrikethroughEnabled() {
+        return strikethroughEnabled;
+    }
+
+    public void toggleStrikethrough() {
+        this.strikethroughEnabled = !strikethroughEnabled;
     }
 
     public String getFontsize() {

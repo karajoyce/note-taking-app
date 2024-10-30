@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="FIXED THE PROBLEM FOR REAL FOR REAL" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="updated default font family">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/notes/NoteView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +121,7 @@
       <workItem from="1729470594760" duration="700000" />
       <workItem from="1729471398702" duration="70000" />
       <workItem from="1729471476324" duration="103000" />
-      <workItem from="1729471591131" duration="88771000" />
+      <workItem from="1729471591131" duration="90313000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -222,7 +227,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730267668770</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="updated docstrings">
+      <option name="closed" value="true" />
+      <created>1730267892627</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730267892627</updated>
+    </task>
+    <task id="LOCAL-00015" summary="updated default font family">
+      <option name="closed" value="true" />
+      <created>1730268046051</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730268046051</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +273,8 @@
     <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
     <MESSAGE value="nvm it only works for underline im depressed" />
     <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
-    <option name="LAST_COMMIT_MESSAGE" value="FIXED THE PROBLEM FOR REAL FOR REAL" />
+    <MESSAGE value="updated docstrings" />
+    <MESSAGE value="updated default font family" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated default font family" />
   </component>
 </project>

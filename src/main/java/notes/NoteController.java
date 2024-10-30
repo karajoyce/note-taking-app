@@ -88,6 +88,42 @@ public class NoteController {
     }
 
     /**
+     * On the event of clicking the Strikethrough button, if:
+     * (1) User has selected a chunk of text, toggle strikethrough but retain previous set styles.
+     * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
+     * it is toggled again.
+     */
+    protected void toggleStrikethrough() {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        boolean currentlySetToStrikethrough = noteModel.isStrikethroughEnabled();
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
+        if (start != end) {
+
+            retainStyles("-fx-strikethrough: true; ", "-fx-strikethrough: false; ", currentlySetToStrikethrough, start, end);
+            noteModel.toggleStrikethrough();
+            return;
+
+        }
+
+        /* Toggles whether or not the next characters that the user types
+        is bold or not
+         */
+        noteModel.toggleStrikethrough();
+        if (noteModel.getCurrStyle().contains("-fx-strikethrough: true; ")) {
+            noteModel.getCurrStyle().remove("-fx-strikethrough: true; ");
+            noteModel.getCurrStyle().add("-fx-strikethrough: false; ");
+        } else {
+            noteModel.getCurrStyle().remove("-fx-strikethrough: false; ");
+            noteModel.getCurrStyle().add("-fx-strikethrough: true; ");
+        }
+    }
+
+    /**
      * On the event of clicking the Bold button, if:
      * (1) User has selected a chunk of text, toggle bold but retain previous set styles.
      * (2) User has not selected text, toggle bold for the subsequent times they type until
@@ -295,7 +331,9 @@ public class NoteController {
      */
     protected void applyCurrentStyleToNewText() {
         int caretPosition = noteModel.getTextArea().getCaretPosition();
-        noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
+        if (caretPosition != 0) {
+            noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
+        }
     }
 
 }
