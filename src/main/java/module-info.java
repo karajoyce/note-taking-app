@@ -6,6 +6,10 @@ module com.example.demo {
     requires java.sql;
     requires com.google.gson;
 
+    requires org.fxmisc.richtext;
+    requires reactfx;
+    requires org.fxmisc.flowless;
+
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
