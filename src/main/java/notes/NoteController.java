@@ -211,6 +211,10 @@ public class NoteController {
 
         String[] arrayOfCss;
 
+        /* the styles we are searching to remove from the set before adding anew */
+        String searchFor = style.replace(";", "").strip();
+        String searchForAlt = opStyle.replace(";", "").strip();
+
         for (int i = start; i < end; i++) {
             Set<String> newSet = new HashSet<>();
             /* Split up CSS styles by the semicolon */
@@ -220,18 +224,20 @@ public class NoteController {
             for (int j = 0; j < arrayOfCss.length; j++) {
 
                 /* Add to the new set if it isn't the one we want to remove */
-                if (!arrayOfCss[j].startsWith(style)) {
+                if (!arrayOfCss[j].strip().startsWith(searchFor) && !arrayOfCss[j].strip().startsWith(searchForAlt)) {
                     newSet.add(arrayOfCss[j].strip() + ";");
                 }
                 newSet.remove(";"); /* Remove any empty spaces */
             }
 
-            System.out.println(newSet);
+            /* Depending on the current state, toggle the style */
             if (state) {
                 newSet.add(opStyle);
             } else {
                 newSet.add(style);
             }
+
+            /* Apply the styles to the current character */
             noteModel.getTextArea().setStyle(i, i+1, String.join(" ", newSet));
 
         }
@@ -248,21 +254,33 @@ public class NoteController {
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        //noteModel.setFontsize(fontSize);
+        String[] arrayCss;
 
         /* If user is selecting a block of text, retain the other styles/formatting but
          * toggle the desired style */
         if (start != end) {
 
             for (int i = start; i < end; i++) {
-                Collection<String> styles = new HashSet<>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+                Set<String> newSet = new HashSet<>();
+                arrayCss = noteModel.getTextArea().getStyleOfChar(i).split("[;]");
 
-                styles.removeIf(style -> style.startsWith("-fx-font-size"));
+                /* Add the semicolon back */
+                for (int j = 0; j < arrayCss.length; j++) {
 
-                styles.add("-fx-font-size: " + fontSize + "; ");
+                    /* Add to the new set if it isn't the one we want to remove */
+                    if (!arrayCss[j].strip().startsWith("-fx-font-size")) {
+                        newSet.add(arrayCss[j].strip() + ";");
+                    }
+                    newSet.remove(";"); /* Remove any empty spaces */
+                }
 
-                noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", styles));
+                newSet.add("-fx-font-size: " + fontSize + ";");
+
+                //Collection<String> styles = new HashSet<>(Collections.singleton(noteModel.getTextArea().getStyleOfChar(i)));
+
+                noteModel.getTextArea().setStyle(i, i + 1, String.join(" ", newSet));
             }
+
             return;
 
         }
