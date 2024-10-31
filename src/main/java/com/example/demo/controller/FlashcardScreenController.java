@@ -9,6 +9,7 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.model.Card;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
@@ -31,29 +32,47 @@ public class FlashcardScreenController {
         // set an action for the flip card button
         fCardView.setFlipCardButton(e -> {
             fCardView.flipIsBack();
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setNextCardButton(e -> {
-            fCardView.setCurrentCard(true);
+            fCardView.setChangeCard(true);
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setBackCardButton(e -> {
-            fCardView.setCurrentCard(false);
+            fCardView.setChangeCard(false);
             if (fCardView.checkBack()){
                 fCardView.flipIsBack();
             }
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
 
         fCardView.setEditCardButton(e -> {
             new EditCardController(fCardView.getCurrentCard(), fCardModel, this, new Stage());
-            fCardView.runDeckUpdate();
+            deckUpdate();
         });
+
+        fCardView.setDeleteButton(e -> {
+
+            if (fCardModel.getDeck().size()==1){
+                fCardModel.removeCard(fCardView.getCurrentCard());
+                fCardView.setCurrentCard(null);
+                deckUpdate();
+            } else {
+                Card temp = fCardView.getCurrentCard();
+                fCardView.setChangeCard(true);
+                fCardModel.removeCard(temp);
+                deckUpdate();
+            }
+        });
+    }
+
+    public void deckUpdate(){
+        fCardView.runDeckUpdate();
     }
 
 }

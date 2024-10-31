@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added a scuffed XP storage. Not tested. Only commentted out">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="need to pull from karas branch">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/EditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/EditCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/EditCardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/EditCardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +59,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "FileSystemDev2",
+    "git-widget-placeholder": "Merging FileSystemDev2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/jinnykim/Documents/370-01-t05-team4",
     "list.type.of.created.stylesheet": "CSS",
@@ -143,7 +149,7 @@
       <workItem from="1730345670150" duration="2338000" />
       <workItem from="1730351990669" duration="39000" />
       <workItem from="1730397355006" duration="1766000" />
-      <workItem from="1730400430090" duration="1562000" />
+      <workItem from="1730400430090" duration="2038000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -297,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730350519794</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="need to pull from karas branch">
+      <option name="closed" value="true" />
+      <created>1730406624657</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1730406624657</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +350,8 @@
     <MESSAGE value="switching Intelliji versions..." />
     <MESSAGE value="Finished updating the storages they should load and read" />
     <MESSAGE value="Added a scuffed XP storage. Not tested. Only commentted out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a scuffed XP storage. Not tested. Only commentted out" />
+    <MESSAGE value="need to pull from karas branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to pull from karas branch" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

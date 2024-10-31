@@ -53,7 +53,7 @@ public class FlashcardScreenView extends StackPane {
         deckButton = new Button("Test Desk"); // this should be a deck name later
         pageBack = new Button(" Back ");
         removeCard = new Button(" Remove ");
-        tempCard = new Card("Insert more cards", "",0);
+        tempCard = new Card("Insert more cards", "");
 
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
