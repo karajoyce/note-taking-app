@@ -262,6 +262,12 @@ public class FlashcardScreenView extends StackPane {
     public void setDeleteButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         removeCard.setOnAction(handler);
     }
+    /**
+     * An event handler for the add button
+     */
+    public void setAddFlashcardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        addFlashcard.setOnAction(handler);
+    }
 
     /**
      * Method to tell the card to flip itself.

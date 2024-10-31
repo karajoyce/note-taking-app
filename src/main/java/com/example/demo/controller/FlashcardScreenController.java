@@ -69,6 +69,13 @@ public class FlashcardScreenController {
                 deckUpdate();
             }
         });
+
+        fCardView.setAddFlashcardButton(e -> {
+            Card temp = new Card("", "");
+            fCardModel.getDeck().add(temp);
+            new EditCardController(temp, fCardModel, this, new Stage());
+            deckUpdate();
+        });
     }
 
     public void deckUpdate(){
