@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.controller.XPController;
+import com.example.demo.model.DigitalTree;
 import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -41,6 +42,8 @@ public class FlashcardScreenView extends StackPane {
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
 
+    //Digital Tree
+    DigitalTree digitalTree;
     private Button deckButton;
     private Button pageBack;
     private Button removeCard;
@@ -65,7 +68,9 @@ public class FlashcardScreenView extends StackPane {
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
         xpView = new XPView();
-        xpController = new XPController(xpModel, xpView);
+        //Initializing new Tree
+        digitalTree = new DigitalTree();
+        xpController = new XPController(xpModel, xpView, digitalTree);
 
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
@@ -209,7 +214,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
 
-        todolist.getChildren().addAll(todoL, spacer, xpView, xpToggleButton);
+        todolist.getChildren().addAll(todoL, spacer, xpView, xpToggleButton, digitalTree.getTreeImageview());
         fullBox.getChildren().add(todolist);
         //-------------------------END
 

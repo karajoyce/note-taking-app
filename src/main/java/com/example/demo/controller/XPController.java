@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.DigitalTree;
 import com.example.demo.model.XPModel;
 import javafx.scene.media.AudioClip;
 import com.example.demo.view.FlashcardScreenView;
@@ -15,13 +16,15 @@ import javafx.scene.paint.Color;
 public class XPController {
     private XPModel model;
     private XPView view;
+    private DigitalTree digitalTree;
     private Timeline xpTimeline;
     private Random random = new Random();
 
     private AudioClip lvlUpSound;
-    public XPController(XPModel model, XPView view) {
+    public XPController(XPModel model, XPView view, DigitalTree digitalTree) {
         this.model = model;
         this.view = view;
+        this.digitalTree = digitalTree;
         // Ensure the path to the sound file is correct
         try {
             // Audio Clip came by floraphonic from Pixabay
@@ -65,6 +68,7 @@ public class XPController {
         if (model.getLevel() ==  1 && prevLvl == 1) {
             return;
         }
+        digitalTree.Grow();
         Color newColor = newRandomColour();
         view.changeXPBarColor(newColor);
         lvlUpSound.play();
