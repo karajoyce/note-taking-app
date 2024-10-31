@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="switching Intelliji versions...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Finished updating the storages they should load and read">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/XPStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730272221621</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Finished updating the storages they should load and read">
+      <option name="closed" value="true" />
+      <created>1730350519794</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1730350519794</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,7 +328,8 @@
     <MESSAGE value="time to work on fonts" />
     <MESSAGE value="Added new files, made some changes to dlashcards screen so that my function is able to be called." />
     <MESSAGE value="switching Intelliji versions..." />
-    <option name="LAST_COMMIT_MESSAGE" value="switching Intelliji versions..." />
+    <MESSAGE value="Finished updating the storages they should load and read" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished updating the storages they should load and read" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
