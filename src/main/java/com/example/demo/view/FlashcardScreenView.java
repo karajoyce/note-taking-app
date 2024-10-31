@@ -1,5 +1,7 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.ToDoListController;
+import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -37,9 +39,9 @@ public class FlashcardScreenView extends StackPane {
     private Button pageBack;
     private Button removeCard;
     private Card currentCard = null;
-//    private ToDoListView toDoListV;
-//    private ToDoListController toDoCont;
-//    private ToDoList toDoList;
+    private ToDoListView toDoListV;
+    private ToDoListController toDoCont;
+    private ToDoList toDoList;
 
     public FlashcardScreenView() {
 
@@ -53,9 +55,9 @@ public class FlashcardScreenView extends StackPane {
         pageBack = new Button(" <-- ");
         removeCard = new Button(" X ");
 
-//        toDoListV = new ToDoListView();
-//        toDoList = new ToDoList();
-//        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoListV = new ToDoListView();
+        toDoList = new ToDoList();
+        toDoCont = new ToDoListController(toDoList, toDoListV);
     }
 
     public void runDeckUpdate(){
@@ -182,13 +184,11 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         VBox todolist = new VBox();
-//        todolist.getChildren().add(toDoListV.getToDoListView());
-        todolist.setAlignment(Pos.TOP_CENTER); // this isn't working
+        todolist.getChildren().add(toDoListV.getToDoListView());
+        todolist.setAlignment(Pos.CENTER_RIGHT); // this isn't working
         todolist.setMinWidth((screenWidth*0.25));
         todolist.setMinHeight(screenHeight);
-        todolist.getStyleClass().add("fake");
-        Text todoL = new Text("Pick up kids     Oct 14: 10AM");
-        todolist.getChildren().add(todoL);
+        todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
         fullBox.getChildren().add(todolist);
         //-------------------------END
     }
