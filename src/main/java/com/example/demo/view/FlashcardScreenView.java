@@ -25,19 +25,19 @@ import java.util.ArrayList;
 
 public class FlashcardScreenView extends StackPane {
 
-    private boolean isBack = false;
-    private FlashcardScreen flashcardModel;
-    private ArrayList<Card> deck;
+    private boolean isBack = false; // checking if we should be on the back of the card
+    private FlashcardScreen flashcardModel; // instance of the model
+    private ArrayList<Card> deck; // instance of the deck
     private Button next; // button to page next on flashcards
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
     private Button back; // button to move backwards in the deck
 
-    private Button deckButton;
-    private Button pageBack;
-    private Button removeCard;
-    private Card tempCard;
-    private Card currentCard = null;
+    private Button deckButton; // button to choose a deck
+    private Button pageBack; // button to go back to main menu
+    private Button removeCard; // button to remove card
+    private Card tempCard; // temporary card for when we remove the only card in a deck
+    private Card currentCard = null; // store the card we are on
 //    private ToDoListView toDoListV;
 //    private ToDoListController toDoCont;
 //    private ToDoList toDoList;
@@ -45,14 +45,14 @@ public class FlashcardScreenView extends StackPane {
     public FlashcardScreenView() {
 
         //-------------------------
-        // Bottom Buttons set up
+        // Buttons set up
         next = new Button(" > ");
         back = new Button(" < ");
         flip = new Button(" ⭯ ");
         edit = new Button(" ✎ ");
         deckButton = new Button("Test Desk"); // this should be a deck name later
-        pageBack = new Button(" <-- ");
-        removeCard = new Button(" X ");
+        pageBack = new Button(" Back ");
+        removeCard = new Button(" Remove ");
         tempCard = new Card("Insert more cards", "");
 
 //        toDoListV = new ToDoListView();
@@ -60,6 +60,10 @@ public class FlashcardScreenView extends StackPane {
 //        toDoCont = new ToDoListController(toDoList, toDoListV);
     }
 
+    /**
+     * Function that will re-draw the screen when something is changed
+     * Post-condition: screen will reflect newest changes
+     */
     public void runDeckUpdate(){
 
         // General class things/size
@@ -76,7 +80,6 @@ public class FlashcardScreenView extends StackPane {
         fullBox.getStyleClass().add("bigbox");
         fullBox.setMaxWidth(screenWidth);
         fullBox.setMaxHeight(screenHeight);
-
         //-------------------------END
 
         //-------------------------
@@ -117,6 +120,7 @@ public class FlashcardScreenView extends StackPane {
         topButtons.getStyleClass().add("hbox");
         cardSection.getChildren().add(topButtons);
 
+        // Setting up header bar
         VBox leftBar = new VBox();
         leftBar.setMinHeight(topButtons.getMinHeight()-18);
         leftBar.setMinWidth((cardSection.getMinWidth()-50)/2);
