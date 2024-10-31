@@ -36,6 +36,8 @@ public class FlashcardScreenView extends StackPane {
     private Button deckButton; // button to choose a deck
     private Button pageBack; // button to go back to main menu
     private Button removeCard; // button to remove card
+
+    private Button addFlashcard; // button to add a flashcard
     private Card tempCard; // temporary card for when we remove the only card in a deck
     private Card currentCard = null; // store the card we are on
 //    private ToDoListView toDoListV;
@@ -50,6 +52,7 @@ public class FlashcardScreenView extends StackPane {
         back = new Button(" < ");
         flip = new Button(" ⭯ ");
         edit = new Button(" ✎ ");
+        addFlashcard = new Button(" + ");
         deckButton = new Button("Test Desk"); // this should be a deck name later
         pageBack = new Button(" Back ");
         removeCard = new Button(" Remove ");
@@ -132,16 +135,32 @@ public class FlashcardScreenView extends StackPane {
         leftBar.getChildren().add(pageBack);
         topButtons.getChildren().add(leftBar);
 
-        VBox rightBar = new VBox();
+        HBox rightBar = new HBox();
         rightBar.setMinHeight(topButtons.getMinHeight()-18);
         rightBar.setMinWidth((cardSection.getMinWidth()-50)/2);
         rightBar.getStyleClass().add("topbar");
+        rightBar.setAlignment(Pos.CENTER_RIGHT);
+        topButtons.getChildren().add(rightBar);
+
+        HBox rightBarPart = new HBox();
+        rightBarPart.getStyleClass().add("topbar");
+        rightBarPart.setMinHeight(topButtons.getMinHeight()-18);
         removeCard.setMinHeight(50);
         removeCard.setMinWidth(80);
         removeCard.setAlignment(Pos.CENTER);
-        rightBar.setAlignment(Pos.CENTER_RIGHT);
-        rightBar.getChildren().add(removeCard);
-        topButtons.getChildren().add(rightBar);
+        rightBarPart.setAlignment(Pos.CENTER);
+        rightBarPart.getChildren().add(removeCard);
+        rightBar.getChildren().add(rightBarPart);
+
+        HBox middleBar = new HBox();
+        middleBar.setMinHeight(topButtons.getMinHeight()-18);
+        middleBar.setAlignment(Pos.CENTER);
+        middleBar.getStyleClass().add("topbar");
+        addFlashcard.setMinHeight(50);
+        addFlashcard.setMinWidth(80);
+        addFlashcard.setAlignment(Pos.CENTER);
+        middleBar.getChildren().add(addFlashcard);
+        rightBar.getChildren().add(middleBar);
 
         if (currentCard == null){
             Text frontText = new Text(tempCard.getCardFront());

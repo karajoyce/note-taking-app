@@ -57,6 +57,7 @@ Sara Shakeel, gvk731, 11367521
 .topbar {
     -fx-start-margin: 0;
     -fx-end-margin: 0;
+    -fx-spacing: 20px;
 }
 .grid {
     -fx-padding: 15px;
