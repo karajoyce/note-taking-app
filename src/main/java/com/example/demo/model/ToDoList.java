@@ -9,6 +9,8 @@ package com.example.demo.model;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.FilerSystem.ToDoStorage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,6 +44,7 @@ public class ToDoList {
         Task newTask = new Task(name, dueDate, false, taskCounter++);
         tasks.add(newTask);
         sortTasksByDueDate(); // Ensure the tasks are sorted after adding
+        ToDoStorage.SaveToDoList(this);
         return newTask;
 
     }
@@ -73,6 +76,7 @@ public class ToDoList {
             if (task.getTaskID() == taskID) {
                 task.setTaskDescription(newDescription);
                 task.setTaskDueDate(newDueDate);
+                ToDoStorage.SaveToDoList(this);
                 break;
             }
         }
