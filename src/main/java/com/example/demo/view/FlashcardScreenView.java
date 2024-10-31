@@ -214,7 +214,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
 
-        todolist.getChildren().addAll(todoL, spacer, xpView, xpToggleButton, digitalTree.getTreeImageview());
+        todolist.getChildren().addAll(todoL, spacer, digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
