@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
+
 import java.util.ArrayList;
 
 /**
@@ -25,11 +27,16 @@ public class FlashcardScreen {
     }
 
     public ArrayList<Card> getDeck(){
+
+        FlashcardStorage.LoadCard();
         return this.deck;
     }
 
     public void addCard(String front, String back){
-        this.deck.add(new Card(front, back, cardCounter++));
+
+        Card newCard = new Card(front, back, cardCounter++);
+
+        FlashcardStorage.SaveFlashCard(newCard);
     }
 
     public void removeCard(int cardID){
