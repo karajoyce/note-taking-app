@@ -1,8 +1,8 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
-import com.example.demo.model.DigitalTree;
-import com.example.demo.model.XPModel;
+import com.example.demo.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
@@ -10,8 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
-import com.example.demo.model.Card;
-import com.example.demo.model.FlashcardScreen;
+
 import java.util.ArrayList;
 
 /**
@@ -52,9 +51,9 @@ public class FlashcardScreenView extends StackPane {
     //Digital Tree
     DigitalTree digitalTree;
 
-//    private ToDoListView toDoListV;
-//    private ToDoListController toDoCont;
-//    private ToDoList toDoList;
+    private ToDoListView toDoListV;
+    private ToDoListController toDoCont;
+    private ToDoList toDoList;
 
     public FlashcardScreenView() {
 
@@ -77,9 +76,9 @@ public class FlashcardScreenView extends StackPane {
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
 
-//        toDoListV = new ToDoListView();
-//        toDoList = new ToDoList();
-//        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoListV = new ToDoListView();
+        toDoList = new ToDoList();
+        toDoCont = new ToDoListController(toDoList, toDoListV);
     }
 
     /**
@@ -233,12 +232,10 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         VBox todolist = new VBox();
-//        todolist.getChildren().add(toDoListV.getToDoListView());
         todolist.setAlignment(Pos.TOP_CENTER); // this isn't working
         todolist.setMinWidth((screenWidth*0.25));
         todolist.setMinHeight(screenHeight);
-        todolist.getStyleClass().add("fake");
-        Text todoL = new Text("Pick up kids     Oct 14: 10AM");
+        todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
 
         //Adding a Spacer for the XP Bar
         Region spacer = new Region();
@@ -247,7 +244,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
 
-        todolist.getChildren().addAll(todoL, spacer, digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), spacer, digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
