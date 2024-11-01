@@ -1,10 +1,12 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.XPController;
+import com.example.demo.model.DigitalTree;
+import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
@@ -40,6 +42,16 @@ public class FlashcardScreenView extends StackPane {
     private Button addFlashcard; // button to add a flashcard
     private Card tempCard; // temporary card for when we remove the only card in a deck
     private Card currentCard = null; // store the card we are on
+    //Adding XP Bar and System
+    private XPModel xpModel;
+    private XPView xpView;
+    private XPController xpController;
+    private Button xpToggleButton;
+    private boolean isTrackingXP = false;
+
+    //Digital Tree
+    DigitalTree digitalTree;
+
 //    private ToDoListView toDoListV;
 //    private ToDoListController toDoCont;
 //    private ToDoList toDoList;
@@ -57,6 +69,13 @@ public class FlashcardScreenView extends StackPane {
         pageBack = new Button(" Back ");
         removeCard = new Button(" Remove ");
         tempCard = new Card("Insert more cards", "");
+
+        //Initializing XP bar and system;
+        xpModel = new XPModel(100);
+        xpView = new XPView();
+        //Initializing new Tree
+        digitalTree = new DigitalTree();
+        xpController = new XPController(xpModel, xpView, digitalTree);
 
 //        toDoListV = new ToDoListView();
 //        toDoList = new ToDoList();
@@ -220,9 +239,18 @@ public class FlashcardScreenView extends StackPane {
         todolist.setMinHeight(screenHeight);
         todolist.getStyleClass().add("fake");
         Text todoL = new Text("Pick up kids     Oct 14: 10AM");
-        todolist.getChildren().add(todoL);
+
+        //Adding a Spacer for the XP Bar
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+        //BUTTON FOR NOW MAYBE CHANGE LATER;
+        xpToggleButton = new Button("START XP TRACKING ");
+        xpToggleButton.setOnAction(e -> toggleXPtracking());
+
+        todolist.getChildren().addAll(todoL, spacer, digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
         //-------------------------END
+
     }
     /**
      * Will update the deck if any new cards are added.
@@ -330,5 +358,27 @@ public class FlashcardScreenView extends StackPane {
 
     public boolean checkBack(){
         return isBack;
+    }
+
+
+    //Adding XP tracking when entering this screen
+    public void startXPtracking(){
+        xpController.startXPTimer();
+    }
+
+    public void stopXPtracking(){
+        xpController.stopXPTimer();
+    }
+    //BUTTON FUNCTIONS FOR XP TRACKING FOR NOW
+    private void toggleXPtracking(){
+        if (isTrackingXP){
+            stopXPtracking();
+            xpToggleButton.setText("START XP TRACKING");
+        }
+        else{
+            startXPtracking();
+            xpToggleButton.setText("STOP XP TRACKING");
+        }
+        isTrackingXP = !isTrackingXP;
     }
 }

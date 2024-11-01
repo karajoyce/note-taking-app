@@ -15,6 +15,7 @@ import javafx.application.Platform;
 import com.example.demo.controller.FlashcardScreenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
@@ -34,7 +35,6 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
-
 
         Scene scene = new Scene(fCardView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
