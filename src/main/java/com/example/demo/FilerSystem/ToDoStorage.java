@@ -1,5 +1,6 @@
 package com.example.demo.FilerSystem;
 
+import com.example.demo.model.Task;
 import com.example.demo.model.ToDoList;
 import com.google.gson.Gson;
 import com.example.demo.model.Card;
@@ -17,7 +18,7 @@ public class ToDoStorage {
     //intialize gson
     private static Gson gson = new Gson();
 
-    public static void SaveToDoList(ArrayList<ToDoList> todo) {
+    public static void SaveToDoList(ArrayList<Task> todo) {
         // Ensure the directory exists
         File directory = new File(directoryPath);
         if (!directory.exists()) {
@@ -26,7 +27,9 @@ public class ToDoStorage {
 
         try {
             FileWriter write = new FileWriter(filePath);
+
             gson.toJson(todo, write);
+            write.flush();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

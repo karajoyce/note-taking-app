@@ -41,10 +41,13 @@ public class ToDoList {
      * @return The newly created Task object.
      */
     public Task addTask(String name, long dueDate) {
+
         Task newTask = new Task(name, dueDate, false, taskCounter++);
         tasks.add(newTask);
+
         sortTasksByDueDate(); // Ensure the tasks are sorted after adding
-        ToDoStorage.SaveToDoList(this);
+        ToDoStorage.SaveToDoList(tasks);
+
         return newTask;
 
     }
@@ -76,7 +79,7 @@ public class ToDoList {
             if (task.getTaskID() == taskID) {
                 task.setTaskDescription(newDescription);
                 task.setTaskDueDate(newDueDate);
-                ToDoStorage.SaveToDoList(this);
+                ToDoStorage.SaveToDoList(tasks);
                 break;
             }
         }

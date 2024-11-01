@@ -21,7 +21,13 @@ public class FlashcardStorage {
      */
     public static void SaveDeck(ArrayList<Card> deck) {
 
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
         try {
+
             FileWriter flash = new FileWriter(filePath);
 
             gson.toJson(deck, flash);
