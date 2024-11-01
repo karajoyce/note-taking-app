@@ -34,9 +34,9 @@ public class ToDoListView extends VBox {
      *.
      */
     public ToDoListView() {
-        //primaryStage.setTitle("To-Do List");
 
         tasks = new ArrayList<>(); // Initialize the tasks list
+
 
         // Layout
         grid = new GridPane();
@@ -54,9 +54,6 @@ public class ToDoListView extends VBox {
 
         // Set up the layout
         grid.getChildren().addAll(taskListView, addTaskButton);
-        //Scene scene = new Scene(grid, 400, 300);
-        //primaryStage.setScene(scene);
-        //primaryStage.show();
 
     }
 
@@ -130,4 +127,5 @@ public class ToDoListView extends VBox {
     public GridPane getToDoListView() {
         return grid;
     }
+
 }

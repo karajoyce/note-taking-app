@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="added notes dependencies">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/model/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2nUW3Py1FaRNAdkAz0STC1xCtif" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.MainUI.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ToDoList2",
+    "last_opened_file_path": "/Users/jinnykim/Documents/370-01-t05-team4",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/notes" />
+      <recent name="$PROJECT_DIR$/src/main/resources/notes" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.demo" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NoteMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.notes.NoteMain" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.NoteMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="" />
+      <created>1729027935307</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729027935307</updated>
+      <workItem from="1729027938467" duration="344000" />
+      <workItem from="1729028358619" duration="1923000" />
+      <workItem from="1729196987041" duration="8014000" />
+      <workItem from="1729470594760" duration="700000" />
+      <workItem from="1729471398702" duration="70000" />
+      <workItem from="1729471476324" duration="103000" />
+      <workItem from="1729471591131" duration="94293000" />
+    </task>
+    <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
+      <option name="closed" value="true" />
+      <created>1729041967398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729041967398</updated>
+    </task>
+    <task id="LOCAL-00002" summary="constructor based off uml class diagram">
+      <option name="closed" value="true" />
+      <created>1729198695863</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729198695863</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added some docstrings and getters and setters">
+      <option name="closed" value="true" />
+      <created>1729201678081</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729201678081</updated>
+    </task>
+    <task id="LOCAL-00004" summary="tried starting on MVC model of note editor">
+      <option name="closed" value="true" />
+      <created>1729471273043</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729471273043</updated>
+    </task>
+    <task id="LOCAL-00005" summary="trying to get started on the mvc model (scrapping fxml)">
+      <option name="closed" value="true" />
+      <created>1729544715864</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729544715865</updated>
+    </task>
+    <task id="LOCAL-00006" summary="text area made but buttons look icky and some of them are non functional">
+      <option name="closed" value="true" />
+      <created>1729547176326</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729547176326</updated>
+    </task>
+    <task id="LOCAL-00007" summary="all text size gets edited... no..">
+      <option name="closed" value="true" />
+      <created>1729914712358</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729914712358</updated>
+    </task>
+    <task id="LOCAL-00008" summary="it was working until css ruined my life">
+      <option name="closed" value="true" />
+      <created>1730006710432</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730006710432</updated>
+    </task>
+    <task id="LOCAL-00009" summary="got font styles to change but there's some bugs i have to fix">
+      <option name="closed" value="true" />
+      <created>1730093626948</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730093626948</updated>
+    </task>
+    <task id="LOCAL-00010" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
+      <option name="closed" value="true" />
+      <created>1730173742290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730173742290</updated>
+    </task>
+    <task id="LOCAL-00011" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
+      <option name="closed" value="true" />
+      <created>1730174179019</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730174179019</updated>
+    </task>
+    <task id="LOCAL-00012" summary="nvm it only works for underline im depressed">
+      <option name="closed" value="true" />
+      <created>1730257373685</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730257373685</updated>
+    </task>
+    <task id="LOCAL-00013" summary="FIXED THE PROBLEM FOR REAL FOR REAL">
+      <option name="closed" value="true" />
+      <created>1730267668770</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730267668770</updated>
+    </task>
+    <task id="LOCAL-00014" summary="updated docstrings">
+      <option name="closed" value="true" />
+      <created>1730267892627</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730267892627</updated>
+    </task>
+    <task id="LOCAL-00015" summary="updated default font family">
+      <option name="closed" value="true" />
+      <created>1730268046051</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730268046051</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added strikethrough option">
+      <option name="closed" value="true" />
+      <created>1730269328171</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1730269328172</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added ability to change paragraph alignment">
+      <option name="closed" value="true" />
+      <created>1730271294229</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1730271294229</updated>
+    </task>
+    <task id="LOCAL-00018" summary="time to work on fonts">
+      <option name="closed" value="true" />
+      <created>1730272221621</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1730272221621</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="skeleton based off uml class diagram" />
+    <MESSAGE value="constructor based off uml class diagram" />
+    <MESSAGE value="added some docstrings and getters and setters" />
+    <MESSAGE value="tried starting on MVC model of note editor" />
+    <MESSAGE value="trying to get started on the mvc model (scrapping fxml)" />
+    <MESSAGE value="text area made but buttons look icky and some of them are non functional" />
+    <MESSAGE value="all text size gets edited... no.." />
+    <MESSAGE value="it was working until css ruined my life" />
+    <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
+    <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
+    <MESSAGE value="nvm it only works for underline im depressed" />
+    <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
+    <MESSAGE value="updated docstrings" />
+    <MESSAGE value="updated default font family" />
+    <MESSAGE value="added strikethrough option" />
+    <MESSAGE value="added ability to change paragraph alignment" />
+    <MESSAGE value="time to work on fonts" />
+    <MESSAGE value="added notes dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="added notes dependencies" />
+  </component>
+</project>

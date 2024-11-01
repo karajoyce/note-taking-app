@@ -1,4 +1,5 @@
 package com.example.demo;
+import javafx.application.Platform;
 
 /*
 
@@ -39,7 +40,10 @@ public class HelloApplication extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Flashcard");
-        stage.setFullScreen(true);
+        // Wrap full-screen mode changes inside Platform.runLater
+        //Platform.runLater(() -> {
+          //  stage.setFullScreen(true);  // or false to exit full-screen
+        //});
         stage.show();
     }
 
