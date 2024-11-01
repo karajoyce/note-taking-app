@@ -17,7 +17,7 @@ public class ToDoStorage {
     //intialize gson
     private static Gson gson = new Gson();
 
-    public static void SaveToDoList(ToDoList todo) {
+    public static void SaveToDoList(ArrayList<ToDoList> todo) {
         // Ensure the directory exists
         File directory = new File(directoryPath);
         if (!directory.exists()) {
@@ -26,7 +26,7 @@ public class ToDoStorage {
 
         try {
             FileWriter write = new FileWriter(filePath);
-            gson.toJson(todo.getTasks(), write);
+            gson.toJson(todo, write);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
