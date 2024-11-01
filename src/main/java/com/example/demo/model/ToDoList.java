@@ -46,6 +46,7 @@ public class ToDoList {
         tasks.add(newTask);
 
         sortTasksByDueDate(); // Ensure the tasks are sorted after adding
+
         ToDoStorage.SaveToDoList(tasks);
 
         return newTask;
