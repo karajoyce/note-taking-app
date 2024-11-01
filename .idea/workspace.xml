@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="added notes dependencies">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="AddFlashcard button works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/model/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,18 +22,14 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/ProtoBranch-Nathan" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2nUW3Py1FaRNAdkAz0STC1xCtif" />
   <component name="ProjectViewState">
@@ -54,7 +42,7 @@
     "Application.MainUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "ToDoList2",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/jinnykim/Documents/370-01-t05-team4",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -81,7 +69,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.HelloApplication" />
       <module name="demo" />
@@ -310,6 +298,7 @@
     <MESSAGE value="added ability to change paragraph alignment" />
     <MESSAGE value="time to work on fonts" />
     <MESSAGE value="added notes dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added notes dependencies" />
+    <MESSAGE value="AddFlashcard button works" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddFlashcard button works" />
   </component>
 </project>
