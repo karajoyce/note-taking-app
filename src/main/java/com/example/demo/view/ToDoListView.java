@@ -77,6 +77,7 @@ public class ToDoListView extends VBox {
 
 
             taskListView.getItems().add(taskItem.getView()); // Add the HBox view to the list
+
         }
     }
 

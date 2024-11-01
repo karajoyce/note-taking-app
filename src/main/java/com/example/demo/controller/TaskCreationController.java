@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -53,6 +54,9 @@ public class TaskCreationController {
         if (description != null && dueDate != null) {
             long dueDateMillis = dueDate.atStartOfDay().toEpochSecond(ZoneOffset.UTC) * 1000; // Convert to milliseconds
             toDoList.addTask(description, dueDateMillis);
+
+            ToDoStorage.SaveToDoList(toDoList.getTasks());
+
             taskCreationView.clearInputs();
             toDoListController.updateTaskListView(); // Refresh the task list view
         }
