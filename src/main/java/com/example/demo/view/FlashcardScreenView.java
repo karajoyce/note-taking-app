@@ -124,7 +124,7 @@ public class FlashcardScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth(screenWidth*0.6);
+        cardSection.setMinWidth((screenWidth*0.6)-10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -232,9 +232,9 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         VBox todolist = new VBox();
-        todolist.setAlignment(Pos.TOP_CENTER); // this isn't working
-        todolist.setMinWidth((screenWidth*0.25));
-        todolist.setMinHeight(screenHeight);
+        todolist.setAlignment(Pos.TOP_CENTER);
+//        todolist.setMinWidth((screenWidth*0.25));
+//        todolist.setMinHeight(screenHeight);
         todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
 
         //Adding a Spacer for the XP Bar

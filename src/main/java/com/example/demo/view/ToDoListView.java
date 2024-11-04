@@ -7,6 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
+import javafx.stage.Screen;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,8 @@ public class ToDoListView extends VBox {
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
+        grid.setMinHeight((Screen.getPrimary().getBounds().getMaxY()-100)*0.5);
+        grid.setMinWidth((Screen.getPrimary().getBounds().getMaxY()-100)*0.25);
 
         // List View
         taskListView = new ListView<>();
