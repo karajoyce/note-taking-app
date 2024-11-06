@@ -26,3 +26,7 @@ Sara Shakeel, gvk731, 11367521
 .alignment {
     -fx-text-alignment: left;
 }
+
+.text-area {
+    -fx-padding: 100px;
+}

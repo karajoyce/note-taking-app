@@ -80,7 +80,8 @@ public class NoteController {
         /* Attempt to save the file */
         if (file != null) {
             try {
-                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(), StandardOpenOption.CREATE);
+                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(),
+                        StandardOpenOption.CREATE);
             } catch (IOException e) {
                 displayError("Error saving file", e.getMessage());
             }
@@ -104,7 +105,8 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-strikethrough: true; ", "-fx-strikethrough: false; ", currentlySetToStrikethrough, start, end);
+            retainStyles("-fx-strikethrough: true; ", "-fx-strikethrough: false; ",
+                    currentlySetToStrikethrough, start, end);
             noteModel.toggleStrikethrough();
             return;
 
@@ -140,7 +142,8 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ", currentlySetToBold, start, end);
+            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ",
+                    currentlySetToBold, start, end);
             noteModel.toggleBold();
             return;
 
@@ -176,7 +179,8 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-font-style: italic; ", "-fx-font-style: normal; ", currentlySetToItalic, start, end);
+            retainStyles("-fx-font-style: italic; ", "-fx-font-style: normal; ",
+                    currentlySetToItalic, start, end);
             noteModel.toggleItalic();
             return;
 
@@ -212,7 +216,8 @@ public class NoteController {
         * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-underline: true; ", "-fx-underline: false; ", currentlySetToUnderlined, start, end);
+            retainStyles("-fx-underline: true; ", "-fx-underline: false; ",
+                    currentlySetToUnderlined, start, end);
 
             noteModel.toggleUnderline();
             return;
@@ -329,7 +334,8 @@ public class NoteController {
     protected void applyCurrentStyleToNewText() {
         int caretPosition = noteModel.getTextArea().getCaretPosition();
         if (caretPosition != 0) {
-            noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
+            noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ",
+                    noteModel.getCurrStyle()));
         }
     }
 

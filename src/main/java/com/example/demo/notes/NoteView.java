@@ -45,22 +45,6 @@ public class NoteView  {
     }
 
     protected ToolBar createToolBar(Stage stage) {
-        /* Font style formatting buttons */
-        Button toggleBoldButton = new Button("B");
-        toggleBoldButton.setStyle("-fx-font-weight: bold;");
-        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
-
-        Button toggleItalicButton = new Button("I");
-        toggleItalicButton.setStyle("-fx-font-style: italic; -fx-font-family: Arial, Helvetica, sans-serif;");
-        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
-
-        Button toggleUnderlineButton = new Button("U");
-        toggleUnderlineButton.setStyle("-fx-underline: true;");
-        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
-
-        Button toggleStrikethroughButton = new Button("S");
-        toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;"); /* For some reason strikethrough doesn't show up on the button */
-        toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
 
         /* Font size */
         ComboBox<String> fontSizeMenu = new ComboBox<>();
@@ -87,11 +71,47 @@ public class NoteView  {
         Button alignRightButton = new Button("Right");
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
-        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,
+
+        ToolBar toolBar = new ToolBar(getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
+                getToggleStrikeThroughButton(),
                 new Label("Font:"), fontMenu, new Label("Font size:"), fontSizeMenu,
                 alignLeftButton, alignCenterButton, alignRightButton);
 
         return toolBar;
+    }
+
+    protected Button getToggleBoldButton() {
+        Button toggleBoldButton = new Button("B");
+        toggleBoldButton.setStyle("-fx-font-weight: bold;");
+        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
+
+        return toggleBoldButton;
+    }
+
+    protected Button getToggleItalicButton() {
+        Button toggleItalicButton = new Button("I");
+        toggleItalicButton.setStyle("-fx-font-style: italic; -fx-font-family: Arial, Helvetica, sans-serif;");
+        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
+
+        return toggleItalicButton;
+    }
+
+    protected Button getToggleUnderlineButton() {
+        Button toggleUnderlineButton = new Button("U");
+        toggleUnderlineButton.setStyle("-fx-underline: true;");
+        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
+
+        return toggleUnderlineButton;
+    }
+
+    protected Button getToggleStrikeThroughButton() {
+        Button toggleStrikethroughButton = new Button("S");
+
+        /* NOTE: for some reason strikethrough won't appear on the button */
+        toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;");
+        toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
+
+        return toggleStrikethroughButton;
     }
 
 
