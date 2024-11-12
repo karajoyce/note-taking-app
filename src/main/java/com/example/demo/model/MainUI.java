@@ -9,7 +9,9 @@ package com.example.demo.model;
  Sara Shakeel, gvk731, 11367521
  **/
 
+import com.example.demo.controller.BreakReminderController;
 import com.example.demo.controller.ToDoListController;
+import com.example.demo.view.BreakReminderView;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,6 +37,15 @@ public class MainUI extends Application {
         bottomRightContainer.getChildren().add(toDoListView.getToDoListView());
 
         pane.setRight(bottomRightContainer); // Add the VBox to the right side of the pane
+
+        // Initialize the Break Reminder components
+        long breakInterval = 9000; // 15 minutes, adjust as needed for testing
+        BreakReminderModel breakReminderModel = new BreakReminderModel(breakInterval);
+        BreakReminderView breakReminderView = new BreakReminderView();
+        BreakReminderController breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
+
+        // Start the break reminders
+        breakReminderController.startReminders();
 
         //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);
         Scene scene = new Scene(pane, 1000, 1000);

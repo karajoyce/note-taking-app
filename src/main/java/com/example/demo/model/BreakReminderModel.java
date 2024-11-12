@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import javafx.application.Platform;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,7 +18,8 @@ public class BreakReminderModel {
         reminderTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                onReminder.run();
+                // Wrap the reminder call in Platform.runLater to ensure it runs on the JavaFX Application Thread
+                Platform.runLater(onReminder);
             }
         }, interval, interval);
     }
