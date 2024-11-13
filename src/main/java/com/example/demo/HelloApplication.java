@@ -1,4 +1,7 @@
 package com.example.demo;
+import com.example.demo.controller.BreakReminderController;
+import com.example.demo.model.BreakReminderModel;
+import com.example.demo.view.BreakReminderView;
 import javafx.application.Platform;
 
 /*
@@ -35,6 +38,15 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
+
+        // Initialize the Break Reminder components
+        long breakInterval = 9000; // 15 minutes, adjust as needed for testing
+        BreakReminderModel breakReminderModel = new BreakReminderModel(breakInterval);
+        BreakReminderView breakReminderView = new BreakReminderView();
+        BreakReminderController breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
+
+        // Start the break reminders
+        breakReminderController.startReminders();
 
         Scene scene = new Scene(fCardView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());

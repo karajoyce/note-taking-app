@@ -11,6 +11,7 @@ package com.example.demo.model;
 
 import com.example.demo.controller.BreakReminderController;
 import com.example.demo.controller.ToDoListController;
+import com.example.demo.view.BreakReminderIntervalView;
 import com.example.demo.view.BreakReminderView;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -18,8 +19,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import com.example.demo.view.ToDoListView;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+
 
 public class MainUI extends Application {
+
+    private BreakReminderController breakReminderController;
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("To-Do List");
@@ -38,14 +45,20 @@ public class MainUI extends Application {
 
         pane.setRight(bottomRightContainer); // Add the VBox to the right side of the pane
 
-        // Initialize the Break Reminder components
-        long breakInterval = 9000; // 15 minutes, adjust as needed for testing
-        BreakReminderModel breakReminderModel = new BreakReminderModel(breakInterval);
+        // Break Reminder setup
+        long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
+        BreakReminderModel breakReminderModel = new BreakReminderModel(defaultInterval);
         BreakReminderView breakReminderView = new BreakReminderView();
-        BreakReminderController breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
-
-        // Start the break reminders
+        this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
+
+        // Button to open the interval setting window
+        Button setReminderIntervalButton = new Button("Set Break Reminder");
+        setReminderIntervalButton.setOnAction(e -> openIntervalSettingWindow());
+
+        VBox reminderControl = new VBox(10, setReminderIntervalButton);
+        reminderControl.setAlignment(Pos.CENTER);
+        pane.setLeft(reminderControl);
 
         //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);
         Scene scene = new Scene(pane, 1000, 1000);
@@ -54,6 +67,13 @@ public class MainUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    // This method opens a new window for setting the break reminder interval
+    private void openIntervalSettingWindow() {
+        BreakReminderIntervalView intervalView = new BreakReminderIntervalView(breakReminderController);
+        intervalView.show();
+    }
+
 
     public static void main(String[] args) {
         launch(args);

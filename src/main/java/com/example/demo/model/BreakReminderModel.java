@@ -14,6 +14,7 @@ public class BreakReminderModel {
     }
 
     public void startBreakReminder(Runnable onReminder) {
+        stopBreakReminder();  // Stop any previous timer before starting a new one
         reminderTimer = new Timer(true);
         reminderTimer.schedule(new TimerTask() {
             @Override
@@ -27,6 +28,7 @@ public class BreakReminderModel {
     public void stopBreakReminder() {
         if (reminderTimer != null) {
             reminderTimer.cancel();
+            reminderTimer = null;
         }
     }
 
