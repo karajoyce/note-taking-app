@@ -23,7 +23,7 @@
     -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff; /* White text for contrast */
-    -fx-background-color: #ff99cc; /* Pink background */
+    /*-fx-background-color: #ff99cc; /* Pink background */
     -fx-padding: 10;
     -fx-alignment: center;
     -fx-border-radius: 5;
@@ -67,6 +67,7 @@
 
 /* General Window Background */
 .root {
+    /*-fx-background-color: #ffe6f2; */
     -fx-background-color: #ffe6f2;
 }
 
@@ -91,7 +92,7 @@
 
 /* DatePicker Styling */
 .date-picker .text-field {
-    -fx-background-color: #ffccdd;
+    -fx-background-color: white;
     -fx-border-color: #ff99cc;
     -fx-border-radius: 5;
     -fx-text-fill: #6b4a5e;

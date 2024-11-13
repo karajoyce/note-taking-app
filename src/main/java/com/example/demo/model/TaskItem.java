@@ -140,8 +140,8 @@ public class TaskItem {
         LocalDate today = LocalDate.now(ZoneId.systemDefault());
 
         // Change background based on completion status and due date
-        if (checkBox.isSelected()) {
-            hBox.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;");
+        if (checkBox.isSelected() && !dueDate.isBefore((today))) {
+            hBox.setStyle("-fx-background-color: lightgreen; -fx-padding: 10; -fx-background-radius: 5;");
         } else if (dueDate.isBefore(today)) {
             hBox.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;"); // overdue tasks
         } else {

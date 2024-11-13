@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.model.Task;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -39,23 +40,18 @@ public class ToDoListView extends VBox {
 
         tasks = new ArrayList<>(); // Initialize the tasks list
 
-
-        // Layout
-        grid = new GridPane();
-        grid.setPadding(new javafx.geometry.Insets(10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-
         // List View
         taskListView = new ListView<>();
-        GridPane.setConstraints(taskListView, 0, 0, 3, 1);
 
         // Add Task Button
         addTaskButton = new Button("Add Task");
-        GridPane.setConstraints(addTaskButton, 0, 1);
+        HBox buttonContainer = new HBox(addTaskButton);
+        buttonContainer.setAlignment(Pos.CENTER);
 
-        // Set up the layout
-        grid.getChildren().addAll(taskListView, addTaskButton);
+        // Set up the main VBox layout
+        this.setSpacing(10); // Adjust spacing as needed
+        this.setAlignment(Pos.TOP_CENTER); // Align items to the center of the VBox
+        this.getChildren().addAll(taskListView, buttonContainer); // Add the list and centered button
 
     }
 
@@ -139,8 +135,8 @@ public class ToDoListView extends VBox {
         }
     }
 
-    public GridPane getToDoListView() {
-        return grid;
+    public VBox getToDoListView() {
+        return this;
     }
 
 }
