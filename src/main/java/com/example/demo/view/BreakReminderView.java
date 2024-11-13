@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
+import javafx.stage.StageStyle;
 
 public class BreakReminderView {
     private Stage reminderStage;
@@ -21,6 +22,9 @@ public class BreakReminderView {
     public BreakReminderView() {
         reminderStage = new Stage();
         reminderStage.setTitle("Break Reminder");
+        reminderStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
+        reminderStage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
+        reminderStage.setResizable(false); // Optional: Prevent resizing if desired
 
         // Create and style the reminder message
         reminderMessage = new Label("You've been working for too long.\nTime to take a break!");
@@ -47,6 +51,7 @@ public class BreakReminderView {
     }
 
     public void showReminder() {
+        reminderStage.setFullScreen(false); // Ensure it’s set to windowed mode again before showing
         reminderStage.show();
     }
 

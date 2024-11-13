@@ -1,11 +1,14 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.BreakReminderController;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -25,6 +28,10 @@ import java.util.ArrayList;
  **/
 
 public class FlashcardScreenView extends StackPane {
+
+    private BreakReminderController breakReminderController;
+    private Button setBreakReminderButton;
+    private static final String BREAK_REMINDER_ICON_PATH = "BreakReminderIcon.png";
 
     private boolean isBack = false; // checking if we should be on the back of the card
     private FlashcardScreen flashcardModel; // instance of the model
@@ -57,6 +64,38 @@ public class FlashcardScreenView extends StackPane {
 
     public FlashcardScreenView() {
 
+        // Initialize break reminder with a default interval of 15 minutes
+        long defaultInterval = 10 * 1000L; // 15 minutes in milliseconds
+        BreakReminderModel breakReminderModel = new BreakReminderModel(defaultInterval);
+        BreakReminderView breakReminderView = new BreakReminderView();
+        this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
+
+        // Load the icon image
+        Image reminderIcon = new Image(getClass().getResourceAsStream("/BreakReminderIcon.png"));
+
+        // Set up the ImageView with the icon
+        ImageView reminderIconView = new ImageView(reminderIcon);
+        reminderIconView.setFitWidth(100);  // Set width to fit your layout
+        reminderIconView.setFitHeight(100); // Set height to fit your layout
+
+
+
+        // Set up break reminder button
+        setBreakReminderButton = new Button();
+        setBreakReminderButton.setGraphic(reminderIconView);
+        setBreakReminderButton.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+        setBreakReminderButton.setOnAction(e -> openIntervalSettingWindow());
+
+        // Start reminders by default when flashcard view is loaded
+        breakReminderController.startReminders();
+
+        // Layout button
+        HBox buttonBox = new HBox(setBreakReminderButton);
+        buttonBox.setAlignment(Pos.CENTER);
+        this.getChildren().add(buttonBox);
+
+
+
         //-------------------------
         // Buttons set up
         next = new Button(" > ");
@@ -79,6 +118,12 @@ public class FlashcardScreenView extends StackPane {
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
+    }
+
+    // Opens a window for setting the break reminder interval
+    private void openIntervalSettingWindow() {
+        BreakReminderIntervalView intervalView = new BreakReminderIntervalView(breakReminderController);
+        intervalView.show();
     }
 
     /**
@@ -153,12 +198,28 @@ public class FlashcardScreenView extends StackPane {
         leftBar.getChildren().add(pageBack);
         topButtons.getChildren().add(leftBar);
 
+
+
+
+
         HBox rightBar = new HBox();
         rightBar.setMinHeight(topButtons.getMinHeight()-18);
         rightBar.setMinWidth((cardSection.getMinWidth()-50)/2);
         rightBar.getStyleClass().add("topbar");
         rightBar.setAlignment(Pos.CENTER_RIGHT);
         topButtons.getChildren().add(rightBar);
+
+        HBox rightBarLeft = new HBox();
+        //rightBarLeft.getStylesheets().add("topbar");
+        rightBarLeft.setMinHeight(topButtons.getMinHeight()-18);
+        setBreakReminderButton.setMinHeight(50);
+        setBreakReminderButton.setMinWidth(120);
+        setBreakReminderButton.setAlignment(Pos.CENTER);
+        rightBarLeft.setAlignment(Pos.CENTER);
+        rightBarLeft.getChildren().add(setBreakReminderButton);
+        rightBar.getChildren().add(rightBarLeft);
+
+
 
         HBox rightBarPart = new HBox();
         rightBarPart.getStyleClass().add("topbar");

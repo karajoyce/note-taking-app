@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.stage.StageStyle;
 
 public class EditCardView {
     private TextField frontCard; // Input field for the card description
@@ -17,6 +18,9 @@ public class EditCardView {
 
     public EditCardView(Stage stage, Runnable onTaskCreated){
         stage.setTitle("Add Card");
+        stage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
+        stage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
+        stage.setResizable(false); // Optional: Prevent resizing if desired
 
         // Setting up the layout of the screen
         grid = new GridPane();

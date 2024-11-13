@@ -16,6 +16,8 @@ import com.example.demo.view.BreakReminderView;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import com.example.demo.view.ToDoListView;
@@ -52,8 +54,18 @@ public class MainUI extends Application {
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
 
+        // Load the icon image
+        Image reminderIcon = new Image(getClass().getResourceAsStream("/BreakReminderIcon.png"));
+
+        // Set up the ImageView with the icon
+        ImageView reminderIconView = new ImageView(reminderIcon);
+        reminderIconView.setFitWidth(80);  // Set width to fit your layout
+        reminderIconView.setFitHeight(80); // Set height to fit your layout
+
         // Button to open the interval setting window
-        Button setReminderIntervalButton = new Button("Set Break Reminder");
+        //Button setReminderIntervalButton = new Button("Set Break Reminder");
+        Button setReminderIntervalButton = new Button();
+        setReminderIntervalButton.setGraphic(reminderIconView);
         setReminderIntervalButton.setOnAction(e -> openIntervalSettingWindow());
 
         VBox reminderControl = new VBox(10, setReminderIntervalButton);

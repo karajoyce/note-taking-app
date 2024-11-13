@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 
@@ -41,6 +42,9 @@ public class TaskCreationView {
      */
     public TaskCreationView(Stage primaryStage, Runnable onTaskCreated) {
         primaryStage.setTitle("Create New Task");
+        primaryStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
+        primaryStage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
+        primaryStage.setResizable(false); // Optional: Prevent resizing if desired
 
         // Layout
         grid = new GridPane();

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import com.example.demo.controller.BreakReminderController;
+import javafx.stage.StageStyle;
 
 public class BreakReminderIntervalView {
 
@@ -18,6 +19,9 @@ public class BreakReminderIntervalView {
         this.breakReminderController = breakReminderController;
         this.intervalStage = new Stage();
         intervalStage.setTitle("Set Break Reminder Interval");
+        intervalStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
+        intervalStage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
+        intervalStage.setResizable(false); // Optional: Prevent resizing if desired
 
         VBox layout = new VBox(10);
         layout.setAlignment(Pos.CENTER);
@@ -55,6 +59,7 @@ public class BreakReminderIntervalView {
     }
 
     public void show() {
+        intervalStage.setFullScreen(false);
         intervalStage.show();
     }
 }
