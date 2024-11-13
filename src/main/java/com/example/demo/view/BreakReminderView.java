@@ -4,21 +4,34 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.geometry.Insets;
 import javafx.stage.StageStyle;
 
+
+/*
+ CMPT 370, T05, Team 4, Prof. Jon Lovering
+ Kara Leier, kjl061, 11293306
+ Nathan Balilis, ncb421, 11295020
+ Trushank Lakdawala, nus429, 11350445
+ Jinny Kim, yek738, 11304174
+ Sara Shakeel, gvk731, 11367521
+ */
+
+
+/**
+ * The BreakReminderView class represents a pop-up window that notifies the user to take a break.
+ * It displays a reminder message and a dismiss button, which allows the user to close the reminder.
+ */
 public class BreakReminderView {
     private Stage reminderStage;
     private Label reminderMessage;
     private Button dismissButton;
 
+    /**
+     * Constructs a BreakReminderView with a styled pop-up window containing a reminder message
+     * and a dismiss button. The view is initialized with specific styling and layout settings.
+     */
     public BreakReminderView() {
         reminderStage = new Stage();
         reminderStage.setTitle("Break Reminder");
@@ -50,15 +63,27 @@ public class BreakReminderView {
         reminderStage.setScene(scene);
     }
 
+    /**
+     * Displays the break reminder pop-up window.
+     * Ensures the window is not fullscreen and is set to a windowed mode before displaying.
+     */
     public void showReminder() {
         reminderStage.setFullScreen(false); // Ensure it’s set to windowed mode again before showing
         reminderStage.show();
     }
 
+    /**
+     * Hides the break reminder pop-up window.
+     */
     public void hideReminder() {
         reminderStage.hide();
     }
 
+    /**
+     * Provides access to the dismiss button, allowing external classes to add event handling.
+     *
+     * @return the dismiss Button used to close the reminder window.
+     */
     public Button getDismissButton() {
         return dismissButton;
     }
