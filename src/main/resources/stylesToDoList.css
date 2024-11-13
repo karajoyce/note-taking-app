@@ -6,7 +6,7 @@
 }
 
 .label {
-    -fx-text-fill: purple; /* Change label text color to pink */
+    -fx-text-fill: black; /* Change label text color to pink */
 }
 
 .checkbox .check-box {

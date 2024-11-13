@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 
 import java.io.InputStream;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
@@ -37,6 +38,7 @@ public class TaskItem {
     private ImageView deleteIcon; // ImageView for the trash icon
     private ImageView reminderIcon; // ImageView for the reminder (bell) icon
     private Task task; // Store reference to Task
+    private HBox hBox; // HBox container for the task item
 
     private static final String TRASH_ICON_PATH = "deleteIcon.png"; // Update with the correct path
     private static final String BELL_ICON_PATH = "bellIcon.png"; // Path for bell icon
@@ -66,6 +68,7 @@ public class TaskItem {
         checkBox.setOnAction(e -> {
             task.toggleCompleted(); // Toggle task completion status
             label.setText(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
+            updateBackgroundColor(); // Update color based on completion status
         });
 
         // Create delete icon
@@ -98,12 +101,15 @@ public class TaskItem {
      * @return An HBox containing the checkbox and label.
      */
     public HBox getView() {
-        HBox hBox = new HBox(checkBox, label);
+        hBox = new HBox(checkBox, label);
         hBox.setSpacing(10);
         hBox.setUserData(this); // Set the TaskItem as user data for later reference
 
+        // Apply initial background color
+        updateBackgroundColor();
+
         // Set the background color of the HBox to pink
-        hBox.setStyle("-fx-background-color: pink; -fx-padding: 10; -fx-background-radius: 5;");
+        //hBox.setStyle("-fx-background-color: red; -fx-padding: 10; -fx-background-radius: 5;");
 
         // Allow the label to grow and take up remaining space, pushing delete icon to the right
         HBox.setHgrow(label, Priority.ALWAYS);
@@ -124,6 +130,23 @@ public class TaskItem {
         hBox.getChildren().add(deleteIcon);
 
         return hBox;
+    }
+
+    /**
+     * Updates the background color based on the task's due date and completion status.
+     */
+    private void updateBackgroundColor() {
+        LocalDate dueDate = LocalDate.ofEpochDay(task.getTaskDueDate() / (1000 * 60 * 60 * 24));
+        LocalDate today = LocalDate.now(ZoneId.systemDefault());
+
+        // Change background based on completion status and due date
+        if (checkBox.isSelected()) {
+            hBox.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;");
+        } else if (dueDate.isBefore(today)) {
+            hBox.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;"); // overdue tasks
+        } else {
+            hBox.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;"); // on-time tasks
+        }
     }
 
     public Task getTask() {

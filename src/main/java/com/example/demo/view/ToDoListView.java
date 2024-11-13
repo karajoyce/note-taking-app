@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 /**
@@ -73,10 +75,22 @@ public class ToDoListView extends VBox {
 
             // Customize each item's HBox style
             HBox itemView = taskItem.getView();
-            itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
+
+            // Check if the task's due date has passed
+            LocalDate dueDate = LocalDate.ofEpochDay(task.getTaskDueDate() / (1000 * 60 * 60 * 24));
+            LocalDate today = LocalDate.now(ZoneId.systemDefault());
+
+            if (dueDate.isBefore(today)) {
+                // Set red background for overdue tasks
+                itemView.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;");
+            } else {
+                // Set a default background for non-overdue tasks
+                itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
+            }
 
 
-            taskListView.getItems().add(taskItem.getView()); // Add the HBox view to the list
+            //taskListView.getItems().add(taskItem.getView());
+            taskListView.getItems().add(itemView);// Add the HBox view to the list
 
         }
     }
