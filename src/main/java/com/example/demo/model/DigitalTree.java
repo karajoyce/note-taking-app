@@ -14,8 +14,8 @@ public class DigitalTree {
     public DigitalTree() {
         treeImageview = new ImageView();
         treeStages = new ArrayList<>();
-        treeImageview.setFitHeight(300);
-        treeImageview.setFitWidth(300);
+        treeImageview.setFitHeight(250);
+        treeImageview.setFitWidth(250);
 
         //Getting every image into the list
         for (int i = 0; i <= 7; i++ ){

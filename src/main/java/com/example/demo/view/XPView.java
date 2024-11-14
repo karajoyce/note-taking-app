@@ -1,6 +1,8 @@
 package com.example.demo.view;
 
 import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox;
@@ -12,11 +14,13 @@ public class XPView extends VBox {
 
     public XPView() {
         xpProgressBar = new ProgressBar(0);
-        xpProgressBar.setPrefWidth(1000);
+        xpProgressBar.setPrefWidth(350);
 
         xpLabel = new Label("XP: 0 / 100 | Level : 1");
 
         this.getChildren().addAll(xpProgressBar, xpLabel);
+        this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(5));
     }
 
     public void updateXPview(double currentXP, double maxXP, int level) {

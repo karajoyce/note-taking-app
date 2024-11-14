@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Merging for the deliverable 2">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Made new branch for the last sprint">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/XPView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/XPView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +34,11 @@
     <option name="BRANCH" value="origin/FileSystemDev2" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -49,7 +59,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Kara-Sprint2&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/jinnykim/Documents/370-01-t05-team4&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -126,7 +136,8 @@
       <workItem from="1729471591131" duration="94293000" />
       <workItem from="1730503144829" duration="273000" />
       <workItem from="1730518055961" duration="2410000" />
-      <workItem from="1730752541868" duration="1474000" />
+      <workItem from="1730752541868" duration="3452000" />
+      <workItem from="1731551729936" duration="3354000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -296,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730503412298</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Made new branch for the last sprint">
+      <option name="closed" value="true" />
+      <created>1730754709533</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1730754709533</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,6 +354,7 @@
     <MESSAGE value="AddFlashcard button works" />
     <MESSAGE value="Merging for the deliverable" />
     <MESSAGE value="Merging for the deliverable 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merging for the deliverable 2" />
+    <MESSAGE value="Made new branch for the last sprint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made new branch for the last sprint" />
   </component>
 </project>

@@ -44,11 +44,12 @@ Sara Shakeel, gvk731, 11367521
 .textflow {
     -fx-padding: 20px;
     -fx-font-size: 40px;
-    -fx-background-color: #a7acbd;
+    -fx-background-color: #f7e4fc;
     -fx-border-color: #482c0e;
 }
 .bigbox {
     -fx-border-color: #482c0e;
+    -fx-background-color: #efe4e9;
 }
 .deck {
     -fx-padding: 15px;
@@ -67,4 +68,7 @@ Sara Shakeel, gvk731, 11367521
 }
 .editbutton {
     -fx-font-size: 15px;
+}
+.wholescreen {
+    -fx-background-color: #f2d5f8;
 }

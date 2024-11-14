@@ -41,9 +41,9 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setTitle("Flashcard");
         // Wrap full-screen mode changes inside Platform.runLater
-        //Platform.runLater(() -> {
-          //  stage.setFullScreen(true);  // or false to exit full-screen
-        //});
+        Platform.runLater(() -> {
+            stage.setFullScreen(true);  // or false to exit full-screen
+        });
         stage.show();
     }
 

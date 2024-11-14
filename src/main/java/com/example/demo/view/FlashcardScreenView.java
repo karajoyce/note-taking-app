@@ -88,7 +88,7 @@ public class FlashcardScreenView extends StackPane {
     public void runDeckUpdate(){
 
         // General class things/size
-        this.getStyleClass().add("cardview");
+        this.getStyleClass().add("wholescreen");
         double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
         double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
         this.getChildren().clear();
@@ -196,7 +196,7 @@ public class FlashcardScreenView extends StackPane {
                 backText.setWrappingWidth(cardSection.getMinHeight() - 40);
                 fCard.getChildren().add(backText);
                 backText.setTextAlignment(TextAlignment.CENTER);
-                fCard.setStyle("-fx-background-color: #c3c7d7");
+                fCard.setStyle("-fx-background-color: #faeefd");
             }
         }
         cardSection.getChildren().add(fCard);
@@ -233,18 +233,17 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setAlignment(Pos.TOP_CENTER);
-//        todolist.setMinWidth((screenWidth*0.25));
-//        todolist.setMinHeight(screenHeight);
         todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        todolist.getStyleClass().add("rightVbox");
 
-        //Adding a Spacer for the XP Bar
-        Region spacer = new Region();
-        VBox.setVgrow(spacer, Priority.ALWAYS);
+
         //BUTTON FOR NOW MAYBE CHANGE LATER;
         xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
+        xpToggleButton.getStyleClass().add("xpbar");
+        xpToggleButton.setMinHeight(50);
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), spacer, digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 

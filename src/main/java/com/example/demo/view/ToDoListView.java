@@ -1,11 +1,10 @@
 package com.example.demo.view;
 
 import com.example.demo.model.Task;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import com.example.demo.model.TaskItem;
 import javafx.stage.Screen;
 
@@ -49,11 +48,26 @@ public class ToDoListView extends VBox {
 
         // List View
         taskListView = new ListView<>();
-        GridPane.setConstraints(taskListView, 0, 0, 3, 1);
+
+        grid.getColumnConstraints().add(new ColumnConstraints(25));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getColumnConstraints().add(new ColumnConstraints(150));
+        grid.getColumnConstraints().add(new ColumnConstraints(50));
+        grid.getColumnConstraints().add(new ColumnConstraints(25));
+        grid.getRowConstraints().add(new RowConstraints(325));
+        grid.getRowConstraints().add(new RowConstraints(50));
+
+        GridPane.setConstraints(taskListView, 0, 0);
+        taskListView.setMinHeight(325);
+        GridPane.setColumnSpan(taskListView, 5);
 
         // Add Task Button
         addTaskButton = new Button("Add Task");
-        GridPane.setConstraints(addTaskButton, 0, 1);
+        addTaskButton.getStyleClass().add("xpbar");
+        addTaskButton.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(addTaskButton, 2, 1);
+
+        grid.setAlignment(Pos.CENTER);
 
         // Set up the layout
         grid.getChildren().addAll(taskListView, addTaskButton);
