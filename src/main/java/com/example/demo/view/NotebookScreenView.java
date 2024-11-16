@@ -1,9 +1,18 @@
 package com.example.demo.view;
 
+import com.example.demo.controller.ToDoListController;
+import com.example.demo.controller.XPController;
+import com.example.demo.model.DigitalTree;
+import com.example.demo.model.ToDoList;
+import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 
 import java.awt.*;
 
@@ -24,18 +33,48 @@ public class NotebookScreenView extends StackPane {
     double screenHeight;
     double screenWidth;
 
+    private XPModel xpModel;
+    private XPView xpView;
+    private XPController xpController;
+    private Button xpToggleButton;
+    private boolean isTrackingXP = false;
+
+    //Digital Tree
+    DigitalTree digitalTree;
+
+    private ToDoListView toDoListV;
+    private ToDoListController toDoCont;
+    private ToDoList toDoList;
+    private Button pageButton; // button to choose a deck
+
     public NotebookScreenView() {
 
         //-------------------------
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+        pageButton = new Button("Test Page"); // this should be a deck name later
+
+        //Initializing XP bar and system;
+        xpModel = new XPModel(100);
+        xpView = new XPView();
+        //Initializing new Tree
+        digitalTree = new DigitalTree();
+        xpController = new XPController(xpModel, xpView, digitalTree);
+
+        toDoListV = new ToDoListView();
+        toDoList = new ToDoList();
+        toDoCont = new ToDoListController(toDoList, toDoListV);
 
         runScreenUpdate();
     }
 
     public void runScreenUpdate(){
-        this.getStyleClass().add("cardview");
+        // General class things/size
+        this.getStyleClass().add("wholescreen");
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
+        this.getChildren().clear();
         //-------------------------END
 
         //-------------------------
@@ -45,7 +84,22 @@ public class NotebookScreenView extends StackPane {
         fullBox.getStyleClass().add("bigbox");
         fullBox.setMaxWidth(screenWidth);
         fullBox.setMaxHeight(screenHeight);
+        //-------------------------END
 
+        //-------------------------
+        // Deck selection pane
+        VBox deckSelection = new VBox();
+        deckSelection.getStyleClass().add("deck");
+        deckSelection.setAlignment(Pos.TOP_CENTER);
+        deckSelection.setMinWidth(screenWidth*0.15);
+        deckSelection.setMinHeight(screenHeight);
+        fullBox.getChildren().add(deckSelection);
+
+        // Buttons for decks
+        pageButton.setAlignment(Pos.CENTER);
+        pageButton.setMinWidth(deckSelection.getMinWidth()-70);
+        pageButton.setMinHeight(160);
+        deckSelection.getChildren().add(pageButton);
         //-------------------------END
 
         //-------------------------
@@ -53,7 +107,7 @@ public class NotebookScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth(screenWidth*0.666667);
+        cardSection.setMinWidth((screenWidth*0.6)-10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -69,25 +123,42 @@ public class NotebookScreenView extends StackPane {
         topButtons.setMinHeight(cardSection.getMinHeight()*(1.0/8.0));
         topButtons.getStyleClass().add("hbox");
         cardSection.getChildren().add(topButtons);
-        topButtons.setAlignment(Pos.CENTER_LEFT);
 
-
-        // Buttons for card control
-        HBox bottomButtons = new HBox();
-        bottomButtons.setMinHeight(cardSection.getMinHeight()*(1.0/8.0));
-        bottomButtons.getStyleClass().add("hbox");
-        cardSection.getChildren().add(bottomButtons);
-        bottomButtons.setAlignment(Pos.CENTER);
-
-        //-------------------------END
 
         //-------------------------
         VBox todolist = new VBox();
-        todolist.getStyleClass().add("fake");
-        todolist.setAlignment(Pos.TOP_LEFT);
-        todolist.setMinWidth((screenWidth*0.333333));
-        todolist.setMinHeight(screenHeight);
+        todolist.setAlignment(Pos.TOP_CENTER);
+        todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        todolist.getStyleClass().add("rightVbox");
+
+
+        //BUTTON FOR NOW MAYBE CHANGE LATER;
+        xpToggleButton = new Button("START XP TRACKING ");
+        xpToggleButton.setOnAction(e -> toggleXPtracking());
+        xpToggleButton.getStyleClass().add("xpbar");
+        xpToggleButton.setMinHeight(50);
+
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
-        //-------------------------END
+    }
+
+    //Adding XP tracking when entering this screen
+    public void startXPtracking(){
+        xpController.startXPTimer();
+    }
+
+    public void stopXPtracking(){
+        xpController.stopXPTimer();
+    }
+    //BUTTON FUNCTIONS FOR XP TRACKING FOR NOW
+    private void toggleXPtracking() {
+        if (isTrackingXP) {
+            stopXPtracking();
+            xpToggleButton.setText("START XP TRACKING");
+        } else {
+            startXPtracking();
+            xpToggleButton.setText("STOP XP TRACKING");
+        }
+        isTrackingXP = !isTrackingXP;
     }
 }
