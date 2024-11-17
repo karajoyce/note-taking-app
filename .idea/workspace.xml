@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Making Notebook Screen, just initial setup of the screen view I already made for the flashcards.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
-    </list>
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="updates that were missed last commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +128,7 @@
       <workItem from="1730518055961" duration="2410000" />
       <workItem from="1730752541868" duration="3452000" />
       <workItem from="1731551729936" duration="3733000" />
-      <workItem from="1731793733085" duration="1811000" />
+      <workItem from="1731793733085" duration="2481000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -329,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731800790610</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="updates that were missed last commit">
+      <option name="closed" value="true" />
+      <created>1731800857222</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1731800857222</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +372,7 @@
     <MESSAGE value="Made new branch for the last sprint" />
     <MESSAGE value="Fixing UI colouring to prepare for the next screen" />
     <MESSAGE value="Making Notebook Screen, just initial setup of the screen view I already made for the flashcards." />
-    <option name="LAST_COMMIT_MESSAGE" value="Making Notebook Screen, just initial setup of the screen view I already made for the flashcards." />
+    <MESSAGE value="updates that were missed last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates that were missed last commit" />
   </component>
 </project>

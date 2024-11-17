@@ -16,6 +16,7 @@ Sara Shakeel, gvk731, 11367521
     -fx-font-weight: bold;
     -fx-font-size: 25px;
     -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-text-fill: #ffffff;
 }
 .cardview {
     -fx-background-color: #eedfd6;
