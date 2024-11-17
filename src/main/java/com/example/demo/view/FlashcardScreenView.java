@@ -28,7 +28,6 @@ public class FlashcardScreenView extends StackPane {
 
     private boolean isBack = false; // checking if we should be on the back of the card
     private FlashcardScreen flashcardModel; // instance of the model
-    private ArrayList<Card> deck; // instance of the deck
     private Button next; // button to page next on flashcards
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
@@ -252,7 +251,7 @@ public class FlashcardScreenView extends StackPane {
      * Will update the deck if any new cards are added.
      */
     public void updateDeckList(Card newCard){
-        this.deck.add(newCard);
+        flashcardModel.getDeck().addCard(newCard);
         runDeckUpdate();
     }
     /**
@@ -305,7 +304,7 @@ public class FlashcardScreenView extends StackPane {
     public void setChangeCard(boolean bool) {
         Card newCard = null;
         int index = 0;
-        for (Card card: deck){
+        for (Card card: flashcardModel.getDeck().getCards()){
             if (card == currentCard){
                 break;
             }
@@ -316,19 +315,19 @@ public class FlashcardScreenView extends StackPane {
             // Set up new ID
             int ID = index + 1;
             // Case for hitting the end and wrapping to the beginning
-            newCard = this.deck.getFirst();
+            newCard = this.flashcardModel.getDeck().getCards().getFirst();
             // Loop to find the next card
-            if (ID < this.deck.size()){
-                newCard = this.deck.get(ID);
+            if (ID < this.flashcardModel.getDeck().getSize()){
+                newCard = this.flashcardModel.getDeck().getCards().get(ID);
             }
         } else {
             // Set up new ID
             int ID = index - 1;
             // Case for hitting the beginning and wrapping to the end
-            newCard = this.deck.getLast();
+            newCard = this.flashcardModel.getDeck().getCards().getLast();
             // Loop to find the next card
             if (ID >= 0){
-                newCard = this.deck.get(ID);
+                newCard = this.flashcardModel.getDeck().getCards().get(ID);
             }
         }
 
@@ -342,9 +341,9 @@ public class FlashcardScreenView extends StackPane {
     }
 
     public void setCardModel(FlashcardScreen model){
-        currentCard = model.getDeck().getFirst();
+        currentCard = model.getDeck().getCards().getFirst();
         flashcardModel = model;
-        this.deck = model.getDeck();
+        flashcardModel.setDeck(model.getDeck());
         runDeckUpdate();
     }
 

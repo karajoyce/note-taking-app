@@ -1,5 +1,6 @@
 package com.example.demo.FilerSystem;
 
+import com.example.demo.model.Deck;
 import com.google.gson.Gson;
 import com.example.demo.model.Card;
 import com.google.gson.reflect.TypeToken;
@@ -19,7 +20,7 @@ public class FlashcardStorage {
     /**This function should save the flashcards in a filepatg
      * @param deck from list of flashcards
      */
-    public static void SaveDeck(ArrayList<Card> deck) {
+    public static void SaveDeck(Deck deck) {
 
         File directory = new File(directoryPath);
         if (!directory.exists()) {
@@ -30,7 +31,7 @@ public class FlashcardStorage {
 
             FileWriter flash = new FileWriter(filePath);
 
-            gson.toJson(deck, flash);
+            gson.toJson(deck.getCards(), flash);
 
             flash.flush();
         } catch (IOException e) {

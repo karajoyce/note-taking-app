@@ -58,7 +58,7 @@ public class FlashcardScreenController {
 
         fCardView.setDeleteButton(e -> {
 
-            if (fCardModel.getDeck().size()==1){
+            if (fCardModel.getDeck().getSize()==1){
                 fCardModel.removeCard(fCardView.getCurrentCard());
                 fCardView.setCurrentCard(null);
                 deckUpdate();
@@ -72,7 +72,7 @@ public class FlashcardScreenController {
 
         fCardView.setAddFlashcardButton(e -> {
             Card temp = new Card("", "");
-            fCardModel.getDeck().add(temp);
+            fCardModel.getDeck().addCard(temp);
             new EditCardController(temp, fCardModel, this, new Stage());
             deckUpdate();
         });

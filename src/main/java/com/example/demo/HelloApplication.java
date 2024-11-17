@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
 
-        Scene scene = new Scene(nView);
+        Scene scene = new Scene(fCardView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         stage.setScene(scene);
         stage.setTitle("Flashcard");
