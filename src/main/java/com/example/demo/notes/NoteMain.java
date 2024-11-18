@@ -37,7 +37,7 @@ public class NoteMain extends Application{
         InlineCssTextArea textArea = model.getTextArea();
 
         MenuBar menuBar = view.createMenuBar(stage);
-        ToolBar toolBar = view.createToolBar(stage);
+        ToolBar toolBar = view.createToolBar();
 
         BorderPane root = new BorderPane();
         root.setTop(new HBox(menuBar, toolBar));

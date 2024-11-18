@@ -232,7 +232,7 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
 
@@ -290,6 +290,13 @@ public class FlashcardScreenView extends StackPane {
      */
     public void setAddFlashcardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         addFlashcard.setOnAction(handler);
+    }
+
+    /**
+     * An event handler for the add button
+     */
+    public void setChangeDeckButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        deckButton.setOnAction(handler);
     }
 
     /**

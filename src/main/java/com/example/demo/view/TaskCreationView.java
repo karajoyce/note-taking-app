@@ -65,7 +65,7 @@ public class TaskCreationView {
         createTaskButton = new Button("Create Task");
         GridPane.setConstraints(createTaskButton, 0, 1);
 
-        grid.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        grid.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
         // Set up the layout
         grid.getChildren().addAll(taskDescriptionInput, dueDatePicker, createTaskButton);

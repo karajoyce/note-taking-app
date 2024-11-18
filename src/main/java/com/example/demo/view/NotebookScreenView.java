@@ -1,18 +1,23 @@
 package com.example.demo.view;
 
+import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.DigitalTree;
 import com.example.demo.model.ToDoList;
 import com.example.demo.model.XPModel;
+import com.example.demo.notes.NoteController;
+import com.example.demo.notes.NoteModel;
+import com.example.demo.notes.NoteView;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
+import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
 
@@ -46,6 +51,9 @@ public class NotebookScreenView extends StackPane {
     private ToDoListController toDoCont;
     private ToDoList toDoList;
     private Button pageButton; // button to choose a deck
+    NoteModel noteModel;
+    NoteController noteController;
+    NoteView noteView;
 
     public NotebookScreenView() {
 
@@ -65,6 +73,11 @@ public class NotebookScreenView extends StackPane {
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
+
+        /* Initialize (MVC) */
+        noteModel = new NoteModel();
+        noteController= new NoteController(noteModel);
+        noteView= new NoteView(noteController);
 
         runScreenUpdate();
     }
@@ -105,11 +118,40 @@ public class NotebookScreenView extends StackPane {
         //-------------------------
         // Set up flashcard middle section
         VBox cardSection = new VBox();
+        cardSection.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
         cardSection.setMinWidth((screenWidth*0.6)-10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
+
+        InlineCssTextArea textArea = noteModel.getTextArea();
+
+        javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
+        ToolBar toolBar = noteView.createToolBar();
+
+        HBox menuItems = new HBox();
+        menuItems.setMaxHeight(50);
+        menuItems.setMinHeight(50);
+        menuItems.setMaxWidth(cardSection.getMinWidth());
+
+        HBox fileButton = new HBox();
+        fileButton.setMinHeight(50);
+        fileButton.setMaxHeight(50);
+        fileButton.setMinWidth(90);
+        fileButton.getChildren().add(menuBar);
+
+        HBox stylesButton = new HBox();
+        stylesButton.setMinHeight(50);
+        stylesButton.setMaxHeight(50);
+        stylesButton.getChildren().add(toolBar);
+        toolBar.setMinWidth(cardSection.getMinWidth()-90);
+        menuItems.getChildren().add(fileButton);
+        menuItems.getChildren().add(toolBar);
+        cardSection.getChildren().add(menuItems);
+        ScrollPane sPane = new ScrollPane(textArea);
+        sPane.setHmax(screenHeight);
+        cardSection.getChildren().add(sPane);
 
 
         //Card text setup
@@ -128,7 +170,7 @@ public class NotebookScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
 

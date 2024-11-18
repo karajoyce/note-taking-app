@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
+
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,7 @@ public class Deck {
 
     public void addCard(Card newCard){
         cards.add(newCard);
+
     }
 
     public void removeCard(Card oldCard){

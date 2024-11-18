@@ -9,6 +9,7 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.model.Card;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
@@ -75,6 +76,10 @@ public class FlashcardScreenController {
             fCardModel.getDeck().addCard(temp);
             new EditCardController(temp, fCardModel, this, new Stage());
             deckUpdate();
+        });
+
+        fCardView.setChangeDeckButton(e -> {
+            FlashcardStorage.LoadFlashCards(); // todo
         });
     }
 

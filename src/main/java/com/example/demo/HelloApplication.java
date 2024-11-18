@@ -1,4 +1,6 @@
 package com.example.demo;
+import com.example.demo.view.MainMenuScreenView;
+import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
 
 /*
@@ -22,8 +24,12 @@ import com.example.demo.view.FlashcardScreenView;
 import com.example.demo.view.NotebookScreenView;
 
 public class HelloApplication extends Application {
+
+    private static Stage primaryStage;
     @Override
     public void start(Stage stage){
+
+        primaryStage = stage;
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
@@ -35,16 +41,21 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
+        MainMenuScreenView mView = new MainMenuScreenView();
 
-        Scene scene = new Scene(fCardView);
+        Scene scene = new Scene(mView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        stage.setScene(scene);
-        stage.setTitle("Flashcard");
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Flashcard");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
-            stage.setFullScreen(true);  // or false to exit full-screen
+            primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
-        stage.show();
+        primaryStage.show();
+    }
+
+    public static Stage getStage(){
+        return primaryStage;
     }
 
     public static void main(String[] args) {

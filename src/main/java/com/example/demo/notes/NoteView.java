@@ -29,7 +29,7 @@ public class NoteView  {
 
     }
 
-    protected MenuBar createMenuBar(Stage stage) {
+    public MenuBar createMenuBar(Stage stage) {
         Menu fileMenu = new Menu("File");
         MenuItem openItem = new MenuItem("Open");
         MenuItem saveItem = new MenuItem("Save");
@@ -44,26 +44,31 @@ public class NoteView  {
         return menuBar;
     }
 
-    protected ToolBar createToolBar(Stage stage) {
+    public ToolBar createToolBar() {
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
+        toggleBoldButton.getStyleClass().add("textEditorButton");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");
         toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
 
         Button toggleItalicButton = new Button("I");
+        toggleItalicButton.getStyleClass().add("textEditorButton");
         toggleItalicButton.setStyle("-fx-font-style: italic; -fx-font-family: Arial, Helvetica, sans-serif;");
         toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
 
         Button toggleUnderlineButton = new Button("U");
+        toggleUnderlineButton.getStyleClass().add("textEditorButton");
         toggleUnderlineButton.setStyle("-fx-underline: true;");
         toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
 
         Button toggleStrikethroughButton = new Button("S");
+        toggleStrikethroughButton.getStyleClass().add("textEditorButton");
         toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;"); /* For some reason strikethrough doesn't show up on the button */
         toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
 
         /* Font size */
         ComboBox<String> fontSizeMenu = new ComboBox<>();
+        fontSizeMenu.getStyleClass().add("fontmenu");
         fontSizeMenu.getItems().addAll("10px", "11px", "12px", "14px", "18px", "24px", "30px", "36px", "48px");
         fontSizeMenu.setValue(noteController.noteModel.getFontsize());
 
@@ -72,6 +77,7 @@ public class NoteView  {
         /* Fonts */
 
         ComboBox<String>fontMenu = new ComboBox<>();
+        fontMenu.getStyleClass().add("fontmenu");
         fontMenu.getItems().addAll("Arial", "Times New Roman", "Courier New", "Comic Sans MS", "Verdana");
         fontMenu.setValue(noteController.noteModel.getFontType());
         fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
@@ -79,12 +85,15 @@ public class NoteView  {
         /* Text alignment
         * Replace the text to images? */
         Button alignLeftButton = new Button("Left");
+        alignLeftButton.getStyleClass().add("textEditorButton");
         alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
 
         Button alignCenterButton = new Button("Center");
+        alignCenterButton.getStyleClass().add("textEditorButton");
         alignCenterButton.setOnAction(actionEvent -> noteController.setTextAlignment("center"));
 
         Button alignRightButton = new Button("Right");
+        alignRightButton.getStyleClass().add("textEditorButton");
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
         ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,

@@ -39,7 +39,7 @@ public class MainUI extends Application {
         //Scene scene = new Scene(toDoListView.getToDoListView(), 400, 300);
         Scene scene = new Scene(pane, 1000, 1000);
         // Load and apply CSS stylesheet
-        scene.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
