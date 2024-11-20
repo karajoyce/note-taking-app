@@ -10,6 +10,9 @@
 package com.example.demo.notes;
 
 import java.util.*;
+
+import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.model.FlashcardScreen;
 import javafx.scene.control.Alert;
 
 import javafx.stage.FileChooser;
@@ -22,6 +25,10 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 
+import com.example.demo.model.Card;
+import com.example.demo.controller.FlashcardScreenController;
+import com.example.demo.model.Deck;
+
 /**
  * The Controller class of the text editor (MVC Model)
  * Has all the functions to be called in response to action events.
@@ -29,6 +36,8 @@ import java.util.HashSet;
 public class NoteController {
 
     NoteModel noteModel;
+    /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
+    Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
     public NoteController(NoteModel model) {
         noteModel = model;
@@ -89,6 +98,88 @@ public class NoteController {
     }
 
     /**
+     * When auto flashcards are enabled, listen for the user to input a period (.)
+     * @param oldText
+     * @param newText
+     */
+    protected void trackBack(String oldText, String newText) {
+        StringBuilder backBuffer = noteModel.getBackBuffer();
+
+        /* Only start gathering data for the back of the card if auto flashcard making is
+        enabled and if the program is waiting for back input
+         */
+        if (noteModel.isAutoFlashcardEnabled() && noteModel.isWaitingForBackInput()) {
+            int changeIndex = oldText.length();
+            String addedText = newText.substring(changeIndex);
+
+            if (!addedText.isEmpty()) {
+                char lastChar = addedText.charAt(addedText.length()-1);
+
+                   // If the user inputs a '.', the back of the card is ready!
+                if (lastChar == '.') {
+                    noteModel.setWaitingForBackInput(false);
+
+                    // Create the new flashcard
+                    TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront(), backBuffer.toString()));
+                    noteModel.getBackBuffer().delete(0, backBuffer.length()); // Clear
+
+                } else {
+                    // Else, add the text to the buffer for the back of the card
+                    backBuffer.append(addedText);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * On the event of clicking the Bold button, if:
+     * (1) User has selected a chunk of text, toggle bold but retain previous set styles.
+     * (2) User has not selected text, toggle bold for the subsequent times they type until
+     * it is toggled again.
+     */
+    protected void toggleBold() {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        boolean currentlySetToBold = noteModel.isBoldEnabled();
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
+        if (start != end) {
+
+            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ",
+                    currentlySetToBold, start, end);
+            noteModel.toggleBold();
+
+            /* If auto flashcard making is enabled, we want to make the selected bold text the front of the
+             * new flashcard */
+            if (noteModel.isAutoFlashcardEnabled() && noteModel.isBoldEnabled()) {
+                String front = noteModel.getTextArea().getText(start, end);
+                noteModel.setCurrentCardFront(front);
+                noteModel.setWaitingForBackInput(true);
+                System.out.println(front); /* REMOVE */
+
+            }
+            return;
+
+        }
+
+        /* Toggles whether or not the next characters that the user types
+        is bold or not
+         */
+        noteModel.toggleBold();
+        if (noteModel.getCurrStyle().contains("-fx-font-weight: bold; ")) {
+            noteModel.getCurrStyle().remove("-fx-font-weight: bold; ");
+            noteModel.getCurrStyle().add("-fx-font-weight: normal; ");
+        } else {
+            noteModel.getCurrStyle().remove("-fx-font-weight: normal; ");
+            noteModel.getCurrStyle().add("-fx-font-weight: bold; ");
+        }
+    }
+
+    /**
      * On the event of clicking the Strikethrough button, if:
      * (1) User has selected a chunk of text, toggle strikethrough but retain previous set styles.
      * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
@@ -125,42 +216,6 @@ public class NoteController {
         }
     }
 
-    /**
-     * On the event of clicking the Bold button, if:
-     * (1) User has selected a chunk of text, toggle bold but retain previous set styles.
-     * (2) User has not selected text, toggle bold for the subsequent times they type until
-     * it is toggled again.
-     */
-    protected void toggleBold() {
-        /* Get the user's selected text */
-        int start = noteModel.getTextArea().getSelection().getStart();
-        int end = noteModel.getTextArea().getSelection().getEnd();
-
-        boolean currentlySetToBold = noteModel.isBoldEnabled();
-
-        /* If user is selecting a block of text, retain the other styles/formatting but
-         * toggle the desired style */
-        if (start != end) {
-
-            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ",
-                    currentlySetToBold, start, end);
-            noteModel.toggleBold();
-            return;
-
-        }
-
-        /* Toggles whether or not the next characters that the user types
-        is bold or not
-         */
-        noteModel.toggleBold();
-        if (noteModel.getCurrStyle().contains("-fx-font-weight: bold; ")) {
-            noteModel.getCurrStyle().remove("-fx-font-weight: bold; ");
-            noteModel.getCurrStyle().add("-fx-font-weight: normal; ");
-        } else {
-            noteModel.getCurrStyle().remove("-fx-font-weight: normal; ");
-            noteModel.getCurrStyle().add("-fx-font-weight: bold; ");
-        }
-    }
 
     /**
      * On the event of clicking the Italic button, if:
@@ -422,6 +477,22 @@ public class NoteController {
             default -> noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
         }
         System.out.println(noteModel.getCurrStyle());
+    }
+
+    protected void toggleAutoFlashcard() {
+        if (noteModel.isAutoFlashcardEnabled()) {
+            System.out.println("Auto flashcard making turned OFF.");
+
+            /* TO DO ? */
+
+        } else {
+            System.out.println("Auto flashcard making turned ON.");
+
+            /* TO DO ? */
+
+        }
+
+        noteModel.toggleAutoFlashCard();
     }
 
 }

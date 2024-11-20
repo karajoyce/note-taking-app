@@ -45,6 +45,16 @@ public class NoteModel {
     /** font style. e.g. Verdana, Times New Roman, etc. */
     private String fontType;
 
+    /** if auto flashcard creating turned on, true. otherwise, false */
+    private boolean autoFlashcardEnabled;
+
+    /** if auto flashcards are on and waiting for back input */
+    private boolean waitingForBackInput;
+    /** the current card's front text */
+    private String currentCardFront;
+    /** the current card's back text buffer */
+    private StringBuilder backBuffer;
+
     /** Constructor */
     public NoteModel() {
 
@@ -52,6 +62,11 @@ public class NoteModel {
         italicEnabled = false;
         underlineEnabled = false;
         strikethroughEnabled = false;
+
+        waitingForBackInput = false;
+        autoFlashcardEnabled = false;
+        currentCardFront = "";
+        backBuffer = new StringBuilder();
 
         fontType = "Arial";
 
@@ -114,6 +129,7 @@ public class NoteModel {
         this.strikethroughEnabled = !strikethroughEnabled;
     }
 
+    /** Getter setter for font size */
     public String getFontsize() {
         return fontsize;
     }
@@ -122,7 +138,39 @@ public class NoteModel {
         this.fontsize = fontsize;
     }
 
+    /** Getter for the main text area */
     public InlineCssTextArea getTextArea() {
         return textArea;
     }
+
+    /** Getter setter for auto flashcard making enabling */
+    public boolean isAutoFlashcardEnabled() {
+        return autoFlashcardEnabled;
+    }
+
+    public void toggleAutoFlashCard() {
+        this.autoFlashcardEnabled = !autoFlashcardEnabled;
+    }
+
+    public boolean isWaitingForBackInput() {
+        return this.waitingForBackInput;
+    }
+
+    public void setWaitingForBackInput(boolean state) {
+        this.waitingForBackInput = state;
+    }
+
+    public String getCurrentCardFront() {
+        return this.currentCardFront;
+    }
+
+    public void setCurrentCardFront(String cardFront) {
+        this.currentCardFront = cardFront;
+    }
+
+    public StringBuilder getBackBuffer() {
+        return this.backBuffer;
+    }
+
+
 }

@@ -60,8 +60,7 @@ public class NoteView  {
         fontMenu.setValue(noteController.noteModel.getFontType());
         fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
 
-        /* Text alignment
-        * Replace the text to images? */
+        /* Text alignment */
         Button alignLeftButton = new Button("Left");
         alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
 
@@ -71,11 +70,15 @@ public class NoteView  {
         Button alignRightButton = new Button("Right");
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
+        /* TEST: Toggle auto flashcards */
+        Button autoFlashcardButton = new Button("Auto Flashcard Toggle");
+        autoFlashcardButton.setOnAction(actionEvent -> noteController.toggleAutoFlashcard());
 
         ToolBar toolBar = new ToolBar(getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
                 getToggleStrikeThroughButton(),
                 new Label("Font:"), fontMenu, new Label("Font size:"), fontSizeMenu,
-                alignLeftButton, alignCenterButton, alignRightButton);
+                alignLeftButton, alignCenterButton, alignRightButton,
+                autoFlashcardButton);
 
         return toolBar;
     }

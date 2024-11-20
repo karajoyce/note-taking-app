@@ -109,6 +109,13 @@ public class NoteMain extends Application{
                 }
         );
 
+        /* Auto flash card listener */
+
+        model.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            controller.trackBack(oldText, newText);
+        });
+
+
         stage.setTitle("NoteMain");
         stage.setScene(scene);
         stage.show();
