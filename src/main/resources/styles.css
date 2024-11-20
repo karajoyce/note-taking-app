@@ -44,6 +44,7 @@ Sara Shakeel, gvk731, 11367521
 }
 .textflow {
     -fx-padding: 20px;
+    -fx-spacing: 15px;
     -fx-font-size: 40px;
     -fx-background-color: #f7e4fc;
     -fx-border-color: #482c0e;

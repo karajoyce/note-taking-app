@@ -81,6 +81,34 @@ public class FlashcardScreenController {
         fCardView.setChangeDeckButton(e -> {
             FlashcardStorage.LoadFlashCards(); // todo
         });
+
+        fCardView.setConfidentButton(e -> {
+            fCardView.getCurrentCard().setConfidenceLevel(true);
+            System.out.println("conf");
+
+            // flip to next card to allow only one choice
+            fCardView.setChangeCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
+            deckUpdate();
+
+            // todo save conf level to json
+        });
+
+        fCardView.setNotConfidentButton(e -> {
+            fCardView.getCurrentCard().setConfidenceLevel(false);
+            System.out.println("non-conf");
+
+            // flip to next card to allow only one choice
+            fCardView.setChangeCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
+            deckUpdate();
+
+            // todo save conf level to json
+        });
     }
 
     public void deckUpdate(){

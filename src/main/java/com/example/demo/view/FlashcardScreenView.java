@@ -38,6 +38,8 @@ public class FlashcardScreenView extends StackPane {
     private Button removeCard; // button to remove card
 
     private Button addFlashcard; // button to add a flashcard
+    private Button thumbsUpButton; // button for confidence gauging
+    private Button thumbsDownButton; // button for confidence gauging
     private Card tempCard; // temporary card for when we remove the only card in a deck
     private Card currentCard = null; // store the card we are on
     //Adding XP Bar and System
@@ -67,6 +69,8 @@ public class FlashcardScreenView extends StackPane {
         pageBack = new Button(" Back ");
         removeCard = new Button(" Remove ");
         tempCard = new Card("Insert more cards", "");
+        thumbsUpButton = new Button("Confident");
+        thumbsDownButton = new Button("Not Confident");
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
@@ -129,7 +133,7 @@ public class FlashcardScreenView extends StackPane {
 
 
         //Card text setup
-        HBox fCard = new HBox();
+        VBox fCard = new VBox();
         fCard.setMinHeight(cardSection.getMinHeight()*(6.0/8.0));
         fCard.getStyleClass().add("textflow");
         fCard.setAlignment(Pos.CENTER);
@@ -192,9 +196,20 @@ public class FlashcardScreenView extends StackPane {
                 frontText.setTextAlignment(TextAlignment.CENTER);
             } else {
                 Text backText = new Text(this.currentCard.getCardBack());
-                backText.setWrappingWidth(cardSection.getMinHeight() - 40);
-                fCard.getChildren().add(backText);
+                HBox textBox = new HBox(backText);
+                textBox.setMinHeight(fCard.getMinHeight()/2);
+                backText.setWrappingWidth(cardSection.getMinWidth() - 40);
+
+                HBox confButtons = new HBox();
+                confButtons.setStyle("-fx-spacing: 20px");
+                confButtons.setMinHeight((fCard.getMinHeight()/2)-20);
+                confButtons.getChildren().addAll(thumbsUpButton, thumbsDownButton);
+                fCard.getChildren().addAll(backText, confButtons);
+
+                confButtons.setAlignment(Pos.BOTTOM_CENTER);
+                textBox.setAlignment(Pos.BOTTOM_CENTER);
                 backText.setTextAlignment(TextAlignment.CENTER);
+                fCard.setAlignment(Pos.BOTTOM_CENTER);
                 fCard.setStyle("-fx-background-color: #faeefd");
             }
         }
@@ -260,6 +275,22 @@ public class FlashcardScreenView extends StackPane {
     public void setEditCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         edit.setOnAction(handler);
     }
+
+    /**
+     * An event handler for the confident button
+     */
+    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        thumbsUpButton.setOnAction(handler);
+    }
+
+    /**
+     * An event handler for the confident button
+     */
+    public void setNotConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        thumbsDownButton.setOnAction(handler);
+    }
+
+
     /**
      * An event handler for the next button
      */

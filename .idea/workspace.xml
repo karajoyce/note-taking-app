@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="changed deck interpretation to be its own model instead of a list">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="adding screens to make UI stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/flashcard.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/flashcard.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/EditCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/EditCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TaskCreationView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/noteStyle.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +137,8 @@
       <workItem from="1730752541868" duration="3452000" />
       <workItem from="1731551729936" duration="3733000" />
       <workItem from="1731793733085" duration="5279000" />
-      <workItem from="1731950858516" duration="10554000" />
+      <workItem from="1731950858516" duration="12133000" />
+      <workItem from="1732069190530" duration="3765000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -365,7 +356,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731810458598</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="adding screens to make UI stuff">
+      <option name="closed" value="true" />
+      <created>1731965443424</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731965443424</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +382,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="constructor based off uml class diagram" />
     <MESSAGE value="added some docstrings and getters and setters" />
     <MESSAGE value="tried starting on MVC model of note editor" />
     <MESSAGE value="trying to get started on the mvc model (scrapping fxml)" />
@@ -408,6 +406,7 @@
     <MESSAGE value="Making Notebook Screen, just initial setup of the screen view I already made for the flashcards." />
     <MESSAGE value="updates that were missed last commit" />
     <MESSAGE value="changed deck interpretation to be its own model instead of a list" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed deck interpretation to be its own model instead of a list" />
+    <MESSAGE value="adding screens to make UI stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding screens to make UI stuff" />
   </component>
 </project>
