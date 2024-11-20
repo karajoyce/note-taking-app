@@ -17,27 +17,26 @@ import java.util.ArrayList;
 
 public class FlashcardScreen {
 
-    private Deck deck; // storing the deck of cards
-    int cardCounter;
+    private Deck currentDeck; // storing the deck of cards
 
     public FlashcardScreen(){
         // this needs to access database for proper deck based on controller button function
-        this.deck = new Deck("Test");
+        currentDeck = new Deck("Test Deck");
     }
 
     public Deck getDeck(){
-        return this.deck;
+        return this.currentDeck;
     }
     public void setDeck(Deck deck){
-        this.deck = deck;
+        this.currentDeck = deck;
     }
 
     public void addCard(String front, String back){
 
 
         Card newcard =  new Card(front, back);
-        this.deck.addCard(newcard);
-        FlashcardStorage.SaveDeck(deck);
+        this.currentDeck.addCard(newcard);
+        FlashcardStorage.SaveDeck(currentDeck);
 
 
     }

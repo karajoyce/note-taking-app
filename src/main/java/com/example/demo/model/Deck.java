@@ -40,5 +40,8 @@ public class Deck {
     public ArrayList<Card> getCards(){
         return this.cards;
     }
+    public String getTitle(){
+        return this.title;
+    }
 
 }

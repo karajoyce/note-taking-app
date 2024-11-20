@@ -36,8 +36,6 @@ public class FlashcardScreenView extends StackPane {
     private Button flip; // button to turn over flashcard
     private Button edit; // button to edit a flashcard
     private Button back; // button to move backwards in the deck
-
-    private Button deckButton; // button to choose a deck
     private Button pageBack; // button to go back to main menu
     private Button removeCard; // button to remove card
 
@@ -69,7 +67,6 @@ public class FlashcardScreenView extends StackPane {
         flip = new Button(" ⭯ ");
         edit = new Button(" ✎ ");
         addFlashcard = new Button(" + ");
-        deckButton = new Button("Test Desk"); // this should be a deck name later
         pageBack = new Button(" Back ");
         removeCard = new Button(" Remove ");
         tempCard = new Card("Insert more cards", "");
@@ -90,7 +87,7 @@ public class FlashcardScreenView extends StackPane {
 
     /**
      * Function that will re-draw the screen when something is changed
-     * Post-condition: screen will reflect newest changes
+     * Post-condition: screen will reflect the newest changes
      */
     public void runDeckUpdate(){
 
@@ -266,6 +263,10 @@ public class FlashcardScreenView extends StackPane {
 
     }
 
+    /**
+     * Function that grabs the list of decks from the JSON to make the buttons on the deck selection pane
+     * @param buttonBox: the box to draw the buttons in
+     */
     public void populateButtons(ListView<Button> buttonBox){
         // Get names from the JSON
         List<String> titles = FlashcardStorage.GenerateDeckTitles();
@@ -336,7 +337,7 @@ public class FlashcardScreenView extends StackPane {
      * An event handler for the add button
      */
     public void setChangeDeckButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-        deckButton.setOnAction(handler);
+//        deckButton.setOnAction(handler);
     }
 
     /**
@@ -383,10 +384,17 @@ public class FlashcardScreenView extends StackPane {
         }
     }
 
+    /**
+     * Function to get the current card
+     */
     public Card getCurrentCard(){
         return currentCard;
     }
 
+    /**
+     * Function to initiate the card model
+     * @param model
+     */
     public void setCardModel(FlashcardScreen model){
         currentCard = model.getDeck().getCards().getFirst();
         flashcardModel = model;

@@ -15,7 +15,7 @@ public class FlashcardStorage {
 
     //file path needed to put the flashcard under a file.
     private static String directoryPath = "StorageJSONS";
-    private static String filePath = directoryPath + File.separator + "flashcard.json";
+    private static String filePath = directoryPath + File.separator;
     //intialize gson
     private static Gson gson = new Gson();
 
@@ -31,9 +31,9 @@ public class FlashcardStorage {
 
         try {
 
-            FileWriter flash = new FileWriter(filePath);
+            FileWriter flash = new FileWriter(filePath+deck.getTitle()+".json");
 
-            gson.toJson(deck.getCards(), flash);
+            gson.toJson(deck, flash);
 
             flash.flush();
         } catch (IOException e) {

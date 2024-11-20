@@ -84,7 +84,6 @@ public class FlashcardScreenController {
 
         fCardView.setConfidentButton(e -> {
             fCardView.getCurrentCard().setConfidenceLevel(true);
-            System.out.println("conf");
 
             // flip to next card to allow only one choice
             fCardView.setChangeCard(true);
@@ -98,7 +97,6 @@ public class FlashcardScreenController {
 
         fCardView.setNotConfidentButton(e -> {
             fCardView.getCurrentCard().setConfidenceLevel(false);
-            System.out.println("non-conf");
 
             // flip to next card to allow only one choice
             fCardView.setChangeCard(true);
