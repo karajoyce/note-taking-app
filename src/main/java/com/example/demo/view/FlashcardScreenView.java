@@ -1,17 +1,21 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
 
@@ -108,18 +112,16 @@ public class FlashcardScreenView extends StackPane {
 
         //-------------------------
         // Deck selection pane
-        VBox deckSelection = new VBox();
+        ListView<Button> deckSelection = new ListView<>();
+        deckSelection.setMaxHeight(screenHeight-100);
         deckSelection.getStyleClass().add("deck");
-        deckSelection.setAlignment(Pos.TOP_CENTER);
+        // todo function call to get names and make enough buttons
         deckSelection.setMinWidth(screenWidth*0.15);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
 
         // Buttons for decks
-        deckButton.setAlignment(Pos.CENTER);
-        deckButton.setMinWidth(deckSelection.getMinWidth()-40);
-        deckButton.setMinHeight(80);
-        deckSelection.getChildren().add(deckButton);
+        populateButtons(deckSelection);
         //-------------------------END
 
         //-------------------------
@@ -127,7 +129,8 @@ public class FlashcardScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth((screenWidth*0.6)-10);
+        cardSection.setMinWidth((screenWidth*0.6)-20);
+        cardSection.setMaxWidth((screenWidth*0.6)-20);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -262,13 +265,19 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------END
 
     }
-    /**
-     * Will update the deck if any new cards are added.
-     */
-    public void updateDeckList(Card newCard){
-        flashcardModel.getDeck().addCard(newCard);
-        runDeckUpdate();
+
+    public void populateButtons(ListView<Button> buttonBox){
+        // Get names from the JSON
+        List<String> titles = FlashcardStorage.GenerateDeckTitles();
+        for (String title: titles){
+            Button tButton = new Button(title);
+            tButton.setAlignment(Pos.CENTER);
+            tButton.setMinWidth(buttonBox.getMinWidth()-60);
+            tButton.setMinHeight(80);
+            buttonBox.getItems().add(tButton);
+        }
     }
+
     /**
      * An event handler for the edit button
      */

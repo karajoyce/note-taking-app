@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FlashcardStorage {
@@ -65,8 +66,8 @@ public class FlashcardStorage {
      * Load the title names of all decks
      * @return List of names
      */
-    public static List GenerateDeckTitles(){
-        return null;
+    public static List<String> GenerateDeckTitles(){
+        return Arrays.asList(new String[]{"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9" });
     }
 
 
