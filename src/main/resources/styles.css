@@ -299,3 +299,10 @@ Sara Shakeel, gvk731, 11367521
     -fx-min-height: 45;
     -fx-max-height: 45;
 }
+.textEditorBar {
+    -fx-font-size: 12px;
+}
+.menuBar {
+    /*-fx-text-alignment: center;*/
+    -fx-alignment: center;
+}

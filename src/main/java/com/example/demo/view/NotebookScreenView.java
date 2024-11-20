@@ -128,24 +128,31 @@ public class NotebookScreenView extends StackPane {
         InlineCssTextArea textArea = noteModel.getTextArea();
 
         javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
+        menuBar.getStyleClass().add("menuBar");
         ToolBar toolBar = noteView.createToolBar();
 
         HBox menuItems = new HBox();
+        menuItems.getStyleClass().add("textEditorBar");
         menuItems.setMaxHeight(50);
         menuItems.setMinHeight(50);
+        menuItems.setAlignment(Pos.CENTER);
         menuItems.setMaxWidth(cardSection.getMinWidth());
 
         HBox fileButton = new HBox();
-        fileButton.setMinHeight(50);
-        fileButton.setMaxHeight(50);
-        fileButton.setMinWidth(90);
+        fileButton.setStyle("-fx-padding: 0");
+        menuBar.setMinHeight(50);
+        menuBar.setMaxHeight(50);
+        fileButton.setMinWidth(55);
+        fileButton.setMaxWidth(55);
         fileButton.getChildren().add(menuBar);
 
         HBox stylesButton = new HBox();
         stylesButton.setMinHeight(50);
         stylesButton.setMaxHeight(50);
         stylesButton.getChildren().add(toolBar);
-        toolBar.setMinWidth(cardSection.getMinWidth()-90);
+        toolBar.setMinWidth(cardSection.getMinWidth()-55);
+        toolBar.setMinHeight(50);
+        toolBar.setMaxHeight(50);
         menuItems.getChildren().add(fileButton);
         menuItems.getChildren().add(toolBar);
         cardSection.getChildren().add(menuItems);
@@ -159,12 +166,6 @@ public class NotebookScreenView extends StackPane {
         fCard.setMinHeight(cardSection.getMinHeight()*(6.0/8.0));
         fCard.getStyleClass().add("textflow");
         fCard.setAlignment(Pos.CENTER);
-
-        // Back button
-        HBox topButtons = new HBox();
-        topButtons.setMinHeight(cardSection.getMinHeight()*(1.0/8.0));
-        topButtons.getStyleClass().add("hbox");
-        cardSection.getChildren().add(topButtons);
 
 
         //-------------------------
