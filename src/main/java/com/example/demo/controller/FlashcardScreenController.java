@@ -79,7 +79,7 @@ public class FlashcardScreenController {
         });
 
         fCardView.setChangeDeckButton(e -> {
-            FlashcardStorage.LoadFlashCards(); // todo
+            FlashcardStorage.LoadFlashCards();// todo, add string title to arguments
         });
 
         fCardView.setConfidentButton(e -> {
