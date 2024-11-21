@@ -11,6 +11,8 @@ package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.model.Card;
+import com.example.demo.model.Deck;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
@@ -79,7 +81,10 @@ public class FlashcardScreenController {
         });
 
         fCardView.setChangeDeckButton(e -> {
-            FlashcardStorage.LoadFlashCards();// todo, add string title to arguments
+            Deck newDeck = FlashcardStorage.LoadFlashCards(((Button)e.getSource()).getText());
+            fCardModel.setDeck(newDeck);
+            fCardView.setCurrentCard(newDeck.getCards().getFirst());
+            fCardView.runDeckUpdate();
         });
 
         fCardView.setConfidentButton(e -> {
@@ -107,6 +112,7 @@ public class FlashcardScreenController {
 
             // todo save conf level to json
         });
+        deckUpdate();
     }
 
     public void deckUpdate(){

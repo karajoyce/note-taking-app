@@ -307,3 +307,6 @@ Sara Shakeel, gvk731, 11367521
     /*-fx-text-alignment: center;*/
     -fx-alignment: center;
 }
+.list-cell {
+    -fx-alignment: center;
+}

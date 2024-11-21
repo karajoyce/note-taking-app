@@ -14,7 +14,7 @@ import java.util.List;
 public class FlashcardStorage {
 
     //file path needed to put the flashcard under a file.
-    private static String directoryPath = "StorageJSONS";
+    private static String directoryPath = "StorageJSONS/Decks";
     private static String filePath = directoryPath + File.separator;
     //intialize gson
     private static Gson gson = new Gson();
@@ -46,12 +46,12 @@ public class FlashcardStorage {
      * Load all the flash cards
      * @return flashcards
      */
-    public static ArrayList<Card> LoadFlashCards() {
+    public static Deck LoadFlashCards(String title) {
 
         try{
-            FileReader deckPath = new FileReader(filePath);
+            FileReader deckPath = new FileReader(filePath+title+".json");
 
-            Type Cardeck = new TypeToken<ArrayList<Card>>(){}.getType();
+            Type Cardeck = new TypeToken<Deck>(){}.getType();
 
             return gson.fromJson(deckPath, Cardeck);
 
@@ -67,7 +67,15 @@ public class FlashcardStorage {
      * @return List of names
      */
     public static List<String> GenerateDeckTitles(){
-        return Arrays.asList(new String[]{"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9" });
+        ArrayList<String> titles = new ArrayList<>();
+
+        File file = new File(filePath);
+        if (file.exists()){
+            for (File deck: file.listFiles()){
+                titles.add(deck.getName().replace(".json", ""));
+            }
+        }
+        return titles;
     }
 
 

@@ -4,6 +4,7 @@ import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -44,6 +45,7 @@ public class FlashcardScreenView extends StackPane {
     private Button thumbsDownButton; // button for confidence gauging
     private Card tempCard; // temporary card for when we remove the only card in a deck
     private Card currentCard = null; // store the card we are on
+    private javafx.event.EventHandler<javafx.event.ActionEvent> deckHandler;
     //Adding XP Bar and System
     private XPModel xpModel;
     private XPView xpView;
@@ -273,9 +275,10 @@ public class FlashcardScreenView extends StackPane {
         for (String title: titles){
             Button tButton = new Button(title);
             tButton.setAlignment(Pos.CENTER);
-            tButton.setMinWidth(buttonBox.getMinWidth()-60);
+            tButton.setMinWidth(buttonBox.getMinWidth()-45);
             tButton.setMinHeight(80);
             buttonBox.getItems().add(tButton);
+            tButton.setOnAction(deckHandler);
         }
     }
 
@@ -337,7 +340,7 @@ public class FlashcardScreenView extends StackPane {
      * An event handler for the add button
      */
     public void setChangeDeckButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-//        deckButton.setOnAction(handler);
+        deckHandler = handler;
     }
 
     /**
