@@ -114,7 +114,6 @@ public class FlashcardScreenView extends StackPane {
         ListView<Button> deckSelection = new ListView<>();
         deckSelection.setMaxHeight(screenHeight-100);
         deckSelection.getStyleClass().add("deck");
-        // todo function call to get names and make enough buttons
         deckSelection.setMinWidth(screenWidth*0.15);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
@@ -401,7 +400,6 @@ public class FlashcardScreenView extends StackPane {
     public void setCardModel(FlashcardScreen model){
         currentCard = model.getDeck().getCards().getFirst();
         flashcardModel = model;
-        flashcardModel.setDeck(model.getDeck());
         runDeckUpdate();
     }
 

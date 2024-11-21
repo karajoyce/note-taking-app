@@ -82,8 +82,12 @@ public class FlashcardScreenController {
 
         fCardView.setChangeDeckButton(e -> {
             Deck newDeck = FlashcardStorage.LoadFlashCards(((Button)e.getSource()).getText());
+            if (newDeck.getCards().isEmpty()){
+                fCardView.setCurrentCard(new Card("", ""));
+            } else {
+                fCardView.setCurrentCard(newDeck.getCards().getFirst());
+            }
             fCardModel.setDeck(newDeck);
-            fCardView.setCurrentCard(newDeck.getCards().getFirst());
             fCardView.runDeckUpdate();
         });
 
