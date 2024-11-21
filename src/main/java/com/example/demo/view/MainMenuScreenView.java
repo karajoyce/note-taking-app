@@ -24,6 +24,7 @@ public class MainMenuScreenView extends StackPane {
     private ToDoListController toDoCont;
     private ToDoList toDoList;
     private Button pageButton; // button to choose a deck
+    private MotivationalMessagesView mView;
 
 
     public MainMenuScreenView(){
@@ -35,6 +36,8 @@ public class MainMenuScreenView extends StackPane {
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
+
+        mView = new MotivationalMessagesView();
 
         runMainScreenUpdate();
     }
@@ -86,7 +89,7 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView());
+        todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="set up functionality to switch decks from the json">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Fixing functionality on empty decks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Kara-Sprint2",
-    "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/StorageJSONS/Decks",
+    "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,6 +72,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kjl\Documents\370-01-t05-team4\src\main\resources" />
       <recent name="C:\Users\kjl\Documents\370-01-t05-team4\StorageJSONS\Decks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -137,7 +140,7 @@
       <workItem from="1731551729936" duration="3733000" />
       <workItem from="1731793733085" duration="5279000" />
       <workItem from="1731950858516" duration="12133000" />
-      <workItem from="1732069190530" duration="22924000" />
+      <workItem from="1732069190530" duration="26131000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -411,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732156583006</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fixing functionality on empty decks">
+      <option name="closed" value="true" />
+      <created>1732159049467</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732159049467</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +440,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
     <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
     <MESSAGE value="nvm it only works for underline im depressed" />
     <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
@@ -454,6 +464,7 @@
     <MESSAGE value="making deck generation work" />
     <MESSAGE value="made flshcard storage save Deck object with title" />
     <MESSAGE value="set up functionality to switch decks from the json" />
-    <option name="LAST_COMMIT_MESSAGE" value="set up functionality to switch decks from the json" />
+    <MESSAGE value="Fixing functionality on empty decks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing functionality on empty decks" />
   </component>
 </project>

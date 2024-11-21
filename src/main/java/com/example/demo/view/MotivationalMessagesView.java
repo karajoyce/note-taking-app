@@ -1,6 +1,18 @@
 package com.example.demo.view;
 
+import javafx.geometry.Pos;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
+import javafx.scene.text.Text;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
 
@@ -15,11 +27,60 @@ import javafx.scene.layout.StackPane;
 
 public class MotivationalMessagesView extends StackPane {
 
+    private List<String> messages; // hold the messages
+    private Random rand;
+    private HBox motivmsg;
+
+
     /**
      * Constructor for the view of motivational messages
      */
     public MotivationalMessagesView(){
+        rand = new Random();
+        motivmsg = new HBox();
 
+        String txtInput = readString("/quotes.txt");
+        messages = Arrays.asList(txtInput.split("\n"));
+        this.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
+        drawMotivationalMessage();
+    }
+
+    public void drawMotivationalMessage(){
+
+        // set up layout
+        motivmsg.setPadding(new javafx.geometry.Insets(10));
+        motivmsg.setMinHeight(350);
+        motivmsg.setMaxHeight(350);
+        motivmsg.setMinWidth(400);
+        motivmsg.setMaxWidth(400);
+        motivmsg.getStyleClass().add("motivmsg");
+        motivmsg.setAlignment(Pos.CENTER);
+
+        Text display = new Text(messages.get(rand.nextInt(94)));
+        display.setWrappingWidth(motivmsg.getMinWidth());
+        motivmsg.getChildren().add(display);
+
+        this.getChildren().add(motivmsg);
+    }
+
+    /**
+     This code allows text files to be read when they are inside a jar.
+     */
+    public String readString(String path) {
+        StringBuilder stringBuilder = new StringBuilder();
+        InputStream stream = this.getClass().getResourceAsStream(path);
+        if(stream == null) {
+            System.out.println("Cant read file: " + path);
+            return "";
+        }
+        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+        reader.lines().forEach(string -> stringBuilder.append(string).append("\n"));
+        return stringBuilder.toString();
+    }
+
+    public HBox getMotivmsgView(){
+        return motivmsg;
     }
 
 }

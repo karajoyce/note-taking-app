@@ -310,3 +310,9 @@ Sara Shakeel, gvk731, 11367521
 .list-cell {
     -fx-alignment: center;
 }
+.motivmsg {
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+    -fx-padding: 10px;
+    -fx-background-color: #ead0e4;
+}

@@ -1,5 +1,5 @@
 package com.example.demo;
-import com.example.demo.view.MainMenuScreenView;
+import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
 
@@ -20,8 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
-import com.example.demo.view.FlashcardScreenView;
-import com.example.demo.view.NotebookScreenView;
 
 public class HelloApplication extends Application {
 
@@ -42,8 +40,9 @@ public class HelloApplication extends Application {
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         NotebookScreenView nView = new NotebookScreenView();
         MainMenuScreenView mView = new MainMenuScreenView();
+        MotivationalMessagesView motView = new MotivationalMessagesView();
 
-        Scene scene = new Scene(fCardView);
+        Scene scene = new Scene(mView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flashcard");
