@@ -18,15 +18,18 @@ public class Card {
 
     // The back of the flashcard, the answer to the front.
     private String CardBack;
+    // Private confidence level selected by user, default as 0
+    private boolean confidenceLevel;
 
     /**
      * @param front: the front of the flashcard
      * @param back: the back of the flashcard
+     * postcond: confidence level default is false
      */
     public Card(String front, String back) {
-        // CardID will be generated here from the list of Cards latest one.
         this.CardFront = front;
         this.CardBack = back;
+        this.confidenceLevel = false;
     }
 
     /**
@@ -55,6 +58,21 @@ public class Card {
      */
     public void setCardBack(String cardBack) {
         CardBack = cardBack;
+    }
+
+    /**
+     *
+     * @return confidence level
+     */
+    public boolean getConfidenceLevel(){
+        return confidenceLevel;
+    }
+
+    /**
+     * @param conf confidence to set
+     */
+    public void setConfidenceLevel(boolean conf) {
+        this.confidenceLevel = conf;
     }
 
     /**

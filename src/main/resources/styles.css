@@ -16,6 +16,7 @@ Sara Shakeel, gvk731, 11367521
     -fx-font-weight: bold;
     -fx-font-size: 25px;
     -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-text-fill: #ffffff;
 }
 .cardview {
     -fx-background-color: #eedfd6;
@@ -31,7 +32,7 @@ Sara Shakeel, gvk731, 11367521
 .cardsection {
     -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
     -fx-font-size: 25px;
-    -fx-spacing: 5;
+    -fx-spacing: 10;
     -fx-border-color: #482c0e;
 
 }
@@ -43,15 +44,18 @@ Sara Shakeel, gvk731, 11367521
 }
 .textflow {
     -fx-padding: 20px;
+    -fx-spacing: 15px;
     -fx-font-size: 40px;
-    -fx-background-color: #a7acbd;
+    -fx-background-color: #f7e4fc;
     -fx-border-color: #482c0e;
 }
 .bigbox {
     -fx-border-color: #482c0e;
+    -fx-background-color: #efe4e9;
 }
 .deck {
     -fx-padding: 15px;
+    -fx-spacing: 20;
     -fx-font-size: 25px;
 }
 .topbar {
@@ -67,4 +71,248 @@ Sara Shakeel, gvk731, 11367521
 }
 .editbutton {
     -fx-font-size: 15px;
+}
+.wholescreen {
+    -fx-background-color: #f2d5f8;
+}
+/* Title label styling */
+
+/* styles.css */
+.checkbox {
+    -fx-background-color: pink; /* Change checkbox background to pink */
+}
+
+.label {
+    -fx-text-fill: purple; /* Change label text color to pink */
+    -fx-font-size: 15px;
+}
+
+.checkbox .check-box {
+    -fx-background-color: pink; /* Change checkbox background to pink */
+    -fx-border-color: pink; /* Change checkbox border to pink */
+    -fx-border-radius: 5; /* Round the corners of the checkbox */
+}
+
+.checkbox .check-box:selected {
+    -fx-background-color: pink; /* Keep it pink when selected */
+}
+
+.task-title {
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff; /* White text for contrast */
+    -fx-background-color: #ff99cc; /* Pink background */
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 300px; /* Width matching the window size */
+}
+
+/* DatePicker styling */
+.date-picker .text-field {
+    -fx-background-color: #ffccdd;
+    -fx-border-color: #ff99cc;
+    -fx-text-fill: #6b4a5e;
+}
+.date-picker .arrow-button {
+    -fx-background-color: #ffb3c6;
+}
+.date-picker-popup {
+    -fx-background-color: #ffe6f2;
+    -fx-border-color: #ff99cc;
+}
+.date-picker-popup .day-cell {
+    -fx-background-color: #ffe6f2;
+    -fx-text-fill: #6b4a5e;
+}
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #ffb3c6;
+}
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #ff99cc;
+    -fx-text-fill: #ffffff;
+}
+.date-picker-popup .month-label,
+.date-picker-popup .week-number-label {
+    -fx-text-fill: #6b4a5e;
+    -fx-background-color: #ffd9e8;
+}
+.date-picker-popup .header {
+    -fx-background-color: #ffb3c6;
+    -fx-text-fill: #ffffff;
+}
+
+/* General Window Background */
+.root {
+    -fx-background-color: #ffe6f2;
+}
+
+/* GridPane styling */
+.grid-pane {
+    -fx-background-color: #ffe6f2;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 8;
+    -fx-border-radius: 5;
+    -fx-border-color: #ff99cc;
+}
+
+/* Task Description TextField */
+.text-field {
+    -fx-background-color: #ffccdd;
+    -fx-border-color: #ff99cc;
+    -fx-border-radius: 5;
+    -fx-text-fill: #6b4a5e;
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+}
+
+/* DatePicker Styling */
+.date-picker .text-field {
+    -fx-background-color: #ffccdd;
+    -fx-border-color: #ff99cc;
+    -fx-border-radius: 5;
+    -fx-text-fill: #6b4a5e;
+}
+.date-picker .combo-box-popup {
+    -fx-background-color: #ffe6f2;
+}
+.date-picker .button {
+    -fx-background-color: #ffb3c6;
+    -fx-border-color: #ff99cc;
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+}
+
+/* ListView Styling */
+.list-view {
+    -fx-background-color: #f8e6f4;
+    -fx-border-color: #d4a5d9;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+}
+.list-view .list-cell {
+    -fx-background-color: #fdf0fa;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 10px;
+    -fx-text-fill: #6b4a5e;
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+}
+.list-view .list-cell:hover {
+    -fx-background-color: #f3c8f0;
+}
+.list-view .list-cell:selected {
+    -fx-background-color: #e89cc4;
+    -fx-text-fill: #ffffff;
+}
+
+/* Button Styling */
+/*.button {*/
+/*    -fx-background-color: purple;*/
+/*    -fx-border-color: purple;*/
+/*    -fx-border-radius: 5px;*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-font-size: 15px;*/
+/*    -fx-text-fill: #ffffff;*/
+/*    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;*/
+/*}*/
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #d992e3, #e3b8e8);
+}
+.button:pressed {
+    -fx-background-color: #bf74c7;
+}
+
+/* Task Description Input Field Styling */
+.task-description-input {
+    -fx-text-fill: purple; /* purple text color */
+    -fx-background-color: white; /* Set background color for the text field */
+    -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
+    -fx-font-size: 14px;
+}
+
+/* styles.css */
+.date-picker .text-field {
+    -fx-background-color: white; /* Set background color for the text field */
+    -fx-text-fill: black; /* Set text color for the text field */
+}
+
+.date-picker .calendar .day-cell:filled:hover {
+    -fx-background-color: purple; /* Background color for hover */
+    -fx-text-fill: white; /* Text color on hover */
+}
+
+.date-picker .calendar .day-cell:selected {
+    -fx-background-color: purple; /* Background color for the selected date */
+    -fx-text-fill: white; /* Text color for the selected date */
+}
+
+.date-picker .calendar .day-cell:selected:hover {
+    -fx-background-color: darkviolet; /* Darker purple when selected and hovered */
+}
+
+.xpbar {
+    -fx-background-color: #b19f93;
+    -fx-border-color: #b19f93;
+    -fx-border-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.rightVbox {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.bold {
+    -fx-font-weight: bold;
+}
+
+.italic {
+    -fx-font-style: italic;
+}
+
+.underline {
+    -fx-underline: true;
+}
+
+.strikethrough {
+    -fx-strikethrough: true;
+}
+
+.alignment {
+    -fx-text-alignment: left;
+}
+
+.textEditorButton {
+    -fx-font-size: 15px;
+    -fx-min-width: 40;
+    -fx-max-height: 40;
+    -fx-min-height: 40;
+    -fx-fill: purple;
+}
+.fontmenu {
+    -fx-font-size: 15px;
+    -fx-min-height: 45;
+    -fx-max-height: 45;
+}
+.textEditorBar {
+    -fx-font-size: 12px;
+}
+.menuBar {
+    /*-fx-text-alignment: center;*/
+    -fx-alignment: center;
+}
+.list-cell {
+    -fx-alignment: center;
+}
+.motivmsg {
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+    -fx-padding: 10px;
+    -fx-background-color: #ead0e4;
 }
