@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Fixing functionality on empty decks">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TopViewBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Kara-Sprint2",
+    "git-widget-placeholder": "FileSysSprint2",
     "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -466,5 +464,16 @@
     <MESSAGE value="set up functionality to switch decks from the json" />
     <MESSAGE value="Fixing functionality on empty decks" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixing functionality on empty decks" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
