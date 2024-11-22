@@ -42,7 +42,7 @@ public class HelloApplication extends Application {
         MainMenuScreenView mView = new MainMenuScreenView();
         MotivationalMessagesView motView = new MotivationalMessagesView();
 
-        Scene scene = new Scene(mView);
+        Scene scene = new Scene(nView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flashcard");

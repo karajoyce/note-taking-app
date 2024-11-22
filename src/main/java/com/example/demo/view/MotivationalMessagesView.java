@@ -39,6 +39,7 @@ public class MotivationalMessagesView extends StackPane {
         rand = new Random();
         motivmsg = new HBox();
 
+        // file found at https://gist.github.com/robatron/a66acc0eed3835119817#file-quotes-txt
         String txtInput = readString("/quotes.txt");
         messages = Arrays.asList(txtInput.split("\n"));
         this.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
