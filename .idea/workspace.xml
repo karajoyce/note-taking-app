@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Starting motivational messages, need to make prettier tomorrow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="setting up dynamic pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MotivationalMessagesView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +140,8 @@
       <workItem from="1732069190530" duration="26409000" />
       <workItem from="1732162853196" duration="32000" />
       <workItem from="1732225586749" duration="713000" />
-      <workItem from="1732290258956" duration="1703000" />
+      <workItem from="1732290258956" duration="2493000" />
+      <workItem from="1732296353949" duration="1330000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -435,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732162768437</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="setting up dynamic pages">
+      <option name="closed" value="true" />
+      <created>1732292376375</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1732292376376</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +457,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="nvm it only works for underline im depressed" />
     <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
     <MESSAGE value="updated docstrings" />
     <MESSAGE value="updated default font family" />
@@ -478,6 +481,7 @@
     <MESSAGE value="set up functionality to switch decks from the json" />
     <MESSAGE value="Fixing functionality on empty decks" />
     <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Starting motivational messages, need to make prettier tomorrow" />
+    <MESSAGE value="setting up dynamic pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up dynamic pages" />
   </component>
 </project>
