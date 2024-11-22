@@ -109,10 +109,14 @@ public class NoteMain extends Application{
                 }
         );
 
-        /* Auto flash card listener */
+        /* Auto flash card listeners */
 
         model.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
             controller.trackBack(oldText, newText);
+        });
+
+        model.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            controller.trackFront(oldText, newText);
         });
 
 

@@ -50,8 +50,10 @@ public class NoteModel {
 
     /** if auto flashcards are on and waiting for back input */
     private boolean waitingForBackInput;
+    /** If auto flashcards are on on and waiting for front input */
+    private boolean waitingforFrontInput;
     /** the current card's front text */
-    private String currentCardFront;
+    private StringBuilder currentCardFront;
     /** the current card's back text buffer */
     private StringBuilder backBuffer;
 
@@ -65,7 +67,7 @@ public class NoteModel {
 
         waitingForBackInput = false;
         autoFlashcardEnabled = false;
-        currentCardFront = "";
+        currentCardFront = new StringBuilder();
         backBuffer = new StringBuilder();
 
         fontType = "Arial";
@@ -103,6 +105,10 @@ public class NoteModel {
 
     public void toggleBold() {
         this.boldEnabled = !boldEnabled;
+    }
+
+    public void setBold(boolean state) {
+        this.boldEnabled = state;
     }
 
     public boolean isItalicEnabled() {
@@ -160,16 +166,24 @@ public class NoteModel {
         this.waitingForBackInput = state;
     }
 
-    public String getCurrentCardFront() {
+    public StringBuilder getCurrentCardFront() {
         return this.currentCardFront;
     }
 
     public void setCurrentCardFront(String cardFront) {
-        this.currentCardFront = cardFront;
+        this.currentCardFront = new StringBuilder(cardFront);
     }
 
     public StringBuilder getBackBuffer() {
         return this.backBuffer;
+    }
+
+    public boolean isWaitingforFrontInput() {
+        return this.waitingforFrontInput;
+    }
+
+    public void setWaitingforFrontInput(boolean state) {
+        this.waitingforFrontInput = state;
     }
 
 

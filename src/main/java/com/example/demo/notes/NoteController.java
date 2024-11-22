@@ -97,6 +97,11 @@ public class NoteController {
         }
     }
 
+    /** Function that prints out everything in the deck. Debugging purposes ONLY */
+    private void printDeck(Deck deck) {
+        System.out.println(deck.getCards());
+    }
+
     /**
      * When auto flashcards are enabled, listen for the user to input a period (.)
      * @param oldText
@@ -109,26 +114,73 @@ public class NoteController {
         enabled and if the program is waiting for back input
          */
         if (noteModel.isAutoFlashcardEnabled() && noteModel.isWaitingForBackInput()) {
+            int start = noteModel.getTextArea().getSelection().getStart();
+            int end = noteModel.getTextArea().getSelection().getEnd();
+
+            // User is backspacing. Remove the previous input character from back buffer
+            if (newText.length() < oldText.length()) {
+                // User deleted selection. Remove it from our back buffer
+                /* NOTE: DOESN'T WORK LOL */
+                if (start != end) {
+                    System.out.println("Deleting selection");
+                    String toDelete = oldText.substring(start, end);
+                    int deleteIndex = backBuffer.indexOf(toDelete);
+                    if (deleteIndex > -1) {
+                        backBuffer.delete(deleteIndex, deleteIndex + toDelete.length());
+                    }
+                } else {
+                    backBuffer.deleteCharAt(backBuffer.length() - 1);
+                }
+            // User is currently typing in new characters ...
+            } else {
+                int changeIndex = oldText.length();
+                String addedText = newText.substring(changeIndex);
+
+                if (!addedText.isEmpty()) {
+                    char lastChar = addedText.charAt(addedText.length() - 1);
+
+                    // If the user inputs a '.', the back of the card is ready!
+                    if (lastChar == '.') {
+                        noteModel.setWaitingForBackInput(false);
+
+                        // Create the new flashcard
+                        TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront().toString(), backBuffer.toString().strip()));
+                        noteModel.getBackBuffer().delete(0, backBuffer.length()); // Clear
+                        noteModel.getCurrentCardFront().delete(0, noteModel.getCurrentCardFront().length());
+
+                        printDeck(TEMPORARY_DECK); /* REMOVE LATER */
+
+                    } else {
+                        // Else, add the text to the buffer for the back of the card
+                        backBuffer.append(addedText);
+                    }
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Dynamically typing the autoflashcard's front
+     * @param oldText previous text
+     * @param newText text after typing
+     */
+    void trackFront(String oldText, String newText) {
+
+        if (noteModel.isBoldEnabled() && noteModel.isWaitingforFrontInput() && noteModel.isAutoFlashcardEnabled()) {
             int changeIndex = oldText.length();
             String addedText = newText.substring(changeIndex);
 
             if (!addedText.isEmpty()) {
-                char lastChar = addedText.charAt(addedText.length()-1);
+                char lastChar = addedText.charAt(addedText.length() - 1);
+                    noteModel.getCurrentCardFront().append(lastChar);
 
-                   // If the user inputs a '.', the back of the card is ready!
-                if (lastChar == '.') {
-                    noteModel.setWaitingForBackInput(false);
-
-                    // Create the new flashcard
-                    TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront(), backBuffer.toString()));
-                    noteModel.getBackBuffer().delete(0, backBuffer.length()); // Clear
-
-                } else {
-                    // Else, add the text to the buffer for the back of the card
-                    backBuffer.append(addedText);
                 }
-            }
-
+        }
+        // Once user turns off bold again,  the card front is ready. Now we wait for the back
+        else if (!noteModel.isBoldEnabled()) {
+            noteModel.setWaitingforFrontInput(false);
+            noteModel.setWaitingForBackInput(true);
         }
     }
 
@@ -159,7 +211,7 @@ public class NoteController {
                 String front = noteModel.getTextArea().getText(start, end);
                 noteModel.setCurrentCardFront(front);
                 noteModel.setWaitingForBackInput(true);
-                System.out.println(front); /* REMOVE */
+                noteModel.toggleBold();
 
             }
             return;
@@ -176,6 +228,10 @@ public class NoteController {
         } else {
             noteModel.getCurrStyle().remove("-fx-font-weight: normal; ");
             noteModel.getCurrStyle().add("-fx-font-weight: bold; ");
+        }
+        /* We're now typing the text for the front of our card */
+        if (noteModel.isAutoFlashcardEnabled() && noteModel.isBoldEnabled()) {
+            noteModel.setWaitingforFrontInput(true);
         }
     }
 
