@@ -291,8 +291,15 @@ public class FlashcardScreenView extends StackPane {
     /**
      * An event handler for the confident button
      */
-    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-        thumbsUpButton.setOnAction(handler);
+    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+        thumbsUpButton.setOnAction(event -> {
+            // Execute original handler logic, if any
+            if (handler != null) {
+                handler.handle(event);
+                xpModel.addXP(10);
+            }
+
+        });
     }
 
     /**
