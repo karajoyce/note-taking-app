@@ -22,4 +22,19 @@ public class Page {
         title = pageTitle;
     }
 
+    public void setContents(InlineCssTextArea contentArea){
+        contents = contentArea;
+    }
+    public InlineCssTextArea getContents(){
+        return contents;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public void setTitle(String name){
+        title = name;
+    }
+
 }
