@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 public class TopViewBar extends StackPane {
@@ -15,13 +16,18 @@ public class TopViewBar extends StackPane {
     private Button settingButton;
 
     private Label titleLabel;
-    private TextField searchBox;
+
 
 
     public TopViewBar() {
         this.getStyleClass().add("top-bar");
         this.setAlignment(Pos.TOP_CENTER);
-        this.setPadding(new Insets(5));
+
+
+        this.setMinHeight(150);
+        this.setMaxHeight(150);
+        this.setMinWidth(400);
+        this.setMaxWidth(400);
 
         notesButton = new Button("Notes");
         notesButton.getStyleClass().add("note-button");
@@ -37,14 +43,7 @@ public class TopViewBar extends StackPane {
 
         titleLabel = new Label("Title");
 
-        searchBox = new TextField();
-        searchBox.setPrefWidth(300);
-        searchBox.getStyleClass().add("search-field");
-
-
-        searchBox.setPromptText("...");
-
-        this.getChildren().addAll(notesButton, flashButton, breakButton, settingButton, titleLabel, searchBox);
+        this.getChildren().addAll(notesButton, flashButton, breakButton, settingButton, titleLabel);
 
     }
     public Button getNotesButton() {
@@ -63,10 +62,6 @@ public class TopViewBar extends StackPane {
     public Label getTitleLabel() {
         return titleLabel;
     }
-    public TextField getSearchBox() {
-        return searchBox;
-    }
-
 
 
 }
