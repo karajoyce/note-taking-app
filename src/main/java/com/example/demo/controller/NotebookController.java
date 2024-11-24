@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Card;
 import com.example.demo.model.Notebook;
+import com.example.demo.model.Page;
+import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
 import javafx.stage.Stage;
 
@@ -23,9 +24,15 @@ public class NotebookController {
 
     public NotebookController(Notebook nModel, NotebookScreenView nView) {
         noteView = nView;
+        noteModel = nModel;
 
         nView.setAddPage(e -> {
-
+            System.out.println("here");
+            new NewPageController(this, noteModel, new Stage());
         });
+    }
+
+    public void runUpdate(){
+        noteView.runScreenUpdate();
     }
 }

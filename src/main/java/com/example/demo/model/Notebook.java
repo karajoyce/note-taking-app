@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +31,18 @@ public class Notebook {
 
     public void setTitle(String name){
         title = name;
+    }
+
+    public void addPage(Page newPage){
+        notes.add(newPage);
+    }
+
+    public void removePage(Page oldPage){
+        this.notes.remove(oldPage);
+    }
+
+    public int getSize(){
+        return notes.size();
     }
 
 }

@@ -1,9 +1,12 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.DigitalTree;
+import com.example.demo.model.Page;
 import com.example.demo.model.ToDoList;
 import com.example.demo.model.XPModel;
 import com.example.demo.notes.NoteController;
@@ -11,6 +14,7 @@ import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
@@ -20,6 +24,7 @@ import javafx.stage.Screen;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
+import java.util.List;
 
 /**
 
@@ -55,6 +60,7 @@ public class NotebookScreenView extends StackPane {
     NoteModel noteModel;
     NoteController noteController;
     NoteView noteView;
+    private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
     public NotebookScreenView() {
 
@@ -103,9 +109,9 @@ public class NotebookScreenView extends StackPane {
 
         //-------------------------
         // Deck selection pane
-        VBox deckSelection = new VBox();
+        VBox sidePanel = new VBox();
+        ListView<Button> deckSelection = new ListView<>();
         deckSelection.getStyleClass().add("deck");
-        deckSelection.setAlignment(Pos.TOP_CENTER);
         deckSelection.setMinWidth(screenWidth*0.15);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
@@ -116,13 +122,12 @@ public class NotebookScreenView extends StackPane {
         addPage.setMinHeight(50);
         HBox topLine = new HBox(addPage);
         topLine.setAlignment(Pos.TOP_RIGHT);
-        deckSelection.getChildren().add(topLine);
+        sidePanel.getChildren().add(topLine);
+        sidePanel.getChildren().add(deckSelection);
+        fullBox.getChildren().add(sidePanel);
 
         // Buttons for pages
-        pageButton.setAlignment(Pos.CENTER);
-        pageButton.setMinWidth(deckSelection.getMinWidth()-70);
-        pageButton.setMinHeight(160);
-        deckSelection.getChildren().add(pageButton);
+        populatePages(deckSelection);
         //-------------------------END
 
         //-------------------------
@@ -193,6 +198,27 @@ public class NotebookScreenView extends StackPane {
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
+    }
+
+    /**
+     * Function that grabs the list of decks from the JSON to make the buttons on the deck selection pane
+     * @param pageBox: the box to draw the buttons in
+     */
+    public void populatePages(ListView<Button> pageBox){
+        // Get names from the JSON
+        List<String> titles = NotesStorage.GeneratePageTitles();
+        for (String title: titles){
+            Button tButton = new Button(title);
+            tButton.setAlignment(Pos.CENTER);
+            tButton.setMinWidth(pageBox.getMinWidth()-70);
+            tButton.setMinHeight(160);
+            pageBox.getItems().add(tButton);
+            tButton.setOnAction(pageHandler);
+        }
+    }
+
+    public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        pageHandler = handler;
     }
     /**
      * An event handler for the confident button
