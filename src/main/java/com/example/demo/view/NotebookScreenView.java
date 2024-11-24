@@ -51,6 +51,7 @@ public class NotebookScreenView extends StackPane {
     private ToDoListController toDoCont;
     private ToDoList toDoList;
     private Button pageButton; // button to choose a deck
+    private Button addPage; // to add a new page to the notebook
     NoteModel noteModel;
     NoteController noteController;
     NoteView noteView;
@@ -58,10 +59,11 @@ public class NotebookScreenView extends StackPane {
     public NotebookScreenView() {
 
         //-------------------------
-        // Deck initialization, needs to change
+        // Screen Initialization
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
         pageButton = new Button("Test Page"); // this should be a deck name later
+        addPage = new Button("+");
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
@@ -108,7 +110,15 @@ public class NotebookScreenView extends StackPane {
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
 
-        // Buttons for decks
+        // Button for adding a new page
+        addPage.setAlignment(Pos.CENTER);
+        addPage.setMinWidth(50);
+        addPage.setMinHeight(50);
+        HBox topLine = new HBox(addPage);
+        topLine.setAlignment(Pos.TOP_RIGHT);
+        deckSelection.getChildren().add(topLine);
+
+        // Buttons for pages
         pageButton.setAlignment(Pos.CENTER);
         pageButton.setMinWidth(deckSelection.getMinWidth()-70);
         pageButton.setMinHeight(160);
@@ -183,6 +193,12 @@ public class NotebookScreenView extends StackPane {
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
+    }
+    /**
+     * An event handler for the confident button
+     */
+    public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        addPage.setOnAction(handler);
     }
 
     //Adding XP tracking when entering this screen
