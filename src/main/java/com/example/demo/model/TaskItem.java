@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
  Kara Leier, kjl061, 11293306
@@ -37,7 +38,7 @@ public class TaskItem {
     private ImageView deleteIcon; // ImageView for the trash icon
     private ImageView reminderIcon; // ImageView for the reminder (bell) icon
     private Task task; // Store reference to Task
-
+    private XPModel xpModel;
     private static final String TRASH_ICON_PATH = "deleteIcon.png"; // Update with the correct path
     private static final String BELL_ICON_PATH = "bellIcon.png"; // Path for bell icon
 
@@ -65,6 +66,7 @@ public class TaskItem {
         // Set action for the checkbox to toggle task completion
         checkBox.setOnAction(e -> {
             task.toggleCompleted(); // Toggle task completion status
+            //Add implementation that gives more xp anytime this happens
             label.setText(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
         });
 
