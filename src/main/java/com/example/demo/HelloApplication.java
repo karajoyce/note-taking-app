@@ -46,6 +46,7 @@ public class HelloApplication extends Application {
         NotebookController notebookController = new NotebookController(nModel, nView);
 
         MainMenuScreenView mView = new MainMenuScreenView();
+        TopViewBar topViewBar = new TopViewBar();
 
         MotivationalMessagesView motView = new MotivationalMessagesView();
 

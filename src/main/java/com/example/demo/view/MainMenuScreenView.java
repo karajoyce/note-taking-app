@@ -59,7 +59,6 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getStyleClass().add("bigbox");
         fullBox.setMaxWidth(screenWidth);
         fullBox.setMaxHeight(screenHeight);
-        //-------------------------END
 
         //-------------------------
         // Set up flashcard middle section
@@ -70,6 +69,13 @@ public class MainMenuScreenView extends StackPane {
         cardSection.setMinWidth((screenWidth * 0.7) - 10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
+
+        // adding settings
+        VBox topViewBar = new VBox();
+        topViewBar.setAlignment(Pos.TOP_CENTER);
+        topViewBar.getStyleClass().add("topViewBar");
+        cardSection.getChildren().add(topViewBar);
+        //-------------------------END
 
 
         //Card text setup
@@ -95,13 +101,6 @@ public class MainMenuScreenView extends StackPane {
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
-
-        //--------------------------
-        VBox topViewBar = new VBox();
-        topViewBar.setAlignment(Pos.TOP_CENTER);
-        topViewBar.getStyleClass().add("topViewBar");
-
-        this.getChildren().add(topViewBar);
     }
 }
 
