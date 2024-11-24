@@ -1,4 +1,6 @@
 package com.example.demo;
+import com.example.demo.controller.NotebookController;
+import com.example.demo.model.Notebook;
 import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
@@ -38,8 +40,13 @@ public class HelloApplication extends Application {
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
+
         NotebookScreenView nView = new NotebookScreenView();
+        Notebook nModel = new Notebook("CMPT281");
+        NotebookController notebookController = new NotebookController(nModel, nView);
+
         MainMenuScreenView mView = new MainMenuScreenView();
+
         MotivationalMessagesView motView = new MotivationalMessagesView();
 
         Scene scene = new Scene(mView);
