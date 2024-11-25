@@ -1,6 +1,8 @@
 package com.example.demo.view;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +25,7 @@ import javafx.stage.StageStyle;
  * The BreakReminderView class represents a pop-up window that notifies the user to take a break.
  * It displays a reminder message and a dismiss button, which allows the user to close the reminder.
  */
-public class BreakReminderView {
+public class BreakReminderView extends Parent {
     private Stage reminderStage;
     private Label reminderMessage;
     private Button dismissButton;
@@ -86,5 +88,10 @@ public class BreakReminderView {
      */
     public Button getDismissButton() {
         return dismissButton;
+    }
+
+    @Override
+    public Node getStyleableNode() {
+        return super.getStyleableNode();
     }
 }

@@ -29,6 +29,7 @@ public class MainMenuScreenView extends StackPane {
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
     private TopViewBar topViewBar;
+    private BreakReminderView breakReminderView;
 
     private Button foldersButton; // New button
 
@@ -66,6 +67,22 @@ public class MainMenuScreenView extends StackPane {
             }
             // Navigate to the FoldersScreen
             primaryStage.setScene(new Scene(foldersScreenView));
+        });
+
+        topViewBar.getBreakButton().setOnAction(event -> {
+
+            if (primaryStage == null) {
+                System.err.println("PrimaryStage is not set!");
+                return;
+            }
+            if (breakReminderView == null) {
+                // Lazy initialization of FoldersScreenView
+                breakReminderView = new BreakReminderView();
+            }
+            // Navigate to the FoldersScreen
+            primaryStage.setScene(new Scene(breakReminderView));
+
+
         });
 
         runMainScreenUpdate();
@@ -118,8 +135,8 @@ public class MainMenuScreenView extends StackPane {
         topViewBarBox.getChildren().add(topViewBar.getTopViewBar());
         cardSection.getChildren().add(topViewBarBox);
         topViewBarBox.getStyleClass().add("topViewBar");
-        topViewBarBox.setAlignment(Pos.TOP_LEFT);
-        topViewBarBox.setSpacing(40);
+        topViewBarBox.setAlignment(Pos.TOP_CENTER);
+        topViewBarBox.setSpacing(90);
         //-------------------------END
 
 
