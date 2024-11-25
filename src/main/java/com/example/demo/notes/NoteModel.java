@@ -45,6 +45,10 @@ public class NoteModel {
     /** font style. e.g. Verdana, Times New Roman, etc. */
     private String fontType;
 
+    /**Added by Nathan, Fields for tags and images **/
+    private Set<String> tags = new HashSet<>();
+    private String imagePath;
+
     /** Constructor */
     public NoteModel() {
 
@@ -124,5 +128,30 @@ public class NoteModel {
 
     public InlineCssTextArea getTextArea() {
         return textArea;
+    }
+
+    /**ADDED BY NATHAN SETTERS AND GETTERS FOR TAGS AND IMAGE**/
+    public void addTag(String tag){
+        tags.add(tag);
+    }
+
+    public void removeTag(String tag){
+        tags.remove(tag);
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public boolean containsKeyword(String keyword){
+        return tags.contains(keyword) || textArea.getText().contains(keyword);
     }
 }
