@@ -1,10 +1,8 @@
 package com.example.demo;
-import com.example.demo.controller.NotebookController;
+import com.example.demo.controller.*;
 import com.example.demo.model.Notebook;
 import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
-import com.example.demo.controller.FoldersController;
-import com.example.demo.controller.NavigationController;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.model.FoldersModel;
 import com.example.demo.model.Notebook;
@@ -23,7 +21,6 @@ import javafx.application.Platform;
 -
  */
 
-import com.example.demo.controller.FlashcardScreenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
@@ -60,6 +57,8 @@ public class HelloApplication extends Application {
 
         MainMenuScreenView mView = new MainMenuScreenView();
         TopViewBar topViewBar = new TopViewBar();
+
+        MainMenuScreenViewController mViewCon = new MainMenuScreenViewController(mView, topViewBar, primaryStage );
 
         MotivationalMessagesView motView = new MotivationalMessagesView();
 

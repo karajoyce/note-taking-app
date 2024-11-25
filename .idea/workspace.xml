@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Sigma Sigma on the wall whos the skibidist of them all. Got the topview bar showing but is not at TOP">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="What da sikibidi? I pushed my merge and also need help with BUTTONS!!!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TopViewBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TopViewBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -466,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732403273774</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="What da sikibidi? I pushed my merge and also need help with BUTTONS!!!!!!">
+      <option name="closed" value="true" />
+      <created>1732518162348</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1732518162348</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,8 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="text area made but buttons look icky and some of them are non functional" />
-    <MESSAGE value="all text size gets edited... no.." />
     <MESSAGE value="it was working until css ruined my life" />
     <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
     <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
@@ -527,6 +531,7 @@
     <MESSAGE value="working on integration and pages" />
     <MESSAGE value="working on adding pages to notebook" />
     <MESSAGE value="Sigma Sigma on the wall whos the skibidist of them all. Got the topview bar showing but is not at TOP" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sigma Sigma on the wall whos the skibidist of them all. Got the topview bar showing but is not at TOP" />
+    <MESSAGE value="What da sikibidi? I pushed my merge and also need help with BUTTONS!!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="What da sikibidi? I pushed my merge and also need help with BUTTONS!!!!!!" />
   </component>
 </project>
