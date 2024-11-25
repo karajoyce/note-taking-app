@@ -43,7 +43,7 @@ public class HelloApplication extends Application {
         MotivationalMessagesView motView = new MotivationalMessagesView();
 
         //Change the screen depending on the above.
-        Scene scene = new Scene(fCardView);
+        Scene scene = new Scene(nView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flashcard");

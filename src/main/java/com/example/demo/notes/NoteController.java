@@ -418,4 +418,16 @@ public class NoteController {
         System.out.println(noteModel.getCurrStyle());
     }
 
+    /**CHANGES ADDED BY NATHAN FOR TAGS AND WHATNOT**/
+    public void addTagNote(String tag){
+        noteModel.addTag(tag);
+    }
+
+    public void removeTagFromNote(String tag){
+        noteModel.removeTag(tag);
+    }
+
+    public boolean searchNoteByKeyword(String keyword){
+        return noteModel.containsKeyword(keyword);
+    }
 }

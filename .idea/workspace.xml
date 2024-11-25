@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Fixing functionality on empty decks">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Implementation for Notes tags sort of complete. Will need to update so the search is found in the Folders view in main menu instead of Notes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +48,12 @@
     }
   }
 }</component>
-  <component name="GitLabMergeRequestsSettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "first": "https://git.cs.usask.ca/kjl061/370-01-t05-team4.git",
-    "second": "ef3c5907-2a16-4838-8289-3f10ec2edb3b"
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://git.cs.usask.ca/kjl061/370-01-t05-team4.git&quot;,
+    &quot;second&quot;: &quot;ef3c5907-2a16-4838-8289-3f10ec2edb3b&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -165,7 +169,9 @@
       <workItem from="1731950858516" duration="12133000" />
       <workItem from="1732069190530" duration="26131000" />
       <workItem from="1732511356524" duration="2446000" />
-      <workItem from="1732520754358" duration="681000" />
+      <workItem from="1732520754358" duration="990000" />
+      <workItem from="1732558790382" duration="11702000" />
+      <workItem from="1732575283832" duration="1224000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -463,7 +469,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732512504227</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Added functionality for getting and setting Notes based on tags, as well as a way to get and set images based on file path">
+      <option name="closed" value="true" />
+      <created>1732523075070</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1732523075070</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,8 +495,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
-    <MESSAGE value="updated docstrings" />
     <MESSAGE value="updated default font family" />
     <MESSAGE value="added strikethrough option" />
     <MESSAGE value="added ability to change paragraph alignment" />
@@ -506,6 +518,8 @@
     <MESSAGE value="Fixing functionality on empty decks" />
     <MESSAGE value="added xp boost for when the confidence up button is clicked" />
     <MESSAGE value="Implementation is still not working for XP boost on TODO :(" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation is still not working for XP boost on TODO :(" />
+    <MESSAGE value="Added functionality for getting and setting Notes based on tags, as well as a way to get and set images based on file path" />
+    <MESSAGE value="Implementation for Notes tags sort of complete. Will need to update so the search is found in the Folders view in main menu instead of Notes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementation for Notes tags sort of complete. Will need to update so the search is found in the Folders view in main menu instead of Notes" />
   </component>
 </project>

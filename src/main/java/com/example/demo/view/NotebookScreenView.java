@@ -10,9 +10,11 @@ import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
 import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -20,6 +22,7 @@ import javafx.stage.Screen;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
+import java.util.Set;
 
 /**
 
@@ -174,15 +177,22 @@ public class NotebookScreenView extends StackPane {
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
-
         //BUTTON FOR NOW MAYBE CHANGE LATER;
-        xpToggleButton = new Button("START XP TRACKING ");
+        /*xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
+
+         */
+        VBox tags = new VBox();
+        addTagsAndSearchToLayout(tags);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);
+        fullBox.getChildren().add(todolist);
+        //Tags and stuff to work?
+
     }
 
     //Adding XP tracking when entering this screen
@@ -203,5 +213,93 @@ public class NotebookScreenView extends StackPane {
             xpToggleButton.setText("STOP XP TRACKING");
         }
         isTrackingXP = !isTrackingXP;
+    }
+
+    // Section for managing tags
+    private VBox tagsSection = new VBox();
+    private TextField tagInputField = new TextField();
+    private Button addTagButton = new Button("Add Tag");
+
+    private VBox displayedTags = new VBox();
+
+    // Section for searching notes
+    private HBox searchSection = new HBox();
+    private TextField searchField = new TextField();
+    private Button searchButton = new Button("Search");
+
+    private void initializeTagsSection() {
+        tagInputField.setPromptText("Enter a tag...");
+        addTagButton.setPrefSize(85, 25);
+        addTagButton.setStyle("-fx-font-size: 15px;");
+        addTagButton.setOnAction(e -> {
+            String newTag = tagInputField.getText();
+            if (!newTag.isEmpty()) {
+                noteController.addTagNote(newTag);
+                tagInputField.clear();
+                updateDisplayedTags();
+            }
+        });
+        tagsSection.getChildren().addAll(tagInputField, addTagButton, displayedTags);
+        tagsSection.setSpacing(10);
+        tagsSection.setAlignment(Pos.CENTER_LEFT);
+        updateDisplayedTags();
+    }
+
+    private void initializeSearchSection() {
+        searchField.setPromptText("Search for a note...");
+        searchButton.setPrefSize(85, 25);
+        searchButton.setStyle("-fx-font-size: 15px;");
+        searchButton.setOnAction(e -> {
+            String keyword = searchField.getText();
+            if (!keyword.isEmpty()) {
+                boolean found = noteController.searchNoteByKeyword(keyword);
+                if (found) {
+                    showSearchResultPopup("FOUND THE TAG");
+                } else {
+                    showSearchResultPopup("TAG NOT FOUND :(");
+                }
+            }
+        });
+
+        searchSection.getChildren().addAll(searchField, searchButton);
+        searchSection.setSpacing(10);
+        searchSection.setAlignment(Pos.CENTER_LEFT);
+    }
+
+    private void addTagsAndSearchToLayout(VBox mainLayout) {
+        initializeSearchSection();
+        initializeTagsSection();
+        mainLayout.getChildren().addAll(searchSection, tagsSection);
+    }
+    private void updateDisplayedTags() {
+        displayedTags.getChildren().clear(); // Clear the previous display
+
+        for (String tag : noteModel.getTags()) {
+            HBox tagItem = new HBox();
+            tagItem.setSpacing(10);
+
+            // Display the tag
+            Label tagLabel = new Label(tag);
+
+            // Add a remove button for each tag
+            Button removeButton = new Button("Remove");
+            removeButton.setStyle("-fx-font-size: 10px;");
+            removeButton.setPrefSize(70,25);
+            removeButton.setOnAction(e -> {
+                noteController.removeTagFromNote(tag); // Remove the tag
+                updateDisplayedTags(); // Refresh the display
+            });
+
+            tagItem.getChildren().add(tagLabel);
+            tagItem.getChildren().add(removeButton);
+            displayedTags.getChildren().add(tagItem);
+        }
+    }
+    private void showSearchResultPopup(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Search Result");
+        alert.setHeaderText(null); // No header text
+        alert.setContentText(message);
+        alert.showAndWait(); // Blocks until the user dismisses the alert
     }
 }
