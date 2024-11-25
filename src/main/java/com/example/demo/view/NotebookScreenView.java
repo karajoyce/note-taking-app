@@ -292,3 +292,9 @@ public class NotebookScreenView extends StackPane {
         isTrackingXP = !isTrackingXP;
     }
 }
+
+
+
+
+
+

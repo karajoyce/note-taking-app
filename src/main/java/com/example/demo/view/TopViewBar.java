@@ -4,7 +4,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 
 public class TopViewBar extends HBox {
 
@@ -13,6 +16,7 @@ public class TopViewBar extends HBox {
     private Button flashButton;
     private Button breakButton;
     private Button settingButton;
+    private Button foldersButton; // Add folders button
 
     private Label titleLabel;
 
@@ -40,7 +44,10 @@ public class TopViewBar extends HBox {
         titleLabel = new Label("TruNotes");
         titleLabel.getStyleClass().add("main-title-label");
 
-        topBar.getChildren().addAll(titleLabel, notesButton, flashButton, breakButton, settingButton);
+        foldersButton = new Button("Folders"); // Initialize folders button
+        foldersButton.getStyleClass().add("folders-button");
+
+        topBar.getChildren().addAll(titleLabel, notesButton, flashButton, breakButton, settingButton, foldersButton);
 
     }
     public Button getNotesButton() {
@@ -56,9 +63,17 @@ public class TopViewBar extends HBox {
     public Button getSettingButton() {
         return settingButton;
     }
+
+    public Button getFoldersButton() {
+        return foldersButton;
+    }
+
     public HBox getTopViewBar() {
         return topBar; // Return the HBox
     }
 
 
 }
+
+
+

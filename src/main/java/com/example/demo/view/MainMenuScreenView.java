@@ -29,7 +29,6 @@ public class MainMenuScreenView extends StackPane {
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
     private TopViewBar topViewBar;
-    private BreakReminderView breakReminderView;
 
     private Button foldersButton; // New button
 
@@ -50,46 +49,34 @@ public class MainMenuScreenView extends StackPane {
 
         mView = new MotivationalMessagesView();
 
-        foldersButton = new Button("Folders");
-        foldersButton.getStyleClass().add("folders-button");
-        topViewBar.getChildren().add(foldersButton); // Add to top view
+        //foldersButton = new Button("Folders");
+        //foldersButton.getStyleClass().add("folders-button");
+        //topViewBar.getChildren().add(foldersButton); // Add to top view
 
         // Add an event handler for the folders button
-        foldersButton.setOnAction(event -> {
-            if (primaryStage == null) {
-                System.err.println("PrimaryStage is not set!");
-                return;
-            }
-            if (foldersScreenView == null) {
+        //foldersButton.setOnAction(event -> {
+        //    if (primaryStage == null) {
+        //        System.err.println("PrimaryStage is not set!");
+         //       return;
+           // }
+            //if (foldersScreenView == null) {
                 // Lazy initialization of FoldersScreenView
-                foldersScreenView = new FoldersScreenView();
-                foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
-            }
+          //      foldersScreenView = new FoldersScreenView();
+           //     foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
+            //}
             // Navigate to the FoldersScreen
-            primaryStage.setScene(new Scene(foldersScreenView));
-        });
-
-        topViewBar.getBreakButton().setOnAction(event -> {
-
-            if (primaryStage == null) {
-                System.err.println("PrimaryStage is not set!");
-                return;
-            }
-            if (breakReminderView == null) {
-                // Lazy initialization of FoldersScreenView
-                breakReminderView = new BreakReminderView();
-            }
-            // Navigate to the FoldersScreen
-            primaryStage.setScene(new Scene(breakReminderView));
-
-
-        });
+            //primaryStage.setScene(new Scene(foldersScreenView));
+        //});
 
         runMainScreenUpdate();
     }
 
+    public TopViewBar getTopViewBar() {
+        return this.topViewBar;
+    }
+
     public Button getFoldersButton() {
-        return foldersButton;
+        return topViewBar.getFoldersButton();
     }
 
 
@@ -97,8 +84,16 @@ public class MainMenuScreenView extends StackPane {
         this.primaryStage = stage;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
         this.foldersScreenView = foldersScreenView;
+    }
+
+    public FoldersScreenView getFoldersScreenView() {
+        return foldersScreenView;
     }
 
     public void runMainScreenUpdate() {
@@ -128,15 +123,15 @@ public class MainMenuScreenView extends StackPane {
 
         // adding settings
         //VBox topViewBar = new VBox();
-        topViewBar.setAlignment(Pos.TOP_CENTER);
+        topViewBar.setAlignment(Pos.TOP_LEFT);
         topViewBar.getStyleClass().add("topViewBar");
         cardSection.getChildren().add(topViewBar);
         VBox topViewBarBox = new VBox();
         topViewBarBox.getChildren().add(topViewBar.getTopViewBar());
         cardSection.getChildren().add(topViewBarBox);
         topViewBarBox.getStyleClass().add("topViewBar");
-        topViewBarBox.setAlignment(Pos.TOP_CENTER);
-        topViewBarBox.setSpacing(90);
+        topViewBarBox.setAlignment(Pos.TOP_LEFT);
+        topViewBarBox.setSpacing(40);
         //-------------------------END
 
 
@@ -165,4 +160,6 @@ public class MainMenuScreenView extends StackPane {
         this.getChildren().add(fullBox);
     }
 }
+
+
 
