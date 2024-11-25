@@ -49,30 +49,34 @@ public class MainMenuScreenView extends StackPane {
 
         mView = new MotivationalMessagesView();
 
-        foldersButton = new Button("Folders");
-        foldersButton.getStyleClass().add("folders-button");
-        topViewBar.getChildren().add(foldersButton); // Add to top view
+        //foldersButton = new Button("Folders");
+        //foldersButton.getStyleClass().add("folders-button");
+        //topViewBar.getChildren().add(foldersButton); // Add to top view
 
         // Add an event handler for the folders button
-        foldersButton.setOnAction(event -> {
-            if (primaryStage == null) {
-                System.err.println("PrimaryStage is not set!");
-                return;
-            }
-            if (foldersScreenView == null) {
+        //foldersButton.setOnAction(event -> {
+        //    if (primaryStage == null) {
+        //        System.err.println("PrimaryStage is not set!");
+         //       return;
+           // }
+            //if (foldersScreenView == null) {
                 // Lazy initialization of FoldersScreenView
-                foldersScreenView = new FoldersScreenView();
-                foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
-            }
+          //      foldersScreenView = new FoldersScreenView();
+           //     foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
+            //}
             // Navigate to the FoldersScreen
-            primaryStage.setScene(new Scene(foldersScreenView));
-        });
+            //primaryStage.setScene(new Scene(foldersScreenView));
+        //});
 
         runMainScreenUpdate();
     }
 
+    public TopViewBar getTopViewBar() {
+        return this.topViewBar;
+    }
+
     public Button getFoldersButton() {
-        return foldersButton;
+        return topViewBar.getFoldersButton();
     }
 
 
@@ -80,8 +84,16 @@ public class MainMenuScreenView extends StackPane {
         this.primaryStage = stage;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
         this.foldersScreenView = foldersScreenView;
+    }
+
+    public FoldersScreenView getFoldersScreenView() {
+        return foldersScreenView;
     }
 
     public void runMainScreenUpdate() {
@@ -114,6 +126,12 @@ public class MainMenuScreenView extends StackPane {
         topViewBar.setAlignment(Pos.TOP_CENTER);
         topViewBar.getStyleClass().add("topViewBar");
         cardSection.getChildren().add(topViewBar);
+        VBox topViewBarBox = new VBox();
+        topViewBarBox.getChildren().add(topViewBar.getTopViewBar());
+        cardSection.getChildren().add(topViewBarBox);
+        topViewBarBox.getStyleClass().add("topViewBar");
+        topViewBarBox.setAlignment(Pos.TOP_LEFT);
+        topViewBarBox.setSpacing(40);
         //-------------------------END
 
 
@@ -142,5 +160,6 @@ public class MainMenuScreenView extends StackPane {
         this.getChildren().add(fullBox);
     }
 }
+
 
 

@@ -1,7 +1,6 @@
 package com.example.demo;
-import com.example.demo.controller.FoldersController;
-import com.example.demo.controller.NavigationController;
-import com.example.demo.controller.NotebookController;
+import com.example.demo.controller.*;
+import com.example.demo.model.BreakReminderModel;
 import com.example.demo.model.FoldersModel;
 import com.example.demo.model.Notebook;
 import com.example.demo.view.*;
@@ -19,7 +18,6 @@ import javafx.application.Platform;
 -
  */
 
-import com.example.demo.controller.FlashcardScreenController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
@@ -29,12 +27,20 @@ import com.example.demo.model.FlashcardScreen;
 public class HelloApplication extends Application {
 
     private static Stage primaryStage;
+    private BreakReminderController breakReminderController;
     @Override
     public void start(Stage stage){
 
         primaryStage = stage;
 
         NavigationController navigationController = new NavigationController(primaryStage);
+
+        // Break Reminder setup
+        long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
+        BreakReminderModel breakReminderModel = new BreakReminderModel(defaultInterval);
+        BreakReminderView breakReminderView = new BreakReminderView();
+        this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
+        breakReminderController.startReminders();
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
@@ -54,13 +60,22 @@ public class HelloApplication extends Application {
         FoldersScreenView foldersScreenView = new FoldersScreenView();
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
 
+
+
         // Create Views
         MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
 
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
         Scene foldersScene = new Scene(foldersScreenView);
+        Scene flashcardScene = new Scene(new FlashcardScreenView());
+        Scene notebookScene = new Scene(new NotebookScreenView());
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
+
+
+
 
 
         // Set required references in MainMenuScreenView
