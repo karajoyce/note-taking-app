@@ -9,14 +9,13 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-public class EditCardView {
-    private TextField frontCard; // Input field for the card description
-    private TextField backCard; // Input field for the card description
-    private Button updateCardButton; // Button to update the card
+public class NewPageView {
+    private TextField title; // Input field for the card description
+    private Button createPageButton; // Button to update the card
     private GridPane grid; // to display everything
 
-    public EditCardView(Stage stage, Runnable onTaskCreated){
-        stage.setTitle("Add Card");
+    public NewPageView(Stage stage, Runnable onTaskCreated) {
+        stage.setTitle("Add Page");
 
         // Setting up the layout of the screen
         grid = new GridPane();
@@ -25,10 +24,7 @@ public class EditCardView {
         grid.setHgap(10);
 
         // setting up the text areas
-        frontCard = new TextField();
-        frontCard.setPromptText("Enter front of the card");
-        backCard = new TextField();
-        backCard.setPromptText("Enter the back of the card");
+        title = new TextField("Enter the title of the new page.");
 
         // set up rows and columns
         grid.getColumnConstraints().add(new ColumnConstraints(50));
@@ -41,47 +37,34 @@ public class EditCardView {
 
         // place things in said rows and columns
         grid.setAlignment(Pos.CENTER);
-        frontCard.setPrefHeight(100);
-        backCard.setPrefHeight(100);
+        title.setPrefHeight(100);
 
-        GridPane.setConstraints(frontCard, 1, 0);
-        GridPane.setColumnSpan(frontCard, 3);
-        GridPane.setConstraints(backCard, 1, 1);
-        GridPane.setColumnSpan(backCard, 3);
-        updateCardButton = new Button("Update Card");
-        updateCardButton.getStyleClass().add("editbutton");
-        updateCardButton.setMinWidth(150);
-        GridPane.setConstraints(updateCardButton, 2, 3);
+        GridPane.setConstraints(title, 1, 0);
+        GridPane.setColumnSpan(title, 3);
+        createPageButton = new Button("Update Card");
+        createPageButton.getStyleClass().add("editbutton");
+        createPageButton.setMinWidth(150);
+        GridPane.setConstraints(createPageButton, 1, 3);
 
         // Set up the layout
-        grid.getChildren().addAll(frontCard, backCard, updateCardButton);
+        grid.getChildren().addAll(title, createPageButton);
         Scene scene = new Scene(grid, 500, 350);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         grid.getStyleClass().add("grid");
         stage.setScene(scene);
 
-        updateCardButton.setOnAction(e -> {
+        createPageButton.setOnAction(e -> {
             // Call the provided function when the task is created
             onTaskCreated.run();
             stage.close(); // Close the task creation window
         });
     }
+    public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
 
-    public String getFrontDescription(){
-        return frontCard.getText();
     }
 
-    public String getBackDescription(){
-        return backCard.getText();
+    public String getTitle() {
+        return title.getText();
     }
-
-//    public void clearInput(){
-//        frontCard.clear();
-//        backCard.clear();
-//    }
-//
-//    public GridPane getGrid(){
-//        return grid;
-//    }
 }
 

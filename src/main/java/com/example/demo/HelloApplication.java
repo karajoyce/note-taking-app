@@ -1,7 +1,8 @@
 package com.example.demo;
-import com.example.demo.controller.BreakReminderController;
-import com.example.demo.model.BreakReminderModel;
-import com.example.demo.view.BreakReminderView;
+import com.example.demo.controller.NotebookController;
+import com.example.demo.model.Notebook;
+import com.example.demo.view.*;
+import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
 
 /*
@@ -21,12 +22,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
-import com.example.demo.view.FlashcardScreenView;
-import com.example.demo.view.NotebookScreenView;
 
 public class HelloApplication extends Application {
+
+    private static Stage primaryStage;
     @Override
     public void start(Stage stage){
+
+        primaryStage = stage;
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
@@ -37,16 +40,28 @@ public class HelloApplication extends Application {
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
+
         NotebookScreenView nView = new NotebookScreenView();
+        Notebook nModel = new Notebook("CMPT281");
+        NotebookController notebookController = new NotebookController(nModel, nView);
 
+        MainMenuScreenView mView = new MainMenuScreenView();
 
-        Scene scene = new Scene(fCardView);
+        MotivationalMessagesView motView = new MotivationalMessagesView();
+
+        Scene scene = new Scene(mView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        stage.setScene(scene);
-        stage.setTitle("Flashcard");
-        //stage.setMaximized(true); // instead of fullScreen
-        stage.setFullScreen(true);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Flashcard");
+        // Wrap full-screen mode changes inside Platform.runLater
+        Platform.runLater(() -> {
+            primaryStage.setFullScreen(true);  // or false to exit full-screen
+        });
+        primaryStage.show();
+    }
+
+    public static Stage getStage(){
+        return primaryStage;
     }
 
     public static void main(String[] args) {

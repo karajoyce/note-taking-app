@@ -9,7 +9,10 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.model.Card;
+import com.example.demo.model.Deck;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
@@ -58,7 +61,7 @@ public class FlashcardScreenController {
 
         fCardView.setDeleteButton(e -> {
 
-            if (fCardModel.getDeck().size()==1){
+            if (fCardModel.getDeck().getSize()==1){
                 fCardModel.removeCard(fCardView.getCurrentCard());
                 fCardView.setCurrentCard(null);
                 deckUpdate();
@@ -72,10 +75,48 @@ public class FlashcardScreenController {
 
         fCardView.setAddFlashcardButton(e -> {
             Card temp = new Card("", "");
-            fCardModel.getDeck().add(temp);
+            fCardModel.getDeck().addCard(temp);
             new EditCardController(temp, fCardModel, this, new Stage());
             deckUpdate();
         });
+
+        fCardView.setChangeDeckButton(e -> {
+            Deck newDeck = FlashcardStorage.LoadFlashCards(((Button)e.getSource()).getText());
+            if (newDeck.getCards().isEmpty()){
+                fCardView.setCurrentCard(new Card("", ""));
+            } else {
+                fCardView.setCurrentCard(newDeck.getCards().getFirst());
+            }
+            fCardModel.setDeck(newDeck);
+            fCardView.runDeckUpdate();
+        });
+
+        fCardView.setConfidentButton(e -> {
+            fCardView.getCurrentCard().setConfidenceLevel(true);
+
+            // flip to next card to allow only one choice
+            fCardView.setChangeCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
+            deckUpdate();
+
+            // todo save conf level to json
+        });
+
+        fCardView.setNotConfidentButton(e -> {
+            fCardView.getCurrentCard().setConfidenceLevel(false);
+
+            // flip to next card to allow only one choice
+            fCardView.setChangeCard(true);
+            if (fCardView.checkBack()){
+                fCardView.flipIsBack();
+            }
+            deckUpdate();
+
+            // todo save conf level to json
+        });
+        deckUpdate();
     }
 
     public void deckUpdate(){
@@ -83,3 +124,4 @@ public class FlashcardScreenController {
     }
 
 }
+

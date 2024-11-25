@@ -39,7 +39,7 @@ public class XPController {
     }
 
     private void setupXPTimer() {
-        xpTimeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> addXPOverTime(10)));
+        xpTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> addXPOverTime(0.5)));
         xpTimeline.setCycleCount(Timeline.INDEFINITE);
     }
 
@@ -62,7 +62,9 @@ public class XPController {
 
         updateView();
     }
+    public void addXpBonus(){
 
+    }
     private void handleLevelUp() {
         int prevLvl = model.getLevel();
         if (model.getLevel() ==  1 && prevLvl == 1) {
@@ -84,3 +86,5 @@ public class XPController {
 
 
 }
+
+

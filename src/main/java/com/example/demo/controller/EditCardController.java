@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import javafx.stage.Stage;
 import com.example.demo.model.Card;
 import com.example.demo.model.FlashcardScreen;
@@ -31,5 +32,8 @@ public class EditCardController {
             currentCard.setCardBack(backCard);
         }
         fControl.deckUpdate();
+        FlashcardStorage.SaveDeck(fModel.getDeck());
     }
 }
+
+
