@@ -5,10 +5,7 @@ import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
-import com.example.demo.model.DigitalTree;
-import com.example.demo.model.Page;
-import com.example.demo.model.ToDoList;
-import com.example.demo.model.XPModel;
+import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
@@ -42,6 +39,8 @@ public class NotebookScreenView extends StackPane {
     // Deck initialization, needs to change
     double screenHeight;
     double screenWidth;
+
+    private String currentFolder;
 
     private XPModel xpModel;
     private XPView xpView;
@@ -82,12 +81,40 @@ public class NotebookScreenView extends StackPane {
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
 
+        currentFolder = new String();
+
         /* Initialize (MVC) */
         noteModel = new NoteModel();
         noteController= new NoteController(noteModel);
         noteView= new NoteView(noteController);
 
         runScreenUpdate();
+    }
+
+    public void setCurrentFolder(String folderName) {
+        // Update the current folder
+        this.currentFolder = folderName;
+
+        // Clear and update the notes or content associated with the new folder
+        System.out.println("Switched to folder: " + folderName);
+
+        // Update the title or header to reflect the current folder
+        this.getChildren().clear(); // Clear the existing view
+
+        // Re-run the update logic with the current folder set
+        runScreenUpdate();
+
+        // Add a label or update the screen to show the folder name
+        VBox headerBox = new VBox();
+        headerBox.setAlignment(Pos.CENTER);
+        headerBox.setSpacing(10);
+
+        javafx.scene.control.Label folderLabel = new javafx.scene.control.Label("Current Folder: " + folderName);
+        folderLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;");
+        headerBox.getChildren().add(folderLabel);
+
+        // Add the header box at the top of the UI
+        this.getChildren().add(0, headerBox);
     }
 
     public void runScreenUpdate(){

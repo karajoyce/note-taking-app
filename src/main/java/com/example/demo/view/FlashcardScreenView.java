@@ -433,3 +433,5 @@ public class FlashcardScreenView extends StackPane {
         isTrackingXP = !isTrackingXP;
     }
 }
+
+

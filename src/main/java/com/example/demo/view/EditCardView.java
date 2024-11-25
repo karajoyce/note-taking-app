@@ -65,7 +65,7 @@ public class EditCardView {
             onTaskCreated.run();
             stage.close(); // Close the task creation window
         });
-        }
+    }
 
     public String getFrontDescription(){
         return frontCard.getText();
@@ -84,3 +84,4 @@ public class EditCardView {
 //        return grid;
 //    }
 }
+

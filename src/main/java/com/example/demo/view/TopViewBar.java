@@ -9,9 +9,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
-public class TopViewBar extends HBox {
-
-    private HBox topBar;
 
     private Button notesButton;
     private Button flashButton;

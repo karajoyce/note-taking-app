@@ -22,13 +22,13 @@ public class MainMenuScreenViewController {
 
         topViewBar.getBreakButton().setOnAction(event -> {
 
-           stage.getScene().setRoot(new MainMenuScreenView());
+            stage.getScene().setRoot(new MainMenuScreenView());
 
         });
 
         topViewBar.getFlashButton().setOnAction(event -> {
 
-           stage.getScene().setRoot(new FlashcardScreenView());
+            stage.getScene().setRoot(new FlashcardScreenView());
 
         });
 

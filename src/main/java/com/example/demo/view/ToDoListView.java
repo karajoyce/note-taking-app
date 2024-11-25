@@ -8,6 +8,8 @@ import javafx.scene.layout.*;
 import com.example.demo.model.TaskItem;
 import javafx.stage.Screen;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 /**
@@ -37,40 +39,18 @@ public class ToDoListView extends VBox {
 
         tasks = new ArrayList<>(); // Initialize the tasks list
 
-
-        // Layout
-        grid = new GridPane();
-        grid.setPadding(new javafx.geometry.Insets(10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-        grid.setMinHeight((Screen.getPrimary().getBounds().getMaxY()-100)*0.5);
-        grid.setMinWidth((Screen.getPrimary().getBounds().getMaxY()-100)*0.25);
-
         // List View
         taskListView = new ListView<>();
 
-        grid.getColumnConstraints().add(new ColumnConstraints(25));
-        grid.getColumnConstraints().add(new ColumnConstraints(50));
-        grid.getColumnConstraints().add(new ColumnConstraints(150));
-        grid.getColumnConstraints().add(new ColumnConstraints(50));
-        grid.getColumnConstraints().add(new ColumnConstraints(25));
-        grid.getRowConstraints().add(new RowConstraints(325));
-        grid.getRowConstraints().add(new RowConstraints(50));
-
-        GridPane.setConstraints(taskListView, 0, 0);
-        taskListView.setMinHeight(325);
-        GridPane.setColumnSpan(taskListView, 5);
-
         // Add Task Button
         addTaskButton = new Button("Add Task");
-        addTaskButton.getStyleClass().add("xpbar");
-        addTaskButton.setAlignment(Pos.CENTER);
-        GridPane.setConstraints(addTaskButton, 2, 1);
+        HBox buttonContainer = new HBox(addTaskButton);
+        buttonContainer.setAlignment(Pos.CENTER);
 
-        grid.setAlignment(Pos.CENTER);
-
-        // Set up the layout
-        grid.getChildren().addAll(taskListView, addTaskButton);
+        // Set up the main VBox layout
+        this.setSpacing(10); // Adjust spacing as needed
+        this.setAlignment(Pos.TOP_CENTER); // Align items to the center of the VBox
+        this.getChildren().addAll(taskListView, buttonContainer); // Add the list and centered button
 
     }
 
@@ -90,10 +70,22 @@ public class ToDoListView extends VBox {
 
             // Customize each item's HBox style
             HBox itemView = taskItem.getView();
-            itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
+
+            // Check if the task's due date has passed
+            LocalDate dueDate = LocalDate.ofEpochDay(task.getTaskDueDate() / (1000 * 60 * 60 * 24));
+            LocalDate today = LocalDate.now(ZoneId.systemDefault());
+
+            if (dueDate.isBefore(today)) {
+                // Set red background for overdue tasks
+                itemView.setStyle("-fx-background-color: rgba(255, 0, 0, 0.5); -fx-padding: 10; -fx-background-radius: 5;");
+            } else {
+                // Set a default background for non-overdue tasks
+                itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
+            }
 
 
-            taskListView.getItems().add(taskItem.getView()); // Add the HBox view to the list
+            //taskListView.getItems().add(taskItem.getView());
+            taskListView.getItems().add(itemView);// Add the HBox view to the list
 
         }
     }
@@ -142,8 +134,8 @@ public class ToDoListView extends VBox {
         }
     }
 
-    public GridPane getToDoListView() {
-        return grid;
+    public VBox getToDoListView() {
+        return this;
     }
 
 }

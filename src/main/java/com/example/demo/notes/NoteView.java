@@ -83,7 +83,7 @@ public class NoteView  {
         fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
 
         /* Text alignment
-        * Replace the text to images? */
+         * Replace the text to images? */
         Button alignLeftButton = new Button("Left");
         alignLeftButton.getStyleClass().add("textEditorButton");
         alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
@@ -105,3 +105,5 @@ public class NoteView  {
 
 
 }
+
+

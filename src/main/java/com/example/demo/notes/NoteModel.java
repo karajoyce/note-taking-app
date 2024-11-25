@@ -127,3 +127,4 @@ public class NoteModel {
     }
     public void setTextArea(InlineCssTextArea textA){ this.textArea = textA; }
 }
+

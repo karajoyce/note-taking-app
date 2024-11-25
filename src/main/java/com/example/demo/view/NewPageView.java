@@ -67,3 +67,4 @@ public class NewPageView {
         return title.getText();
     }
 }
+
