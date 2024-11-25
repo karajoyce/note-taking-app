@@ -7,6 +7,9 @@
     <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="What da sikibidi? I pushed my merge and also need help with BUTTONS!!!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,6 +493,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="text area made but buttons look icky and some of them are non functional" />
+    <MESSAGE value="all text size gets edited... no.." />
     <MESSAGE value="it was working until css ruined my life" />
     <MESSAGE value="got font styles to change but there's some bugs i have to fix" />
     <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
@@ -512,6 +517,8 @@
     <MESSAGE value="tasks turn red if they're past their due date or completed" />
     <MESSAGE value="first attempt at a folders screen" />
     <MESSAGE value="can navigate between the main menu and the folders screen now" />
+    <MESSAGE value="making progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="making progress" />
     <MESSAGE value="Merging for the deliverable 2" />
     <MESSAGE value="Made new branch for the last sprint" />
     <MESSAGE value="Fixing UI colouring to prepare for the next screen" />
