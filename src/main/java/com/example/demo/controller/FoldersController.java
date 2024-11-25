@@ -40,7 +40,7 @@ public class FoldersController {
 
     private void openNotebook(String folderName) {
         // Open the notebook for the selected folder
-        //notebookScreenView.setCurrentFolder(folderName);
+        notebookScreenView.setCurrentFolder(folderName);
         primaryStage.setScene(new Scene(notebookScreenView));
     }
 
