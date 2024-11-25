@@ -295,3 +295,6 @@ public class NotebookScreenView extends StackPane {
 
 
 
+
+
+
