@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.model.Task;
+import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -79,11 +80,11 @@ public class ToDoListView extends VBox {
      *
      * @param tasks An ArrayList of Task objects to display in the task list view.
      */
-    public void setTaskList(ArrayList<Task> tasks) {
+    public void setTaskList(ArrayList<Task> tasks, XPModel xpModel) {
         this.tasks = tasks;
         taskListView.getItems().clear();
         for (Task task : tasks) {
-            TaskItem taskItem = new TaskItem(task, e -> {
+            TaskItem taskItem = new TaskItem(task, xpModel, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
             });

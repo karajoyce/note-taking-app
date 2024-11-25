@@ -72,7 +72,7 @@ public class NotebookScreenView extends StackPane {
 
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
         /* Initialize (MVC) */
         noteModel = new NoteModel();

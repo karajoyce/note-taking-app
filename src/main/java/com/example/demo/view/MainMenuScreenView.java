@@ -3,6 +3,7 @@ package com.example.demo.view;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.DigitalTree;
+import com.example.demo.model.XPModel;
 import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -26,6 +27,8 @@ public class MainMenuScreenView extends StackPane {
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
 
+    private XPModel xpModel;
+
 
     public MainMenuScreenView(){
         // Deck initialization, needs to change
@@ -35,7 +38,7 @@ public class MainMenuScreenView extends StackPane {
 
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
         mView = new MotivationalMessagesView();
 

@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import com.example.demo.view.ToDoListView;
+import com.example.demo.model.XPModel;
 
 public class MainUI extends Application {
     @Override
@@ -25,9 +26,10 @@ public class MainUI extends Application {
         BorderPane pane = new BorderPane();
 
         // Create and set up the To-Do List
+        XPModel xpModel = null;
         ToDoList toDoList = new ToDoList();
         ToDoListView toDoListView = new ToDoListView();
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView, xpModel);
 
         // Create a VBox to hold the To-Do List and push it to the bottom
         VBox bottomRightContainer = new VBox();

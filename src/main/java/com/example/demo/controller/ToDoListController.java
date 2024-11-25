@@ -11,6 +11,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.ToDoList;
 import com.example.demo.view.ToDoListView;
+import com.example.demo.model.XPModel;
 import javafx.stage.Stage;
 
 /**
@@ -21,13 +22,14 @@ public class ToDoListController  {
 
     private ToDoList toDoList; // The model representing the list of tasks
     private ToDoListView toDoListView; // The view for displaying the to-do list
+    private XPModel xpModel;
 
     /**
      * Constructs a ToDoListController with the specified ToDoList and primary stage.
      *
      * @param toDoList The ToDoList instance that holds the tasks.
      */
-    public ToDoListController(ToDoList toDoList, ToDoListView toDoListView) {
+    public ToDoListController(ToDoList toDoList, ToDoListView toDoListView, XPModel xpModel) {
         this.toDoList = toDoList;
         this.toDoListView = toDoListView;
         updateTaskListView(); // Populate the view with current tasks
@@ -43,7 +45,7 @@ public class ToDoListController  {
      * Updates the task list view with the current list of tasks from the model.
      */
     public void updateTaskListView() {
-        toDoListView.setTaskList(toDoList.getTasks());
+        toDoListView.setTaskList(toDoList.getTasks(), xpModel);
     }
 }
 
