@@ -316,11 +316,19 @@ Sara Shakeel, gvk731, 11367521
     -fx-padding: 10px;
     -fx-background-color: #ead0e4;
 }
-.top-bar {
+.topViewBar {
     -fx-background-color: #d9b3ff;
-    -fx-padding: 10px;
+    -fx-padding: 5px;
     -fx-border-color: #b58cd9;
-    -fx-border-width: 0 0 2px 0;
+    -fx-border-width: 2px 2px 2px 2px;
     -fx-alignment: center-left;
-    -fx-spacing: 15px;
+    -fx-spacing: 5px;
+
+}
+.main-title-label{
+
+    -fx-font-size: 35px;
+    -fx-min-height: 45;
+    -fx-max-height: 45;
+    -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
 }

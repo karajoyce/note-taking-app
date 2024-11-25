@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.example.demo.FilerSystem.XPStorage;
+
 public class XPModel {
     private double currentXP;
     private double maxXP;
@@ -32,6 +34,7 @@ public class XPModel {
         if (isMaxXPReached()) {
             levelUp();
         }
+        XPStorage.SaveXPBar(this);
     }
     private void levelUp() {
         level++;

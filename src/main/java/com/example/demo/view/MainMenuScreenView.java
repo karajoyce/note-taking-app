@@ -71,10 +71,12 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getChildren().add(cardSection);
 
         // adding settings
-        VBox topViewBar = new VBox();
-        topViewBar.setAlignment(Pos.TOP_CENTER);
-        topViewBar.getStyleClass().add("topViewBar");
-        cardSection.getChildren().add(topViewBar);
+        VBox topViewBarBox = new VBox();
+        topViewBarBox.getChildren().add(topViewBar.getTopViewBar());
+        cardSection.getChildren().add(topViewBarBox);
+        topViewBarBox.getStyleClass().add("topViewBar");
+        topViewBarBox.setAlignment(Pos.TOP_LEFT);
+        topViewBarBox.setSpacing(40);
         //-------------------------END
 
 

@@ -6,9 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
-public class TopViewBar extends StackPane {
+public class TopViewBar extends HBox {
+
+    private HBox topBar;
 
     private Button notesButton;
     private Button flashButton;
@@ -20,14 +23,12 @@ public class TopViewBar extends StackPane {
 
 
     public TopViewBar() {
-        this.getStyleClass().add("top-bar");
-        this.setAlignment(Pos.TOP_CENTER);
+        topBar = new HBox();
+        topBar.getStyleClass().add("top-bar");
+        topBar.setPadding(new Insets(10));
+        topBar.setAlignment(Pos.TOP_LEFT);
+        topBar.setSpacing(20);
 
-
-        this.setMinHeight(150);
-        this.setMaxHeight(150);
-        this.setMinWidth(400);
-        this.setMaxWidth(400);
 
         notesButton = new Button("Notes");
         notesButton.getStyleClass().add("note-button");
@@ -41,9 +42,10 @@ public class TopViewBar extends StackPane {
         settingButton = new Button("Setting");
         settingButton.getStyleClass().add("setting-button");
 
-        titleLabel = new Label("Title");
+        titleLabel = new Label("TruNotes");
+        titleLabel.getStyleClass().add("main-title-label");
 
-        this.getChildren().addAll(notesButton, flashButton, breakButton, settingButton, titleLabel);
+        topBar.getChildren().addAll(titleLabel, notesButton, flashButton, breakButton, settingButton);
 
     }
     public Button getNotesButton() {
@@ -59,8 +61,8 @@ public class TopViewBar extends StackPane {
     public Button getSettingButton() {
         return settingButton;
     }
-    public Label getTitleLabel() {
-        return titleLabel;
+    public HBox getTopViewBar() {
+        return topBar; // Return the HBox
     }
 
 
