@@ -66,6 +66,7 @@ public class NoteModel {
         strikethroughEnabled = false;
 
         waitingForBackInput = false;
+        waitingforFrontInput = false;
         autoFlashcardEnabled = false;
         currentCardFront = new StringBuilder();
         backBuffer = new StringBuilder();
@@ -84,7 +85,6 @@ public class NoteModel {
         textArea.setWrapText(true);
 
     }
-
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {
@@ -154,8 +154,21 @@ public class NoteModel {
         return autoFlashcardEnabled;
     }
 
-    public void toggleAutoFlashCard() {
+    public void changeAutoFlashCardState() {
         this.autoFlashcardEnabled = !autoFlashcardEnabled;
+
+        /* If autoflashcards were turned off, we want to clear the buffers so they don't affect the next
+        auto flash card making session
+         */
+        if (!this.autoFlashcardEnabled) {
+            resetBackBuffer();
+            setCurrentCardFront("");
+            setWaitingforFrontInput(false);
+            setWaitingForBackInput(false);
+        } else {
+            setWaitingforFrontInput(true);
+            setWaitingForBackInput(false);
+        }
     }
 
     public boolean isWaitingForBackInput() {
@@ -178,6 +191,10 @@ public class NoteModel {
         return this.backBuffer;
     }
 
+    public void resetBackBuffer() {
+        this.backBuffer = new StringBuilder();
+    }
+
     public boolean isWaitingforFrontInput() {
         return this.waitingforFrontInput;
     }
@@ -185,6 +202,5 @@ public class NoteModel {
     public void setWaitingforFrontInput(boolean state) {
         this.waitingforFrontInput = state;
     }
-
 
 }

@@ -10,7 +10,6 @@
 package com.example.demo.notes;
 
 import javafx.application.Application;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
@@ -23,8 +22,6 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.fxmisc.richtext.InlineCssTextArea;
-
-import java.awt.geom.Rectangle2D;
 
 /**
  * Runs the application of the text editor
@@ -60,12 +57,6 @@ public class NoteMain extends Application{
         Scene scene = new Scene(root, screenWidth, screenHeight);
 
         scene.getStylesheets().add(getClass().getResource("/noteStyle.css").toExternalForm());
-
-        /* TO DO :
-        - CENTER THE TEXT AREA!!!
-         */
-
-        //scrollPane.getStyleClass().add("text-area");
 
 
         /* Add shortcuts for toggling font formatting ! */
