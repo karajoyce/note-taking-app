@@ -5,8 +5,10 @@ import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.StageStyle;
 
 public class FoldersController {
     private FoldersModel foldersModel;
@@ -38,10 +40,17 @@ public class FoldersController {
         primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
+    public NotebookScreenView getNoteBookView() {
+        return this.notebookScreenView;
+    }
+
     private void openNotebook(String folderName) {
         // Open the notebook for the selected folder
+        if (notebookScreenView.getScene() != null) {
+            notebookScreenView.getScene().setRoot(new StackPane()); // Detach it by setting a dummy root
+        }
         notebookScreenView.setCurrentFolder(folderName);
-        primaryStage.setScene(new Scene(notebookScreenView));
+        primaryStage.setScene(new Scene(notebookScreenView)); // Reattach it to the new scene
     }
 
     private void addNewFolder() {

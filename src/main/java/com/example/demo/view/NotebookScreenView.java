@@ -56,6 +56,7 @@ public class NotebookScreenView extends StackPane {
     private ToDoList toDoList;
     private Button pageButton; // button to choose a deck
     private Button addPage; // to add a new page to the notebook
+    private Button pageBack;
     NoteModel noteModel;
     NoteController noteController;
     NoteView noteView;
@@ -69,6 +70,7 @@ public class NotebookScreenView extends StackPane {
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
         pageButton = new Button("Test Page"); // this should be a deck name later
         addPage = new Button("+");
+        pageBack = new Button("Back");
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
@@ -125,6 +127,8 @@ public class NotebookScreenView extends StackPane {
         this.getChildren().clear();
         //-------------------------END
 
+
+
         //-------------------------
         // Main box to hold elements
         HBox fullBox = new HBox();
@@ -133,6 +137,16 @@ public class NotebookScreenView extends StackPane {
         fullBox.setMaxWidth(screenWidth);
         fullBox.setMaxHeight(screenHeight);
         //-------------------------END
+
+        // Left panel with Back button
+        VBox leftPanel = new VBox();
+        pageBack.setMinWidth(100);
+        pageBack.setMinHeight(50);
+        pageBack.getStyleClass().add("back-button");
+        leftPanel.setAlignment(Pos.TOP_LEFT);
+        leftPanel.setSpacing(20); // Add some spacing
+        leftPanel.getChildren().add(pageBack);
+        fullBox.getChildren().add(leftPanel);
 
         //-------------------------
         // Deck selection pane
@@ -242,6 +256,10 @@ public class NotebookScreenView extends StackPane {
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }
+    }
+
+    public Button getBackButton() {
+        return pageBack;
     }
 
     public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){

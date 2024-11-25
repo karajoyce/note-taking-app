@@ -70,6 +70,7 @@ public class HelloApplication extends Application {
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen());
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
+        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen());
 
 
 
