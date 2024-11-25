@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.DigitalTree;
@@ -48,25 +49,6 @@ public class MainMenuScreenView extends StackPane {
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
-
-        //foldersButton = new Button("Folders");
-        //foldersButton.getStyleClass().add("folders-button");
-        //topViewBar.getChildren().add(foldersButton); // Add to top view
-
-        // Add an event handler for the folders button
-        //foldersButton.setOnAction(event -> {
-        //    if (primaryStage == null) {
-        //        System.err.println("PrimaryStage is not set!");
-         //       return;
-           // }
-            //if (foldersScreenView == null) {
-                // Lazy initialization of FoldersScreenView
-          //      foldersScreenView = new FoldersScreenView();
-           //     foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
-            //}
-            // Navigate to the FoldersScreen
-            //primaryStage.setScene(new Scene(foldersScreenView));
-        //});
 
         runMainScreenUpdate();
     }
@@ -156,6 +138,8 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStyleClass().add("rightVbox");
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        //ToDoStorage.LoadToDoList();
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }
