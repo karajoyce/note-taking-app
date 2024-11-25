@@ -21,7 +21,7 @@ import java.util.ArrayList;
  **/
 
 public class ToDoListView extends VBox {
-
+    private XPModel xpModel;
     private ListView<HBox> taskListView;
     private Button addTaskButton;
     private ArrayList<Task> tasks;
@@ -78,13 +78,15 @@ public class ToDoListView extends VBox {
     /**
      * Updates the task list view with the provided list of tasks.
      *
-     * @param tasks An ArrayList of Task objects to display in the task list view.
+     * @param tasks   An ArrayList of Task objects to display in the task list view.
+     * @param xpModel
      */
     public void setTaskList(ArrayList<Task> tasks, XPModel xpModel) {
         this.tasks = tasks;
+        this.xpModel = xpModel;
         taskListView.getItems().clear();
         for (Task task : tasks) {
-            TaskItem taskItem = new TaskItem(task, xpModel, e -> {
+            TaskItem taskItem = new TaskItem(task, this.xpModel, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
             });

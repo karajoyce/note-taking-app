@@ -32,6 +32,7 @@ public class ToDoListController  {
     public ToDoListController(ToDoList toDoList, ToDoListView toDoListView, XPModel xpModel) {
         this.toDoList = toDoList;
         this.toDoListView = toDoListView;
+        this.xpModel = xpModel;
         updateTaskListView(); // Populate the view with current tasks
 
         // Set the action for the "Add Task" button

@@ -48,10 +48,12 @@ public class TaskItem {
     /**
      * Constructs a TaskItem with the specified task.
      *
-     * @param task The Task object containing the task's details.
+     * @param task    The Task object containing the task's details.
+     * @param xpModel
      */
     public TaskItem(Task task, XPModel xpModel, EventHandler<ActionEvent> deleteHandler) {
         this.task = task;
+        this.xpModel = xpModel;
         checkBox = new CheckBox();
         checkBox.setSelected(task.isCompleted());
 
@@ -68,7 +70,7 @@ public class TaskItem {
             task.toggleCompleted(); // Toggle task completion status
             //Add implementation that gives more xp anytime this happens
             if (task.isCompleted()) {
-                xpModel.addXP(10);
+                this.xpModel.addXP(10);
             }
             label.setText(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
         });
