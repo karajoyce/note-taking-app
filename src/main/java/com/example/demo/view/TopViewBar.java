@@ -9,14 +9,15 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
+public class TopViewBar extends HBox {
 
+    private HBox topBar = new HBox();
     private Button notesButton;
     private Button flashButton;
     private Button breakButton;
     private Button settingButton;
 
     private Label titleLabel;
-
 
 
     public TopViewBar() {

@@ -57,8 +57,6 @@ public class HelloApplication extends Application {
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
-        Notebook nModel = new Notebook("CMPT281");
-        NotebookController notebookController = new NotebookController(nModel, nView);
 
         MainMenuScreenView mView = new MainMenuScreenView();
         TopViewBar topViewBar = new TopViewBar();
