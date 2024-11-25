@@ -129,8 +129,30 @@ public class FoldersScreenView extends StackPane {
     public String showAddFolderDialog() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add Folder");
-        dialog.setHeaderText("Create a New Folder");
+        // Remove the default header by setting it to null
+        dialog.setHeaderText(null);
+
+        // Remove the graphic (the blue question mark icon)
+        dialog.setGraphic(null);
+
+        //dialog.setHeaderText("Create a New Folder");
         dialog.setContentText("Folder Name:");
+
+        // Apply styles to the dialog using CSS
+        dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
+        // Set custom styles for dialog components
+        dialog.getDialogPane().getStyleClass().add("cardview"); // Example CSS class
+        dialog.getDialogPane().lookupButton(dialog.getDialogPane().getButtonTypes().get(0)).getStyleClass().add("button"); // Apply button style
+        dialog.getDialogPane().lookupButton(dialog.getDialogPane().getButtonTypes().get(1)).getStyleClass().add("button"); // Apply button style to "Cancel"
+
+        dialog.getDialogPane().getContent().setStyle(
+                "-fx-font-family: 'Trebuchet MS', 'Sans Serif Collection'; " +
+                        "-fx-font-size: 15px; " +
+                        "-fx-padding: 10; " +
+                        "-fx-border-color: #ff99cc;"
+        );
+
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
     }

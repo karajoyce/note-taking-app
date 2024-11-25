@@ -123,7 +123,7 @@ public class MainMenuScreenView extends StackPane {
 
         // adding settings
         //VBox topViewBar = new VBox();
-        topViewBar.setAlignment(Pos.TOP_CENTER);
+        topViewBar.setAlignment(Pos.TOP_LEFT);
         topViewBar.getStyleClass().add("topViewBar");
         cardSection.getChildren().add(topViewBar);
         VBox topViewBarBox = new VBox();

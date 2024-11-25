@@ -50,7 +50,11 @@ public class FoldersController {
             notebookScreenView.getScene().setRoot(new StackPane()); // Detach it by setting a dummy root
         }
         notebookScreenView.setCurrentFolder(folderName);
-        primaryStage.setScene(new Scene(notebookScreenView)); // Reattach it to the new scene
+        notebookScreenView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        //primaryStage.setScene(new Scene(notebookScreenView)); // Reattach it to the new scene
+
+        Scene notebookScene = new Scene(notebookScreenView);
+        primaryStage.setScene(notebookScene); // Reattach it to the new scene
     }
 
     private void addNewFolder() {
