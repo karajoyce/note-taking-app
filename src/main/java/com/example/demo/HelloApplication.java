@@ -1,5 +1,8 @@
 package com.example.demo;
+import com.example.demo.controller.FoldersController;
+import com.example.demo.controller.NavigationController;
 import com.example.demo.controller.NotebookController;
+import com.example.demo.model.FoldersModel;
 import com.example.demo.model.Notebook;
 import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
@@ -31,6 +34,8 @@ public class HelloApplication extends Application {
 
         primaryStage = stage;
 
+        NavigationController navigationController = new NavigationController(primaryStage);
+
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
         // Deck initialization, needs to change
@@ -45,13 +50,31 @@ public class HelloApplication extends Application {
         Notebook nModel = new Notebook("CMPT281");
         NotebookController notebookController = new NotebookController(nModel, nView);
 
-        MainMenuScreenView mView = new MainMenuScreenView();
+        FoldersModel foldersModel = new FoldersModel();
+        FoldersScreenView foldersScreenView = new FoldersScreenView();
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
 
-        MotivationalMessagesView motView = new MotivationalMessagesView();
+        // Create Views
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
 
-        Scene scene = new Scene(mView);
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        primaryStage.setScene(scene);
+
+        // Create Scenes
+        Scene mainMenuScene = new Scene(mainMenuScreenView);
+        Scene foldersScene = new Scene(foldersScreenView);
+
+
+        // Set required references in MainMenuScreenView
+        navigationController.setMainMenuScene(mainMenuScene);
+        navigationController.setFoldersScene(foldersScene);
+
+        // Set Up Navigation in Views
+        mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen());
+        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
+
+
+
+        mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        primaryStage.setScene(mainMenuScene);
         primaryStage.setTitle("Flashcard");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {

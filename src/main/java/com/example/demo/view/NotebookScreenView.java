@@ -5,10 +5,7 @@ import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
-import com.example.demo.model.DigitalTree;
-import com.example.demo.model.Page;
-import com.example.demo.model.ToDoList;
-import com.example.demo.model.XPModel;
+import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
@@ -42,6 +39,8 @@ public class NotebookScreenView extends StackPane {
     // Deck initialization, needs to change
     double screenHeight;
     double screenWidth;
+
+    private String currentFolder;
 
     private XPModel xpModel;
     private XPView xpView;

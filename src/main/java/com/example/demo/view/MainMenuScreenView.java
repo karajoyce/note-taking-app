@@ -5,6 +5,7 @@ import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.DigitalTree;
 import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
@@ -12,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import javax.swing.*;
@@ -29,6 +31,9 @@ public class MainMenuScreenView extends StackPane {
     private TopViewBar topViewBar;
 
     private Button foldersButton; // New button
+
+    private Stage primaryStage; // Reference to the primary stage
+    private FoldersScreenView foldersScreenView; // Reference to FoldersScreenView
 
     public MainMenuScreenView() {
         // Deck initialization, needs to change
@@ -48,7 +53,35 @@ public class MainMenuScreenView extends StackPane {
         foldersButton.getStyleClass().add("folders-button");
         topViewBar.getChildren().add(foldersButton); // Add to top view
 
+        // Add an event handler for the folders button
+        foldersButton.setOnAction(event -> {
+            if (primaryStage == null) {
+                System.err.println("PrimaryStage is not set!");
+                return;
+            }
+            if (foldersScreenView == null) {
+                // Lazy initialization of FoldersScreenView
+                foldersScreenView = new FoldersScreenView();
+                foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(this))); // Back to MainMenuScreen
+            }
+            // Navigate to the FoldersScreen
+            primaryStage.setScene(new Scene(foldersScreenView));
+        });
+
         runMainScreenUpdate();
+    }
+
+    public Button getFoldersButton() {
+        return foldersButton;
+    }
+
+
+    public void setPrimaryStage(Stage stage) {
+        this.primaryStage = stage;
+    }
+
+    public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
+        this.foldersScreenView = foldersScreenView;
     }
 
     public void runMainScreenUpdate() {
@@ -77,7 +110,7 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getChildren().add(cardSection);
 
         // adding settings
-        VBox topViewBar = new VBox();
+        //VBox topViewBar = new VBox();
         topViewBar.setAlignment(Pos.TOP_CENTER);
         topViewBar.getStyleClass().add("topViewBar");
         cardSection.getChildren().add(topViewBar);
