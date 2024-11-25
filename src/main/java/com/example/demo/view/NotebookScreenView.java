@@ -5,10 +5,7 @@ import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
-import com.example.demo.model.DigitalTree;
-import com.example.demo.model.Page;
-import com.example.demo.model.ToDoList;
-import com.example.demo.model.XPModel;
+import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
@@ -50,25 +47,24 @@ public class NotebookScreenView extends StackPane {
     private boolean isTrackingXP = false;
 
     //Digital Tree
-    DigitalTree digitalTree;
+    private DigitalTree digitalTree;
 
     private ToDoListView toDoListV;
     private ToDoListController toDoCont;
     private ToDoList toDoList;
-    private Button pageButton; // button to choose a deck
     private Button addPage; // to add a new page to the notebook
-    NoteModel noteModel;
-    NoteController noteController;
-    NoteView noteView;
+    private NoteModel noteModel;
+    private NoteController noteController;
+    private NoteView noteView;
+    private Notebook currentNotebook;
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
-    public NotebookScreenView() {
+    public NotebookScreenView(Notebook currNotebook) {
 
         //-------------------------
         // Screen Initialization
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
-        pageButton = new Button("Test Page"); // this should be a deck name later
         addPage = new Button("+");
 
         //Initializing XP bar and system;
@@ -86,6 +82,8 @@ public class NotebookScreenView extends StackPane {
         noteModel = new NoteModel();
         noteController= new NoteController(noteModel);
         noteView= new NoteView(noteController);
+
+        currentNotebook = currNotebook;
 
         runScreenUpdate();
     }
@@ -206,9 +204,9 @@ public class NotebookScreenView extends StackPane {
      */
     public void populatePages(ListView<Button> pageBox){
         // Get names from the JSON
-        List<String> titles = NotesStorage.GeneratePageTitles();
-        for (String title: titles){
-            Button tButton = new Button(title);
+
+        for (Page page: currentNotebook.getNotes()){
+            Button tButton = new Button(page.getTitle());
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(pageBox.getMinWidth()-70);
             tButton.setMinHeight(160);

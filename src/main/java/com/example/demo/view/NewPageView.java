@@ -41,7 +41,7 @@ public class NewPageView {
 
         GridPane.setConstraints(title, 1, 0);
         GridPane.setColumnSpan(title, 3);
-        createPageButton = new Button("Update Card");
+        createPageButton = new Button("Add Page");
         createPageButton.getStyleClass().add("editbutton");
         createPageButton.setMinWidth(150);
         GridPane.setConstraints(createPageButton, 1, 3);

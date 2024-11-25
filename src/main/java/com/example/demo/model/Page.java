@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
+import java.io.Serializable;
+
 /**
 
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -13,7 +15,7 @@ import org.fxmisc.richtext.InlineCssTextArea;
 
  **/
 
-public class Page {
+public class Page implements Serializable {
 
     private String title;
     private InlineCssTextArea contents;

@@ -7,6 +7,7 @@ module com.example.demo {
     requires java.desktop;
     requires java.sql;
     requires com.google.gson;
+    requires javafx.graphics;
 
     requires org.fxmisc.richtext;
     requires org.fxmisc.flowless;

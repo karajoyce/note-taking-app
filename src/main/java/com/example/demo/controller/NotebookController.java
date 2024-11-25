@@ -27,7 +27,6 @@ public class NotebookController {
         noteModel = nModel;
 
         nView.setAddPage(e -> {
-            System.out.println("here");
             new NewPageController(this, noteModel, new Stage());
         });
     }

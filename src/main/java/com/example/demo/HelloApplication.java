@@ -1,6 +1,7 @@
 package com.example.demo;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.model.Notebook;
+import com.example.demo.model.Page;
 import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
@@ -41,15 +42,16 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
-        NotebookScreenView nView = new NotebookScreenView();
         Notebook nModel = new Notebook("CMPT281");
+        nModel.addPage(new Page("Lecture 1"));
+        NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
 
         MainMenuScreenView mView = new MainMenuScreenView();
 
         MotivationalMessagesView motView = new MotivationalMessagesView();
 
-        Scene scene = new Scene(nView);
+        Scene scene = new Scene(mView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flashcard");
