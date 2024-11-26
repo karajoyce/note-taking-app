@@ -58,8 +58,7 @@ public class FlashcardScreenView extends StackPane {
     DigitalTree digitalTree;
 
     private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
+
 
     public FlashcardScreenView() {
 
@@ -83,9 +82,11 @@ public class FlashcardScreenView extends StackPane {
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
 
-        toDoListV = new ToDoListView();
-        toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+
+    }
+
+    public void setToDoList(ToDoListView toDoListV) {
+        this.toDoListV = toDoListV;
     }
 
     /**

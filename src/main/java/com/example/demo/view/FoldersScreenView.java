@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
@@ -25,8 +26,6 @@ public class FoldersScreenView extends StackPane {
     private MotivationalMessagesView motivationalMessagesView;
     private EventHandler<MouseEvent> folderSelectionHandler;
     private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
     private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
 
@@ -36,9 +35,7 @@ public class FoldersScreenView extends StackPane {
         toDoListV = new ToDoListView();
         motivationalMessagesView = new MotivationalMessagesView();
 
-        toDoListV = new ToDoListView();
-        toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+
 
         // Initialize foldersGrid
         foldersGrid = new GridPane();
@@ -48,6 +45,10 @@ public class FoldersScreenView extends StackPane {
 
         // Run screen update
         runFoldersScreenUpdate();
+    }
+
+    public void setToDoList(ToDoListView toDoListV) {
+        this.toDoListV = toDoListV;
     }
 
     public void runFoldersScreenUpdate() {
@@ -115,6 +116,7 @@ public class FoldersScreenView extends StackPane {
         motivContainer.getStyleClass().add("motivation-container");
 
         VBox todoContainer = new VBox(toDoListV.getToDoListView());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         todoContainer.setMinHeight(screenHeight * 0.3);
         todoContainer.getStyleClass().add("todo-container");
 

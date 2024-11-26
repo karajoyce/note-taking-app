@@ -25,8 +25,6 @@ public class MainMenuScreenView extends StackPane {
     double screenWidth;
 
     private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
     private TopViewBar topViewBar;
@@ -36,21 +34,23 @@ public class MainMenuScreenView extends StackPane {
     private Stage primaryStage; // Reference to the primary stage
     private FoldersScreenView foldersScreenView; // Reference to FoldersScreenView
 
-    public MainMenuScreenView() {
+    public MainMenuScreenView(ToDoListView toDoListV) {
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
-        toDoListV = new ToDoListView();
-        toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
 
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
+        this.toDoListV = toDoListV;
 
         runMainScreenUpdate();
+    }
+
+    public void setToDoList(ToDoListView toDoListV) {
+        this.toDoListV = toDoListV;
     }
 
     public TopViewBar getTopViewBar() {

@@ -32,6 +32,10 @@ public class HelloApplication extends Application {
 
         NavigationController navigationController = new NavigationController(primaryStage);
 
+        ToDoList toDoList = new ToDoList();
+        ToDoListView toDoListView = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+
         // Break Reminder setup
         long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
         BreakReminderModel breakReminderModel = new BreakReminderModel(defaultInterval);
@@ -47,6 +51,7 @@ public class HelloApplication extends Application {
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
+        fCardView.setToDoList(toDoListView);
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
         Notebook nModel = new Notebook("CMPT281");
@@ -56,14 +61,16 @@ public class HelloApplication extends Application {
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
+        foldersScreenView.setToDoList(toDoListView);
 
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
 
 
 
         // Create Views
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(toDoListView);
+
         TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
 
@@ -92,7 +99,7 @@ public class HelloApplication extends Application {
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);
-        primaryStage.setTitle("Flashcard");
+        primaryStage.setTitle("Main Menu");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
             primaryStage.setFullScreen(true);  // or false to exit full-screen
