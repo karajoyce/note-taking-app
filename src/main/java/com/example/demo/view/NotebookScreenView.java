@@ -58,18 +58,21 @@ public class NotebookScreenView extends StackPane {
     private Button pageButton; // button to choose a deck
     private Button addPage; // to add a new page to the notebook
     private Button pageBack;
-    NoteModel noteModel;
-    NoteController noteController;
-    NoteView noteView;
+    private NoteModel noteModel;
+    private NoteController noteController;
+    private NoteView noteView;
+    private Notebook currentNotebook;
+    private Page currentPage;
+
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
-    public NotebookScreenView() {
+    public NotebookScreenView(Notebook currNotebook) {
 
         //-------------------------
         // Screen Initialization
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
-        pageButton = new Button("Test Page"); // this should be a deck name later
+        //pageButton = new Button("Test Page"); // this should be a deck name later
         addPage = new Button("+");
         pageBack = new Button("Back");
 
@@ -90,6 +93,11 @@ public class NotebookScreenView extends StackPane {
         noteModel = new NoteModel();
         noteController= new NoteController(noteModel);
         noteView= new NoteView(noteController);
+
+        currentNotebook = currNotebook;
+        currentPage = currentNotebook.getNotes().getFirst();
+        currentPage.setContents(noteModel.getTextArea());
+
 
         runScreenUpdate();
     }
@@ -249,16 +257,22 @@ public class NotebookScreenView extends StackPane {
      */
     public void populatePages(ListView<Button> pageBox){
         // Get names from the JSON
-        List<String> titles = NotesStorage.GeneratePageTitles();
-        for (String title: titles){
-            Button tButton = new Button(title);
+
+        for (Page page: currentNotebook.getNotes()){
+            Button tButton = new Button(page.getTitle());
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(pageBox.getMinWidth()-70);
             tButton.setMinHeight(160);
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }
+
     }
+
+    public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        pageHandler = handler;
+    }
+
 
     public Button getBackButton() {
         return pageBack;
@@ -293,6 +307,14 @@ public class NotebookScreenView extends StackPane {
         }
         isTrackingXP = !isTrackingXP;
     }
+
+    public void setCurrentPage(Page page){
+        currentPage = page;
+        currentPage.getContents().setPrefHeight(800);
+        currentPage.getContents().setPrefWidth(800);
+        noteModel.setTextArea(page.getContents());
+    }
+
 }
 
 

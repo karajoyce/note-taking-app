@@ -1,8 +1,6 @@
 package com.example.demo;
 import com.example.demo.controller.*;
-import com.example.demo.model.BreakReminderModel;
-import com.example.demo.model.FoldersModel;
-import com.example.demo.model.Notebook;
+import com.example.demo.model.*;
 import com.example.demo.view.*;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.application.Platform;
@@ -22,7 +20,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
-import com.example.demo.model.FlashcardScreen;
 
 public class HelloApplication extends Application {
 
@@ -52,8 +49,9 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
-        NotebookScreenView nView = new NotebookScreenView();
         Notebook nModel = new Notebook("CMPT281");
+        nModel.addPage(new Page("Lecture 1"));
+        NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
 
         FoldersModel foldersModel = new FoldersModel();
@@ -71,7 +69,7 @@ public class HelloApplication extends Application {
         Scene mainMenuScene = new Scene(mainMenuScreenView);
         Scene foldersScene = new Scene(foldersScreenView);
         Scene flashcardScene = new Scene(new FlashcardScreenView());
-        Scene notebookScene = new Scene(new NotebookScreenView());
+        Scene notebookScene = new Scene(new NotebookScreenView(nModel));
         MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
 
 

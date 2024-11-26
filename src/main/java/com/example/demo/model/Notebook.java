@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 
  **/
 
-public class Notebook {
+public class Notebook implements Serializable {
     private ArrayList<Page> notes;
     private String title;
 
@@ -46,5 +47,6 @@ public class Notebook {
     }
 
 }
+
 
 

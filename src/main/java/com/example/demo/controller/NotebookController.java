@@ -1,9 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.model.Card;
+import com.example.demo.model.Deck;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -27,8 +32,16 @@ public class NotebookController {
         noteModel = nModel;
 
         nView.setAddPage(e -> {
-            System.out.println("here");
             new NewPageController(this, noteModel, new Stage());
+        });
+        nView.setChangeButton(e -> {
+            String newPage = ((Button)e.getSource()).getText();
+            for (Page page: noteModel.getNotes()){
+                if (page.getTitle().equals(newPage)){
+                    nView.setCurrentPage(page);
+                }
+            }
+            runUpdate();
         });
     }
 
@@ -36,5 +49,7 @@ public class NotebookController {
         noteView.runScreenUpdate();
     }
 }
+
+
 
 
