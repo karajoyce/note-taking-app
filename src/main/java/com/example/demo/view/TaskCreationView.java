@@ -1,12 +1,15 @@
 package com.example.demo.view;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 
@@ -41,41 +44,47 @@ public class TaskCreationView {
      */
     public TaskCreationView(Stage primaryStage, Runnable onTaskCreated) {
         primaryStage.setTitle("Create New Task");
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.setFullScreen(false);
+        primaryStage.setResizable(false);
 
         // Layout
         grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
+        //grid.setStyle("-fx-background-color: #ff99cc;"); // Set background color for the GridPane
 
         // Title label
         titleLabel = new Label("Create New Task");
-        titleLabel.getStyleClass().add("task-title"); // Apply custom CSS class
-        GridPane.setConstraints(titleLabel, 0, 0, 2, 1); // Span across two columns
+        titleLabel.getStyleClass().add("task-title");
+        GridPane.setConstraints(titleLabel, 0, 0, 2, 1);
 
         // Task input
         taskDescriptionInput = new TextField();
         taskDescriptionInput.setPromptText("Task Description");
-        taskDescriptionInput.getStyleClass().add("task-description-input"); // Apply custom CSS class
+        taskDescriptionInput.getStyleClass().add("task-description-input");
         GridPane.setConstraints(taskDescriptionInput, 0, 0);
 
         dueDatePicker = new DatePicker();
         GridPane.setConstraints(dueDatePicker, 1, 0);
 
+        // Create Task Button and HBox for centering
         createTaskButton = new Button("Create Task");
-        GridPane.setConstraints(createTaskButton, 0, 1);
+        HBox buttonContainer = new HBox(createTaskButton);
+        buttonContainer.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(buttonContainer, 0, 1, 2, 1); // Span two columns
 
         grid.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
         // Set up the layout
-        grid.getChildren().addAll(taskDescriptionInput, dueDatePicker, createTaskButton);
+        grid.getChildren().addAll(titleLabel, taskDescriptionInput, dueDatePicker, buttonContainer);
         Scene scene = new Scene(grid, 300, 200);
         primaryStage.setScene(scene);
 
         createTaskButton.setOnAction(e -> {
-            // Call the provided function when the task is created
             onTaskCreated.run();
-            primaryStage.close(); // Close the task creation window
+            primaryStage.close();
         });
     }
 

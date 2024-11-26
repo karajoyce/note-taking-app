@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.model.DigitalTree;
 import com.example.demo.model.XPModel;
 import javafx.scene.media.AudioClip;
@@ -35,6 +36,7 @@ public class XPController {
             System.out.println("Error: Sound file not found. Please check the path.");
         }
 
+
         setupXPTimer();
     }
 
@@ -61,6 +63,7 @@ public class XPController {
         }
 
         updateView();
+        XPStorage.SaveXPBar(this.model);
     }
     public void addXpBonus(){
 
@@ -82,7 +85,10 @@ public class XPController {
 
     private void updateView(){
         view.updateXPview(model.getCurrentXP(), model.getMaxXP(), model.getLevel());
+
     }
 
 
 }
+
+

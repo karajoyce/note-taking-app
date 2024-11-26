@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.scene.text.Text;
 
@@ -39,6 +40,7 @@ public class MotivationalMessagesView extends StackPane {
         rand = new Random();
         motivmsg = new HBox();
 
+        // file found at https://gist.github.com/robatron/a66acc0eed3835119817#file-quotes-txt
         String txtInput = readString("/quotes.txt");
         messages = Arrays.asList(txtInput.split("\n"));
         this.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
@@ -50,15 +52,16 @@ public class MotivationalMessagesView extends StackPane {
 
         // set up layout
         motivmsg.setPadding(new javafx.geometry.Insets(10));
-        motivmsg.setMinHeight(350);
-        motivmsg.setMaxHeight(350);
-        motivmsg.setMinWidth(400);
-        motivmsg.setMaxWidth(400);
+        motivmsg.setMinHeight(325);
+        motivmsg.setMaxHeight(325);
+        motivmsg.setMinWidth(375);
+        motivmsg.setMaxWidth(375);
         motivmsg.getStyleClass().add("motivmsg");
         motivmsg.setAlignment(Pos.CENTER);
 
         Text display = new Text(messages.get(rand.nextInt(94)));
-        display.setWrappingWidth(motivmsg.getMinWidth());
+        display.setWrappingWidth(motivmsg.getMinWidth()-30);
+        display.setTextAlignment(TextAlignment.CENTER);
         motivmsg.getChildren().add(display);
 
         this.getChildren().add(motivmsg);

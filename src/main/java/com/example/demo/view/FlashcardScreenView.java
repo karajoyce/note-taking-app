@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
@@ -259,6 +260,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
@@ -291,15 +293,8 @@ public class FlashcardScreenView extends StackPane {
     /**
      * An event handler for the confident button
      */
-    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
-        thumbsUpButton.setOnAction(event -> {
-            // Execute original handler logic, if any
-            if (handler != null) {
-                handler.handle(event);
-                xpModel.addXP(10);
-            }
-
-        });
+    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        thumbsUpButton.setOnAction(handler);
     }
 
     /**
@@ -440,3 +435,5 @@ public class FlashcardScreenView extends StackPane {
         isTrackingXP = !isTrackingXP;
     }
 }
+
+

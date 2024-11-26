@@ -1,6 +1,7 @@
 package com.example.demo.FilerSystem;
 
 import com.example.demo.model.ToDoList;
+import com.example.demo.model.XPModel;
 import com.google.gson.Gson;
 import com.example.demo.model.Card;
 import com.google.gson.reflect.TypeToken;
@@ -16,7 +17,7 @@ public class XPStorage {
     //intialize gson
     private static Gson gson = new Gson();
 
-    /**
+
     public static void SaveXPBar(XPModel xp) {
         // Ensure the directory exists
         File directory = new File(directoryPath);
@@ -42,12 +43,13 @@ public class XPStorage {
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-            return new XPModel(10);
+
         }
+
 
     }
 
-     */
+
 
 
 }

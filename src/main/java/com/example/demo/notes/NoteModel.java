@@ -129,6 +129,7 @@ public class NoteModel {
     public InlineCssTextArea getTextArea() {
         return textArea;
     }
+    public void setTextArea(InlineCssTextArea textA){ this.textArea = textA; }
 
     /**ADDED BY NATHAN SETTERS AND GETTERS FOR TAGS AND IMAGE**/
     public void addTag(String tag){
@@ -155,3 +156,4 @@ public class NoteModel {
         return tags.contains(keyword) || textArea.getText().contains(keyword);
     }
 }
+

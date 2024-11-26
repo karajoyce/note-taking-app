@@ -19,7 +19,7 @@ public class FlashcardScreen {
 
     private Deck currentDeck; // storing the deck of cards
 
-    public FlashcardScreen(){
+    public FlashcardScreen(){ // send in current deck?
         // this needs to access database for proper deck based on controller button function
         currentDeck = new Deck("Test Deck");
     }
@@ -51,3 +51,5 @@ public class FlashcardScreen {
     }
 
 }
+
+
