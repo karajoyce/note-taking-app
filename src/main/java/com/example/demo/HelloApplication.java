@@ -56,14 +56,16 @@ public class HelloApplication extends Application {
         Notebook nModel = new Notebook("CMPT281");
         NotebookController notebookController = new NotebookController(nModel, nView);
 
+        ToDoListView todoV = new ToDoListView();
+
         FoldersModel foldersModel = new FoldersModel();
-        FoldersScreenView foldersScreenView = new FoldersScreenView();
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
+        FoldersScreenView foldersScreenView = new FoldersScreenView(todoV);
+        FoldersController foldersController = new FoldersController(todoV, foldersModel, foldersScreenView, primaryStage, nView);
 
 
 
         // Create Views
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(todoV);
         TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
 
@@ -72,7 +74,7 @@ public class HelloApplication extends Application {
         Scene foldersScene = new Scene(foldersScreenView);
         Scene flashcardScene = new Scene(new FlashcardScreenView());
         Scene notebookScene = new Scene(new NotebookScreenView());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, todoV);
 
 
 

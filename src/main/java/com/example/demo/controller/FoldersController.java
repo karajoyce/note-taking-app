@@ -4,6 +4,7 @@ import com.example.demo.model.FoldersModel;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.MainMenuScreenView;
+import com.example.demo.view.ToDoListView;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -15,12 +16,14 @@ public class FoldersController {
     private FoldersScreenView foldersScreenView;
     private Stage primaryStage;
     private NotebookScreenView notebookScreenView;
+    private ToDoListView toDoListView;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NotebookScreenView notebookView) {
+    public FoldersController( ToDoListView toDoListView, FoldersModel model, FoldersScreenView view, Stage stage, NotebookScreenView notebookView) {
         this.foldersModel = model;
         this.foldersScreenView = view;
         this.primaryStage = stage;
         this.notebookScreenView = notebookView;
+        this.toDoListView = toDoListView;
 
         // Populate folders on the screen
         foldersScreenView.populateFolders(foldersModel.getFolders());
@@ -37,7 +40,7 @@ public class FoldersController {
 
     private void goToMainMenu() {
         // Navigate back to the main menu
-        primaryStage.setScene(new Scene(new MainMenuScreenView()));
+        primaryStage.setScene(new Scene(new MainMenuScreenView(toDoListView)));
     }
 
     public NotebookScreenView getNoteBookView() {

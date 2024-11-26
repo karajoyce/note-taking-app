@@ -9,6 +9,7 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.ToDoList;
 import com.example.demo.view.ToDoListView;
 import javafx.stage.Stage;
@@ -43,7 +44,8 @@ public class ToDoListController  {
      * Updates the task list view with the current list of tasks from the model.
      */
     public void updateTaskListView() {
-        toDoListView.setTaskList(toDoList.getTasks());
+        /*toDoListView.setTaskList(toDoList.getTasks());*/
+        toDoListView.setTaskList(ToDoStorage.LoadToDoList());
     }
 }
 

@@ -44,6 +44,7 @@ public class ToDoStorage {
             Type toDoList = new TypeToken<ArrayList<Task>>() {
             }.getType();
 
+
             return gson.fromJson(ToDoListPath, toDoList);
 
         } catch (FileNotFoundException e) {

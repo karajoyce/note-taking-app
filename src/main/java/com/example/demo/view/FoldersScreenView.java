@@ -28,11 +28,11 @@ public class FoldersScreenView extends StackPane {
     private Button pageBack; // button to go back to main menu
     private Button addFolderButton;
 
-    public FoldersScreenView() {
+    public FoldersScreenView(ToDoListView toDoListView) {
         // Initialize components
         pageBack = new Button("Back");
 
-        toDoListV = new ToDoListView();
+        toDoListV = toDoListView;
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
         motivationalMessagesView = new MotivationalMessagesView();
@@ -90,7 +90,7 @@ public class FoldersScreenView extends StackPane {
         rightPanel.setAlignment(Pos.TOP_CENTER);
         rightPanel.getStyleClass().add("rightVbox");
         rightPanel.setSpacing(20); // Add spacing
-        rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV.getToDoListView());
+        rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         fullBox.getChildren().add(rightPanel);
     }

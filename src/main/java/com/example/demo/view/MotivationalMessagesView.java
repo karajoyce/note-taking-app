@@ -59,7 +59,7 @@ public class MotivationalMessagesView extends StackPane {
         motivmsg.getStyleClass().add("motivmsg");
         motivmsg.setAlignment(Pos.CENTER);
 
-        Text display = new Text(messages.get(rand.nextInt(94)));
+        Text display = new Text(messages.get(rand.nextInt(94,137)));
         display.setWrappingWidth(motivmsg.getMinWidth()-30);
         display.setTextAlignment(TextAlignment.CENTER);
         motivmsg.getChildren().add(display);

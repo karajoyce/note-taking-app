@@ -29,14 +29,18 @@ public class MainMenuScreenView extends StackPane {
 
     private ToDoListView toDoListV;
     private ToDoListController toDoCont;
-    private ToDoList toDoList;
+    public ToDoList toDoList;
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
     private TopViewBar topViewBar;
-    private HBox NoteBox;
+
+
+    private HBox searchBar;
+
 
     private Button foldersButton; // New button
 
+    private HBox NoteBox;
     private Button newNoteButton;
     private Button recentNoteButton;
     private Button recentNoteButton2;
@@ -52,15 +56,17 @@ public class MainMenuScreenView extends StackPane {
     private boolean isTrackingXP = false;
 
 
-    public MainMenuScreenView() {
+    public MainMenuScreenView( ToDoListView toDoListView ) {
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
-        toDoListV = new ToDoListView();
+        toDoListV = toDoListView;
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
+
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
 
         topViewBar = new TopViewBar();
 
@@ -134,7 +140,6 @@ public class MainMenuScreenView extends StackPane {
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
-        // adding settings
 
 
 
@@ -151,6 +156,7 @@ public class MainMenuScreenView extends StackPane {
         topViewBarBox.setPadding(new Insets(-17.5,0,70,0));
         //-------------------------END
 
+        //Adding the notebooks
         NoteBox = new HBox();
         NoteBox.getStyleClass().add("note-box");
 

@@ -25,7 +25,7 @@ public class TaskCreationController {
     private ToDoList toDoList; // The model representing the list of tasks
     private TaskCreationView taskCreationView; // The view for creating tasks
     private ToDoListController toDoListController;
-
+    ToDoStorage storage = new ToDoStorage();
 
     /**
      * Constructs a TaskCreationController with the specified ToDoList and primary stage.
@@ -56,6 +56,8 @@ public class TaskCreationController {
             toDoList.addTask(description, dueDateMillis);
 
             ToDoStorage.SaveToDoList(toDoList.getTasks());
+            ToDoStorage.LoadToDoList();
+
 
             taskCreationView.clearInputs();
             toDoListController.updateTaskListView(); // Refresh the task list view

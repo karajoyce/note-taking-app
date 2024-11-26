@@ -23,7 +23,7 @@ public class ToDoList {
 
     private static ArrayList<Task> tasks; // List of tasks in the to-do list
     private int taskCounter; // To generate unique task IDs
-
+    private ToDoStorage storage;
     /**
      * Constructs a new ToDoList instance.
      * Initializes an empty list of tasks and sets the task counter to 1.
