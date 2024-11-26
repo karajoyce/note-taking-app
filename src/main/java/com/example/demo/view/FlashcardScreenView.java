@@ -259,8 +259,8 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
@@ -293,9 +293,17 @@ public class FlashcardScreenView extends StackPane {
     /**
      * An event handler for the confident button
      */
-    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-        thumbsUpButton.setOnAction(handler);
+    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+        thumbsUpButton.setOnAction(event -> {
+            // Execute original handler logic, if any
+            if (handler != null) {
+                handler.handle(event);
+                xpModel.addXP(10);
+            }
+
+        });
     }
+
 
     /**
      * An event handler for the confident button
