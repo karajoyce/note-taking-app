@@ -2,10 +2,7 @@ package com.example.demo.view;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -83,8 +80,23 @@ public class TaskCreationView {
         primaryStage.setScene(scene);
 
         createTaskButton.setOnAction(e -> {
-            onTaskCreated.run();
-            primaryStage.close();
+            String description = taskDescriptionInput.getText().trim(); // Trim whitespace
+
+            if (description.isEmpty()) {
+                // Show an error message if the description is empty
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Task Description Required");
+                alert.setContentText("Please enter a description for the task.");
+                alert.initStyle(StageStyle.UTILITY);
+                alert.getDialogPane().getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
+                alert.getDialogPane().getStyleClass().add("custom-alert"); // Add a custom style class
+                alert.showAndWait(); // Display the alert
+            } else {
+                // Proceed with task creation if valid
+                onTaskCreated.run();
+                primaryStage.close();
+            }
         });
     }
 

@@ -57,6 +57,8 @@ public class BreakReminderIntervalView {
         TextField intervalInput = new TextField();
         intervalInput.setPromptText("Enter minutes");
 
+
+
         // Button to set the interval based on user input
         Button setIntervalButton = new Button("Set Interval");
         setIntervalButton.getStyleClass().add("reminder-dismiss-button"); // Apply button styling

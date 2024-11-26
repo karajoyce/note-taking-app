@@ -68,6 +68,7 @@ public class BreakReminderModel {
      * @param interval the new interval in milliseconds between reminders
      */
     public void setInterval(long interval) {
+
         this.interval = interval;
     }
 }
