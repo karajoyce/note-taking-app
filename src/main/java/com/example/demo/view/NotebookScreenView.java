@@ -218,7 +218,7 @@ public class NotebookScreenView extends StackPane {
         }
     }
 
-    public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+    public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         pageHandler = handler;
     }
     /**
@@ -246,5 +246,12 @@ public class NotebookScreenView extends StackPane {
             xpToggleButton.setText("STOP XP TRACKING");
         }
         isTrackingXP = !isTrackingXP;
+    }
+
+    public void setCurrentPage(Page page){
+        currentPage = page;
+        currentPage.getContents().setPrefHeight(800);
+        currentPage.getContents().setPrefWidth(800);
+        noteModel.setTextArea(page.getContents());
     }
 }
