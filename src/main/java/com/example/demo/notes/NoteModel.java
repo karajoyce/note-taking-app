@@ -154,7 +154,7 @@ public class NoteModel {
         return autoFlashcardEnabled;
     }
 
-    public void changeAutoFlashCardState() {
+    public void toggleAutoFlashcard() {
         this.autoFlashcardEnabled = !autoFlashcardEnabled;
 
         /* If autoflashcards were turned off, we want to clear the buffers so they don't affect the next

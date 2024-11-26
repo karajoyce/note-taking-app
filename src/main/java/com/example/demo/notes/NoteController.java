@@ -15,6 +15,7 @@ import com.example.demo.FilerSystem.FlashcardStorage;
 import javafx.scene.control.Alert;
 
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -61,6 +62,7 @@ public class NoteController {
      * Open a file from the computer's filesystem
      */
     protected void openFile(Stage stage) {
+        /*
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Text File");
         File file = fileChooser.showOpenDialog(stage);
@@ -73,6 +75,8 @@ public class NoteController {
         } catch (IOException e) {
             displayError("Error opening file", e.getMessage());
         }
+
+         */
     }
 
     /**
@@ -120,7 +124,8 @@ public class NoteController {
 
             // User is backspacing. Remove the previous input character from back buffer
             if (newText.length() < oldText.length()) {
-                    backBuffer.deleteCharAt(backBuffer.length() - 1);
+                backBuffer.deleteCharAt(backBuffer.length() - 1);
+
             // User is currently typing in new characters ...
             } else {
                 int changeIndex = oldText.length();
@@ -538,15 +543,5 @@ public class NoteController {
         System.out.println(noteModel.getCurrStyle());
     }
 
-    protected void toggleAutoFlashcard() {
-        noteModel.changeAutoFlashCardState();
-        if (noteModel.isAutoFlashcardEnabled()) {
-            System.out.println("Auto flashcard making turned ON.");
-
-        } else {
-            System.out.println("Auto flashcard making turned OFF.");
-
-        }
-    }
 
 }

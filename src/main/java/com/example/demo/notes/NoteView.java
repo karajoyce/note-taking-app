@@ -70,9 +70,16 @@ public class NoteView  {
         Button alignRightButton = new Button("Right");
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
-        /* TEST: Toggle auto flashcards */
-        Button autoFlashcardButton = new Button("Auto Flashcard Toggle");
-        autoFlashcardButton.setOnAction(actionEvent -> noteController.toggleAutoFlashcard());
+        /* Toggle auto flashcards */
+        Button autoFlashcardButton = new Button("Auto Flashcards: OFF");
+        autoFlashcardButton.setOnAction(actionEvent -> {
+            noteController.noteModel.toggleAutoFlashcard();
+            if (noteController.noteModel.isAutoFlashcardEnabled()) {
+                autoFlashcardButton.setText("Auto Flashcards: ON");
+            } else {
+                autoFlashcardButton.setText("Auto Flashcards: OFF");
+            }
+        });
 
         ToolBar toolBar = new ToolBar(getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
                 getToggleStrikeThroughButton(),
