@@ -362,3 +362,43 @@ Sara Shakeel, gvk731, 11367521
     -fx-font-weight: bold;
 }
 
+/* CSS styles for folders, panels, and buttons */
+.bigbox {
+    -fx-padding: 20;
+    -fx-background-color: #f8e5f5;
+    -fx-spacing: 10;
+}
+
+.left-panel {
+    -fx-padding: 20;
+    -fx-background-color: #f2f2f2;
+}
+
+.center-box {
+    -fx-spacing: 20;
+}
+
+.right-panel {
+    -fx-padding: 20;
+    -fx-background-color: #f2f2f2;
+}
+
+.folder-box {
+    -fx-background-color: #d0a9f5;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.add-folder-button {
+    -fx-background-color: #d0a9f5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+

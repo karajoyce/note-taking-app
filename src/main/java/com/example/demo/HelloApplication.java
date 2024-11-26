@@ -56,6 +56,7 @@ public class HelloApplication extends Application {
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
+
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene);
 
