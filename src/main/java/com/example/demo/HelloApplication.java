@@ -70,7 +70,8 @@ public class HelloApplication extends Application {
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
         Scene foldersScene = new Scene(foldersScreenView);
-        Scene flashcardScene = new Scene(new FlashcardScreenView());
+        Scene flashcardScene = new Scene(fCardView);
+        flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView());
         MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
 
@@ -95,7 +96,7 @@ public class HelloApplication extends Application {
 
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        primaryStage.setScene(mainMenuScene);
+        primaryStage.setScene(flashcardScene);
         primaryStage.setTitle("Flashcard");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {

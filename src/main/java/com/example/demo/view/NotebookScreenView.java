@@ -239,11 +239,9 @@ public class NotebookScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
-        fullBox.getChildren().add(todolist);
-
-         */
+        //todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
+        //fullBox.getChildren().add(todolist);
         VBox tags = new VBox();
         addTagsAndSearchToLayout(tags);
         todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);

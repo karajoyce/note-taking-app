@@ -52,7 +52,6 @@ public class MainMenuScreenView extends StackPane {
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
 
-    private XPModel xpModel;
 
 
     public MainMenuScreenView() {
@@ -203,7 +202,7 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStyleClass().add("rightVbox");
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         //ToDoStorage.LoadToDoList();
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);

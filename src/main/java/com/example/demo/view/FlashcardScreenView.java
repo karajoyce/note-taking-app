@@ -260,7 +260,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 

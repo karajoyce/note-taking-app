@@ -2,6 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
+import com.example.demo.model.XPModel;
 import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -27,14 +28,14 @@ public class FoldersScreenView extends StackPane {
     private ToDoList toDoList;
     private Button pageBack; // button to go back to main menu
     private Button addFolderButton;
-
+    private XPModel xpModel;
     public FoldersScreenView() {
         // Initialize components
         pageBack = new Button("Back");
 
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
         motivationalMessagesView = new MotivationalMessagesView();
 
         // Run screen update
@@ -91,7 +92,7 @@ public class FoldersScreenView extends StackPane {
         rightPanel.getStyleClass().add("rightVbox");
         rightPanel.setSpacing(20); // Add spacing
         rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         fullBox.getChildren().add(rightPanel);
     }
 
