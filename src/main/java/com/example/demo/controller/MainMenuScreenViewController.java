@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.view.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -38,7 +39,7 @@ public class MainMenuScreenViewController {
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
         topViewBar.getFlashButton().setOnAction(event -> primaryStage.setScene(flashcardScene));
         topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
-        topViewBar.getFlashButton().setOnAction(event -> {
+        topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {
                 System.err.println("PrimaryStage is not set!");
                 return;
@@ -46,6 +47,7 @@ public class MainMenuScreenViewController {
             if (view.getFoldersScreenView() == null) {
                 // Lazy initialization of FoldersScreenView
                 foldersScreenView = new FoldersScreenView();
+
                 foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(view))); // Back to MainMenuScreen
             }
             // Navigate to the FoldersScreen

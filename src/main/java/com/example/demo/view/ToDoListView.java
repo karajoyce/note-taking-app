@@ -141,7 +141,6 @@ public class ToDoListView extends VBox {
             }
         }
         ToDoStorage.SaveToDoList(tasks);
-        ToDoStorage.LoadToDoList();
     }
 
     public VBox getToDoListView() {

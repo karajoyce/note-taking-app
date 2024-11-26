@@ -70,7 +70,8 @@ public class HelloApplication extends Application {
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
 
-        Scene flashcardScene = new Scene(new FlashcardScreenView());
+        Scene flashcardScene = new Scene(fCardView);
+        flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
         MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
 

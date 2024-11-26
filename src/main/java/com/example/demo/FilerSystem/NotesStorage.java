@@ -90,13 +90,13 @@ public class NotesStorage {
      * Load the title names of all decks
      * @return List of names
      */
-    public static List<String> GeneratePageTitles(){
+    public static List<String> GenerateNotebookTitles(){
         ArrayList<String> titles = new ArrayList<>();
 
         File file = new File(filePath);
         if (file.exists()){
             for (File page: file.listFiles()){
-                titles.add(page.getName().replace(".dat", ""));
+                titles.add(page.getName().replace(".json", ""));
             }
         }
         return titles;
