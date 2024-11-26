@@ -20,13 +20,14 @@ public class Page implements Serializable {
     private String title;
     private InlineCssTextArea contents;
     public Page(String pageTitle){
-        contents = new InlineCssTextArea();
         title = pageTitle;
+        contents = new InlineCssTextArea();
     }
 
-    public void setContents(InlineCssTextArea contentArea){
-        contents = contentArea;
+    public void setContents(InlineCssTextArea contents) {
+        this.contents = contents;
     }
+
     public InlineCssTextArea getContents(){
         return contents;
     }

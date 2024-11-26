@@ -51,7 +51,7 @@ public class HelloApplication extends Application {
 
         MotivationalMessagesView motView = new MotivationalMessagesView();
 
-        Scene scene = new Scene(mView);
+        Scene scene = new Scene(fCardView);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flashcard");

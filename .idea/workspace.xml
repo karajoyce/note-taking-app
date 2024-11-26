@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="motivational messages done!">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="saving css is not fun">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/Notes/CMPT281.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NewPageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NewPageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/richtextfx-0.11.3.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +155,8 @@
       <workItem from="1732296353949" duration="12566000" />
       <workItem from="1732487642530" duration="563000" />
       <workItem from="1732556984667" duration="2130000" />
-      <workItem from="1732563879558" duration="8860000" />
+      <workItem from="1732563879558" duration="8965000" />
+      <workItem from="1732581128180" duration="4518000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -492,7 +486,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732501784979</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="saving css is not fun">
+      <option name="closed" value="true" />
+      <created>1732578349505</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1732578349505</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +512,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added ability to change paragraph alignment" />
     <MESSAGE value="time to work on fonts" />
     <MESSAGE value="added notes dependencies" />
     <MESSAGE value="AddFlashcard button works" />
@@ -535,6 +536,7 @@
     <MESSAGE value="working on adding pages to notebook" />
     <MESSAGE value="added a new screen for adding pages, working on dynamic sync of the json" />
     <MESSAGE value="motivational messages done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="motivational messages done!" />
+    <MESSAGE value="saving css is not fun" />
+    <option name="LAST_COMMIT_MESSAGE" value="saving css is not fun" />
   </component>
 </project>

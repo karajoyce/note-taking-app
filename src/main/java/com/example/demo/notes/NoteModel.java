@@ -21,6 +21,7 @@ import java.util.Set;
  */
 public class NoteModel {
 
+
     /** the main text area of the text editor */
     private InlineCssTextArea textArea = new InlineCssTextArea();
 

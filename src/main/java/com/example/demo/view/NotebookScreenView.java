@@ -57,6 +57,7 @@ public class NotebookScreenView extends StackPane {
     private NoteController noteController;
     private NoteView noteView;
     private Notebook currentNotebook;
+    private Page currentPage;
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
     public NotebookScreenView(Notebook currNotebook) {
@@ -84,6 +85,8 @@ public class NotebookScreenView extends StackPane {
         noteView= new NoteView(noteController);
 
         currentNotebook = currNotebook;
+        currentPage = currentNotebook.getNotes().getFirst();
+        currentPage.setContents(noteModel.getTextArea());
 
         runScreenUpdate();
     }
