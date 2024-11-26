@@ -79,12 +79,15 @@ public class FoldersController {
 
             if (finalNotebook != null) {
                 NotebookScreenView notebookView = new NotebookScreenView(finalNotebook);
+                NotebookController notebookController = new NotebookController(finalNotebook, notebookView);
 
                 // Save changes to the notebook when navigating back
                 notebookView.getBackButton().setOnAction(e -> {
                     saveNotebookState(finalNotebook); // Use the effectively final variable
                     primaryStage.setScene(foldersScene); // Reuse the existing scene
                 });
+
+
 
                 notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
                 Scene notebookScene = new Scene(notebookView);

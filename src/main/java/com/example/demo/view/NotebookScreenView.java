@@ -157,15 +157,7 @@ public class NotebookScreenView extends StackPane {
         fullBox.setMaxHeight(screenHeight);
         //-------------------------END
 
-        // Left panel with Back button
-        VBox leftPanel = new VBox();
-        pageBack.setMinWidth(100);
-        pageBack.setMinHeight(50);
-        pageBack.getStyleClass().add("back-button");
-        leftPanel.setAlignment(Pos.TOP_LEFT);
-        leftPanel.setSpacing(20); // Add some spacing
-        leftPanel.getChildren().add(pageBack);
-        fullBox.getChildren().add(leftPanel);
+
 
         //-------------------------
         // Deck selection pane
@@ -177,11 +169,17 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(deckSelection);
 
         // Button for adding a new page
+        pageBack.setMinWidth(100);
+        pageBack.setMinHeight(50);
+        pageBack.getStyleClass().add("back-button");
+
         addPage.setAlignment(Pos.CENTER);
         addPage.setMinWidth(50);
         addPage.setMinHeight(50);
-        HBox topLine = new HBox(addPage);
-        topLine.setAlignment(Pos.TOP_RIGHT);
+
+        HBox topLine = new HBox(pageBack, addPage);
+        topLine.setSpacing(10);
+        topLine.setAlignment(Pos.CENTER);
         sidePanel.getChildren().add(topLine);
         sidePanel.getChildren().add(deckSelection);
         fullBox.getChildren().add(sidePanel);
@@ -295,6 +293,7 @@ public class NotebookScreenView extends StackPane {
      * An event handler for the confident button
      */
     public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        System.out.println("here in setAddPage");
         addPage.setOnAction(handler);
     }
 
