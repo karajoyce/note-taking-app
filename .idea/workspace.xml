@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="still trying to save pages, flashcard remove now updates in json">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="STYLES ARE SAVING">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/Decks/Test Deck.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/Decks/Test Deck.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +153,8 @@
       <workItem from="1732487642530" duration="563000" />
       <workItem from="1732556984667" duration="2130000" />
       <workItem from="1732563879558" duration="8965000" />
-      <workItem from="1732581128180" duration="5588000" />
+      <workItem from="1732581128180" duration="10063000" />
+      <workItem from="1732653652544" duration="1034000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -500,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732585705605</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="STYLES ARE SAVING">
+      <option name="closed" value="true" />
+      <created>1732587111957</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1732587111957</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +526,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added notes dependencies" />
     <MESSAGE value="AddFlashcard button works" />
     <MESSAGE value="Merging for the deliverable" />
     <MESSAGE value="Merging for the deliverable 2" />
@@ -543,6 +550,7 @@
     <MESSAGE value="motivational messages done!" />
     <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
-    <option name="LAST_COMMIT_MESSAGE" value="still trying to save pages, flashcard remove now updates in json" />
+    <MESSAGE value="STYLES ARE SAVING" />
+    <option name="LAST_COMMIT_MESSAGE" value="STYLES ARE SAVING" />
   </component>
 </project>

@@ -1,4 +1,5 @@
 package com.example.demo;
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
@@ -42,6 +43,8 @@ public class HelloApplication extends Application {
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
+
+//        Notebook nModel = NotesStorage.LoadNotes("CMPT281");
         Notebook nModel = new Notebook("CMPT281");
         nModel.addPage(new Page("Lecture 1"));
         NotebookScreenView nView = new NotebookScreenView(nModel);

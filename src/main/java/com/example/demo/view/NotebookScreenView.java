@@ -53,6 +53,7 @@ public class NotebookScreenView extends StackPane {
     private ToDoListController toDoCont;
     private ToDoList toDoList;
     private Button addPage; // to add a new page to the notebook
+    private Button pageBack;
     private NoteModel noteModel;
     private NoteController noteController;
     private NoteView noteView;
@@ -67,6 +68,7 @@ public class NotebookScreenView extends StackPane {
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
         addPage = new Button("+");
+        pageBack = new Button("Back");
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
@@ -118,11 +120,16 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(deckSelection);
 
         // Button for adding a new page
+        pageBack.setMinWidth(100);
+        pageBack.setMinHeight(50);
+        pageBack.getStyleClass().add("back-button");
+
         addPage.setAlignment(Pos.CENTER);
         addPage.setMinWidth(50);
         addPage.setMinHeight(50);
-        HBox topLine = new HBox(addPage);
-        topLine.setAlignment(Pos.TOP_RIGHT);
+        HBox topLine = new HBox(pageBack, addPage);
+        topLine.setSpacing(80);
+        topLine.setAlignment(Pos.CENTER);
         sidePanel.getChildren().add(topLine);
         sidePanel.getChildren().add(deckSelection);
         fullBox.getChildren().add(sidePanel);
