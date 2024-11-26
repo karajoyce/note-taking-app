@@ -37,7 +37,6 @@ public class MainMenuScreenViewController {
     private void setupButtonActions() {
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
         topViewBar.getFlashButton().setOnAction(event -> primaryStage.setScene(flashcardScene));
-        topViewBar.getNotesButton().setOnAction(event -> primaryStage.setScene(notebookScene));
         topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
         topViewBar.getFlashButton().setOnAction(event -> {
             if (primaryStage == null) {

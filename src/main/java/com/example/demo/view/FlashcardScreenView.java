@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
@@ -259,6 +260,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         fullBox.getChildren().add(todolist);
         //-------------------------END
 

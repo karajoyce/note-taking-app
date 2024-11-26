@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
@@ -90,6 +91,7 @@ public class FoldersScreenView extends StackPane {
         rightPanel.getStyleClass().add("rightVbox");
         rightPanel.setSpacing(20); // Add spacing
         rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV.getToDoListView());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         fullBox.getChildren().add(rightPanel);
     }
 

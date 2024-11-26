@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.Task;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -129,6 +130,7 @@ public class ToDoListView extends VBox {
             TaskItem item = (TaskItem) hBox.getUserData(); // to set user data in TaskItem
             if (item != null && item.getTask().equals(task)) {
                 taskListView.getItems().remove(hBox);
+                //ToDoStorage.LoadToDoList().remove(task);
                 break;
             }
         }

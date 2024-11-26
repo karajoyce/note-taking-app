@@ -12,7 +12,6 @@ import javafx.scene.layout.StackPane;
 public class TopViewBar extends HBox {
 
     private HBox topBar = new HBox();
-    private Button notesButton;
     private Button flashButton;
     private Button breakButton;
     private Button settingButton;
@@ -29,9 +28,6 @@ public class TopViewBar extends HBox {
         topBar.setSpacing(20);
 
 
-        notesButton = new Button("Notes");
-        notesButton.getStyleClass().add("note-button");
-
         flashButton = new Button("Flash");
         flashButton.getStyleClass().add("flash-button");
 
@@ -47,11 +43,8 @@ public class TopViewBar extends HBox {
         foldersButton = new Button("Folders"); // Initialize folders button
         foldersButton.getStyleClass().add("folders-button");
 
-        topBar.getChildren().addAll(titleLabel, notesButton, flashButton, breakButton, settingButton, foldersButton);
+        topBar.getChildren().addAll(titleLabel, flashButton, breakButton, settingButton, foldersButton);
 
-    }
-    public Button getNotesButton() {
-        return notesButton;
     }
 
     public Button getFlashButton() {
