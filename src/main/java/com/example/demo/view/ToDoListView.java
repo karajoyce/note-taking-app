@@ -133,11 +133,17 @@ public class ToDoListView extends VBox {
                 //ToDoStorage.LoadToDoList().remove(task);
                 break;
             }
+
         }
+        ToDoStorage.SaveToDoList(tasks);
     }
 
     public VBox getToDoListView() {
         return this;
     }
 
+    public ArrayList<Task> getTasks() {
+        return tasks;
+
+    }
 }

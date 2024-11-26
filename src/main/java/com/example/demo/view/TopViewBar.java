@@ -5,9 +5,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+
+import java.awt.*;
 
 public class TopViewBar extends HBox {
 
@@ -21,11 +25,22 @@ public class TopViewBar extends HBox {
 
 
     public TopViewBar() {
+
+        Image logo = new Image(getClass().getResource("/file.png").toExternalForm());
+        ImageView logoView = new ImageView(logo);
+        logoView.getStyleClass().add("image-view");
+
+        logoView.setFitHeight(120);
+        logoView.setFitWidth(120);
+        logoView.setPreserveRatio(true);
+        logoView.setSmooth(true);
+
+
         topBar = new HBox();
         topBar.getStyleClass().add("top-bar");
         topBar.setPadding(new Insets(10));
         topBar.setAlignment(Pos.TOP_LEFT);
-        topBar.setSpacing(20);
+        topBar.setSpacing(10);
 
 
         flashButton = new Button("Flash");
@@ -43,7 +58,7 @@ public class TopViewBar extends HBox {
         foldersButton = new Button("Folders"); // Initialize folders button
         foldersButton.getStyleClass().add("folders-button");
 
-        topBar.getChildren().addAll(titleLabel, flashButton, breakButton, settingButton, foldersButton);
+        topBar.getChildren().addAll(logoView, titleLabel, flashButton, breakButton, settingButton, foldersButton);
 
     }
 
