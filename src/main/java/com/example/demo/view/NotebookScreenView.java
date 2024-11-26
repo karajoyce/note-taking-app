@@ -94,13 +94,23 @@ public class NotebookScreenView extends StackPane {
         noteController= new NoteController(noteModel);
         noteView= new NoteView(noteController);
 
-        currentNotebook = currNotebook;
-        currentPage = currentNotebook.getNotes().getFirst();
-        currentPage.setContents(noteModel.getTextArea());
+        this.currentNotebook = currNotebook;
+        //currentPage = currentNotebook.getNotes().getFirst();
+        //currentPage.setContents(noteModel.getTextArea());
+
+        if (!currentNotebook.getNotes().isEmpty()) {
+            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
+        }
 
 
         runScreenUpdate();
     }
+
+    public void setNotebook(Notebook notebook) {
+        this.currentNotebook = notebook;
+        runScreenUpdate();
+    }
+
 
     public void setCurrentFolder(String folderName) {
         // Update the current folder
@@ -312,7 +322,18 @@ public class NotebookScreenView extends StackPane {
         currentPage = page;
         currentPage.getContents().setPrefHeight(800);
         currentPage.getContents().setPrefWidth(800);
-        noteModel.setTextArea(page.getContents());
+        // Bind the text area's content to the page's content
+        InlineCssTextArea textArea = page.getContents();
+
+        // Set the text area content to match the page's current content
+        textArea.replaceText(page.getContents().getText());
+
+        textArea.textProperty().addListener((obs, oldText, newText) -> {
+            // Save changes to the page's content in real-time
+            page.setContents(textArea);
+        });
+
+        noteModel.setTextArea(textArea); // Update the model for the view
     }
 
 }

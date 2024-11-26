@@ -56,7 +56,8 @@ public class HelloApplication extends Application {
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
+        Scene foldersScene = new Scene(foldersScreenView);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene);
 
 
 
@@ -67,7 +68,7 @@ public class HelloApplication extends Application {
 
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
-        Scene foldersScene = new Scene(foldersScreenView);
+
         Scene flashcardScene = new Scene(new FlashcardScreenView());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
         MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);

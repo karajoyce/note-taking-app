@@ -26,43 +26,64 @@ public class NotesStorage {
         // Ensure the directory exists
         File directory = new File(directoryPath);
         if (!directory.exists()) {
-            directory.mkdirs();  // Creates the directory if it doesn't exist
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory: " + directoryPath);
+            }
         }
 
+        String fullFilePath = filePath + notebook.getTitle() + ".json";
+        try (FileWriter writer = new FileWriter(fullFilePath)) {
+            JsonObject json = new JsonObject();
+            json.addProperty("name", notebook.getTitle());
 
-        JsonArray pages = new JsonArray();
-        JsonObject jsonobj = new JsonObject();
-        jsonobj.add("pages", pages);
-        jsonobj.addProperty("name", notebook.getTitle());
-        for (Page page: notebook.getNotes()){
-            JsonObject pageobj = new JsonObject();
-            pageobj.addProperty("name", page.getTitle());
-            // saving contents of the InlineCSSTextArea
-            pageobj.addProperty("content", gson.toJson(page.getContents().getDocument()));
-            pages.add(pageobj);
-        }
+            JsonArray pages = new JsonArray();
+            for (Page page : notebook.getNotes()) {
+                JsonObject pageJson = new JsonObject();
+                pageJson.addProperty("name", page.getTitle());
+                // Serialize page content to JSON
+                pageJson.addProperty("content", page.getContents().getText()); // Get plain text content
+                pages.add(pageJson);
+            }
+            json.add("pages", pages);
 
-        try {
-            FileWriter flash = new FileWriter(filePath+notebook.getTitle()+".json");
-            flash.write(jsonobj.toString());
-            flash.flush();
-            flash.close();
+            writer.write(json.toString());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to save notebook: " + notebook.getTitle(), e);
         }
     }
 
     public static Notebook LoadNotes(String title) {
 
-        try {
-            Path filep = Path.of(filePath+title+".json");
-            String str = Files.readString(filep);
-            System.out.println(str);
-        } catch (IOException e){
-            throw new RuntimeException(e);
+        String fullFilePath = filePath + title + ".json";
+        File file = new File(fullFilePath);
+
+        if (!file.exists()) {
+            System.err.println("Notebook file not found: " + fullFilePath);
+            return null;
         }
 
-        return null;
+        try (FileReader reader = new FileReader(file)) {
+            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+            Notebook notebook = new Notebook(json.get("name").getAsString());
+
+            JsonArray pages = json.getAsJsonArray("pages");
+            for (JsonElement pageElement : pages) {
+                JsonObject pageObj = pageElement.getAsJsonObject();
+                String pageName = pageObj.get("name").getAsString();
+                String pageContent = pageObj.get("content").getAsString();
+
+                Page page = new Page(pageName);
+                InlineCssTextArea textArea = page.getContents();
+                textArea.replaceText(pageContent); // Populate the content
+                page.setContents(textArea);       // Bind content to Page
+
+                notebook.addPage(page);
+            }
+
+            return notebook;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load notebook: " + title, e);
+        }
     }
 
     /**

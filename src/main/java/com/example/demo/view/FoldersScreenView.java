@@ -158,6 +158,10 @@ public class FoldersScreenView extends StackPane {
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
     }
+
+    public StackPane getView() {
+        return this;
+    }
 }
 
 
