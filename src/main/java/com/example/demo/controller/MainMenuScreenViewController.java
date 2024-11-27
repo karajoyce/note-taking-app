@@ -18,9 +18,10 @@ public class MainMenuScreenViewController {
     private Scene notebookScene;
     private Scene mainMenuScene;
     private FoldersScreenView foldersScreenView;
+    private ToDoListView toDoListView;
 
 
-    public MainMenuScreenViewController(MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView) {
+    public MainMenuScreenViewController(MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListView toDoListView) {
 
         this.view = view;
         this.topViewBar = topViewBar;
@@ -30,6 +31,8 @@ public class MainMenuScreenViewController {
         this.notebookScene = notebookScene;
         this.mainMenuScene = mainMenuScene;
         this.foldersScreenView = foldersScreenView;
+        this.toDoListView = toDoListView;
+
 
         // Set up button actions
         setupButtonActions();
@@ -46,7 +49,7 @@ public class MainMenuScreenViewController {
             }
             if (view.getFoldersScreenView() == null) {
                 // Lazy initialization of FoldersScreenView
-                foldersScreenView = new FoldersScreenView();
+                foldersScreenView = new FoldersScreenView(toDoListView);
 
                 foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(view))); // Back to MainMenuScreen
             }

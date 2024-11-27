@@ -61,8 +61,8 @@ public class HelloApplication extends Application {
         nView.runScreenUpdate();
 
         FoldersModel foldersModel = new FoldersModel();
-        FoldersScreenView foldersScreenView = new FoldersScreenView();
-        foldersScreenView.setToDoList(toDoListView);
+        FoldersScreenView foldersScreenView = new FoldersScreenView(toDoListView);
+
 
 
         Scene foldersScene = new Scene(foldersScreenView);
@@ -83,7 +83,7 @@ public class HelloApplication extends Application {
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListView);
 
 
 

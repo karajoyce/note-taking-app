@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -29,11 +30,12 @@ public class FoldersScreenView extends StackPane {
     private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
 
-    public FoldersScreenView() {
+    public FoldersScreenView(ToDoListView toDoListV) {
         // Initialize components
         pageBack = new Button("Back");
-        toDoListV = new ToDoListView();
+
         motivationalMessagesView = new MotivationalMessagesView();
+        this.toDoListV = toDoListV;
 
 
 
@@ -45,10 +47,6 @@ public class FoldersScreenView extends StackPane {
 
         // Run screen update
         runFoldersScreenUpdate();
-    }
-
-    public void setToDoList(ToDoListView toDoListV) {
-        this.toDoListV = toDoListV;
     }
 
     public void runFoldersScreenUpdate() {
@@ -88,6 +86,12 @@ public class FoldersScreenView extends StackPane {
         centerBox.setPadding(new Insets(20));
         centerBox.setMinWidth(screenWidth * 0.5);
 
+        // Add folders grid to a ScrollPane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(foldersGrid);
+        scrollPane.getStyleClass().add("scroll-pane");
+
         // Add folders grid to a container
         VBox gridContainer = new VBox();
         gridContainer.getStyleClass().add("grid-container");
@@ -96,7 +100,7 @@ public class FoldersScreenView extends StackPane {
         gridContainer.setSpacing(10);
 
         // Add the grid to the container
-        gridContainer.getChildren().add(foldersGrid);
+        //gridContainer.getChildren().add(foldersGrid);
 
         // Add the Add Folder Button
         addFolderButton = new Button("Add Folder");
@@ -104,6 +108,10 @@ public class FoldersScreenView extends StackPane {
         addFolderButton.setMinHeight(50);
         addFolderButton.getStyleClass().add("add-folder-button");
         gridContainer.getChildren().add(addFolderButton);
+
+        // Add the scrollable folder grid below the Add Folder button
+        gridContainer.getChildren().add(scrollPane);
+
 
         centerBox.getChildren().add(gridContainer);
         fullBox.getChildren().add(centerBox);

@@ -116,8 +116,7 @@ public class NotebookScreenView extends StackPane {
         // Update the current folder
         this.currentFolder = folderName;
 
-        // Clear and update the notes or content associated with the new folder
-        System.out.println("Switched to folder: " + folderName);
+
 
         // Update the title or header to reflect the current folder
         this.getChildren().clear(); // Clear the existing view
@@ -293,7 +292,6 @@ public class NotebookScreenView extends StackPane {
      * An event handler for the confident button
      */
     public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-        System.out.println("here in setAddPage");
         addPage.setOnAction(handler);
     }
 

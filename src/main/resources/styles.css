@@ -402,3 +402,10 @@ Sara Shakeel, gvk731, 11367521
     -fx-background-radius: 5px;
 }
 
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
