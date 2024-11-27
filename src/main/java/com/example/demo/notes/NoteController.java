@@ -12,7 +12,6 @@ package com.example.demo.notes;
 import java.util.*;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
-import javafx.scene.control.Alert;
 
 import javafx.stage.Stage;
 
@@ -42,21 +41,7 @@ public class NoteController {
      * Open a file from the computer's filesystem
      */
     protected void openFile(Stage stage) {
-        /*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Text File");
-        File file = fileChooser.showOpenDialog(stage);
 
-        try {
-            if (file != null) {
-                String content = Files.readString(Path.of(file.getPath()));
-                noteModel.getTextArea().replaceText(content);
-            }
-        } catch (IOException e) {
-            displayError("Error opening file", e.getMessage());
-        }
-
-         */
     }
 
     /**
@@ -65,22 +50,6 @@ public class NoteController {
     protected void saveFile(Stage stage) {
         // Save textarea into a JSON ?
 
-        /*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Text File");
-        File file = fileChooser.showSaveDialog(stage);
-
-        // Attempt to save the file
-        if (file != null) {
-            try {
-                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(),
-                        StandardOpenOption.CREATE);
-            } catch (IOException e) {
-                displayError("Error saving file", e.getMessage());
-            }
-        }
-
-         */
     }
 
     /** Function that prints out everything in the deck. Debugging purposes ONLY */

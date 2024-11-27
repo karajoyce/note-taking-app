@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="made toggle autoflashcard button more easy to udnerstand">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="allows better revision of auto flashcards dynamically">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/flashcard.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/flashcard.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -312,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732655660498</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="allows better revision of auto flashcards dynamically">
+      <option name="closed" value="true" />
+      <created>1732670118042</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1732670118042</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +337,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="skeleton based off uml class diagram" />
     <MESSAGE value="constructor based off uml class diagram" />
     <MESSAGE value="added some docstrings and getters and setters" />
     <MESSAGE value="tried starting on MVC model of note editor" />
@@ -355,6 +361,7 @@
     <MESSAGE value="setting card front dynamically typed" />
     <MESSAGE value="program doesnt throw errors when backspacing. also doesn't make unwanted cards" />
     <MESSAGE value="made toggle autoflashcard button more easy to udnerstand" />
-    <option name="LAST_COMMIT_MESSAGE" value="made toggle autoflashcard button more easy to udnerstand" />
+    <MESSAGE value="allows better revision of auto flashcards dynamically" />
+    <option name="LAST_COMMIT_MESSAGE" value="allows better revision of auto flashcards dynamically" />
   </component>
 </project>
