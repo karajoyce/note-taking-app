@@ -31,6 +31,7 @@ public class FoldersScreenView extends StackPane {
     private ToDoListView toDoListV;
     private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
+    private Button deleteButton;
 
 
     public FoldersScreenView(ToDoListView toDoListV) {
@@ -42,6 +43,13 @@ public class FoldersScreenView extends StackPane {
         imgViewB.setFitHeight(15);
         imgViewB.setPreserveRatio(true);
         pageBack.setGraphic(imgViewB);
+
+        deleteButton = new Button("");
+        Image imgC = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
+        ImageView imgViewC = new ImageView(imgC);
+        imgViewC.setFitHeight(15);
+        imgViewC.setPreserveRatio(true);
+        deleteButton.setGraphic(imgViewC);
 
 
         motivationalMessagesView = new MotivationalMessagesView();
@@ -70,7 +78,8 @@ public class FoldersScreenView extends StackPane {
         HBox mainLayout = new HBox();
         mainLayout.setSpacing(20); // Space between center and right panels
         mainLayout.setPadding(new Insets(20));
-        mainLayout.getStyleClass().add("main-layout");
+        //mainLayout.getStyleClass().add("main-layout");
+        mainLayout.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
         this.getChildren().add(mainLayout);
 
         // VBox to hold the Top Bar and Folder Grid (center content)
@@ -78,7 +87,8 @@ public class FoldersScreenView extends StackPane {
         centerBox.setSpacing(20); // Space between top bar and scrollable folder grid
         centerBox.setPadding(new Insets(20));
         centerBox.setAlignment(Pos.TOP_CENTER);
-        centerBox.getStyleClass().add("center-box");
+        //centerBox.getStyleClass().add("center-box");
+        centerBox.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         // Ensure the centerBox grows with the available space
         centerBox.setMinWidth(screenWidth * 0.7);
@@ -107,7 +117,8 @@ public class FoldersScreenView extends StackPane {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(foldersGrid);
-        scrollPane.getStyleClass().add("scroll-pane");
+        //scrollPane.getStyleClass().add("scroll-pane");
+        scrollPane.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
         scrollPane.setPadding(new Insets(10));
 
         foldersGrid.setAlignment(Pos.TOP_CENTER);
@@ -124,10 +135,12 @@ public class FoldersScreenView extends StackPane {
         rightPanel.setAlignment(Pos.TOP_CENTER);
         rightPanel.getStyleClass().add("right-panel");
         rightPanel.setMinWidth(screenWidth * 0.25);
+        rightPanel.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         VBox motivContainer = new VBox(motivationalMessagesView.getMotivmsgView());
         motivContainer.setMinHeight(screenHeight * 0.3);
-        motivContainer.getStyleClass().add("motivation-container");
+        //motivContainer.getStyleClass().add("motivation-container");
+        motivContainer.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         VBox todoContainer = new VBox(toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());

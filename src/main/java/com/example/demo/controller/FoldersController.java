@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
@@ -58,7 +59,7 @@ public class FoldersController {
         return event -> {
             System.out.println("Delete button clicked."); // Debug log
             Button deleteButton = (Button) event.getSource();
-            HBox folderContainer = (HBox) deleteButton.getParent();
+            VBox folderContainer = (VBox) deleteButton.getParent();
             Button folderButton = (Button) folderContainer.getChildren().get(0);
             String folderName = folderButton.getText();
             System.out.println("Attempting to delete folder: " + folderName); // Debug log

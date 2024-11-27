@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="deleting folders work" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="made some changes to the layout">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/trashcan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -484,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732688447402</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="made some changes to the layout">
+      <option name="closed" value="true" />
+      <created>1732688721489</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1732688721489</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,7 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sprint 2 BreakReminder" />
     <MESSAGE value="first attempt at the model class for BreakReminder user stories" />
     <MESSAGE value="first attempt at the view class for BreakReminder user stories" />
     <MESSAGE value="Break Reminders somewhat work" />
@@ -527,6 +541,7 @@
     <MESSAGE value="added a scroll pane to folderScreen" />
     <MESSAGE value="folder screens button look pretty" />
     <MESSAGE value="deleting folders work" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleting folders work" />
+    <MESSAGE value="made some changes to the layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="made some changes to the layout" />
   </component>
 </project>
