@@ -63,8 +63,6 @@ public class NewPageController {
         }
         Page newPage = new Page(title);
         nModel.addPage(newPage);
-        NotesStorage.SaveNotes(nModel);
-
         nController.runUpdate();
     }
 }

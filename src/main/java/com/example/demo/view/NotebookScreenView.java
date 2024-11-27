@@ -1,7 +1,5 @@
 package com.example.demo.view;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
@@ -10,12 +8,10 @@ import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
-import com.google.gson.annotations.SerializedName;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -26,7 +22,6 @@ import javafx.stage.Screen;
 import org.fxmisc.richtext.InlineCssTextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.awt.*;
 
 /**
@@ -130,14 +125,12 @@ public class NotebookScreenView extends StackPane {
         noteView = new NoteView(noteController);
 
         this.currentNotebook = currNotebook;
-        //currentPage = currentNotebook.getNotes().getFirst();
-        //currentPage.setContents(noteModel.getTextArea());
+        currentPage = currentNotebook.getNotes().getFirst();
+        currentPage.setContents(noteModel.getTextArea());
 
-        if (!currentNotebook.getNotes().isEmpty()) {
-            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
-        }
-
-
+//        if (!currentNotebook.getNotes().isEmpty()) {
+//            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
+//        }
         runScreenUpdate();
     }
 
