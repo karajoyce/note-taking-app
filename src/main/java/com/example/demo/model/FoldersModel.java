@@ -62,7 +62,11 @@ public class FoldersModel {
     }
 
     public void removeFolder(String folderName) {
-        folders.remove(folderName); // Remove from the list of folder names
+        if (folders.remove(folderName)) {
+            System.out.println("Folder removed from model: " + folderName);
+        } else {
+            System.err.println("Failed to remove folder from model: " + folderName);
+        }
         folderNotebooks.remove(folderName); // Remove the associated notebook
     }
 }

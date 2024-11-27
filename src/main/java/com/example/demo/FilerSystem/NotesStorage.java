@@ -86,13 +86,6 @@ public class NotesStorage {
         }
     }
 
-    public static void DeleteNotebook(String folderName) {
-        File notebookFile = new File("notebooks/" + folderName + ".json");
-        if (notebookFile.exists()) {
-            notebookFile.delete();
-        }
-    }
-
     /**
      * Load the title names of all decks
      * @return List of names
@@ -108,6 +101,22 @@ public class NotesStorage {
         }
         return titles;
     }
+
+    public static void DeleteNotebook(String folderName) {
+        String fullFilePath = filePath + folderName + ".json";
+        File file = new File(fullFilePath);
+
+        if (file.exists()) {
+            if (file.delete()) {
+                System.out.println("Deleted file: " + fullFilePath);
+            } else {
+                System.err.println("Failed to delete file: " + fullFilePath);
+            }
+        } else {
+            System.err.println("File not found for deletion: " + fullFilePath);
+        }
+    }
+
 
 }
 

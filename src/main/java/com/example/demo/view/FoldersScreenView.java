@@ -32,6 +32,7 @@ public class FoldersScreenView extends StackPane {
     private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
 
+
     public FoldersScreenView(ToDoListView toDoListV) {
         // Initialize components
         //pageBack = new Button("Back");
@@ -148,9 +149,9 @@ public class FoldersScreenView extends StackPane {
         return pageBack;
     }
 
-    public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler) {
+    public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersGrid.getChildren().clear();
-        folderNames  = NotesStorage.GenerateNotebookTitles();
+        //folderNames  = NotesStorage.GenerateNotebookTitles();
         int columns = 3; // Number of columns in the grid
         int row = 0, col = 0;
 
@@ -165,7 +166,18 @@ public class FoldersScreenView extends StackPane {
 
             folderButton.setOnMouseClicked(folderSelectionHandler);
 
-            foldersGrid.add(folderButton, col, row);
+            // Create a delete button for the folder
+            Button deleteButton = new Button("X");
+            deleteButton.getStyleClass().add("delete-button");
+            deleteButton.setPrefSize(30, 30); // Set size for delete button
+            deleteButton.setOnMouseClicked(deleteHandler);
+
+            // Add both the folder button and delete button to a container (HBox)
+            HBox folderContainer = new HBox(5); // 5px spacing
+            folderContainer.setAlignment(Pos.CENTER);
+            folderContainer.getChildren().addAll(folderButton, deleteButton);
+
+            foldersGrid.add(folderContainer, col, row);
             col++;
             if (col >= columns) {
                 col = 0;
