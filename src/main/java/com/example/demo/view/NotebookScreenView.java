@@ -1,8 +1,5 @@
 package com.example.demo.view;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
@@ -22,7 +19,6 @@ import javafx.stage.Screen;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
-import java.util.List;
 
 /**
 
@@ -83,8 +79,8 @@ public class NotebookScreenView extends StackPane {
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
 
-        toDoListV = new ToDoListView();
         toDoList = new ToDoList();
+        toDoListV = new ToDoListView(toDoList);
         toDoCont = new ToDoListController(toDoList, toDoListV);
 
         currentFolder = new String();
@@ -254,7 +250,7 @@ public class NotebookScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.updateToDoList();
         fullBox.getChildren().add(todolist);
     }
 

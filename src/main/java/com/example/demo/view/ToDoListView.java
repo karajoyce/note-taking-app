@@ -2,18 +2,16 @@ package com.example.demo.view;
 
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.Task;
+import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
-import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -28,11 +26,8 @@ public class ToDoListView extends VBox {
 
     private ListView<HBox> taskListView;
     private Button addTaskButton;
-    private ArrayList<Task> tasks;
     public GridPane grid;// Maintain the list of tasks
-
-
-
+    public ToDoList toDoList;
 
 
     /**
@@ -40,9 +35,9 @@ public class ToDoListView extends VBox {
      * for the to-do list application.
      *.
      */
-    public ToDoListView() {
+    public ToDoListView(ToDoList toDoList) {
 
-        tasks = new ArrayList<>(); // Initialize the tasks list
+        this.toDoList = toDoList;
 
         // List View
         taskListView = new ListView<>();
@@ -65,10 +60,10 @@ public class ToDoListView extends VBox {
      *
      * @param tasks An ArrayList of Task objects to display in the task list view.
      */
-    public void setTaskList(ArrayList<Task> tasks) {
-        this.tasks = tasks;
+    public void updateToDoList() {
+        toDoList.updateTasks();
         taskListView.getItems().clear();
-        for (Task task : tasks) {
+        for (Task task : toDoList.getTasks()) {
             TaskItem taskItem = new TaskItem(task, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
@@ -129,18 +124,20 @@ public class ToDoListView extends VBox {
      */
     private void deleteTask(Task task) {
         // Remove the task from the underlying list
-        tasks.remove(task);
+        toDoList.getTasks().remove(task);
+        System.out.println("deleteTAsk: " + toDoList.getTasks());
 
         // Find the corresponding TaskItem view and remove it from the taskListView
         for (HBox hBox : taskListView.getItems()) {
+
             TaskItem item = (TaskItem) hBox.getUserData(); // to set user data in TaskItem
             if (item != null && item.getTask().equals(task)) {
                 taskListView.getItems().remove(hBox);
-                //ToDoStorage.LoadToDoList().remove(task);
                 break;
             }
         }
-        ToDoStorage.SaveToDoList(tasks);
+        ToDoStorage.SaveToDoList(toDoList.getTasks());
+        System.out.println("After delete: " + ToDoStorage.LoadToDoList());
     }
 
     public VBox getToDoListView() {

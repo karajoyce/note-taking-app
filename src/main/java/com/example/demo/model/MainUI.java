@@ -38,7 +38,7 @@ public class MainUI extends Application {
 
         // Create and set up the To-Do List
         ToDoList toDoList = new ToDoList();
-        ToDoListView toDoListView = new ToDoListView();
+        ToDoListView toDoListView = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
 
         // Create a VBox to hold the To-Do List and push it to the bottom

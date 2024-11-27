@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
         NavigationController navigationController = new NavigationController(primaryStage);
 
         ToDoList toDoList = new ToDoList();
-        ToDoListView toDoListView = new ToDoListView();
+        ToDoListView toDoListView = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
 
         // Break Reminder setup
@@ -99,7 +99,8 @@ public class HelloApplication extends Application {
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
-        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen(foldersScreenView));
+        nView.getBackButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
+
 
 
 

@@ -1,23 +1,15 @@
 package com.example.demo.view;
 
-import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
-import com.example.demo.model.DigitalTree;
 import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.fxmisc.richtext.InlineCssTextArea;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class MainMenuScreenView extends StackPane {
@@ -45,7 +37,7 @@ public class MainMenuScreenView extends StackPane {
 
         mView = new MotivationalMessagesView();
         ToDoList toDoList = new ToDoList();
-        this.toDoListV = new ToDoListView();
+        this.toDoListV = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
         runMainScreenUpdate();
@@ -140,7 +132,7 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStyleClass().add("rightVbox");
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.updateToDoList();
 
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);

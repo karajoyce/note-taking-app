@@ -31,6 +31,8 @@ public class ToDoList {
     public ToDoList() {
         this.tasks = new ArrayList<>();
         this.taskCounter = 1;
+
+        updateTasks();
     }
 
     /**
@@ -48,6 +50,8 @@ public class ToDoList {
         sortTasksByDueDate(); // Ensure the tasks are sorted after adding
 
         ToDoStorage.SaveToDoList(tasks);
+
+        System.out.println("After add: " + ToDoStorage.LoadToDoList());
 
         return newTask;
 
@@ -110,5 +114,8 @@ public class ToDoList {
         return tasks;
     }
 
-
+    public void updateTasks() {
+        this.tasks = ToDoStorage.LoadToDoList();
+        taskCounter = tasks.size();
+    }
 }

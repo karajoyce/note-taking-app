@@ -50,16 +50,18 @@ public class TaskCreationController {
     private void createTask() {
         String description = taskCreationView.getTaskDescription();
         LocalDate dueDate = taskCreationView.getDueDate();
+        System.out.println("before creating task: " + ToDoStorage.LoadToDoList());
 
         if (description != null && dueDate != null) {
             long dueDateMillis = dueDate.atStartOfDay().toEpochSecond(ZoneOffset.UTC) * 1000; // Convert to milliseconds
             toDoList.addTask(description, dueDateMillis);
 
-            ToDoStorage.SaveToDoList(toDoList.getTasks());
+            //ToDoStorage.SaveToDoList(toDoList.getTasks());
 
             taskCreationView.clearInputs();
             toDoListController.updateTaskListView(); // Refresh the task list view
         }
+        System.out.println("after creating task: " + ToDoStorage.LoadToDoList());
     }
 }
 

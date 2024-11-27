@@ -30,12 +30,13 @@ public class ToDoListController  {
     public ToDoListController(ToDoList toDoList, ToDoListView toDoListView) {
         this.toDoList = toDoList;
         this.toDoListView = toDoListView;
-        updateTaskListView(); // Populate the view with current tasks
+        //updateTaskListView(); // Populate the view with current tasks
+        toDoListView.updateToDoList();
 
         // Set the action for the "Add Task" button
         toDoListView.setAddTaskButtonAction(e -> {
             new TaskCreationController(toDoList, this, new Stage()); // Open task creation window
-            updateTaskListView(); // Refresh the list after adding
+            //updateTaskListView(); // Refresh the list after adding
         });
     }
 
@@ -43,7 +44,7 @@ public class ToDoListController  {
      * Updates the task list view with the current list of tasks from the model.
      */
     public void updateTaskListView() {
-        toDoListView.setTaskList(toDoList.getTasks());
+        toDoListView.updateToDoList();
     }
 }
 

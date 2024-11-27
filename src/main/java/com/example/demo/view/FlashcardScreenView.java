@@ -1,22 +1,17 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,7 +70,7 @@ public class FlashcardScreenView extends StackPane {
         thumbsUpButton = new Button("Confident");
         thumbsDownButton = new Button("Not Confident");
         ToDoList toDoList = new ToDoList();
-        this.toDoListV = new ToDoListView();
+        this.toDoListV = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
         //Initializing XP bar and system;
@@ -84,6 +79,8 @@ public class FlashcardScreenView extends StackPane {
         //Initializing new Tree
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
+
+        runDeckUpdate();
 
 
     }
@@ -264,7 +261,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.updateToDoList();
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
@@ -285,6 +282,10 @@ public class FlashcardScreenView extends StackPane {
             buttonBox.getItems().add(tButton);
             tButton.setOnAction(deckHandler);
         }
+    }
+
+    public Button getBackButton() {
+        return pageBack;
     }
 
     /**
