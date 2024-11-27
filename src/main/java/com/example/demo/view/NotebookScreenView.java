@@ -151,8 +151,7 @@ public class NotebookScreenView extends StackPane {
         // Update the current folder
         this.currentFolder = folderName;
 
-        // Clear and update the notes or content associated with the new folder
-        System.out.println("Switched to folder: " + folderName);
+
 
         // Update the title or header to reflect the current folder
         this.getChildren().clear(); // Clear the existing view

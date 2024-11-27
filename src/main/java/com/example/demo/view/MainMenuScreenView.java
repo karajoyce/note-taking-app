@@ -61,15 +61,12 @@ public class MainMenuScreenView extends StackPane {
         pageButton = new Button("Test Page"); // this should be a deck name later
 
 
-
-
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
-
-        toDoListV = new ToDoListView();
+        ToDoList toDoList = new ToDoList();
+        this.toDoListV = new ToDoListView();
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
         NoteBox = new HBox();
@@ -81,6 +78,9 @@ public class MainMenuScreenView extends StackPane {
         runMainScreenUpdate();
     }
 
+    //public void setToDoList(ToDoListView toDoListV) {
+    //    this.toDoListV = toDoListV;
+    //}
 
     public TopViewBar getTopViewBar() {
         return this.topViewBar;
@@ -130,7 +130,6 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getStyleClass().add("bigbox");
         fullBox.setMaxWidth(screenWidth);
         fullBox.setMaxHeight(screenHeight);
-
 
         //-------------------------
         // Set up flashcard middle section

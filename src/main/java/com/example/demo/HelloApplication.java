@@ -54,6 +54,10 @@ public class HelloApplication extends Application {
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
 
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+
+        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
+
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
         // Deck initialization, needs to change
@@ -62,9 +66,8 @@ public class HelloApplication extends Application {
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
-
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
-
+        //fCardView.setToDoList(toDoListView);
         fCardView.runDeckUpdate();
 
         Notebook nModel = new Notebook("CMPT281");
@@ -78,13 +81,12 @@ public class HelloApplication extends Application {
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
+
+
+
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene,toDoListView);
         foldersController.getNoteBookView();
-
-        // Create Views
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
-        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
 
         // Create Scenes
@@ -93,7 +95,7 @@ public class HelloApplication extends Application {
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView ,mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListController);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListView);
 
 
 
@@ -104,13 +106,9 @@ public class HelloApplication extends Application {
         navigationController.setFoldersScene(foldersScene);
 
         // Set Up Navigation in Views
-        mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen());
-        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
-        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen());
-        mainMenuScreenView.getNewNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
-        mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
-        mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(notebookScene));
-
+        mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
+        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
+        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen(foldersScreenView));
 
 
 

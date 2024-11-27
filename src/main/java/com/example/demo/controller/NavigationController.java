@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.view.FoldersScreenView;
+import com.example.demo.view.MainMenuScreenView;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -24,8 +26,9 @@ public class NavigationController {
     }
 
     // Navigate to the main menu
-    public void navigateToMainMenu() {
+    public void navigateToMainMenu(MainMenuScreenView mainMenuScreenView) {
         if (mainMenuScene != null) {
+            mainMenuScreenView.runMainScreenUpdate();
             primaryStage.setScene(mainMenuScene);
         } else {
             System.err.println("MainMenuScene is not set!");
@@ -33,8 +36,9 @@ public class NavigationController {
     }
 
     // Navigate to the folders screen
-    public void navigateToFoldersScreen() {
+    public void navigateToFoldersScreen(FoldersScreenView foldersScreenView) {
         if (foldersScene != null) {
+            foldersScreenView.runFoldersScreenUpdate();
             primaryStage.setScene(foldersScene);
         } else {
             System.err.println("FoldersScene is not set!");

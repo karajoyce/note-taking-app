@@ -6,7 +6,12 @@ import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.MainMenuScreenView;
 import com.example.demo.view.ToDoListView;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -30,18 +35,57 @@ public class FoldersController {
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
 
-
-        // Populate folders on the screen
-        foldersScreenView.populateFolders(foldersModel.getFolders());
-
-        // Add event handlers
-        foldersScreenView.getBackButton().setOnAction(e -> goToMainMenu());
-        foldersScreenView.setFolderSelectionHandler(event -> {
+        // Define folder selection handler
+        EventHandler<MouseEvent> folderSelectionHandler = event -> {
             Button selectedButton = (Button) event.getSource();
             String folderName = selectedButton.getText();
             openNotebook(folderName);
-        });
-        foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder());
+        };
+
+        // Folder delete handler
+        // Create delete handler using the factory method
+        EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
+
+        // Populate folders and pass the handler
+        foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
+
+        // Add event handlers for buttons
+        foldersScreenView.getBackButton().setOnAction(e -> goToMainMenu());
+        foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder(folderSelectionHandler, deleteHandler));
+    }
+
+    private EventHandler<MouseEvent> createDeleteHandler(EventHandler<MouseEvent> folderSelectionHandler) {
+        return event -> {
+            System.out.println("Delete button clicked."); // Debug log
+            Button deleteButton = (Button) event.getSource();
+            VBox folderContainer = (VBox) deleteButton.getParent();
+            Button folderButton = (Button) folderContainer.getChildren().get(0);
+            String folderName = folderButton.getText();
+            System.out.println("Attempting to delete folder: " + folderName); // Debug log
+            deleteFolder(folderName, folderSelectionHandler);
+        };
+    }
+
+    private void deleteFolder(String folderName, EventHandler<MouseEvent> folderSelectionHandler) {
+        System.out.println("Deleting folder: " + folderName);
+
+
+        // Remove the folder from the model
+        foldersModel.removeFolder(folderName);
+
+        //NotesStorage.SaveNotes(foldersModel.getNotebook(folderName));
+
+        // Delete the corresponding JSON file from the filesystem
+        NotesStorage.DeleteNotebook(folderName);
+
+
+
+
+        System.out.println("Deleted folder: " + folderName);
+
+        // Refresh the folders list
+        EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
+        foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
     }
 
     private void goToMainMenu() {
@@ -111,21 +155,21 @@ public class FoldersController {
         System.out.println("Notebook state saved for: " + notebook.getTitle());
     }
 
-    private void addNewFolder() {
+    private void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
         String newFolderName = foldersScreenView.showAddFolderDialog();
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
 
-            // Optionally add a default page to the new notebook
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {
-                newNotebook.addPage(new Page("Default Page"));
+                newNotebook.addPage(new Page("Lecture 1"));
             }
 
-            NotesStorage.SaveNotes(newNotebook); // Save the newly created notebook
+            NotesStorage.SaveNotes(newNotebook); // Save the notebook
 
-            foldersScreenView.populateFolders(foldersModel.getFolders());
+            // Refresh folder list and reattach handler to all buttons
+            foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
         }
     }
 }

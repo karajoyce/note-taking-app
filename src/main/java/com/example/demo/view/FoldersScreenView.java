@@ -10,7 +10,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -35,17 +38,35 @@ public class FoldersScreenView extends StackPane {
     private ToDoList list;
 
     private ToDoListController toDoCont;
+    private Button deleteButton;
+
 
     public FoldersScreenView() {
         // Initialize components
-        pageBack = new Button("Back");
+        addFolderButton = new Button("Add Folder");
+
+        //pageBack = new Button("Back");
+        pageBack = new Button("");
+        Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
+        ImageView imgViewB = new ImageView(imgB);
+        imgViewB.setFitHeight(15);
+        imgViewB.setPreserveRatio(true);
+        pageBack.setGraphic(imgViewB);
+
+        deleteButton = new Button("");
+        Image imgC = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
+        ImageView imgViewC = new ImageView(imgC);
+        imgViewC.setFitHeight(15);
+        imgViewC.setPreserveRatio(true);
+        deleteButton.setGraphic(imgViewC);
+
+
         motivationalMessagesView = new MotivationalMessagesView();
+        ToDoList toDoList = new ToDoList();
+        this.toDoListV = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
 
-        toDoListV = new ToDoListView();
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        list = new ToDoList();
-        toDoCont = new ToDoListController(list, toDoListV, xpModel);
 
         // Initialize foldersGrid
         foldersGrid = new GridPane();
@@ -64,77 +85,84 @@ public class FoldersScreenView extends StackPane {
         double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
         this.getChildren().clear();
 
-        // Main layout
-        HBox fullBox = new HBox();
-        this.getChildren().add(fullBox);
-        fullBox.getStyleClass().add("bigbox");
-        fullBox.setMaxWidth(screenWidth);
-        fullBox.setMaxHeight(screenHeight);
+        // Main layout as HBox (to organize center content and right panel)
+        HBox mainLayout = new HBox();
+        mainLayout.setSpacing(20); // Space between center and right panels
+        mainLayout.setPadding(new Insets(20));
+        //mainLayout.getStyleClass().add("main-layout");
+        mainLayout.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
+        this.getChildren().add(mainLayout);
 
-        // Left panel with Back button
-        VBox leftPanel = new VBox();
-        leftPanel.setMinWidth(screenWidth * 0.15);
-        leftPanel.setAlignment(Pos.TOP_CENTER);
-        leftPanel.getStyleClass().add("left-panel");
-        pageBack.setMinWidth(120);
+        // VBox to hold the Top Bar and Folder Grid (center content)
+        VBox centerBox = new VBox();
+        centerBox.setSpacing(20); // Space between top bar and scrollable folder grid
+        centerBox.setPadding(new Insets(20));
+        centerBox.setAlignment(Pos.TOP_CENTER);
+        //centerBox.getStyleClass().add("center-box");
+        centerBox.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
+
+        // Ensure the centerBox grows with the available space
+        centerBox.setMinWidth(screenWidth * 0.7);
+        centerBox.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(centerBox, javafx.scene.layout.Priority.ALWAYS);
+
+        // Top bar with Back and Add Folder buttons
+        HBox topBar = new HBox();
+        topBar.setSpacing(10); // Add space between buttons
+        topBar.setAlignment(Pos.CENTER_LEFT); // Align buttons to the left
+        topBar.setPadding(new Insets(10));
+        topBar.getStyleClass().add("top-bar");
+
+        pageBack.setMinWidth(100);
         pageBack.setMinHeight(40);
         pageBack.getStyleClass().add("back-button");
-        leftPanel.getChildren().add(pageBack);
-        fullBox.getChildren().add(leftPanel);
 
-        // Center area for folders grid
-        VBox centerBox = new VBox();
-        centerBox.setAlignment(Pos.TOP_CENTER);
-        centerBox.getStyleClass().add("center-box");
-        centerBox.setSpacing(20);
-        centerBox.setPadding(new Insets(20));
-        centerBox.setMinWidth(screenWidth * 0.5);
 
-        // Add folders grid to a container
-        VBox gridContainer = new VBox();
-        gridContainer.getStyleClass().add("grid-container");
-        gridContainer.setAlignment(Pos.CENTER);
-        gridContainer.setPadding(new Insets(20));
-        gridContainer.setSpacing(10);
-
-        // Add the grid to the container
-        gridContainer.getChildren().add(foldersGrid);
-
-        // Add the Add Folder Button
-        addFolderButton = new Button("Add Folder");
-        addFolderButton.setMinWidth(150);
-        addFolderButton.setMinHeight(50);
+        addFolderButton.setMinWidth(100);
+        addFolderButton.setMinHeight(40);
         addFolderButton.getStyleClass().add("add-folder-button");
-        gridContainer.getChildren().add(addFolderButton);
 
-        centerBox.getChildren().add(gridContainer);
-        fullBox.getChildren().add(centerBox);
+        topBar.getChildren().addAll(pageBack, addFolderButton);
 
-        // Right panel with motivational messages and To-Do List
+        // Add folders grid to a ScrollPane
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(foldersGrid);
+        //scrollPane.getStyleClass().add("scroll-pane");
+        scrollPane.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
+        scrollPane.setPadding(new Insets(10));
+
+        foldersGrid.setAlignment(Pos.TOP_CENTER);
+        foldersGrid.setHgap(20);
+        foldersGrid.setVgap(20);
+
+        // Add Top Bar and Folder Grid to centerBox
+        centerBox.getChildren().addAll(topBar, scrollPane);
+
+        // Right panel with Motivational Messages and To-Do List
         VBox rightPanel = new VBox();
-        rightPanel.setMinWidth(screenWidth * 0.25);
+        rightPanel.setSpacing(20); // Space between elements
+        rightPanel.setPadding(new Insets(20));
         rightPanel.setAlignment(Pos.TOP_CENTER);
         rightPanel.getStyleClass().add("right-panel");
-        rightPanel.setSpacing(20);
+        rightPanel.setMinWidth(screenWidth * 0.25);
+        rightPanel.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         VBox motivContainer = new VBox(motivationalMessagesView.getMotivmsgView());
         motivContainer.setMinHeight(screenHeight * 0.3);
-        motivContainer.getStyleClass().add("motivation-container");
+        //motivContainer.getStyleClass().add("motivation-container");
+        motivContainer.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
+        VBox todoContainer = new VBox(toDoListV.getToDoListView());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        todoContainer.setMinHeight(screenHeight * 0.3);
+        todoContainer.getStyleClass().add("todo-container");
 
-        VBox todolist = new VBox();
-        todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        todolist.getStyleClass().add("rightVbox");
+        // Add Motivational Messages and To-Do List to Right Panel
+        rightPanel.getChildren().addAll(motivContainer, todoContainer);
 
-        todolist.getChildren().addAll(motivContainer,toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        fullBox.getChildren().add(todolist);
-        rightPanel.getStyleClass().add("rightVbox");
-        rightPanel.setSpacing(20); // Add spacing
-        rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        fullBox.getChildren().add(rightPanel);
+        // Add centerBox and rightPanel to mainLayout
+        mainLayout.getChildren().addAll(centerBox, rightPanel);
     }
 
     public Button getAddFolderButton() {
@@ -145,24 +173,35 @@ public class FoldersScreenView extends StackPane {
         return pageBack;
     }
 
-    public void populateFolders(List<String> folderNames) {
+    public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersGrid.getChildren().clear();
-        folderNames  = NotesStorage.GenerateNotebookTitles();
+        //folderNames  = NotesStorage.GenerateNotebookTitles();
         int columns = 3; // Number of columns in the grid
         int row = 0, col = 0;
 
         for (String folderName : folderNames) {
+            // Create a button for the folder
             Button folderButton = new Button(folderName);
             folderButton.getStyleClass().add("folder-box");
             folderButton.setPrefSize(150, 150); // Set preferred size of folder boxes
             folderButton.setWrapText(true); // Allow text wrapping for long folder names
 
-            // Attach the folder selection handler if it exists
-            if (folderSelectionHandler != null) {
-                folderButton.setOnMouseClicked(folderSelectionHandler);
-            }
+            // Attach the folder selection handler
 
-            foldersGrid.add(folderButton, col, row);
+            folderButton.setOnMouseClicked(folderSelectionHandler);
+
+            // Create a delete button for the folder
+            Button deleteButton = new Button("X");
+            deleteButton.getStyleClass().add("delete-button");
+            deleteButton.setPrefSize(30, 30); // Set size for delete button
+            deleteButton.setOnMouseClicked(deleteHandler);
+
+            // Add folder button and delete button to a container (VBox)
+            VBox folderContainer = new VBox(5); // 5px spacing
+            folderContainer.setAlignment(Pos.CENTER);
+            folderContainer.getChildren().addAll(folderButton, deleteButton);
+
+            foldersGrid.add(folderContainer, col, row);
             col++;
             if (col >= columns) {
                 col = 0;

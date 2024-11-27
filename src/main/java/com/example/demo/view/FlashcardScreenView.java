@@ -74,6 +74,9 @@ public class FlashcardScreenView extends StackPane {
         tempCard = new Card("Insert more cards", "");
         thumbsUpButton = new Button("Confident");
         thumbsDownButton = new Button("Not Confident");
+        ToDoList toDoList = new ToDoList();
+        this.toDoListV = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
         //Initializing XP bar and system;
         xpModel = XPManager.getXPModel();

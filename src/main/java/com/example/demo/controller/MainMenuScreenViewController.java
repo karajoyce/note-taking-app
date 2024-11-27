@@ -43,6 +43,8 @@ public class MainMenuScreenViewController {
         this.xpModel = XPManager.getXPModel();
         this.todoV = todoV;
         this.todoC = todoC;
+        this.toDoListView = toDoListView;
+
 
         // Set up button actions
         setupButtonActions();
