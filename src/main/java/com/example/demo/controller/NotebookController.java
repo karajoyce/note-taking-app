@@ -12,6 +12,7 @@ import com.example.demo.view.NotebookScreenView;
 import javafx.scene.control.Button;
 import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**

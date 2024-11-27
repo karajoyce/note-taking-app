@@ -41,3 +41,4 @@ public class Page implements Serializable {
     }
 
 }
+

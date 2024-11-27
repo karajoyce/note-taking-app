@@ -29,7 +29,6 @@ import java.util.List;
  Sara Shakeel, gvk731, 11367521
 
  **/
-
 public class FlashcardScreenView extends StackPane {
 
     private boolean isBack = false; // checking if we should be on the back of the card

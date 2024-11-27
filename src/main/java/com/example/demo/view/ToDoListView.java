@@ -3,16 +3,23 @@ package com.example.demo.view;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.Task;
 import com.example.demo.model.XPModel;
+import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
 import javafx.stage.Screen;
+import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  CMPT 370, T05, Team 4, Prof. Jon Lovering

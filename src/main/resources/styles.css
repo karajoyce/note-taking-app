@@ -364,3 +364,63 @@ Sara Shakeel, gvk731, 11367521
     -fx-padding: -40px;
     -fx-scale-shape: 100px;
 }
+.custom-alert {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-background-color: #f8f8f8;
+    -fx-border-color: #ff6666;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: #333;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #ffcccc;
+    -fx-padding: 10;
+    -fx-font-weight: bold;
+}
+
+/* CSS styles for folders, panels, and buttons */
+.bigbox {
+    -fx-padding: 20;
+    -fx-background-color: #f8e5f5;
+    -fx-spacing: 10;
+}
+
+.left-panel {
+    -fx-padding: 20;
+    -fx-background-color: #f2f2f2;
+}
+
+.center-box {
+    -fx-spacing: 20;
+}
+
+.right-panel {
+    -fx-padding: 20;
+    -fx-background-color: #f2f2f2;
+}
+
+.folder-box {
+    -fx-background-color: #d0a9f5;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.add-folder-button {
+    -fx-background-color: #d0a9f5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+

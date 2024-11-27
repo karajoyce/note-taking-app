@@ -1,8 +1,10 @@
 package com.example.demo;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.controller.*;
+import com.example.demo.model.*;
 import com.example.demo.model.BreakReminderModel;
 import com.example.demo.model.FoldersModel;
 import com.example.demo.model.Notebook;
@@ -28,11 +30,10 @@ import javafx.scene.Scene;
 import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
-import com.example.demo.model.FlashcardScreen;
 
 public class HelloApplication extends Application {
 
-    public static Stage primaryStage;
+    private static Stage primaryStage;
     private BreakReminderController breakReminderController;
     private XPModel xpModel;
     @Override
@@ -41,6 +42,11 @@ public class HelloApplication extends Application {
         primaryStage = stage;
 
         NavigationController navigationController = new NavigationController(primaryStage);
+
+        ToDoList toDoList = new ToDoList();
+        ToDoListView toDoListView = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+        toDoListController.updateTaskListView();
 
         // Break Reminder setup
         long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
@@ -57,13 +63,17 @@ public class HelloApplication extends Application {
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
+
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
+        fCardView.runDeckUpdate();
 
-        Notebook nModel = NotesStorage.LoadNotes("CMPT281");
+        Notebook nModel = new Notebook("CMPT281");
+        nModel.addPage(new Page("Lecture 1"));
+        NotebookScreenView nView = new NotebookScreenView(nModel);
+
 //        Notebook nModel = new Notebook("CMPT281");
 //        nModel.addPage(new Page("Lecture 1"));
-        NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
         nView.runScreenUpdate();
 
@@ -72,6 +82,10 @@ public class HelloApplication extends Application {
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
 
 
+        Scene foldersScene = new Scene(foldersScreenView);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
+
+        foldersController.getNoteBookView();
 
         // Create Views
         MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
@@ -80,11 +94,11 @@ public class HelloApplication extends Application {
 
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
-        Scene foldersScene = new Scene(foldersScreenView);
+
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView ,mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListController);
 
 
 
@@ -96,19 +110,18 @@ public class HelloApplication extends Application {
 
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen());
+        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
+        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen());
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
         mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
         mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(notebookScene));
 
 
-        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
-        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen());
-
 
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);
-        primaryStage.setTitle("Flashcard");
+        primaryStage.setTitle("Main Menu");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
             primaryStage.setFullScreen(true);  // or false to exit full-screen

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.view.EditCardView;
@@ -60,5 +61,12 @@ public class NewPageController {
             nController.runUpdate();
             HelloApplication.primaryStage.setAlwaysOnTop(true);
         }
+        Page newPage = new Page(title);
+        nModel.addPage(newPage);
+        NotesStorage.SaveNotes(nModel);
+
+        nController.runUpdate();
     }
 }
+
+

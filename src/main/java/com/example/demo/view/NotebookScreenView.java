@@ -114,6 +114,7 @@ public class NotebookScreenView extends StackPane {
         xpController = new XPController(xpModel, xpView, digitalTree);
 
         toDoListV = new ToDoListView();
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
@@ -128,8 +129,23 @@ public class NotebookScreenView extends StackPane {
         noteController = new NoteController(noteModel);
         noteView = new NoteView(noteController);
 
+        this.currentNotebook = currNotebook;
+        //currentPage = currentNotebook.getNotes().getFirst();
+        //currentPage.setContents(noteModel.getTextArea());
+
+        if (!currentNotebook.getNotes().isEmpty()) {
+            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
+        }
+
+
         runScreenUpdate();
     }
+
+    public void setNotebook(Notebook notebook) {
+        this.currentNotebook = notebook;
+        runScreenUpdate();
+    }
+
 
     public void setCurrentFolder(String folderName) {
         // Update the current folder
@@ -299,6 +315,7 @@ public class NotebookScreenView extends StackPane {
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }
+
     }
 
     public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
