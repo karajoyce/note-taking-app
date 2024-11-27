@@ -21,7 +21,6 @@ import java.util.Set;
  */
 public class NoteModel {
 
-
     /** the main text area of the text editor */
     private InlineCssTextArea textArea = new InlineCssTextArea();
 
@@ -46,6 +45,21 @@ public class NoteModel {
     /** font style. e.g. Verdana, Times New Roman, etc. */
     private String fontType;
 
+    /** if auto flashcard creating turned on, true. otherwise, false */
+    private boolean autoFlashcardEnabled;
+
+    /** if auto flashcards are on and waiting for back input */
+    private boolean waitingForBackInput;
+    /** If auto flashcards are on on and waiting for front input */
+    private boolean waitingforFrontInput;
+    /** the current card's front text */
+    private StringBuilder currentCardFront;
+    /** the current card's back text buffer */
+    private StringBuilder backBuffer;
+    /** the start of the buffers within the text area */
+    private int frontBufferIndex;
+    private int backBufferIndex;
+
     /** Constructor */
     public NoteModel() {
 
@@ -53,6 +67,12 @@ public class NoteModel {
         italicEnabled = false;
         underlineEnabled = false;
         strikethroughEnabled = false;
+
+        waitingForBackInput = false;
+        waitingforFrontInput = false;
+        autoFlashcardEnabled = false;
+        currentCardFront = new StringBuilder();
+        backBuffer = new StringBuilder();
 
         fontType = "Arial";
 
@@ -68,7 +88,6 @@ public class NoteModel {
         textArea.setWrapText(true);
 
     }
-
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {
@@ -115,6 +134,7 @@ public class NoteModel {
         this.strikethroughEnabled = !strikethroughEnabled;
     }
 
+    /** Getter setter for font size */
     public String getFontsize() {
         return fontsize;
     }
@@ -123,6 +143,7 @@ public class NoteModel {
         this.fontsize = fontsize;
     }
 
+    /** Getter for the main text area */
     public InlineCssTextArea getTextArea() {
         return textArea;
     }
@@ -142,4 +163,77 @@ public class NoteModel {
             nCont.toggleStrikethrough();
         }
     }
+
+    /** Getter setter for auto flashcard making enabling */
+    public boolean isAutoFlashcardEnabled() {
+        return autoFlashcardEnabled;
+    }
+
+    public void toggleAutoFlashcard() {
+        this.autoFlashcardEnabled = !autoFlashcardEnabled;
+
+        /* If autoflashcards were turned off, we want to clear the buffers so they don't affect the next
+        auto flash card making session
+         */
+        if (!this.autoFlashcardEnabled) {
+            resetBackBuffer("");
+            setCurrentCardFront("");
+            setWaitingforFrontInput(false);
+            setWaitingForBackInput(false);
+        } else {
+            setWaitingforFrontInput(true);
+            setWaitingForBackInput(false);
+        }
+    }
+
+    /** functions for auto flashcard front and back buffers ------------------------- */
+    public boolean isWaitingForBackInput() {
+        return this.waitingForBackInput;
+    }
+
+    public void setWaitingForBackInput(boolean state) {
+        this.waitingForBackInput = state;
+    }
+
+    public StringBuilder getCurrentCardFront() {
+        return this.currentCardFront;
+    }
+
+    public void setCurrentCardFront(String cardFront) {
+        this.currentCardFront = new StringBuilder(cardFront);
+    }
+
+    public StringBuilder getBackBuffer() {
+        return this.backBuffer;
+    }
+
+    public void resetBackBuffer(String start) {
+        this.backBuffer = new StringBuilder(start);
+    }
+
+    public boolean isWaitingforFrontInput() {
+        return this.waitingforFrontInput;
+    }
+
+    public void setWaitingforFrontInput(boolean state) {
+        this.waitingforFrontInput = state;
+    }
+
+    /** starting indexes of the text in the text area */
+    public int getFrontBufferIndex() {
+        return this.frontBufferIndex;
+    }
+
+    public int getBackBufferIndex() {
+        return backBufferIndex;
+    }
+
+    public void setFrontBufferIndex(int index) {
+        this.frontBufferIndex = index;
+    }
+
+    public void setBackBufferIndex(int index) {
+        this.backBufferIndex = index;
+    }
+    /** -------------------------------------------------------------------- */
 }

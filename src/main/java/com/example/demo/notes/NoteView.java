@@ -44,7 +44,7 @@ public class NoteView  {
         return menuBar;
     }
 
-    public ToolBar createToolBar() {
+    public ToolBar createToolBar(Stage stage) {
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.getStyleClass().add("textEditorButton");
@@ -82,8 +82,7 @@ public class NoteView  {
         fontMenu.setValue(noteController.noteModel.getFontType());
         fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
 
-        /* Text alignment
-        * Replace the text to images? */
+        /* Text alignment */
         Button alignLeftButton = new Button("Left");
         alignLeftButton.getStyleClass().add("textEditorButton");
         alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
@@ -96,11 +95,58 @@ public class NoteView  {
         alignRightButton.getStyleClass().add("textEditorButton");
         alignRightButton.setOnAction(actionEvent -> noteController.setTextAlignment("right"));
 
-        ToolBar toolBar = new ToolBar(toggleBoldButton, toggleItalicButton, toggleUnderlineButton, toggleStrikethroughButton,
+        /* Toggle auto flashcards */
+        Button autoFlashcardButton = new Button("Auto Flashcards: OFF");
+        autoFlashcardButton.setOnAction(actionEvent -> {
+            noteController.noteModel.toggleAutoFlashcard();
+            if (noteController.noteModel.isAutoFlashcardEnabled()) {
+                autoFlashcardButton.setText("Auto Flashcards: ON");
+            } else {
+                autoFlashcardButton.setText("Auto Flashcards: OFF");
+            }
+        });
+
+        ToolBar toolBar = new ToolBar(getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
+                getToggleStrikeThroughButton(),
                 new Label("Font:"), fontMenu, new Label("Font size:"), fontSizeMenu,
-                alignLeftButton, alignCenterButton, alignRightButton);
+                alignLeftButton, alignCenterButton, alignRightButton,
+                autoFlashcardButton);
 
         return toolBar;
+    }
+
+    protected Button getToggleBoldButton() {
+        Button toggleBoldButton = new Button("B");
+        toggleBoldButton.setStyle("-fx-font-weight: bold;");
+        toggleBoldButton.setOnAction(actionEvent -> noteController.toggleBold());
+
+        return toggleBoldButton;
+    }
+
+    protected Button getToggleItalicButton() {
+        Button toggleItalicButton = new Button("I");
+        toggleItalicButton.setStyle("-fx-font-style: italic; -fx-font-family: Arial, Helvetica, sans-serif;");
+        toggleItalicButton.setOnAction(actionEvent -> noteController.toggleItalic());
+
+        return toggleItalicButton;
+    }
+
+    protected Button getToggleUnderlineButton() {
+        Button toggleUnderlineButton = new Button("U");
+        toggleUnderlineButton.setStyle("-fx-underline: true;");
+        toggleUnderlineButton.setOnAction(actionEvent -> noteController.toggleUnderline());
+
+        return toggleUnderlineButton;
+    }
+
+    protected Button getToggleStrikeThroughButton() {
+        Button toggleStrikethroughButton = new Button("S");
+
+        /* NOTE: for some reason strikethrough won't appear on the button */
+        toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;");
+        toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
+
+        return toggleStrikethroughButton;
     }
 
 

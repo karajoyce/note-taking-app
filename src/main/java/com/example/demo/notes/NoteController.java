@@ -10,17 +10,15 @@
 package com.example.demo.notes;
 
 import java.util.*;
-import javafx.scene.control.Alert;
 
-import javafx.stage.FileChooser;
+import com.example.demo.FilerSystem.FlashcardStorage;
+
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
+
+import com.example.demo.model.Card;
+import com.example.demo.model.Deck;
 
 /**
  * The Controller class of the text editor (MVC Model)
@@ -29,6 +27,8 @@ import java.util.HashSet;
 public class NoteController {
 
     NoteModel noteModel;
+    /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
+    Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
     public NoteController(NoteModel model) {
         noteModel = model;
@@ -38,88 +38,122 @@ public class NoteController {
     }
 
     /**
-     * error message when doing file stuff
-     *
-     * @param title   title of the alert
-     * @param message message displayed to user
-     */
-    private void displayError(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    /**
      * Open a file from the computer's filesystem
      */
     protected void openFile(Stage stage) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Text File");
-        File file = fileChooser.showOpenDialog(stage);
 
-        try {
-            if (file != null) {
-                String content = Files.readString(Path.of(file.getPath()));
-                noteModel.getTextArea().replaceText(content);
-            }
-        } catch (IOException e) {
-            displayError("Error opening file", e.getMessage());
-        }
     }
 
     /**
      * Save the document you're working on
      */
     protected void saveFile(Stage stage) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Text File");
-        File file = fileChooser.showSaveDialog(stage);
+        // Save textarea into a JSON ?
 
-        /* Attempt to save the file */
-        if (file != null) {
-            try {
-                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(), StandardOpenOption.CREATE);
-            } catch (IOException e) {
-                displayError("Error saving file", e.getMessage());
+    }
+
+    /** Function that prints out everything in the deck. Debugging purposes ONLY */
+    private void printDeck(Deck deck) {
+        System.out.println(deck.getCards());
+    }
+
+    /** Helper function for knowing where a new character has been inserted */
+    private int findDifferenceIndex(String oldText, String newText) {
+        int index = 0;
+        int maxlen = newText.length();
+        while (oldText.toCharArray()[index] == newText.toCharArray()[index]) {
+            index++;
+            if (index == maxlen - 1) break;
+        }
+
+        return index;
+    }
+
+    /**
+     * When auto flashcards are enabled, listen for the user to input a period (.)
+     * @param oldText
+     * @param newText
+     */
+    protected void trackBack(String oldText, String newText) {
+        StringBuilder backBuffer = noteModel.getBackBuffer();
+
+        /* Only start gathering data for the back of the card if auto flashcard making is
+        enabled and if the program is waiting for back input
+         */
+        if (noteModel.isAutoFlashcardEnabled() && noteModel.isWaitingForBackInput() &&
+                !noteModel.isBoldEnabled() && !noteModel.isWaitingforFrontInput()) {
+
+            // User is backspacing. Remove the previous input character from back buffer
+            if (newText.length() < oldText.length()) {
+
+                if (backBuffer.length() > 0) {
+                    backBuffer.deleteCharAt(noteModel.getTextArea().getCaretPosition() - noteModel.getBackBufferIndex());
+                }
+
+            // User is currently typing in new characters ...
+            } else {
+
+                int changeIndex = findDifferenceIndex(oldText, newText);
+                String addedText = newText.substring(changeIndex);
+                if (!addedText.isEmpty()) {
+                    char lastChar = addedText.charAt(addedText.length() - 1);
+
+                    // If the user inputs a '.', the back of the card is ready!
+                    if (lastChar == '.') {
+                        noteModel.setWaitingForBackInput(false);
+
+                        // Create the new flashcard
+                        TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
+                                backBuffer.toString().strip()));
+                        FlashcardStorage.SaveDeck(TEMPORARY_DECK);
+
+                        // Once the card is made, reset the front and back buffers for the next card to be made
+                        noteModel.setCurrentCardFront("");
+                        noteModel.resetBackBuffer("");
+
+                        //printDeck(TEMPORARY_DECK); // REMOVE LATER
+
+                    } else {
+                        // Else, add the text to the buffer
+                        noteModel.resetBackBuffer(newText.substring(noteModel.getBackBufferIndex()));
+                    }
+                }
             }
+
         }
     }
 
     /**
-     * On the event of clicking the Strikethrough button, if:
-     * (1) User has selected a chunk of text, toggle strikethrough but retain previous set styles.
-     * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
-     * it is toggled again.
+     * Dynamically typing the autoflashcard's front
+     * @param oldText previous text
+     * @param newText text after typing
      */
-    protected void toggleStrikethrough() {
-        /* Get the user's selected text */
-        int start = noteModel.getTextArea().getSelection().getStart();
-        int end = noteModel.getTextArea().getSelection().getEnd();
+    void trackFront(String oldText, String newText) {
 
-        boolean currentlySetToStrikethrough = noteModel.isStrikethroughEnabled();
+        if (noteModel.isBoldEnabled() && noteModel.isWaitingforFrontInput() && noteModel.isAutoFlashcardEnabled()) {
 
-        /* If user is selecting a block of text, retain the other styles/formatting but
-         * toggle the desired style */
-        if (start != end) {
+            // User backspaced, so delete the previously typed character from buffer
+            if (newText.length() < oldText.length()) {
 
-            retainStyles("-fx-strikethrough: true; ", "-fx-strikethrough: false; ", currentlySetToStrikethrough, start, end);
-            noteModel.toggleStrikethrough();
-            return;
+                if (noteModel.getCurrentCardFront().length() > 0) {
+                    noteModel.getCurrentCardFront().deleteCharAt(noteModel.getTextArea().getCaretPosition() - noteModel.getFrontBufferIndex());
+                }
+            } else {
+                noteModel.setCurrentCardFront(newText.substring(noteModel.getFrontBufferIndex()));
 
+            }
         }
+        // Once user turns off bold again, and the card front bufer is not empty then the card front is ready. Now we wait for the back
+        else if (!noteModel.isBoldEnabled() && noteModel.getCurrentCardFront().length() > 0) {
 
-        /* Toggles whether or not the next characters that the user types
-        is bold or not
-         */
-        noteModel.toggleStrikethrough();
-        if (noteModel.getCurrStyle().contains("-fx-strikethrough: true; ")) {
-            noteModel.getCurrStyle().remove("-fx-strikethrough: true; ");
-            noteModel.getCurrStyle().add("-fx-strikethrough: false; ");
-        } else {
-            noteModel.getCurrStyle().remove("-fx-strikethrough: false; ");
-            noteModel.getCurrStyle().add("-fx-strikethrough: true; ");
+            // Only set the back buffer index once
+            if (!noteModel.isWaitingForBackInput()) {
+                noteModel.setBackBufferIndex(noteModel.getTextArea().getCaretPosition());
+            }
+
+            noteModel.setWaitingforFrontInput(false);
+            noteModel.setWaitingForBackInput(true);
+
         }
     }
 
@@ -140,8 +174,20 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ", currentlySetToBold, start, end);
+            retainStyles("-fx-font-weight: bold; ", "-fx-font-weight: normal; ",
+                    currentlySetToBold, start, end);
             noteModel.toggleBold();
+
+            /* If auto flashcard making is enabled, we want to make the selected bold text the front of the
+             * new flashcard */
+            if (noteModel.isAutoFlashcardEnabled() && noteModel.isBoldEnabled()) {
+                String front = noteModel.getTextArea().getText(start, end);
+                noteModel.setCurrentCardFront(front);
+
+                noteModel.setWaitingForBackInput(true);
+                noteModel.toggleBold();
+
+            }
             return;
 
         }
@@ -157,7 +203,51 @@ public class NoteController {
             noteModel.getCurrStyle().remove("-fx-font-weight: normal; ");
             noteModel.getCurrStyle().add("-fx-font-weight: bold; ");
         }
+        /* We're now typing the text for the front of our card */
+        if (noteModel.isAutoFlashcardEnabled() && noteModel.isBoldEnabled()) {
+
+            noteModel.setFrontBufferIndex(noteModel.getTextArea().getCaretPosition());
+            noteModel.setWaitingforFrontInput(true);
+        }
     }
+
+    /**
+     * On the event of clicking the Strikethrough button, if:
+     * (1) User has selected a chunk of text, toggle strikethrough but retain previous set styles.
+     * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
+     * it is toggled again.
+     */
+    protected void toggleStrikethrough() {
+        /* Get the user's selected text */
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        boolean currentlySetToStrikethrough = noteModel.isStrikethroughEnabled();
+
+        /* If user is selecting a block of text, retain the other styles/formatting but
+         * toggle the desired style */
+        if (start != end) {
+
+            retainStyles("-fx-strikethrough: true; ", "-fx-strikethrough: false; ",
+                    currentlySetToStrikethrough, start, end);
+            noteModel.toggleStrikethrough();
+            return;
+
+        }
+
+        /* Toggles whether or not the next characters that the user types
+        is bold or not
+         */
+        noteModel.toggleStrikethrough();
+        if (noteModel.getCurrStyle().contains("-fx-strikethrough: true; ")) {
+            noteModel.getCurrStyle().remove("-fx-strikethrough: true; ");
+            noteModel.getCurrStyle().add("-fx-strikethrough: false; ");
+        } else {
+            noteModel.getCurrStyle().remove("-fx-strikethrough: false; ");
+            noteModel.getCurrStyle().add("-fx-strikethrough: true; ");
+        }
+    }
+
 
     /**
      * On the event of clicking the Italic button, if:
@@ -176,7 +266,8 @@ public class NoteController {
          * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-font-style: italic; ", "-fx-font-style: normal; ", currentlySetToItalic, start, end);
+            retainStyles("-fx-font-style: italic; ", "-fx-font-style: normal; ",
+                    currentlySetToItalic, start, end);
             noteModel.toggleItalic();
             return;
 
@@ -212,7 +303,8 @@ public class NoteController {
         * toggle the desired style */
         if (start != end) {
 
-            retainStyles("-fx-underline: true; ", "-fx-underline: false; ", currentlySetToUnderlined, start, end);
+            retainStyles("-fx-underline: true; ", "-fx-underline: false; ",
+                    currentlySetToUnderlined, start, end);
 
             noteModel.toggleUnderline();
             return;
@@ -329,7 +421,8 @@ public class NoteController {
     public void applyCurrentStyleToNewText() {
         int caretPosition = noteModel.getTextArea().getCaretPosition();
         if (caretPosition != 0) {
-            noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));
+            noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ",
+                    noteModel.getCurrStyle()));
         }
     }
 
@@ -417,5 +510,6 @@ public class NoteController {
         }
         System.out.println(noteModel.getCurrStyle());
     }
+
 
 }
