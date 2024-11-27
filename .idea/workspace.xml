@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="setting card front dynamically typed">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="made toggle autoflashcard button more easy to udnerstand">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/flashcard.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/flashcard.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" afterDir="false" />
@@ -296,7 +296,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732253018274</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="program doesnt throw errors when backspacing. also doesn't make unwanted cards">
+      <option name="closed" value="true" />
+      <created>1732507552628</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732507552628</updated>
+    </task>
+    <task id="LOCAL-00024" summary="made toggle autoflashcard button more easy to udnerstand">
+      <option name="closed" value="true" />
+      <created>1732655660498</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1732655660498</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +353,8 @@
     <MESSAGE value="added keybinds for bold, underline, italics, and strikethrough" />
     <MESSAGE value="draft implementation of auto flashcards (set card front by selection)" />
     <MESSAGE value="setting card front dynamically typed" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting card front dynamically typed" />
+    <MESSAGE value="program doesnt throw errors when backspacing. also doesn't make unwanted cards" />
+    <MESSAGE value="made toggle autoflashcard button more easy to udnerstand" />
+    <option name="LAST_COMMIT_MESSAGE" value="made toggle autoflashcard button more easy to udnerstand" />
   </component>
 </project>

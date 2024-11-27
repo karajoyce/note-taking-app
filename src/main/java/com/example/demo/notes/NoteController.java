@@ -14,14 +14,8 @@ import java.util.*;
 import com.example.demo.FilerSystem.FlashcardStorage;
 import javafx.scene.control.Alert;
 
-import javafx.stage.FileChooser;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashSet;
 
 import com.example.demo.model.Card;
@@ -42,20 +36,6 @@ public class NoteController {
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
 
-    }
-
-    /**
-     * error message when doing file stuff
-     *
-     * @param title   title of the alert
-     * @param message message displayed to user
-     */
-    private void displayError(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     /**
@@ -108,6 +88,18 @@ public class NoteController {
         System.out.println(deck.getCards());
     }
 
+    /** Helper function for knowing where a new character has been inserted */
+    private int findDifferenceIndex(String oldText, String newText) {
+        int index = 0;
+        int maxlen = newText.length();
+        while (oldText.toCharArray()[index] == newText.toCharArray()[index]) {
+            index++;
+            if (index == maxlen - 1) break;
+        }
+
+        return index;
+    }
+
     /**
      * When auto flashcards are enabled, listen for the user to input a period (.)
      * @param oldText
@@ -124,13 +116,16 @@ public class NoteController {
 
             // User is backspacing. Remove the previous input character from back buffer
             if (newText.length() < oldText.length()) {
-                backBuffer.deleteCharAt(backBuffer.length() - 1);
+
+                if (backBuffer.length() > 0) {
+                    backBuffer.deleteCharAt(noteModel.getTextArea().getCaretPosition() - noteModel.getBackBufferIndex());
+                }
 
             // User is currently typing in new characters ...
             } else {
-                int changeIndex = oldText.length();
-                String addedText = newText.substring(changeIndex);
 
+                int changeIndex = findDifferenceIndex(oldText, newText);
+                String addedText = newText.substring(changeIndex);
                 if (!addedText.isEmpty()) {
                     char lastChar = addedText.charAt(addedText.length() - 1);
 
@@ -145,14 +140,13 @@ public class NoteController {
 
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");
-                        noteModel.resetBackBuffer();
+                        noteModel.resetBackBuffer("");
 
-                        printDeck(TEMPORARY_DECK); /* REMOVE LATER */
+                        //printDeck(TEMPORARY_DECK); // REMOVE LATER
 
                     } else {
-                        // Else, add the text to the buffer for the back of the card
-                        backBuffer.append(addedText);
-
+                        // Else, add the text to the buffer
+                        noteModel.resetBackBuffer(newText.substring(noteModel.getBackBufferIndex()));
                     }
                 }
             }
@@ -171,23 +165,26 @@ public class NoteController {
 
             // User backspaced, so delete the previously typed character from buffer
             if (newText.length() < oldText.length()) {
-                noteModel.getCurrentCardFront().deleteCharAt(noteModel.getCurrentCardFront().length() - 1);
-            } else {
-                int changeIndex = oldText.length();
-                String addedText = newText.substring(changeIndex);
 
-                // The user is currently typing ...
-                if (!addedText.isEmpty()) {
-                    char lastChar = addedText.charAt(addedText.length() - 1);
-                    noteModel.getCurrentCardFront().append(lastChar);
+                if (noteModel.getCurrentCardFront().length() > 0) {
+                    noteModel.getCurrentCardFront().deleteCharAt(noteModel.getTextArea().getCaretPosition() - noteModel.getFrontBufferIndex());
                 }
+            } else {
+                noteModel.setCurrentCardFront(newText.substring(noteModel.getFrontBufferIndex()));
 
             }
         }
         // Once user turns off bold again, and the card front bufer is not empty then the card front is ready. Now we wait for the back
         else if (!noteModel.isBoldEnabled() && noteModel.getCurrentCardFront().length() > 0) {
+
+            // Only set the back buffer index once
+            if (!noteModel.isWaitingForBackInput()) {
+                noteModel.setBackBufferIndex(noteModel.getTextArea().getCaretPosition());
+            }
+
             noteModel.setWaitingforFrontInput(false);
             noteModel.setWaitingForBackInput(true);
+
         }
     }
 
@@ -239,6 +236,8 @@ public class NoteController {
         }
         /* We're now typing the text for the front of our card */
         if (noteModel.isAutoFlashcardEnabled() && noteModel.isBoldEnabled()) {
+
+            noteModel.setFrontBufferIndex(noteModel.getTextArea().getCaretPosition());
             noteModel.setWaitingforFrontInput(true);
         }
     }

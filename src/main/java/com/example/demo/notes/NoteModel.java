@@ -56,6 +56,9 @@ public class NoteModel {
     private StringBuilder currentCardFront;
     /** the current card's back text buffer */
     private StringBuilder backBuffer;
+    /** the start of the buffers within the text area */
+    private int frontBufferIndex;
+    private int backBufferIndex;
 
     /** Constructor */
     public NoteModel() {
@@ -105,10 +108,6 @@ public class NoteModel {
 
     public void toggleBold() {
         this.boldEnabled = !boldEnabled;
-    }
-
-    public void setBold(boolean state) {
-        this.boldEnabled = state;
     }
 
     public boolean isItalicEnabled() {
@@ -161,7 +160,7 @@ public class NoteModel {
         auto flash card making session
          */
         if (!this.autoFlashcardEnabled) {
-            resetBackBuffer();
+            resetBackBuffer("");
             setCurrentCardFront("");
             setWaitingforFrontInput(false);
             setWaitingForBackInput(false);
@@ -171,6 +170,7 @@ public class NoteModel {
         }
     }
 
+    /** functions for auto flashcard front and back buffers ------------------------- */
     public boolean isWaitingForBackInput() {
         return this.waitingForBackInput;
     }
@@ -191,8 +191,8 @@ public class NoteModel {
         return this.backBuffer;
     }
 
-    public void resetBackBuffer() {
-        this.backBuffer = new StringBuilder();
+    public void resetBackBuffer(String start) {
+        this.backBuffer = new StringBuilder(start);
     }
 
     public boolean isWaitingforFrontInput() {
@@ -203,4 +203,21 @@ public class NoteModel {
         this.waitingforFrontInput = state;
     }
 
+    /** starting indexes of the text in the text area */
+    public int getFrontBufferIndex() {
+        return this.frontBufferIndex;
+    }
+
+    public int getBackBufferIndex() {
+        return backBufferIndex;
+    }
+
+    public void setFrontBufferIndex(int index) {
+        this.frontBufferIndex = index;
+    }
+
+    public void setBackBufferIndex(int index) {
+        this.backBufferIndex = index;
+    }
+    /** -------------------------------------------------------------------- */
 }
