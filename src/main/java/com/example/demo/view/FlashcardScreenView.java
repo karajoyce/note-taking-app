@@ -76,7 +76,7 @@ public class FlashcardScreenView extends StackPane {
         thumbsDownButton = new Button("Not Confident");
         ToDoList toDoList = new ToDoList();
         this.toDoListV = new ToDoListView();
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
 
         //Initializing XP bar and system;
         xpModel = XPManager.getXPModel();

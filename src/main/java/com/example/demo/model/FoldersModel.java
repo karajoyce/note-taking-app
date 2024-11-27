@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
-import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.FolderStorage;
+//import com.example.demo.FilerSystem.NotesStorage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,11 +16,11 @@ public class FoldersModel {
         folderNotebooks = new HashMap<>();
 
         // Load folder names from storage
-        folders.addAll(NotesStorage.GenerateNotebookTitles());
+        folders.addAll(FolderStorage.GenerateNotebookTitles());
 
         // Load notebooks for each folder
         for (String folderName : folders) {
-            Notebook notebook = NotesStorage.LoadNotes(folderName);
+            Notebook notebook = FolderStorage.LoadNotes(folderName);
             if (notebook != null) {
                 folderNotebooks.put(folderName, notebook);
             }
@@ -45,7 +46,7 @@ public class FoldersModel {
     public Notebook getNotebook(String folderName) {
         if (!folderNotebooks.containsKey(folderName)) {
             // Attempt to load from persistent storage
-            Notebook loadedNotebook = NotesStorage.LoadNotes(folderName);
+            Notebook loadedNotebook = FolderStorage.LoadNotes(folderName);
             if (loadedNotebook != null) {
                 folderNotebooks.put(folderName, loadedNotebook);
             }

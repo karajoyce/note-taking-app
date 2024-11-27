@@ -1,6 +1,5 @@
 package com.example.demo.view;
 
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.XPModel;
@@ -64,7 +63,7 @@ public class FoldersScreenView extends StackPane {
         motivationalMessagesView = new MotivationalMessagesView();
         ToDoList toDoList = new ToDoList();
         this.toDoListV = new ToDoListView();
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
 
 
 
@@ -150,11 +149,10 @@ public class FoldersScreenView extends StackPane {
 
         VBox motivContainer = new VBox(motivationalMessagesView.getMotivmsgView());
         motivContainer.setMinHeight(screenHeight * 0.3);
-        //motivContainer.getStyleClass().add("motivation-container");
         motivContainer.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         VBox todoContainer = new VBox(toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         todoContainer.setMinHeight(screenHeight * 0.3);
         todoContainer.getStyleClass().add("todo-container");
 

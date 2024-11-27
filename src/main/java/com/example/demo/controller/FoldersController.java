@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.FolderStorage;
+//import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -73,10 +75,9 @@ public class FoldersController {
         // Remove the folder from the model
         foldersModel.removeFolder(folderName);
 
-        //NotesStorage.SaveNotes(foldersModel.getNotebook(folderName));
 
         // Delete the corresponding JSON file from the filesystem
-        NotesStorage.DeleteNotebook(folderName);
+        FolderStorage.DeleteNotebook(folderName);
 
 
 
@@ -124,7 +125,7 @@ public class FoldersController {
 
         if (notebook != null) {
             // Reload the notebook from storage
-            Notebook finalNotebook = NotesStorage.LoadNotes(folderName);
+            Notebook finalNotebook = FolderStorage.LoadNotes(folderName);
 
             if (finalNotebook != null) {
                 NotebookScreenView notebookView = new NotebookScreenView(finalNotebook);
@@ -151,7 +152,7 @@ public class FoldersController {
 
     private void saveNotebookState(Notebook notebook) {
         // Save changes to the notebook into the folders model
-        NotesStorage.SaveNotes(notebook);
+        FolderStorage.SaveNotes(notebook);
         System.out.println("Notebook state saved for: " + notebook.getTitle());
     }
 
@@ -166,7 +167,7 @@ public class FoldersController {
                 newNotebook.addPage(new Page("Lecture 1"));
             }
 
-            NotesStorage.SaveNotes(newNotebook); // Save the notebook
+            FolderStorage.SaveNotes(newNotebook); // Save the notebook
 
             // Refresh folder list and reattach handler to all buttons
             foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
