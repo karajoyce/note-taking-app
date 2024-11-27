@@ -36,11 +36,26 @@ public class NotebookController {
         });
         nView.setChangeButton(e -> {
             String newPage = ((Button)e.getSource()).getText();
+            System.out.println(newPage);
             for (Page page: noteModel.getNotes()){
                 if (page.getTitle().equals(newPage)){
                     nView.setCurrentPage(page);
                 }
             }
+            runUpdate();
+        });
+        nView.setDeletePage(e -> {
+            int count = nModel.getNotes().size();
+            nModel.getNotes().remove(nView.getCurrentPage());
+            if (count == 1){
+                Page page = new Page("Blank Page");
+                nView.setCurrentPage(page);
+                nModel.getNotes().add(page);
+
+            } else {
+                nView.setCurrentPage(nModel.getNotes().get(0));
+            }
+            NotesStorage.SaveNotes(nModel);
             runUpdate();
         });
     }

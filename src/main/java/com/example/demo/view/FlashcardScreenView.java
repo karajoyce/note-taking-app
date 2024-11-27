@@ -275,7 +275,10 @@ public class FlashcardScreenView extends StackPane {
             Button tButton = new Button(title);
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(buttonBox.getMinWidth()-45);
+            tButton.setMaxWidth(buttonBox.getMinWidth()-45);
             tButton.setMinHeight(80);
+            tButton.wrapTextProperty().setValue(true);
+            tButton.setTextAlignment(TextAlignment.CENTER);
             buttonBox.getItems().add(tButton);
             tButton.setOnAction(deckHandler);
         }

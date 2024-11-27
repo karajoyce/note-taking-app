@@ -326,7 +326,7 @@ public class NoteController {
     /**
      * Function that applies the current applied styles/formatting to the text the user types
      */
-    protected void applyCurrentStyleToNewText() {
+    public void applyCurrentStyleToNewText() {
         int caretPosition = noteModel.getTextArea().getCaretPosition();
         if (caretPosition != 0) {
             noteModel.getTextArea().setStyle(caretPosition - 1, caretPosition, String.join(" ", noteModel.getCurrStyle()));

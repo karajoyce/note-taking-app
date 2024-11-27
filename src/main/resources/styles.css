@@ -317,3 +317,6 @@ Sara Shakeel, gvk731, 11367521
     -fx-border-color: purple;
     -fx-border-width: 2px;
 }
+.back-button {
+    -fx-font-size: 18px;
+}

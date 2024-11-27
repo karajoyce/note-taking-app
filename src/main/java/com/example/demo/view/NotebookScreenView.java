@@ -9,6 +9,7 @@ import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
+import com.google.gson.annotations.SerializedName;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -17,11 +18,13 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import org.fxmisc.richtext.InlineCssTextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.awt.*;
-import java.util.List;
 
 /**
 
@@ -54,6 +57,8 @@ public class NotebookScreenView extends StackPane {
     private ToDoList toDoList;
     private Button addPage; // to add a new page to the notebook
     private Button pageBack;
+    private Button removePage;
+    private Button renamePage;
     private NoteModel noteModel;
     private NoteController noteController;
     private NoteView noteView;
@@ -67,8 +72,34 @@ public class NotebookScreenView extends StackPane {
         // Screen Initialization
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
-        addPage = new Button("+");
-        pageBack = new Button("Back");
+
+        renamePage = new Button("");
+        Image imgR = new Image(getClass().getResourceAsStream("/rename.png"));
+        ImageView imgViewR = new ImageView(imgR);
+        imgViewR.setFitHeight(20);
+        imgViewR.setPreserveRatio(true);
+        renamePage.setGraphic(imgViewR);
+
+        addPage = new Button("");
+        Image imgA = new Image(getClass().getResourceAsStream("/plus.png"));
+        ImageView imgViewA = new ImageView(imgA);
+        imgViewA.setFitHeight(15);
+        imgViewA.setPreserveRatio(true);
+        addPage.setGraphic(imgViewA);
+
+        pageBack = new Button("");
+        Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
+        ImageView imgViewB = new ImageView(imgB);
+        imgViewB.setFitHeight(15);
+        imgViewB.setPreserveRatio(true);
+        pageBack.setGraphic(imgViewB);
+
+        removePage = new Button();
+        Image img = new Image(getClass().getResourceAsStream("/trashcan.png"));
+        ImageView imgView = new ImageView(img);
+        imgView.setFitHeight(30);
+        imgView.setPreserveRatio(true);
+        removePage.setGraphic(imgView);
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
@@ -81,14 +112,14 @@ public class NotebookScreenView extends StackPane {
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV);
 
-        /* Initialize (MVC) */
         noteModel = new NoteModel();
-        noteController= new NoteController(noteModel);
-        noteView= new NoteView(noteController);
 
         currentNotebook = currNotebook;
-        currentPage = currentNotebook.getNotes().getFirst();
-        currentPage.setContents(noteModel.getTextArea());
+        setCurrentPage(currNotebook.getNotes().getFirst());
+
+        /* Initialize (MVC) */
+        noteController= new NoteController(noteModel);
+        noteView= new NoteView(noteController);
 
         runScreenUpdate();
     }
@@ -120,23 +151,24 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(deckSelection);
 
         // Button for adding a new page
-        pageBack.setMinWidth(100);
         pageBack.setMinHeight(50);
         pageBack.getStyleClass().add("back-button");
+
+        removePage.setMinHeight(50);
+        removePage.getStyleClass().add("back-button");
+
+        renamePage.setMinHeight(50);
+        renamePage.getStyleClass().add("back-button");
 
         addPage.setAlignment(Pos.CENTER);
         addPage.setMinWidth(50);
         addPage.setMinHeight(50);
-        HBox topLine = new HBox(pageBack, addPage);
-        topLine.setSpacing(80);
+        HBox topLine = new HBox(pageBack, removePage, renamePage, addPage);
+        topLine.setSpacing(10);
         topLine.setAlignment(Pos.CENTER);
         sidePanel.getChildren().add(topLine);
         sidePanel.getChildren().add(deckSelection);
         fullBox.getChildren().add(sidePanel);
-
-        // Buttons for pages
-        populatePages(deckSelection);
-        //-------------------------END
 
         //-------------------------
         // Set up flashcard middle section
@@ -206,6 +238,10 @@ public class NotebookScreenView extends StackPane {
 
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         fullBox.getChildren().add(todolist);
+
+        // Buttons for pages
+        populatePages(deckSelection);
+        //-------------------------END
     }
 
     /**
@@ -214,12 +250,14 @@ public class NotebookScreenView extends StackPane {
      */
     public void populatePages(ListView<Button> pageBox){
         // Get names from the JSON
-
         for (Page page: currentNotebook.getNotes()){
             Button tButton = new Button(page.getTitle());
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(pageBox.getMinWidth()-70);
+            tButton.setMaxWidth(pageBox.getMinWidth()-70);
             tButton.setMinHeight(160);
+            tButton.wrapTextProperty().setValue(true);
+            tButton.setTextAlignment(TextAlignment.CENTER);
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }
@@ -233,6 +271,12 @@ public class NotebookScreenView extends StackPane {
      */
     public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         addPage.setOnAction(handler);
+    }
+    /**
+     * An event handler for the confident button
+     */
+    public void setDeletePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        removePage.setOnAction(handler);
     }
 
     //Adding XP tracking when entering this screen
@@ -260,5 +304,11 @@ public class NotebookScreenView extends StackPane {
         currentPage.getContents().setPrefHeight(800);
         currentPage.getContents().setPrefWidth(800);
         noteModel.setTextArea(page.getContents());
+        noteModel.resetTextAreaStyles(noteController);
+        noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> noteController.applyCurrentStyleToNewText()));
+    }
+
+    public Page getCurrentPage(){
+        return this.currentPage;
     }
 }

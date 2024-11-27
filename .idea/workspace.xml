@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="STYLES ARE SAVING">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="load is not working...">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/backArrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/rename.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/trashcan.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +164,7 @@
       <workItem from="1732556984667" duration="2130000" />
       <workItem from="1732563879558" duration="8965000" />
       <workItem from="1732581128180" duration="10063000" />
-      <workItem from="1732653652544" duration="1034000" />
+      <workItem from="1732653652544" duration="13320000" />
     </task>
     <task id="LOCAL-00001" summary="skeleton based off uml class diagram">
       <option name="closed" value="true" />
@@ -508,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732587111957</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="load is not working...">
+      <option name="closed" value="true" />
+      <created>1732654780127</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1732654780127</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +544,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="AddFlashcard button works" />
     <MESSAGE value="Merging for the deliverable" />
     <MESSAGE value="Merging for the deliverable 2" />
     <MESSAGE value="Made new branch for the last sprint" />
@@ -551,6 +568,7 @@
     <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
     <MESSAGE value="STYLES ARE SAVING" />
-    <option name="LAST_COMMIT_MESSAGE" value="STYLES ARE SAVING" />
+    <MESSAGE value="load is not working..." />
+    <option name="LAST_COMMIT_MESSAGE" value="load is not working..." />
   </component>
 </project>

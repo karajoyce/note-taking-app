@@ -44,11 +44,12 @@ public class HelloApplication extends Application {
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
 
 
-//        Notebook nModel = NotesStorage.LoadNotes("CMPT281");
-        Notebook nModel = new Notebook("CMPT281");
-        nModel.addPage(new Page("Lecture 1"));
+        Notebook nModel = NotesStorage.LoadNotes("CMPT281");
+//        Notebook nModel = new Notebook("CMPT281");
+//        nModel.addPage(new Page("Lecture 1"));
         NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
+        nView.runScreenUpdate();
 
         MainMenuScreenView mView = new MainMenuScreenView();
 

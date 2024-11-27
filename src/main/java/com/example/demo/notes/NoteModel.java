@@ -127,4 +127,19 @@ public class NoteModel {
         return textArea;
     }
     public void setTextArea(InlineCssTextArea textA){ this.textArea = textA; }
+
+    public void resetTextAreaStyles(NoteController nCont){
+        if (isBoldEnabled()){
+            nCont.toggleBold();
+        }
+        if (isItalicEnabled()){
+            nCont.toggleItalic();
+        }
+        if (isUnderlineEnabled()){
+            nCont.toggleUnderline();
+        }
+        if (isStrikethroughEnabled()){
+            nCont.toggleStrikethrough();
+        }
+    }
 }
