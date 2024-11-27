@@ -2,6 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
@@ -11,10 +12,12 @@ import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
 import com.google.gson.annotations.SerializedName;
 import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -43,6 +46,8 @@ public class NotebookScreenView extends StackPane {
     double screenHeight;
     double screenWidth;
 
+    private String currentFolder;
+
     private XPModel xpModel;
     private XPView xpView;
     private XPController xpController;
@@ -70,8 +75,8 @@ public class NotebookScreenView extends StackPane {
 
         //-------------------------
         // Screen Initialization
-        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
-        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
 
         renamePage = new Button("");
         Image imgR = new Image(getClass().getResourceAsStream("/renameicon.png"));
@@ -110,7 +115,9 @@ public class NotebookScreenView extends StackPane {
 
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+
+        currentFolder = new String();
 
         noteModel = new NoteModel();
 
@@ -118,17 +125,43 @@ public class NotebookScreenView extends StackPane {
         setCurrentPage(currNotebook.getNotes().getFirst());
 
         /* Initialize (MVC) */
-        noteController= new NoteController(noteModel);
-        noteView= new NoteView(noteController);
+        noteController = new NoteController(noteModel);
+        noteView = new NoteView(noteController);
 
         runScreenUpdate();
     }
 
-    public void runScreenUpdate(){
+    public void setCurrentFolder(String folderName) {
+        // Update the current folder
+        this.currentFolder = folderName;
+
+        // Clear and update the notes or content associated with the new folder
+        System.out.println("Switched to folder: " + folderName);
+
+        // Update the title or header to reflect the current folder
+        this.getChildren().clear(); // Clear the existing view
+
+        // Re-run the update logic with the current folder set
+        runScreenUpdate();
+
+        // Add a label or update the screen to show the folder name
+        VBox headerBox = new VBox();
+        headerBox.setAlignment(Pos.CENTER);
+        headerBox.setSpacing(10);
+
+        javafx.scene.control.Label folderLabel = new javafx.scene.control.Label("Current Folder: " + folderName);
+        folderLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;");
+        headerBox.getChildren().add(folderLabel);
+
+        // Add the header box at the top of the UI
+        this.getChildren().add(0, headerBox);
+    }
+
+    public void runScreenUpdate() {
         // General class things/size
         this.getStyleClass().add("wholescreen");
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
         this.getChildren().clear();
         //-------------------------END
 
@@ -146,7 +179,7 @@ public class NotebookScreenView extends StackPane {
         VBox sidePanel = new VBox();
         ListView<Button> deckSelection = new ListView<>();
         deckSelection.getStyleClass().add("deck");
-        deckSelection.setMinWidth(screenWidth*0.15);
+        deckSelection.setMinWidth(screenWidth * 0.15);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
 
@@ -176,7 +209,7 @@ public class NotebookScreenView extends StackPane {
         cardSection.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth((screenWidth*0.6)-10);
+        cardSection.setMinWidth((screenWidth * 0.6) - 10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -205,7 +238,7 @@ public class NotebookScreenView extends StackPane {
         stylesButton.setMinHeight(50);
         stylesButton.setMaxHeight(50);
         stylesButton.getChildren().add(toolBar);
-        toolBar.setMinWidth(cardSection.getMinWidth()-55);
+        toolBar.setMinWidth(cardSection.getMinWidth() - 55);
         toolBar.setMinHeight(50);
         toolBar.setMaxHeight(50);
         menuItems.getChildren().add(fileButton);
@@ -218,7 +251,7 @@ public class NotebookScreenView extends StackPane {
 
         //Card text setup
         HBox fCard = new HBox();
-        fCard.setMinHeight(cardSection.getMinHeight()*(6.0/8.0));
+        fCard.setMinHeight(cardSection.getMinHeight() * (6.0 / 8.0));
         fCard.getStyleClass().add("textflow");
         fCard.setAlignment(Pos.CENTER);
 
@@ -229,14 +262,18 @@ public class NotebookScreenView extends StackPane {
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
-
         //BUTTON FOR NOW MAYBE CHANGE LATER;
         xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        //todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
+        //fullBox.getChildren().add(todolist);
+        VBox tags = new VBox();
+        addTagsAndSearchToLayout(tags);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);
         fullBox.getChildren().add(todolist);
 
         // Buttons for pages
@@ -246,15 +283,16 @@ public class NotebookScreenView extends StackPane {
 
     /**
      * Function that grabs the list of decks from the JSON to make the buttons on the deck selection pane
+     *
      * @param pageBox: the box to draw the buttons in
      */
-    public void populatePages(ListView<Button> pageBox){
+    public void populatePages(ListView<Button> pageBox) {
         // Get names from the JSON
-        for (Page page: currentNotebook.getNotes()){
+        for (Page page : currentNotebook.getNotes()) {
             Button tButton = new Button(page.getTitle());
             tButton.setAlignment(Pos.CENTER);
-            tButton.setMinWidth(pageBox.getMinWidth()-70);
-            tButton.setMaxWidth(pageBox.getMinWidth()-70);
+            tButton.setMinWidth(pageBox.getMinWidth() - 70);
+            tButton.setMaxWidth(pageBox.getMinWidth() - 70);
             tButton.setMinHeight(160);
             tButton.wrapTextProperty().setValue(true);
             tButton.setTextAlignment(TextAlignment.CENTER);
@@ -263,36 +301,48 @@ public class NotebookScreenView extends StackPane {
         }
     }
 
-    public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+    public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         pageHandler = handler;
     }
+
+    public Button getBackButton() {
+        return pageBack;
+    }
+
+    public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+        pageHandler = handler;
+    }
+
     /**
      * An event handler for the confident button
      */
-    public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+    public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         addPage.setOnAction(handler);
     }
+
     /**
      * An event handler for the confident button
      */
-    public void setDeletePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+    public void setDeletePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         removePage.setOnAction(handler);
     }
+
     /**
      * An event handler for the confident button
      */
-    public void setRenamePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+    public void setRenamePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         renamePage.setOnAction(handler);
     }
 
     //Adding XP tracking when entering this screen
-    public void startXPtracking(){
+    public void startXPtracking() {
         xpController.startXPTimer();
     }
 
-    public void stopXPtracking(){
+    public void stopXPtracking() {
         xpController.stopXPTimer();
     }
+
     //BUTTON FUNCTIONS FOR XP TRACKING FOR NOW
     private void toggleXPtracking() {
         if (isTrackingXP) {
@@ -305,7 +355,7 @@ public class NotebookScreenView extends StackPane {
         isTrackingXP = !isTrackingXP;
     }
 
-    public void setCurrentPage(Page page){
+    public void setCurrentPage(Page page) {
         currentPage = page;
         currentPage.getContents().setPrefHeight(800);
         currentPage.getContents().setPrefWidth(800);
@@ -314,7 +364,101 @@ public class NotebookScreenView extends StackPane {
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> noteController.applyCurrentStyleToNewText()));
     }
 
-    public Page getCurrentPage(){
+    public Page getCurrentPage() {
         return this.currentPage;
     }
+
+    // Section for managing tags
+    private VBox tagsSection = new VBox();
+    private TextField tagInputField = new TextField();
+    private Button addTagButton = new Button("Add Tag");
+
+    private VBox displayedTags = new VBox();
+
+    // Section for searching notes
+    private HBox searchSection = new HBox();
+    private TextField searchField = new TextField();
+    private Button searchButton = new Button("Search");
+
+    private void initializeTagsSection() {
+        tagInputField.setPromptText("Enter a tag...");
+        addTagButton.setPrefSize(85, 25);
+        addTagButton.setStyle("-fx-font-size: 15px;");
+        addTagButton.setOnAction(e -> {
+            String newTag = tagInputField.getText();
+            if (!newTag.isEmpty()) {
+                noteController.addTagNote(newTag);
+                tagInputField.clear();
+                updateDisplayedTags();
+            }
+        });
+        tagsSection.getChildren().addAll(tagInputField, addTagButton, displayedTags);
+        tagsSection.setSpacing(10);
+        tagsSection.setAlignment(Pos.CENTER_LEFT);
+        updateDisplayedTags();
+    }
+
+    private void initializeSearchSection() {
+        searchField.setPromptText("Search for a note...");
+        searchButton.setPrefSize(85, 25);
+        searchButton.setStyle("-fx-font-size: 15px;");
+        searchButton.setOnAction(e -> {
+            String keyword = searchField.getText();
+            if (!keyword.isEmpty()) {
+                boolean found = noteController.searchNoteByKeyword(keyword);
+                if (found) {
+                    showSearchResultPopup("FOUND THE TAG");
+                } else {
+                    showSearchResultPopup("TAG NOT FOUND :(");
+                }
+            }
+        });
+
+        searchSection.getChildren().addAll(searchField, searchButton);
+        searchSection.setSpacing(10);
+        searchSection.setAlignment(Pos.CENTER_LEFT);
+    }
+
+    private void addTagsAndSearchToLayout(VBox mainLayout) {
+        initializeSearchSection();
+        initializeTagsSection();
+        mainLayout.getChildren().addAll(searchSection, tagsSection);
+    }
+    private void updateDisplayedTags() {
+        displayedTags.getChildren().clear(); // Clear the previous display
+
+        for (String tag : noteModel.getTags()) {
+            HBox tagItem = new HBox();
+            tagItem.setSpacing(10);
+
+            // Display the tag
+            Label tagLabel = new Label(tag);
+
+            // Add a remove button for each tag
+            Button removeButton = new Button("Remove");
+            removeButton.setStyle("-fx-font-size: 10px;");
+            removeButton.setPrefSize(70,25);
+            removeButton.setOnAction(e -> {
+                noteController.removeTagFromNote(tag); // Remove the tag
+                updateDisplayedTags(); // Refresh the display
+            });
+
+            tagItem.getChildren().add(tagLabel);
+            tagItem.getChildren().add(removeButton);
+            displayedTags.getChildren().add(tagItem);
+        }
+    }
+    private void showSearchResultPopup(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Search Result");
+        alert.setHeaderText(null); // No header text
+        alert.setContentText(message);
+        alert.showAndWait(); // Blocks until the user dismisses the alert
+    }
 }
+
+
+
+
+
+

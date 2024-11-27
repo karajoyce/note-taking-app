@@ -1,6 +1,7 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
@@ -76,7 +77,7 @@ public class FlashcardScreenView extends StackPane {
         thumbsDownButton = new Button("Not Confident");
 
         //Initializing XP bar and system;
-        xpModel = new XPModel(100);
+        xpModel = XPManager.getXPModel();
         xpView = new XPView();
         //Initializing new Tree
         digitalTree = new DigitalTree();
@@ -84,7 +85,7 @@ public class FlashcardScreenView extends StackPane {
 
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
     }
 
     /**
@@ -258,7 +259,8 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);
         //-------------------------END
 
@@ -294,9 +296,17 @@ public class FlashcardScreenView extends StackPane {
     /**
      * An event handler for the confident button
      */
-    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
-        thumbsUpButton.setOnAction(handler);
+    public void setConfidentButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+        thumbsUpButton.setOnAction(event -> {
+            // Execute original handler logic, if any
+            if (handler != null) {
+                handler.handle(event);
+                xpModel.addXP(10);
+            }
+
+        });
     }
+
 
     /**
      * An event handler for the confident button
@@ -436,3 +446,5 @@ public class FlashcardScreenView extends StackPane {
         isTrackingXP = !isTrackingXP;
     }
 }
+
+

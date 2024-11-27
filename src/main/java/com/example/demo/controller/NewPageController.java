@@ -11,6 +11,7 @@ import com.example.demo.view.NotebookScreenView;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
 
@@ -32,6 +33,9 @@ public class NewPageController {
         nModel = model;
         nController = controller;
         nView = new NewPageView(stage, this::addPage);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.setFullScreen(false);
+        stage.setResizable(false);
         stage.show();
     }
 

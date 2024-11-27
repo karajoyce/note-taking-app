@@ -11,7 +11,11 @@ package com.example.demo.notes;
 
 import javafx.scene.control.*;
 
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.Set;
 
 
 /**
@@ -20,6 +24,12 @@ import javafx.stage.Stage;
  */
 public class NoteView  {
     private NoteController noteController;
+    private TextField tagInputField = new TextField();
+    private Button addTagButton = new Button("Add Tag");
+    private VBox tagContainer = new VBox();
+    private TextField searchField = new TextField();
+    private Button searchButton = new Button("Search");
+
 
     public NoteView(NoteController controller) {
         noteController = controller;
@@ -82,7 +92,8 @@ public class NoteView  {
         fontMenu.setValue(noteController.noteModel.getFontType());
         fontMenu.setOnAction(actionEvent -> noteController.changeFontType(fontMenu.getValue()));
 
-        /* Text alignment */
+        /* Text alignment
+         * Replace the text to images? */
         Button alignLeftButton = new Button("Left");
         alignLeftButton.getStyleClass().add("textEditorButton");
         alignLeftButton.setOnAction(actionEvent -> noteController.setTextAlignment("left"));
@@ -115,6 +126,49 @@ public class NoteView  {
         return toolBar;
     }
 
+    private void initializeTagsSection(){
+        HBox tagInputSection = new HBox(tagInputField, addTagButton);
+        tagContainer.getChildren().add(tagInputSection);
+
+        addTagButton.setOnAction(actionEvent -> {
+           String tag = tagInputField.getText();
+           if (!tag.isEmpty()) {
+               noteController.addTagNote(tag);
+               tagInputField.clear();
+           }
+        });
+
+    }
+
+    public void displayTags(Set<String> tags){
+        tagContainer.getChildren().clear();
+        initializeTagsSection();
+        for (String tag: tags){
+            Label tagLabel = new Label(tag);
+            Button removeButton = new Button("Remove");
+            removeButton.setOnAction(e -> noteController.removeTagFromNote(tag));
+
+            HBox tagItem = new HBox(tagLabel, removeButton);
+            tagContainer.getChildren().add(tagItem);
+        }
+    }
+
+    private void initializeSearchSection(){
+        HBox searchSection = new HBox(searchField,searchButton);
+
+        searchButton.setOnAction(actionEvent -> {
+            String keyword = searchField.getText();
+            if(!keyword.isEmpty()){
+                boolean found = noteController.searchNoteByKeyword(keyword);
+                if (found) {
+                    System.out.println("keyword found");
+                }
+                else{
+                    System.out.println("keyword not found");
+                }
+            }
+        });
+    }
     protected Button getToggleBoldButton() {
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");

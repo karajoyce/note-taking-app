@@ -10,11 +10,17 @@
 package com.example.demo.notes;
 
 import java.util.*;
+import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 
 import com.example.demo.model.Card;
@@ -38,10 +44,35 @@ public class NoteController {
     }
 
     /**
+     * error message when doing file stuff
+     *
+     * @param title   title of the alert
+     * @param message message displayed to user
+     */
+    private void displayError(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    /**
      * Open a file from the computer's filesystem
      */
     protected void openFile(Stage stage) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Text File");
+        File file = fileChooser.showOpenDialog(stage);
 
+        try {
+            if (file != null) {
+                String content = Files.readString(Path.of(file.getPath()));
+                noteModel.getTextArea().replaceText(content);
+            }
+        } catch (IOException e) {
+            displayError("Error opening file", e.getMessage());
+        }
     }
 
     /**
@@ -511,5 +542,16 @@ public class NoteController {
         System.out.println(noteModel.getCurrStyle());
     }
 
+    /**CHANGES ADDED BY NATHAN FOR TAGS AND WHATNOT**/
+    public void addTagNote(String tag){
+        noteModel.addTag(tag);
+    }
 
+    public void removeTagFromNote(String tag){
+        noteModel.removeTag(tag);
+    }
+
+    public boolean searchNoteByKeyword(String keyword){
+        return noteModel.containsKeyword(keyword);
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.model.DigitalTree;
+import com.example.demo.model.XPManager;
 import com.example.demo.model.XPModel;
 import javafx.scene.media.AudioClip;
 import com.example.demo.view.FlashcardScreenView;
@@ -22,7 +24,7 @@ public class XPController {
 
     private AudioClip lvlUpSound;
     public XPController(XPModel model, XPView view, DigitalTree digitalTree) {
-        this.model = model;
+        this.model = XPManager.getXPModel();
         this.view = view;
         this.digitalTree = digitalTree;
         // Ensure the path to the sound file is correct
@@ -35,11 +37,12 @@ public class XPController {
             System.out.println("Error: Sound file not found. Please check the path.");
         }
 
+
         setupXPTimer();
     }
 
     private void setupXPTimer() {
-        xpTimeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> addXPOverTime(10)));
+        xpTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> addXPOverTime(0.5)));
         xpTimeline.setCycleCount(Timeline.INDEFINITE);
     }
 
@@ -61,6 +64,11 @@ public class XPController {
         }
 
         updateView();
+        XPStorage.SaveXPBar(this.model);
+    }
+
+    public void resetXP(){
+        model.setCurrentXP(0);
     }
 
     private void handleLevelUp() {
@@ -80,7 +88,10 @@ public class XPController {
 
     private void updateView(){
         view.updateXPview(model.getCurrentXP(), model.getMaxXP(), model.getLevel());
+
     }
 
 
 }
+
+

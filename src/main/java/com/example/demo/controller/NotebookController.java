@@ -6,9 +6,12 @@ import com.example.demo.model.Card;
 import com.example.demo.model.Deck;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
+import com.example.demo.model.XPModel;
 import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
 import javafx.scene.control.Button;
+import com.example.demo.model.XPModel;
+import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
 
 /**
@@ -26,10 +29,12 @@ public class NotebookController {
 
     private Notebook noteModel;
     private NotebookScreenView noteView;
+    private XPModel xpmodel;
 
     public NotebookController(Notebook nModel, NotebookScreenView nView) {
         noteView = nView;
         noteModel = nModel;
+        this.xpmodel = XPManager.getXPModel();
 
         nView.setAddPage(e -> {
             new NewPageController(this, noteModel, new Stage());

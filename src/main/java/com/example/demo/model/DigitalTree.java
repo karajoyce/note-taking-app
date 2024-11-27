@@ -51,3 +51,4 @@ public class DigitalTree {
         treeImageview.setImage(treeStages.get(currentStage));
     }
 }
+
