@@ -71,6 +71,7 @@ public class FlashcardScreenController {
                 fCardModel.removeCard(temp);
                 deckUpdate();
             }
+            FlashcardStorage.SaveDeck(fCardModel.getDeck());
         });
 
         fCardView.setAddFlashcardButton(e -> {

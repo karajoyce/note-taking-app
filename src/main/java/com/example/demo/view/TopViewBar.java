@@ -43,7 +43,7 @@ public class TopViewBar extends HBox {
         topBar.setSpacing(10);
 
 
-        flashButton = new Button("Flash");
+        flashButton = new Button("Flashcard");
         flashButton.getStyleClass().add("flash-button");
 
         breakButton = new Button("Break");

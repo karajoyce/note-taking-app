@@ -1,5 +1,6 @@
 package com.example.demo.view;
 
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.model.ToDoList;
@@ -10,35 +11,45 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import java.util.List;
 import java.util.Optional;
+import javafx.geometry.Insets;
 
 public class FoldersScreenView extends StackPane {
 
-    private ListView<Button> foldersList;
+    private GridPane foldersGrid;
     private MotivationalMessagesView motivationalMessagesView;
     private EventHandler<MouseEvent> folderSelectionHandler;
     private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
-    private Button pageBack; // button to go back to main menu
+    private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
 
-    public FoldersScreenView(ToDoListView toDoListView) {
+    public FoldersScreenView() {
         // Initialize components
         pageBack = new Button("Back");
-
-        toDoListV = toDoListView;
-        toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
+        toDoListV = new ToDoListView();
         motivationalMessagesView = new MotivationalMessagesView();
+
+
+
+        // Initialize foldersGrid
+        foldersGrid = new GridPane();
+        foldersGrid.setHgap(20); // Horizontal gap between items
+        foldersGrid.setVgap(20); // Vertical gap between items
+        foldersGrid.setAlignment(Pos.CENTER);
 
         // Run screen update
         runFoldersScreenUpdate();
+    }
+
+    public void setToDoList(ToDoListView toDoListV) {
+        this.toDoListV = toDoListV;
+        this.toDoListV.setTaskList(ToDoStorage.LoadToDoList());
     }
 
     public void runFoldersScreenUpdate() {
@@ -57,41 +68,60 @@ public class FoldersScreenView extends StackPane {
 
         // Left panel with Back button
         VBox leftPanel = new VBox();
-        pageBack.setMinWidth(100);
-        pageBack.setMinHeight(50);
+        leftPanel.setMinWidth(screenWidth * 0.15);
+        leftPanel.setAlignment(Pos.TOP_CENTER);
+        leftPanel.getStyleClass().add("left-panel");
+        pageBack.setMinWidth(120);
+        pageBack.setMinHeight(40);
         pageBack.getStyleClass().add("back-button");
-        leftPanel.setAlignment(Pos.TOP_LEFT);
-        leftPanel.setSpacing(20); // Add some spacing
         leftPanel.getChildren().add(pageBack);
         fullBox.getChildren().add(leftPanel);
 
-        // Center area for folders list
+        // Center area for folders grid
         VBox centerBox = new VBox();
         centerBox.setAlignment(Pos.TOP_CENTER);
         centerBox.getStyleClass().add("center-box");
-        centerBox.setSpacing(20); // Add spacing between items
-        foldersList = new ListView<>();
-        foldersList.setMinWidth(screenWidth * 0.6);
-        foldersList.setMinHeight(screenHeight * 0.7); // Adjust height for proper proportion
+        centerBox.setSpacing(20);
+        centerBox.setPadding(new Insets(20));
+        centerBox.setMinWidth(screenWidth * 0.5);
 
-        // Initialize the Add Folder Button
+        // Add folders grid to a container
+        VBox gridContainer = new VBox();
+        gridContainer.getStyleClass().add("grid-container");
+        gridContainer.setAlignment(Pos.CENTER);
+        gridContainer.setPadding(new Insets(20));
+        gridContainer.setSpacing(10);
+
+        // Add the grid to the container
+        gridContainer.getChildren().add(foldersGrid);
+
+        // Add the Add Folder Button
         addFolderButton = new Button("Add Folder");
-        addFolderButton.setMinWidth(120);
-        addFolderButton.setMinHeight(40);
+        addFolderButton.setMinWidth(150);
+        addFolderButton.setMinHeight(50);
         addFolderButton.getStyleClass().add("add-folder-button");
+        gridContainer.getChildren().add(addFolderButton);
 
-        // Add components to the centerBox
-        centerBox.getChildren().addAll(foldersList, addFolderButton);
+        centerBox.getChildren().add(gridContainer);
         fullBox.getChildren().add(centerBox);
 
         // Right panel with motivational messages and To-Do List
         VBox rightPanel = new VBox();
-        rightPanel.setMinWidth(screenWidth * 0.3);
+        rightPanel.setMinWidth(screenWidth * 0.25);
         rightPanel.setAlignment(Pos.TOP_CENTER);
-        rightPanel.getStyleClass().add("rightVbox");
-        rightPanel.setSpacing(20); // Add spacing
-        rightPanel.getChildren().addAll(motivationalMessagesView.getMotivmsgView(), toDoListV);
+        rightPanel.getStyleClass().add("right-panel");
+        rightPanel.setSpacing(20);
+
+        VBox motivContainer = new VBox(motivationalMessagesView.getMotivmsgView());
+        motivContainer.setMinHeight(screenHeight * 0.3);
+        motivContainer.getStyleClass().add("motivation-container");
+
+        VBox todoContainer = new VBox(toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        todoContainer.setMinHeight(screenHeight * 0.3);
+        todoContainer.getStyleClass().add("todo-container");
+
+        rightPanel.getChildren().addAll(motivContainer, todoContainer);
         fullBox.getChildren().add(rightPanel);
     }
 
@@ -103,24 +133,29 @@ public class FoldersScreenView extends StackPane {
         return pageBack;
     }
 
-    public ListView<Button> getFoldersList() {
-        return foldersList;
-    }
-
     public void populateFolders(List<String> folderNames) {
-        foldersList.getItems().clear();
+        foldersGrid.getChildren().clear();
+        folderNames  = NotesStorage.GenerateNotebookTitles();
+        int columns = 3; // Number of columns in the grid
+        int row = 0, col = 0;
+
         for (String folderName : folderNames) {
             Button folderButton = new Button(folderName);
-            folderButton.getStyleClass().add("folder-button");
-            folderButton.setMaxWidth(Double.MAX_VALUE); // Make the button stretch to fill the width
-            folderButton.setAlignment(Pos.CENTER);
+            folderButton.getStyleClass().add("folder-box");
+            folderButton.setPrefSize(150, 150); // Set preferred size of folder boxes
+            folderButton.setWrapText(true); // Allow text wrapping for long folder names
 
             // Attach the folder selection handler if it exists
             if (folderSelectionHandler != null) {
                 folderButton.setOnMouseClicked(folderSelectionHandler);
             }
 
-            foldersList.getItems().add(folderButton);
+            foldersGrid.add(folderButton, col, row);
+            col++;
+            if (col >= columns) {
+                col = 0;
+                row++;
+            }
         }
     }
 
@@ -131,35 +166,19 @@ public class FoldersScreenView extends StackPane {
     public String showAddFolderDialog() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add Folder");
-        // Remove the default header by setting it to null
-        dialog.setHeaderText(null);
-
-        // Remove the graphic (the blue question mark icon)
-        dialog.setGraphic(null);
-
-        //dialog.setHeaderText("Create a New Folder");
+        dialog.setHeaderText(null); // Remove header
+        dialog.setGraphic(null); // Remove graphic
         dialog.setContentText("Folder Name:");
 
         // Apply styles to the dialog using CSS
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-
-        // Set custom styles for dialog components
-        dialog.getDialogPane().getStyleClass().add("cardview"); // Example CSS class
-        dialog.getDialogPane().lookupButton(dialog.getDialogPane().getButtonTypes().get(0)).getStyleClass().add("button"); // Apply button style
-        dialog.getDialogPane().lookupButton(dialog.getDialogPane().getButtonTypes().get(1)).getStyleClass().add("button"); // Apply button style to "Cancel"
-
-        dialog.getDialogPane().getContent().setStyle(
-                "-fx-font-family: 'Trebuchet MS', 'Sans Serif Collection'; " +
-                        "-fx-font-size: 15px; " +
-                        "-fx-padding: 10; " +
-                        "-fx-border-color: #ff99cc;"
-        );
+        dialog.getDialogPane().getStyleClass().add("cardview");
 
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
     }
+
+    public StackPane getView() {
+        return this;
+    }
 }
-
-
-
-

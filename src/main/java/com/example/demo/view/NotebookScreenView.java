@@ -58,18 +58,21 @@ public class NotebookScreenView extends StackPane {
     private Button pageButton; // button to choose a deck
     private Button addPage; // to add a new page to the notebook
     private Button pageBack;
-    NoteModel noteModel;
-    NoteController noteController;
-    NoteView noteView;
+    private NoteModel noteModel;
+    private NoteController noteController;
+    private NoteView noteView;
+    private Notebook currentNotebook;
+    private Page currentPage;
+
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
-    public NotebookScreenView() {
+    public NotebookScreenView(Notebook currNotebook) {
 
         //-------------------------
         // Screen Initialization
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight()-100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
-        pageButton = new Button("Test Page"); // this should be a deck name later
+        //pageButton = new Button("Test Page"); // this should be a deck name later
         addPage = new Button("+");
         pageBack = new Button("Back");
 
@@ -92,8 +95,23 @@ public class NotebookScreenView extends StackPane {
         noteController= new NoteController(noteModel);
         noteView= new NoteView(noteController);
 
+        this.currentNotebook = currNotebook;
+        //currentPage = currentNotebook.getNotes().getFirst();
+        //currentPage.setContents(noteModel.getTextArea());
+
+        if (!currentNotebook.getNotes().isEmpty()) {
+            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
+        }
+
+
         runScreenUpdate();
     }
+
+    public void setNotebook(Notebook notebook) {
+        this.currentNotebook = notebook;
+        runScreenUpdate();
+    }
+
 
     public void setCurrentFolder(String folderName) {
         // Update the current folder
@@ -140,15 +158,7 @@ public class NotebookScreenView extends StackPane {
         fullBox.setMaxHeight(screenHeight);
         //-------------------------END
 
-        // Left panel with Back button
-        VBox leftPanel = new VBox();
-        pageBack.setMinWidth(100);
-        pageBack.setMinHeight(50);
-        pageBack.getStyleClass().add("back-button");
-        leftPanel.setAlignment(Pos.TOP_LEFT);
-        leftPanel.setSpacing(20); // Add some spacing
-        leftPanel.getChildren().add(pageBack);
-        fullBox.getChildren().add(leftPanel);
+
 
         //-------------------------
         // Deck selection pane
@@ -160,11 +170,17 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(deckSelection);
 
         // Button for adding a new page
+        pageBack.setMinWidth(100);
+        pageBack.setMinHeight(50);
+        pageBack.getStyleClass().add("back-button");
+
         addPage.setAlignment(Pos.CENTER);
         addPage.setMinWidth(50);
         addPage.setMinHeight(50);
-        HBox topLine = new HBox(addPage);
-        topLine.setAlignment(Pos.TOP_RIGHT);
+
+        HBox topLine = new HBox(pageBack, addPage);
+        topLine.setSpacing(10);
+        topLine.setAlignment(Pos.CENTER);
         sidePanel.getChildren().add(topLine);
         sidePanel.getChildren().add(deckSelection);
         fullBox.getChildren().add(sidePanel);
@@ -250,16 +266,22 @@ public class NotebookScreenView extends StackPane {
      */
     public void populatePages(ListView<Button> pageBox){
         // Get names from the JSON
-        List<String> titles = NotesStorage.GeneratePageTitles();
-        for (String title: titles){
-            Button tButton = new Button(title);
+
+        for (Page page: currentNotebook.getNotes()){
+            Button tButton = new Button(page.getTitle());
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(pageBox.getMinWidth()-70);
             tButton.setMinHeight(160);
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }
+
     }
+
+    public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        pageHandler = handler;
+    }
+
 
     public Button getBackButton() {
         return pageBack;
@@ -272,6 +294,7 @@ public class NotebookScreenView extends StackPane {
      * An event handler for the confident button
      */
     public void setAddPage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        System.out.println("here in setAddPage");
         addPage.setOnAction(handler);
     }
 
@@ -294,6 +317,25 @@ public class NotebookScreenView extends StackPane {
         }
         isTrackingXP = !isTrackingXP;
     }
+
+    public void setCurrentPage(Page page){
+        currentPage = page;
+        currentPage.getContents().setPrefHeight(800);
+        currentPage.getContents().setPrefWidth(800);
+        // Bind the text area's content to the page's content
+        InlineCssTextArea textArea = page.getContents();
+
+        // Set the text area content to match the page's current content
+        textArea.replaceText(page.getContents().getText());
+
+        textArea.textProperty().addListener((obs, oldText, newText) -> {
+            // Save changes to the page's content in real-time
+            page.setContents(textArea);
+        });
+
+        noteModel.setTextArea(textArea); // Update the model for the view
+    }
+
 }
 
 

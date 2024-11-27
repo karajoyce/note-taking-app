@@ -1,10 +1,16 @@
 package com.example.demo.FilerSystem;
 import com.example.demo.model.Notebook;
-import com.google.gson.Gson;
+import com.example.demo.model.Page;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import org.fxmisc.richtext.InlineCssTextArea;
+import org.fxmisc.richtext.model.StyleSpans;
+import org.fxmisc.richtext.model.StyleSpansBuilder;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,39 +26,71 @@ public class NotesStorage {
      // Ensure the directory exists
         File directory = new File(directoryPath);
         if (!directory.exists()) {
-            directory.mkdirs();  // Creates the directory if it doesn't exist
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory: " + directoryPath);
+            }
         }
 
-        try {
-            FileWriter write = new FileWriter(filePath+notebook.getTitle()+".json");
-            gson.toJson(notebook, write);
+        String fullFilePath = filePath + notebook.getTitle() + ".json";
+        try (FileWriter writer = new FileWriter(fullFilePath)) {
+            JsonObject json = new JsonObject();
+            json.addProperty("name", notebook.getTitle());
 
+            JsonArray pages = new JsonArray();
+            for (Page page : notebook.getNotes()) {
+                JsonObject pageJson = new JsonObject();
+                pageJson.addProperty("name", page.getTitle());
+                // Serialize page content to JSON
+                pageJson.addProperty("content", page.getContents().getText()); // Get plain text content
+                pages.add(pageJson);
+            }
+            json.add("pages", pages);
+
+            writer.write(json.toString());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to save notebook: " + notebook.getTitle(), e);
         }
      }
 
      public static Notebook LoadNotes(String title) {
 
-        try {
-            FileReader NotesPath = new FileReader(filePath+title+".json");
+        String fullFilePath = filePath + title + ".json";
+        File file = new File(fullFilePath);
 
-            Type NoteArray = new TypeToken<Notebook>(){}.getType();
-
-            return gson.fromJson(NotesPath, NoteArray);
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        if (!file.exists()) {
+            System.err.println("Notebook file not found: " + fullFilePath);
+            return null;
         }
 
+        try (FileReader reader = new FileReader(file)) {
+            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
+            Notebook notebook = new Notebook(json.get("name").getAsString());
 
+            JsonArray pages = json.getAsJsonArray("pages");
+            for (JsonElement pageElement : pages) {
+                JsonObject pageObj = pageElement.getAsJsonObject();
+                String pageName = pageObj.get("name").getAsString();
+                String pageContent = pageObj.get("content").getAsString();
+
+                Page page = new Page(pageName);
+                InlineCssTextArea textArea = page.getContents();
+                textArea.replaceText(pageContent); // Populate the content
+                page.setContents(textArea);       // Bind content to Page
+
+                notebook.addPage(page);
+            }
+
+            return notebook;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load notebook: " + title, e);
+        }
     }
 
     /**
      * Load the title names of all decks
      * @return List of names
      */
-    public static List<String> GeneratePageTitles(){
+    public static List<String> GenerateNotebookTitles(){
         ArrayList<String> titles = new ArrayList<>();
 
         File file = new File(filePath);
@@ -64,7 +102,8 @@ public class NotesStorage {
         return titles;
     }
 
-
 }
+
+
 
 

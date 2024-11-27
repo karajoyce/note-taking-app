@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
+import java.io.Serializable;
+
 /**
 
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -13,18 +15,19 @@ import org.fxmisc.richtext.InlineCssTextArea;
 
  **/
 
-public class Page {
+public class Page implements Serializable {
 
     private String title;
     private InlineCssTextArea contents;
     public Page(String pageTitle){
-        contents = new InlineCssTextArea();
         title = pageTitle;
+        contents = new InlineCssTextArea();
     }
 
-    public void setContents(InlineCssTextArea contentArea){
-        contents = contentArea;
+    public void setContents(InlineCssTextArea contents) {
+        this.contents = contents;
     }
+
     public InlineCssTextArea getContents(){
         return contents;
     }
@@ -38,3 +41,4 @@ public class Page {
     }
 
 }
+

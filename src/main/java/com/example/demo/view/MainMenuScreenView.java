@@ -54,23 +54,21 @@ public class MainMenuScreenView extends StackPane {
     private XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
+    public MainMenuScreenView(ToDoListView toDoListV) {
 
-
-    public MainMenuScreenView( ToDoListView toDoListView ) {
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
-        toDoListV = toDoListView;
-        toDoList = new ToDoList();
-        toDoCont = new ToDoListController(toDoList, toDoListV);
 
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());
 
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
+        this.toDoListV = toDoListV;
+        this.toDoListV.setTaskList(ToDoStorage.LoadToDoList());
         NoteBox = new HBox();
 
         //Initializing XP bar and system;
@@ -78,6 +76,10 @@ public class MainMenuScreenView extends StackPane {
         xpView = new XPView();
 
         runMainScreenUpdate();
+    }
+
+    public void setToDoList(ToDoListView toDoListV) {
+        this.toDoListV = toDoListV;
     }
 
     public TopViewBar getTopViewBar() {

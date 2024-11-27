@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="changed the bell icon">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="making progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
@@ -405,7 +408,63 @@
       <option name="project" value="LOCAL" />
       <updated>1732532674681</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="figuring out how to make storage work">
+      <option name="closed" value="true" />
+      <created>1732577095374</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732577095374</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fixed something in the to do list">
+      <option name="closed" value="true" />
+      <created>1732599403045</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732599403045</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Adding kara's stuff for notebook">
+      <option name="closed" value="true" />
+      <created>1732600767729</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1732600767729</updated>
+    </task>
+    <task id="LOCAL-00037" summary="FOLDERS FINALLY WORK!!!">
+      <option name="closed" value="true" />
+      <created>1732606920059</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1732606920059</updated>
+    </task>
+    <task id="LOCAL-00038" summary="changed the formatting of the folders screen">
+      <option name="closed" value="true" />
+      <created>1732608926323</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1732608926323</updated>
+    </task>
+    <task id="LOCAL-00039" summary="made the add page button work">
+      <option name="closed" value="true" />
+      <created>1732656871420</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1732656871420</updated>
+    </task>
+    <task id="LOCAL-00040" summary="making progress">
+      <option name="closed" value="true" />
+      <created>1732660207512</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1732660207512</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,12 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO" />
-    <MESSAGE value="nvm it only works for underline im depressed" />
-    <MESSAGE value="FIXED THE PROBLEM FOR REAL FOR REAL" />
-    <MESSAGE value="updated docstrings" />
-    <MESSAGE value="updated default font family" />
-    <MESSAGE value="added strikethrough option" />
     <MESSAGE value="added ability to change paragraph alignment" />
     <MESSAGE value="time to work on fonts" />
     <MESSAGE value="added notes dependencies" />
@@ -443,11 +496,17 @@
     <MESSAGE value="tasks turn red if they're past their due date or completed" />
     <MESSAGE value="first attempt at a folders screen" />
     <MESSAGE value="can navigate between the main menu and the folders screen now" />
-    <MESSAGE value="making progress" />
     <MESSAGE value="Okay I am making more progress somewhat?!?!?" />
     <MESSAGE value="buttons on the main menu work now!!" />
     <MESSAGE value="added some stylinh" />
     <MESSAGE value="changed the bell icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed the bell icon" />
+    <MESSAGE value="figuring out how to make storage work" />
+    <MESSAGE value="fixed something in the to do list" />
+    <MESSAGE value="Adding kara's stuff for notebook" />
+    <MESSAGE value="FOLDERS FINALLY WORK!!!" />
+    <MESSAGE value="changed the formatting of the folders screen" />
+    <MESSAGE value="made the add page button work" />
+    <MESSAGE value="making progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="making progress" />
   </component>
 </project>

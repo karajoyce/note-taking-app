@@ -6,12 +6,18 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
 import javafx.stage.Screen;
+import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -28,6 +34,8 @@ public class ToDoListView extends VBox {
     private Button addTaskButton;
     private ArrayList<Task> tasks;
     public GridPane grid;// Maintain the list of tasks
+
+
 
 
 
@@ -53,6 +61,7 @@ public class ToDoListView extends VBox {
         this.setAlignment(Pos.TOP_CENTER); // Align items to the center of the VBox
         this.getChildren().addAll(taskListView, buttonContainer); // Add the list and centered button
 
+
     }
 
     /**
@@ -68,6 +77,7 @@ public class ToDoListView extends VBox {
                 // Handle delete action using the task object
                 deleteTask(task);
             });
+
 
             // Customize each item's HBox style
             HBox itemView = taskItem.getView();
