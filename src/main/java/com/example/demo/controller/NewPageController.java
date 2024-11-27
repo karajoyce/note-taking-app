@@ -2,11 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.HelloApplication;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.view.EditCardView;
 import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 /**
@@ -34,10 +37,24 @@ public class NewPageController {
 
     public void addPage(){
         String title = nView.getTitle();
-        Page newPage = new Page(title);
-        nModel.addPage(newPage);
-        NotesStorage.SaveNotes(nModel);
+        boolean found = false;
+        for (Page page: nModel.getNotes()){
+            if (page.getTitle().equals(title)){
+                found = true;
+                break;
+            }
+        }
 
-        nController.runUpdate();
+        if (found){
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Name already exists, please use another one.");
+            alert.showAndWait();
+            new NewPageController(nController, nModel, new Stage());
+        } else {
+            Page newPage = new Page(title);
+            nModel.addPage(newPage);
+            NotesStorage.SaveNotes(nModel);
+            nController.runUpdate();
+            HelloApplication.primaryStage.setAlwaysOnTop(true);
+        }
     }
 }

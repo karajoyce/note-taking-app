@@ -35,8 +35,8 @@ public class NotebookController {
             new NewPageController(this, noteModel, new Stage());
         });
         nView.setChangeButton(e -> {
+            NotesStorage.SaveNotes(noteModel);
             String newPage = ((Button)e.getSource()).getText();
-            System.out.println(newPage);
             for (Page page: noteModel.getNotes()){
                 if (page.getTitle().equals(newPage)){
                     nView.setCurrentPage(page);
@@ -58,9 +58,17 @@ public class NotebookController {
             NotesStorage.SaveNotes(nModel);
             runUpdate();
         });
+        nView.setRenamePage(e -> {
+            new NewNameController(this, nModel,new Stage());
+            runUpdate();
+        });
     }
 
     public void runUpdate(){
         noteView.runScreenUpdate();
+    }
+
+    public NotebookScreenView getNoteView(){
+        return this.noteView;
     }
 }

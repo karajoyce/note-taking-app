@@ -27,7 +27,7 @@ import com.example.demo.model.FlashcardScreen;
 
 public class HelloApplication extends Application {
 
-    private static Stage primaryStage;
+    public static Stage primaryStage;
     @Override
     public void start(Stage stage){
 
@@ -63,6 +63,11 @@ public class HelloApplication extends Application {
         Platform.runLater(() -> {
             primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
+
+        primaryStage.setOnCloseRequest(e -> {
+            NotesStorage.SaveNotes(nModel);
+        });
+
         primaryStage.show();
     }
 

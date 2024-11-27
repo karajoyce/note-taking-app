@@ -9,13 +9,13 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-public class NewPageView {
+public class NewNameView {
     private TextField title; // Input field for the card description
-    private Button createPageButton; // Button to update the card
+    private Button namePageButton; // Button to update the card
     private GridPane grid; // to display everything
 
-    public NewPageView(Stage stage, Runnable onTaskCreated) {
-        stage.setTitle("Add Page");
+    public NewNameView(Stage stage, Runnable onTaskCreated) {
+        stage.setTitle("Rename Page");
 
         // Setting up the layout of the screen
         grid = new GridPane();
@@ -24,7 +24,7 @@ public class NewPageView {
         grid.setHgap(10);
 
         // setting up the text areas
-        title = new TextField("Enter the title of the new page.");
+        title = new TextField("Change the title of the page.");
 
         // set up rows and columns
         grid.getColumnConstraints().add(new ColumnConstraints(50));
@@ -41,23 +41,26 @@ public class NewPageView {
 
         GridPane.setConstraints(title, 1, 0);
         GridPane.setColumnSpan(title, 3);
-        createPageButton = new Button("Add Page");
-        createPageButton.getStyleClass().add("editbutton");
-        createPageButton.setMinWidth(150);
-        GridPane.setConstraints(createPageButton, 1, 3);
+        namePageButton = new Button("Add Page");
+        namePageButton.getStyleClass().add("editbutton");
+        namePageButton.setMinWidth(150);
+        GridPane.setConstraints(namePageButton, 1, 3);
 
         // Set up the layout
-        grid.getChildren().addAll(title, createPageButton);
+        grid.getChildren().addAll(title, namePageButton);
         Scene scene = new Scene(grid, 500, 350);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         grid.getStyleClass().add("grid");
         stage.setScene(scene);
 
-        createPageButton.setOnAction(e -> {
+        namePageButton.setOnAction(e -> {
             // Call the provided function when the task is created
             onTaskCreated.run();
             stage.close(); // Close the task creation window
         });
+    }
+    public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+
     }
 
     public String getTitle() {

@@ -74,9 +74,9 @@ public class NotebookScreenView extends StackPane {
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth()-100;
 
         renamePage = new Button("");
-        Image imgR = new Image(getClass().getResourceAsStream("/rename.png"));
+        Image imgR = new Image(getClass().getResourceAsStream("/renameicon.png"));
         ImageView imgViewR = new ImageView(imgR);
-        imgViewR.setFitHeight(20);
+        imgViewR.setFitHeight(30);
         imgViewR.setPreserveRatio(true);
         renamePage.setGraphic(imgViewR);
 
@@ -164,7 +164,7 @@ public class NotebookScreenView extends StackPane {
         addPage.setMinWidth(50);
         addPage.setMinHeight(50);
         HBox topLine = new HBox(pageBack, removePage, renamePage, addPage);
-        topLine.setSpacing(10);
+        topLine.setSpacing(5);
         topLine.setAlignment(Pos.CENTER);
         sidePanel.getChildren().add(topLine);
         sidePanel.getChildren().add(deckSelection);
@@ -277,6 +277,12 @@ public class NotebookScreenView extends StackPane {
      */
     public void setDeletePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         removePage.setOnAction(handler);
+    }
+    /**
+     * An event handler for the confident button
+     */
+    public void setRenamePage(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
+        renamePage.setOnAction(handler);
     }
 
     //Adding XP tracking when entering this screen
