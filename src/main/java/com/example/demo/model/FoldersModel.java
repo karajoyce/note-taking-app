@@ -15,10 +15,24 @@ public class FoldersModel {
         folders = new ArrayList<>();
         folderNotebooks = new HashMap<>();
 
+        // Load folder names from storage
+        folders.addAll(NotesStorage.GenerateNotebookTitles());
+
+        // Load notebooks for each folder
+        for (String folderName : folders) {
+            Notebook notebook = NotesStorage.LoadNotes(folderName);
+            if (notebook != null) {
+                folderNotebooks.put(folderName, notebook);
+            }
+        }
+
         // Initialize with some folders and their notebooks
+        /*
         addFolder("Math");
         addFolder("Science");
         addFolder("Physics");
+
+         */
     }
 
     public Map<String, Notebook> getFolderNotebooks() {

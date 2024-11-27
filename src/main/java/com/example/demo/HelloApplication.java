@@ -58,13 +58,16 @@ public class HelloApplication extends Application {
         nModel.addPage(new Page("Lecture 1"));
         NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
+        nView.runScreenUpdate();
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
         foldersScreenView.setToDoList(toDoListView);
 
+
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
+
 
 
 

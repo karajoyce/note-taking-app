@@ -52,6 +52,10 @@ public class FoldersScreenView extends StackPane {
     }
 
     public void runFoldersScreenUpdate() {
+        // Load folder names from storage
+        //List<String> folderNames = NotesStorage.GenerateNotebookTitles();
+        //populateFolders(folderNames);
+
         // General setup
         this.getStylesheets().add("/styles.css");
         double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
@@ -132,7 +136,7 @@ public class FoldersScreenView extends StackPane {
         return pageBack;
     }
 
-    public void populateFolders(List<String> folderNames) {
+    public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler) {
         foldersGrid.getChildren().clear();
         folderNames  = NotesStorage.GenerateNotebookTitles();
         int columns = 3; // Number of columns in the grid
@@ -145,9 +149,15 @@ public class FoldersScreenView extends StackPane {
             folderButton.setWrapText(true); // Allow text wrapping for long folder names
 
             // Attach the folder selection handler if it exists
+            /*
             if (folderSelectionHandler != null) {
                 folderButton.setOnMouseClicked(folderSelectionHandler);
             }
+
+
+             */
+            // Attach the handler to each button
+            folderButton.setOnMouseClicked(folderSelectionHandler);
 
             foldersGrid.add(folderButton, col, row);
             col++;
