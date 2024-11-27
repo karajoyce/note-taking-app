@@ -50,9 +50,9 @@ public class HelloApplication extends Application {
         fCard.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
-        FlashcardScreenView fCardView = new FlashcardScreenView();
-        fCardView.setToDoList(toDoListView);
+        FlashcardScreenView fCardView = new FlashcardScreenView(toDoListView);
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
+        //fCardView.setToDoList(toDoListView);
 
         Notebook nModel = new Notebook("CMPT281");
         nModel.addPage(new Page("Lecture 1"));
@@ -67,6 +67,7 @@ public class HelloApplication extends Application {
 
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
+
 
 
 

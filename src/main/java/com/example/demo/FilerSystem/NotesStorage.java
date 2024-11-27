@@ -86,6 +86,13 @@ public class NotesStorage {
         }
     }
 
+    public static void DeleteNotebook(String folderName) {
+        File notebookFile = new File("notebooks/" + folderName + ".json");
+        if (notebookFile.exists()) {
+            notebookFile.delete();
+        }
+    }
+
     /**
      * Load the title names of all decks
      * @return List of names

@@ -139,7 +139,7 @@ public class MainMenuScreenView extends StackPane {
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());
-        //ToDoStorage.LoadToDoList();
+
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }
