@@ -43,6 +43,10 @@ public class HelloApplication extends Application {
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
 
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+
+        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
+
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
         // Deck initialization, needs to change
@@ -50,7 +54,7 @@ public class HelloApplication extends Application {
         fCard.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
-        FlashcardScreenView fCardView = new FlashcardScreenView(toDoListView);
+        FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         //fCardView.setToDoList(toDoListView);
 
@@ -61,7 +65,7 @@ public class HelloApplication extends Application {
         nView.runScreenUpdate();
 
         FoldersModel foldersModel = new FoldersModel();
-        FoldersScreenView foldersScreenView = new FoldersScreenView(toDoListView);
+        FoldersScreenView foldersScreenView = new FoldersScreenView();
 
 
 
@@ -72,10 +76,8 @@ public class HelloApplication extends Application {
 
 
 
-        // Create Views
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(toDoListView);
 
-        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
+        // Create Views
 
 
         // Create Scenes
@@ -95,9 +97,9 @@ public class HelloApplication extends Application {
         navigationController.setFoldersScene(foldersScene);
 
         // Set Up Navigation in Views
-        mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen());
-        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu());
-        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen());
+        mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
+        foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
+        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen(foldersScreenView));
 
 
 
@@ -119,3 +121,4 @@ public class HelloApplication extends Application {
         launch();
     }
 }
+

@@ -60,7 +60,7 @@ public class FlashcardScreenView extends StackPane {
     private ToDoListView toDoListV;
 
 
-    public FlashcardScreenView(ToDoListView toDoListView) {
+    public FlashcardScreenView() {
 
         //-------------------------
         // Buttons set up
@@ -74,7 +74,9 @@ public class FlashcardScreenView extends StackPane {
         tempCard = new Card("Insert more cards", "");
         thumbsUpButton = new Button("Confident");
         thumbsDownButton = new Button("Not Confident");
-        this.toDoListV = toDoListView;
+        ToDoList toDoList = new ToDoList();
+        this.toDoListV = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);

@@ -49,7 +49,7 @@ public class MainMenuScreenViewController {
             }
             if (view.getFoldersScreenView() == null) {
                 // Lazy initialization of FoldersScreenView
-                foldersScreenView = new FoldersScreenView(toDoListView);
+                foldersScreenView = new FoldersScreenView();
 
                 foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(view))); // Back to MainMenuScreen
             }

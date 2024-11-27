@@ -95,7 +95,6 @@ public class ToDoListView extends VBox {
             taskListView.getItems().add(itemView);// Add the HBox view to the list
 
         }
-        //ToDoStorage.SaveToDoList(this.tasks);
     }
 
     /**

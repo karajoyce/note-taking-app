@@ -34,8 +34,10 @@ public class FoldersScreenView extends StackPane {
     private Button deleteButton;
 
 
-    public FoldersScreenView(ToDoListView toDoListV) {
+    public FoldersScreenView() {
         // Initialize components
+        addFolderButton = new Button("Add Folder");
+
         //pageBack = new Button("Back");
         pageBack = new Button("");
         Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
@@ -53,7 +55,9 @@ public class FoldersScreenView extends StackPane {
 
 
         motivationalMessagesView = new MotivationalMessagesView();
-        this.toDoListV = toDoListV;
+        ToDoList toDoList = new ToDoList();
+        this.toDoListV = new ToDoListView();
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV);
 
 
 
@@ -106,7 +110,7 @@ public class FoldersScreenView extends StackPane {
         pageBack.setMinHeight(40);
         pageBack.getStyleClass().add("back-button");
 
-        addFolderButton = new Button("Add Folder");
+
         addFolderButton.setMinWidth(100);
         addFolderButton.setMinHeight(40);
         addFolderButton.getStyleClass().add("add-folder-button");

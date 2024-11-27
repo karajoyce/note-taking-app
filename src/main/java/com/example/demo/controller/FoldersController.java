@@ -91,7 +91,7 @@ public class FoldersController {
 
     private void goToMainMenu() {
         // Navigate back to the main menu
-        primaryStage.setScene(new Scene(new MainMenuScreenView(toDoListView)));
+        primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
     public NotebookScreenView getNoteBookView() {
