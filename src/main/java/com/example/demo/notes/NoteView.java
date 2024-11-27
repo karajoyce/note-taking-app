@@ -66,6 +66,14 @@ public class NoteView  {
         toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;"); /* For some reason strikethrough doesn't show up on the button */
         toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
 
+        Button toggleHyperLink = new Button("HL");
+        toggleHyperLink.getStyleClass().add("textEditorButton");
+        toggleHyperLink.setOnAction( actionEvent -> {
+
+
+
+        });
+
         /* Font size */
         ComboBox<String> fontSizeMenu = new ComboBox<>();
         fontSizeMenu.getStyleClass().add("fontmenu");

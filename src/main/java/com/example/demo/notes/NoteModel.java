@@ -46,6 +46,8 @@ public class NoteModel {
     /** font style. e.g. Verdana, Times New Roman, etc. */
     private String fontType;
 
+
+
     /** Constructor */
     public NoteModel() {
 

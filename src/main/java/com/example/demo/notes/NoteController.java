@@ -10,8 +10,12 @@
 package com.example.demo.notes;
 
 import java.util.*;
+
+import com.example.demo.model.Page;
+import com.example.demo.view.NotebookScreenView;
 import javafx.scene.control.Alert;
 
+import javafx.scene.control.Hyperlink;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -358,6 +362,33 @@ public class NoteController {
                 noteModel.getTextArea().setParagraphStyle(i, "-fx-text-alignment: " + pos + ";");
             }
         }
+
+    }
+
+    //Adding HyperLink creation
+    protected void createHyperLink( Page pos ){
+
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        String[] arrayCss;
+
+        if(start == end ) {
+            return;
+        }
+
+        String link = noteModel.getTextArea().getSelectedText();
+
+        noteModel.getTextArea().deleteText(start, end);
+        Hyperlink hyperlink = new Hyperlink(link);
+
+        hyperlink.setStyle(" -fx-bold: true; -fx-text-fill: blue; ");
+
+        hyperlink.setOnAction(event -> NotebookScreenView.navigateToPage(pos));
+
+        noteModel.getTextArea().replaceText(start, start,hyperlink.getText());
+
+
 
     }
 

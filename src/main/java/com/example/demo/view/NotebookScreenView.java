@@ -11,10 +11,9 @@ import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
 import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +22,7 @@ import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Optional;
 
 /**
 
@@ -36,6 +36,8 @@ import java.util.List;
  **/
 
 public class NotebookScreenView extends StackPane {
+    private VBox links;
+    private Page curr;
 
     // Deck initialization, needs to change
     double screenHeight;
@@ -147,6 +149,8 @@ public class NotebookScreenView extends StackPane {
         this.getChildren().clear();
         //-------------------------END
 
+        links = new VBox(10);
+        this.getChildren().add(links);
 
 
         //-------------------------
@@ -200,6 +204,8 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(cardSection);
 
         InlineCssTextArea textArea = noteModel.getTextArea();
+
+
 
         javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
         menuBar.getStyleClass().add("menuBar");
@@ -333,7 +339,13 @@ public class NotebookScreenView extends StackPane {
             page.setContents(textArea);
         });
 
+
         noteModel.setTextArea(textArea); // Update the model for the view
+    }
+
+
+    public static void navigateToPage(Page target){
+        setCurrentPage(target);
     }
 
 }

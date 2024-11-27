@@ -3,6 +3,7 @@ package com.example.demo.model;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
 
@@ -19,9 +20,12 @@ public class Page implements Serializable {
 
     private String title;
     private InlineCssTextArea contents;
+
+    private ArrayList<Page> linkedPages;
     public Page(String pageTitle){
         title = pageTitle;
         contents = new InlineCssTextArea();
+        linkedPages = new ArrayList<>();
     }
 
     public void setContents(InlineCssTextArea contents) {
@@ -38,6 +42,19 @@ public class Page implements Serializable {
 
     public void setTitle(String name){
         title = name;
+    }
+    public ArrayList<Page> getLinkedPages(){
+        return linkedPages;
+    }
+    public void addLink(Page page){
+        if(!linkedPages.contains(page)){
+            linkedPages.add(page);
+        }
+    }
+    public void removeLink(Page page){
+        if(linkedPages.contains(page)){
+            linkedPages.remove(page);
+        }
     }
 
 }
