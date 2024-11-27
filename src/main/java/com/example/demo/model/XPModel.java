@@ -19,6 +19,7 @@ public class XPModel {
 
     public void setCurrentXP(double currentXP) {
         this.currentXP = currentXP;
+        saveXP();
     }
 
     public double getMaxXP() {
@@ -49,4 +50,9 @@ public class XPModel {
     public double getProgress() {
         return currentXP / maxXP;
     }
+
+    private void saveXP(){
+        XPStorage.SaveXPBar(this);
+    }
+
 }

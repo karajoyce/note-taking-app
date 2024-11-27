@@ -1,4 +1,5 @@
 package com.example.demo;
+import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.controller.*;
 import com.example.demo.model.BreakReminderModel;
 import com.example.demo.model.FoldersModel;
@@ -20,7 +21,8 @@ import javafx.application.Platform;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressBar;
+import com.example.demo.model.XPModel;
+import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
 import com.example.demo.model.FlashcardScreen;
 
@@ -28,6 +30,7 @@ public class HelloApplication extends Application {
 
     private static Stage primaryStage;
     private BreakReminderController breakReminderController;
+    private XPModel xpModel;
     @Override
     public void start(Stage stage){
 
@@ -96,7 +99,7 @@ public class HelloApplication extends Application {
 
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        primaryStage.setScene(flashcardScene);
+        primaryStage.setScene(mainMenuScene);
         primaryStage.setTitle("Flashcard");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
@@ -107,6 +110,11 @@ public class HelloApplication extends Application {
 
     public static Stage getStage(){
         return primaryStage;
+    }
+    @Override
+    public void stop() {
+        // Save XP on app close
+        XPStorage.SaveXPBar(XPManager.getXPModel());
     }
 
     public static void main(String[] args) {

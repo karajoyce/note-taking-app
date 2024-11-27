@@ -1,5 +1,7 @@
 package com.example.demo.view;
 
+import com.example.demo.model.XPManager;
+import com.example.demo.model.XPModel;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,6 +23,13 @@ public class XPView extends VBox {
         this.getChildren().addAll(xpProgressBar, xpLabel);
         this.setAlignment(Pos.CENTER);
         this.setPadding(new Insets(5));
+
+        initializeXPView();
+    }
+
+    private void initializeXPView() {
+        XPModel model = XPManager.getXPModel();
+        updateXPview(model.getCurrentXP(), model.getMaxXP(), model.getLevel());
     }
 
     public void updateXPview(double currentXP, double maxXP, int level) {

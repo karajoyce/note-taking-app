@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.FoldersModel;
+import com.example.demo.model.XPManager;
+import com.example.demo.model.XPModel;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.MainMenuScreenView;
@@ -15,12 +17,14 @@ public class FoldersController {
     private FoldersScreenView foldersScreenView;
     private Stage primaryStage;
     private NotebookScreenView notebookScreenView;
+    private XPModel xpModel;
 
     public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NotebookScreenView notebookView) {
         this.foldersModel = model;
         this.foldersScreenView = view;
         this.primaryStage = stage;
         this.notebookScreenView = notebookView;
+        this.xpModel = XPManager.getXPModel();
 
         // Populate folders on the screen
         foldersScreenView.populateFolders(foldersModel.getFolders());
@@ -42,6 +46,10 @@ public class FoldersController {
 
     public NotebookScreenView getNoteBookView() {
         return this.notebookScreenView;
+    }
+
+    public void addFoldersXp(double xp){
+        xpModel.addXP(xp);
     }
 
     private void openNotebook(String folderName) {

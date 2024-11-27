@@ -1,12 +1,11 @@
 package com.example.demo.view;
 
 import com.example.demo.FilerSystem.ToDoStorage;
+import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.HelloApplication;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
-import com.example.demo.model.DigitalTree;
-import com.example.demo.model.XPModel;
-import com.example.demo.model.ToDoList;
+import com.example.demo.model.*;
 import com.example.demo.model.XPModel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -70,7 +69,7 @@ public class MainMenuScreenView extends StackPane {
         NoteBox = new HBox();
 
         //Initializing XP bar and system;
-        xpModel = new XPModel(100);
+        xpModel = XPManager.getXPModel();
         xpView = new XPView();
 
         runMainScreenUpdate();

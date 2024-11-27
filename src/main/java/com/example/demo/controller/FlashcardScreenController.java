@@ -10,18 +10,16 @@ package com.example.demo.controller;
  */
 
 import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.model.Card;
-import com.example.demo.model.Deck;
+import com.example.demo.model.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import com.example.demo.model.FlashcardScreen;
 import com.example.demo.view.FlashcardScreenView;
 
 public class FlashcardScreenController {
 
     private FlashcardScreen fCardModel; // The com.example.demo.model that represents the cards/deck
     private FlashcardScreenView fCardView; // The com.example.demo.view of the screen
-
+    private XPModel xpModel;
 
     /**
      * Constructor
@@ -29,6 +27,7 @@ public class FlashcardScreenController {
     public FlashcardScreenController(FlashcardScreen model, FlashcardScreenView view){
         fCardModel = model;
         fCardView = view;
+        this.xpModel = XPManager.getXPModel();
 
         fCardView.setCardModel(model);
 
@@ -121,6 +120,10 @@ public class FlashcardScreenController {
 
     public void deckUpdate(){
         fCardView.runDeckUpdate();
+    }
+
+    public void addFlashCardXp(double xp){
+        xpModel.addXP(xp);
     }
 
 }

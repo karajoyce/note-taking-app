@@ -10,8 +10,10 @@ package com.example.demo.controller;
  */
 
 import com.example.demo.model.ToDoList;
+import com.example.demo.model.XPManager;
 import com.example.demo.view.ToDoListView;
 import com.example.demo.model.XPModel;
+import com.example.demo.FilerSystem.XPStorage;
 import javafx.stage.Stage;
 
 /**
@@ -32,7 +34,7 @@ public class ToDoListController  {
     public ToDoListController(ToDoList toDoList, ToDoListView toDoListView, XPModel xpModel) {
         this.toDoList = toDoList;
         this.toDoListView = toDoListView;
-        this.xpModel = xpModel;
+        this.xpModel = XPManager.getXPModel();
         updateTaskListView(); // Populate the view with current tasks
 
         // Set the action for the "Add Task" button

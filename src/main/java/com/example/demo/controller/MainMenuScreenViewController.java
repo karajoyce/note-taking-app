@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.ToDoStorage;
+import com.example.demo.model.XPManager;
+import com.example.demo.model.XPModel;
 import com.example.demo.model.Task;
 import com.example.demo.model.TaskItem;
 import com.example.demo.model.ToDoList;
@@ -22,7 +24,7 @@ public class MainMenuScreenViewController {
     private Scene notebookScene;
     private Scene mainMenuScene;
     private FoldersScreenView foldersScreenView;
-
+    private XPModel xpModel;
 
     public MainMenuScreenViewController(MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView) {
 
@@ -34,6 +36,7 @@ public class MainMenuScreenViewController {
         this.notebookScene = notebookScene;
         this.mainMenuScene = mainMenuScene;
         this.foldersScreenView = foldersScreenView;
+        this.xpModel = XPManager.getXPModel();
 
         // Set up button actions
         setupButtonActions();

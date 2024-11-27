@@ -77,7 +77,7 @@ public class FlashcardScreenView extends StackPane {
         thumbsDownButton = new Button("Not Confident");
 
         //Initializing XP bar and system;
-        xpModel = new XPModel(100);
+        xpModel = XPManager.getXPModel();
         xpView = new XPView();
         //Initializing new Tree
         digitalTree = new DigitalTree();
