@@ -172,8 +172,8 @@ public class FoldersScreenView extends StackPane {
             deleteButton.setPrefSize(30, 30); // Set size for delete button
             deleteButton.setOnMouseClicked(deleteHandler);
 
-            // Add both the folder button and delete button to a container (HBox)
-            HBox folderContainer = new HBox(5); // 5px spacing
+            // Add folder button and delete button to a container (VBox)
+            VBox folderContainer = new VBox(5); // 5px spacing
             folderContainer.setAlignment(Pos.CENTER);
             folderContainer.getChildren().addAll(folderButton, deleteButton);
 
