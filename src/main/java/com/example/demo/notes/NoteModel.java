@@ -240,7 +240,6 @@ public class NoteModel {
         this.backBufferIndex = index;
     }
     /** -------------------------------------------------------------------- */
-}
 
     /**ADDED BY NATHAN SETTERS AND GETTERS FOR TAGS AND IMAGE**/
     public void addTag(String tag){

@@ -83,7 +83,7 @@ public class HelloApplication extends Application {
         Scene foldersScene = new Scene(foldersScreenView);
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        Scene notebookScene = new Scene(new NotebookScreenView());
+        Scene notebookScene = new Scene(new NotebookScreenView(nModel));
         MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
 
 

@@ -272,7 +272,7 @@ public class NotebookScreenView extends StackPane {
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         //fullBox.getChildren().add(todolist);
         VBox tags = new VBox();
-        addTagsAndSearchToLayout(tags);
+//        addTagsAndSearchToLayout(tags);
         todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);
         fullBox.getChildren().add(todolist);
 
@@ -380,81 +380,81 @@ public class NotebookScreenView extends StackPane {
     private TextField searchField = new TextField();
     private Button searchButton = new Button("Search");
 
-    private void initializeTagsSection() {
-        tagInputField.setPromptText("Enter a tag...");
-        addTagButton.setPrefSize(85, 25);
-        addTagButton.setStyle("-fx-font-size: 15px;");
-        addTagButton.setOnAction(e -> {
-            String newTag = tagInputField.getText();
-            if (!newTag.isEmpty()) {
-                noteController.addTagNote(newTag);
-                tagInputField.clear();
-                updateDisplayedTags();
-            }
-        });
-        tagsSection.getChildren().addAll(tagInputField, addTagButton, displayedTags);
-        tagsSection.setSpacing(10);
-        tagsSection.setAlignment(Pos.CENTER_LEFT);
-        updateDisplayedTags();
-    }
+//    private void initializeTagsSection() {
+//        tagInputField.setPromptText("Enter a tag...");
+//        addTagButton.setPrefSize(85, 25);
+//        addTagButton.setStyle("-fx-font-size: 15px;");
+//        addTagButton.setOnAction(e -> {
+//            String newTag = tagInputField.getText();
+//            if (!newTag.isEmpty()) {
+//                noteController.addTagNote(newTag);
+//                tagInputField.clear();
+//                updateDisplayedTags();
+//            }
+//        });
+//        tagsSection.getChildren().addAll(tagInputField, addTagButton, displayedTags);
+//        tagsSection.setSpacing(10);
+//        tagsSection.setAlignment(Pos.CENTER_LEFT);
+//        updateDisplayedTags();
+//    }
 
-    private void initializeSearchSection() {
-        searchField.setPromptText("Search for a note...");
-        searchButton.setPrefSize(85, 25);
-        searchButton.setStyle("-fx-font-size: 15px;");
-        searchButton.setOnAction(e -> {
-            String keyword = searchField.getText();
-            if (!keyword.isEmpty()) {
-                boolean found = noteController.searchNoteByKeyword(keyword);
-                if (found) {
-                    showSearchResultPopup("FOUND THE TAG");
-                } else {
-                    showSearchResultPopup("TAG NOT FOUND :(");
-                }
-            }
-        });
+//    private void initializeSearchSection() {
+//        searchField.setPromptText("Search for a note...");
+//        searchButton.setPrefSize(85, 25);
+//        searchButton.setStyle("-fx-font-size: 15px;");
+//        searchButton.setOnAction(e -> {
+//            String keyword = searchField.getText();
+//            if (!keyword.isEmpty()) {
+//                boolean found = noteController.searchNoteByKeyword(keyword);
+//                if (found) {
+//                    showSearchResultPopup("FOUND THE TAG");
+//                } else {
+//                    showSearchResultPopup("TAG NOT FOUND :(");
+//                }
+//            }
+//        });
+//        System.out.println("hi");
+//        searchSection.getChildren().addAll(searchField, searchButton);
+//        searchSection.setSpacing(10);
+//        searchSection.setAlignment(Pos.CENTER_LEFT);
+//    }
 
-        searchSection.getChildren().addAll(searchField, searchButton);
-        searchSection.setSpacing(10);
-        searchSection.setAlignment(Pos.CENTER_LEFT);
-    }
-
-    private void addTagsAndSearchToLayout(VBox mainLayout) {
-        initializeSearchSection();
-        initializeTagsSection();
-        mainLayout.getChildren().addAll(searchSection, tagsSection);
-    }
-    private void updateDisplayedTags() {
-        displayedTags.getChildren().clear(); // Clear the previous display
-
-        for (String tag : noteModel.getTags()) {
-            HBox tagItem = new HBox();
-            tagItem.setSpacing(10);
-
-            // Display the tag
-            Label tagLabel = new Label(tag);
-
-            // Add a remove button for each tag
-            Button removeButton = new Button("Remove");
-            removeButton.setStyle("-fx-font-size: 10px;");
-            removeButton.setPrefSize(70,25);
-            removeButton.setOnAction(e -> {
-                noteController.removeTagFromNote(tag); // Remove the tag
-                updateDisplayedTags(); // Refresh the display
-            });
-
-            tagItem.getChildren().add(tagLabel);
-            tagItem.getChildren().add(removeButton);
-            displayedTags.getChildren().add(tagItem);
-        }
-    }
-    private void showSearchResultPopup(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Search Result");
-        alert.setHeaderText(null); // No header text
-        alert.setContentText(message);
-        alert.showAndWait(); // Blocks until the user dismisses the alert
-    }
+//    private void addTagsAndSearchToLayout(VBox mainLayout) {
+//        initializeSearchSection();
+//        initializeTagsSection();
+//        mainLayout.getChildren().addAll(searchSection, tagsSection);
+//    }
+//    private void updateDisplayedTags() {
+//        displayedTags.getChildren().clear(); // Clear the previous display
+//
+//        for (String tag : noteModel.getTags()) {
+//            HBox tagItem = new HBox();
+//            tagItem.setSpacing(10);
+//
+//            // Display the tag
+//            Label tagLabel = new Label(tag);
+//
+//            // Add a remove button for each tag
+//            Button removeButton = new Button("Remove");
+//            removeButton.setStyle("-fx-font-size: 10px;");
+//            removeButton.setPrefSize(70,25);
+//            removeButton.setOnAction(e -> {
+//                noteController.removeTagFromNote(tag); // Remove the tag
+//                updateDisplayedTags(); // Refresh the display
+//            });
+//
+//            tagItem.getChildren().add(tagLabel);
+//            tagItem.getChildren().add(removeButton);
+//            displayedTags.getChildren().add(tagItem);
+//        }
+//    }
+//    private void showSearchResultPopup(String message) {
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Search Result");
+//        alert.setHeaderText(null); // No header text
+//        alert.setContentText(message);
+//        alert.showAndWait(); // Blocks until the user dismisses the alert
+//    }
 }
 
 
