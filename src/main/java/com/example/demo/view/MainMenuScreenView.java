@@ -68,7 +68,7 @@ public class MainMenuScreenView extends StackPane {
         mView = new MotivationalMessagesView();
 
         toDoListV = new ToDoListView();
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
@@ -207,7 +207,7 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStyleClass().add("rightVbox");
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
 
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         //ToDoStorage.LoadToDoList();

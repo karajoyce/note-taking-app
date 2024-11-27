@@ -43,9 +43,9 @@ public class FoldersScreenView extends StackPane {
 
 
         toDoListV = new ToDoListView();
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         list = new ToDoList();
-        toDoCont = new ToDoListController(list, toDoListV);
+        toDoCont = new ToDoListController(list, toDoListV, xpModel);
 
         // Initialize foldersGrid
         foldersGrid = new GridPane();
@@ -128,7 +128,7 @@ public class FoldersScreenView extends StackPane {
         todolist.getStyleClass().add("rightVbox");
 
         todolist.getChildren().addAll(motivContainer,toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         fullBox.getChildren().add(todolist);
         rightPanel.getStyleClass().add("rightVbox");
         rightPanel.setSpacing(20); // Add spacing
@@ -171,7 +171,7 @@ public class FoldersScreenView extends StackPane {
         }
     }
     public void updateToDoListView() {
-        toDoListV.setTaskList(ToDoList.getTasks());
+        toDoListV.setTaskList(ToDoList.getTasks(), xpModel);
     }
 
     public void setFolderSelectionHandler(EventHandler<MouseEvent> handler) {

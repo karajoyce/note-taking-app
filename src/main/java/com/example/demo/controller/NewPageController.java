@@ -59,7 +59,7 @@ public class NewPageController {
             nModel.addPage(newPage);
             NotesStorage.SaveNotes(nModel);
             nController.runUpdate();
-            HelloApplication.primaryStage.setAlwaysOnTop(true);
+            HelloApplication.getStage().setAlwaysOnTop(true);
         }
         Page newPage = new Page(title);
         nModel.addPage(newPage);

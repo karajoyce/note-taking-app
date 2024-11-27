@@ -114,7 +114,7 @@ public class NotebookScreenView extends StackPane {
         xpController = new XPController(xpModel, xpView, digitalTree);
 
         toDoListV = new ToDoListView();
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 

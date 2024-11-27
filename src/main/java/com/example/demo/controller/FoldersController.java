@@ -1,20 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.model.FoldersModel;
-import com.example.demo.model.XPManager;
-import com.example.demo.model.XPModel;
-import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
+import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.MainMenuScreenView;
 import com.example.demo.view.ToDoListView;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.stage.StageStyle;
 
 public class FoldersController {
     private FoldersModel foldersModel;

@@ -1,12 +1,11 @@
 package com.example.demo;
-import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.controller.*;
 import com.example.demo.model.*;
 import com.example.demo.model.BreakReminderModel;
-import com.example.demo.model.FoldersModel;
+
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.view.*;
@@ -45,7 +44,7 @@ public class HelloApplication extends Application {
 
         ToDoList toDoList = new ToDoList();
         ToDoListView toDoListView = new ToDoListView();
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView, xpModel);
         toDoListController.updateTaskListView();
 
         // Break Reminder setup
@@ -79,12 +78,8 @@ public class HelloApplication extends Application {
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView);
-
-
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
-
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene,toDoListView);
         foldersController.getNoteBookView();
 
         // Create Views
