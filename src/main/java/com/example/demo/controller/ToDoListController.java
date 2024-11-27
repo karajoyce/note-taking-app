@@ -37,6 +37,7 @@ public class ToDoListController  {
         toDoListView.setAddTaskButtonAction(e -> {
             new TaskCreationController(toDoList, this, new Stage()); // Open task creation window
             updateTaskListView(); // Refresh the list after adding
+            ToDoStorage.SaveToDoList(this.toDoList.getTasks());
         });
     }
 

@@ -54,7 +54,9 @@ public class MainMenuScreenView extends StackPane {
     private XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
-    public MainMenuScreenView(ToDoListView toDoListV) {
+    private ToDoList list;
+
+    public MainMenuScreenView() {
 
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
@@ -62,13 +64,17 @@ public class MainMenuScreenView extends StackPane {
         pageButton = new Button("Test Page"); // this should be a deck name later
 
 
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+
 
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
-        this.toDoListV = toDoListV;
-        this.toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+
+        toDoListV = new ToDoListView();
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoList = new ToDoList();
+        toDoCont = new ToDoListController(toDoList, toDoListV);
+
         NoteBox = new HBox();
 
         //Initializing XP bar and system;
@@ -78,9 +84,6 @@ public class MainMenuScreenView extends StackPane {
         runMainScreenUpdate();
     }
 
-    public void setToDoList(ToDoListView toDoListV) {
-        this.toDoListV = toDoListV;
-    }
 
     public TopViewBar getTopViewBar() {
         return this.topViewBar;
@@ -115,6 +118,7 @@ public class MainMenuScreenView extends StackPane {
     public FoldersScreenView getFoldersScreenView() {
         return foldersScreenView;
     }
+
 
     public void runMainScreenUpdate() {
         // General class things/size
@@ -209,7 +213,7 @@ public class MainMenuScreenView extends StackPane {
 
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList());
-        //ToDoStorage.LoadToDoList();
+
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }

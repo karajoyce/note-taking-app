@@ -44,11 +44,12 @@ public class FoldersController {
             openNotebook(folderName);
         });
         foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder());
+
     }
 
     private void goToMainMenu() {
         // Navigate back to the main menu
-        primaryStage.setScene(new Scene(new MainMenuScreenView(toDoListView)));
+        primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
     public NotebookScreenView getNoteBookView() {
@@ -126,8 +127,8 @@ public class FoldersController {
             foldersScreenView.populateFolders(foldersModel.getFolders());
         }
     }
+
+
 }
-
-
 
 

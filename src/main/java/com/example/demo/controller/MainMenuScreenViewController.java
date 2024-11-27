@@ -20,9 +20,10 @@ public class MainMenuScreenViewController {
     private Scene mainMenuScene;
     private FoldersScreenView foldersScreenView;
     private ToDoListView todoV;
+    private ToDoListController todoC;
 
 
-    public MainMenuScreenViewController( ToDoListView todoV,  MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView) {
+    public MainMenuScreenViewController( ToDoListView todoV,  MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
 
         this.view = view;
         this.topViewBar = topViewBar;
@@ -33,17 +34,20 @@ public class MainMenuScreenViewController {
         this.mainMenuScene = mainMenuScene;
         this.foldersScreenView = foldersScreenView;
         this.todoV = todoV;
+        this.todoC = todoC;
 
         // Set up button actions
         setupButtonActions();
+        runUpdate();
     }
 
     private void setupButtonActions() {
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
         topViewBar.getFlashButton().setOnAction(event -> {
 
+            todoC.updateTaskListView();
+            ToDoStorage.LoadToDoList();
             primaryStage.setScene(flashcardScene);
-
 
     });
         topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
@@ -52,16 +56,12 @@ public class MainMenuScreenViewController {
                 System.err.println("PrimaryStage is not set!");
                 return;
             }
-            if (view.getFoldersScreenView() == null) {
-                // Lazy initialization of FoldersScreenView
-                foldersScreenView = new FoldersScreenView();
 
-                foldersScreenView.getBackButton().setOnAction(e -> primaryStage.setScene(new Scene(view))); // Back to MainMenuScreen
-            }
             // Navigate to the FoldersScreen
-            foldersScreenView.setToDoList( todoV    );
-
-            primaryStage.setScene(new Scene(foldersScreenView));
+            todoC.updateTaskListView();
+            ToDoStorage.LoadToDoList();
+            foldersScreenView.updateToDoListView();
+            primaryStage.setScene(foldersScreenView.getScene());
         });
     }
 
@@ -71,6 +71,9 @@ public class MainMenuScreenViewController {
         intervalView.show();
     }
 
+    public void runUpdate(){
+        view.runMainScreenUpdate();
+    }
 
 }
 

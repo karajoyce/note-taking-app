@@ -2,6 +2,7 @@ package com.example.demo.view;
 
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.Task;
+import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -97,7 +98,8 @@ public class ToDoListView extends VBox {
 
             //taskListView.getItems().add(taskItem.getView());
             taskListView.getItems().add(itemView);// Add the HBox view to the list
-
+            ToDoStorage.SaveToDoList(tasks);
+            ToDoStorage.LoadToDoList();
         }
     }
 
@@ -134,7 +136,8 @@ public class ToDoListView extends VBox {
     private void deleteTask(Task task) {
         // Remove the task from the underlying list
         tasks.remove(task);
-
+        ToDoStorage.SaveToDoList(tasks);
+        ToDoStorage.LoadToDoList();
         // Find the corresponding TaskItem view and remove it from the taskListView
         for (HBox hBox : taskListView.getItems()) {
             TaskItem item = (TaskItem) hBox.getUserData(); // to set user data in TaskItem
@@ -145,7 +148,7 @@ public class ToDoListView extends VBox {
             }
 
         }
-        ToDoStorage.SaveToDoList(tasks);
+
     }
 
     public VBox getToDoListView() {

@@ -29,7 +29,6 @@ import java.util.List;
  Sara Shakeel, gvk731, 11367521
 
  **/
-
 public class FlashcardScreenView extends StackPane {
 
     private boolean isBack = false; // checking if we should be on the back of the card
@@ -58,7 +57,8 @@ public class FlashcardScreenView extends StackPane {
     DigitalTree digitalTree;
 
     private ToDoListView toDoListV;
-
+    private ToDoListController toDoCont;
+    private ToDoList toDoList;
 
     public FlashcardScreenView() {
 
@@ -82,12 +82,9 @@ public class FlashcardScreenView extends StackPane {
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
 
-
-    }
-
-    public void setToDoList(ToDoListView toDoListV) {
-        this.toDoListV = toDoListV;
-        this.toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        toDoListV = new ToDoListView();
+        toDoList = new ToDoList();
+        toDoCont = new ToDoListController(toDoList, toDoListV);
     }
 
     /**

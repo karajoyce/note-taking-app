@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.Optional;
 import javafx.geometry.Insets;
 
+import javax.swing.plaf.TableHeaderUI;
+
 public class FoldersScreenView extends StackPane {
 
     private GridPane foldersGrid;
@@ -28,14 +30,20 @@ public class FoldersScreenView extends StackPane {
     private ToDoListView toDoListV;
     private Button pageBack; // Button to go back to main menu
     private Button addFolderButton;
+    private ToDoList list;
+
+    private ToDoListController toDoCont;
 
     public FoldersScreenView() {
         // Initialize components
         pageBack = new Button("Back");
-        toDoListV = new ToDoListView();
         motivationalMessagesView = new MotivationalMessagesView();
 
 
+        toDoListV = new ToDoListView();
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        list = new ToDoList();
+        toDoCont = new ToDoListController(list, toDoListV);
 
         // Initialize foldersGrid
         foldersGrid = new GridPane();
@@ -45,11 +53,6 @@ public class FoldersScreenView extends StackPane {
 
         // Run screen update
         runFoldersScreenUpdate();
-    }
-
-    public void setToDoList(ToDoListView toDoListV) {
-        this.toDoListV = toDoListV;
-        this.toDoListV.setTaskList(ToDoStorage.LoadToDoList());
     }
 
     public void runFoldersScreenUpdate() {
@@ -116,13 +119,15 @@ public class FoldersScreenView extends StackPane {
         motivContainer.setMinHeight(screenHeight * 0.3);
         motivContainer.getStyleClass().add("motivation-container");
 
-        VBox todoContainer = new VBox(toDoListV.getToDoListView());
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
-        todoContainer.setMinHeight(screenHeight * 0.3);
-        todoContainer.getStyleClass().add("todo-container");
 
-        rightPanel.getChildren().addAll(motivContainer, todoContainer);
-        fullBox.getChildren().add(rightPanel);
+        VBox todolist = new VBox();
+        todolist.setAlignment(Pos.TOP_CENTER);
+        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        todolist.getStyleClass().add("rightVbox");
+
+        todolist.getChildren().addAll(motivContainer,toDoListV.getToDoListView());
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList());
+        fullBox.getChildren().add(todolist);
     }
 
     public Button getAddFolderButton() {
@@ -157,6 +162,9 @@ public class FoldersScreenView extends StackPane {
                 row++;
             }
         }
+    }
+    public void updateToDoListView() {
+        toDoListV.setTaskList(ToDoList.getTasks());
     }
 
     public void setFolderSelectionHandler(EventHandler<MouseEvent> handler) {

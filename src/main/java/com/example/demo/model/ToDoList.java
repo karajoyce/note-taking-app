@@ -29,7 +29,7 @@ public class ToDoList {
      * Initializes an empty list of tasks and sets the task counter to 1.
      */
     public ToDoList() {
-        this.tasks = new ArrayList<>();
+        this.tasks = ToDoStorage.LoadToDoList();
         this.taskCounter = 1;
     }
 
@@ -49,6 +49,7 @@ public class ToDoList {
 
         ToDoStorage.SaveToDoList(tasks);
 
+
         return newTask;
 
     }
@@ -65,6 +66,7 @@ public class ToDoList {
      */
     public void removeTask(int taskID) {
         tasks.removeIf(task -> task.getTaskID() == taskID);
+        ToDoStorage.SaveToDoList(tasks);
 
     }
 

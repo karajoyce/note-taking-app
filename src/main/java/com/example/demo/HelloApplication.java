@@ -36,6 +36,7 @@ public class HelloApplication extends Application {
         ToDoList toDoList = new ToDoList();
         ToDoListView toDoListView = new ToDoListView();
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView);
+        toDoListController.updateTaskListView();
 
         // Break Reminder setup
         long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
@@ -52,25 +53,33 @@ public class HelloApplication extends Application {
         fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
-        fCardView.setToDoList(toDoListView);
+
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
+
+        fCardView.runDeckUpdate();
 
         Notebook nModel = new Notebook("CMPT281");
         nModel.addPage(new Page("Lecture 1"));
         NotebookScreenView nView = new NotebookScreenView(nModel);
         NotebookController notebookController = new NotebookController(nModel, nView);
+        nView.runScreenUpdate();
+
 
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
-        foldersScreenView.setToDoList( toDoListView);
+
+
 
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene, toDoListView);
 
-
+        foldersController.getNoteBookView();
 
         // Create Views
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(toDoListView);
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
+
+
+
 
         TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
@@ -81,7 +90,7 @@ public class HelloApplication extends Application {
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         Scene notebookScene = new Scene(new NotebookScreenView(nModel));
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView ,mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView ,mainMenuScreenView, topViewBar, primaryStage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListController);
 
 
 
