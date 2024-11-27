@@ -44,7 +44,7 @@ public class NoteView  {
         return menuBar;
     }
 
-    public ToolBar createToolBar(Stage stage) {
+    public ToolBar createToolBar() {
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.getStyleClass().add("textEditorButton");
