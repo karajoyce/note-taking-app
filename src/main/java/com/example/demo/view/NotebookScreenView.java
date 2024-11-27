@@ -94,7 +94,7 @@ public class NotebookScreenView extends StackPane {
 
         /* Initialize (MVC) */
         noteModel = new NoteModel();
-        noteController= new NoteController(noteModel);
+        noteController= new NoteController(noteModel,this);
         noteView= new NoteView(noteController);
 
         this.currentNotebook = currNotebook;
@@ -108,6 +108,7 @@ public class NotebookScreenView extends StackPane {
 
         runScreenUpdate();
     }
+
 
     public void setNotebook(Notebook notebook) {
         this.currentNotebook = notebook;
@@ -343,10 +344,11 @@ public class NotebookScreenView extends StackPane {
         noteModel.setTextArea(textArea); // Update the model for the view
     }
 
-
-    public static void navigateToPage(Page target){
-        setCurrentPage(target);
+    public void navigateToPage(Page pos) {
+        setCurrentPage(pos);
     }
+
+
 
 }
 

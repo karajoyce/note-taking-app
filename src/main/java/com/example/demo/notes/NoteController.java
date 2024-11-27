@@ -33,9 +33,13 @@ import java.util.HashSet;
 public class NoteController {
 
     NoteModel noteModel;
+    NotebookScreenView notebookScreenView;
 
-    public NoteController(NoteModel model) {
+    public NoteController(NoteModel model, NotebookScreenView notebookScreenView) {
         noteModel = model;
+        notebookScreenView = notebookScreenView;
+
+
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
 
@@ -384,13 +388,15 @@ public class NoteController {
 
         hyperlink.setStyle(" -fx-bold: true; -fx-text-fill: blue; ");
 
-        hyperlink.setOnAction(event -> NotebookScreenView.navigateToPage(pos));
+        hyperlink.setOnAction(event -> notebookScreenView.navigateToPage(pos) );
 
         noteModel.getTextArea().replaceText(start, start,hyperlink.getText());
 
 
-
     }
+
+
+
 
     /**
      * Change the font type (font family) for either the selected text or

@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Pushing all my changes because it works stupidly. Tried to fix todolist bs. Working on US7 Linking">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="trying to add hyperlinks">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-18_2_44_p_m__[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-18_2_44_p_m___Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-18_2_45_p_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-11-18_2_45_p_m___Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -469,7 +471,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732685801259</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="trying to add hyperlinks">
+      <option name="closed" value="true" />
+      <created>1732741031346</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1732741031346</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +497,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added notes dependencies" />
     <MESSAGE value="AddFlashcard button works" />
     <MESSAGE value="Merging for the deliverable" />
     <MESSAGE value="sprint 2 BreakReminder" />
@@ -512,6 +521,7 @@
     <MESSAGE value="making progress" />
     <MESSAGE value="Some tuff is happening" />
     <MESSAGE value="Pushing all my changes because it works stupidly. Tried to fix todolist bs. Working on US7 Linking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pushing all my changes because it works stupidly. Tried to fix todolist bs. Working on US7 Linking" />
+    <MESSAGE value="trying to add hyperlinks" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to add hyperlinks" />
   </component>
 </project>
