@@ -121,8 +121,9 @@ public class NotebookScreenView extends StackPane {
         setCurrentPage(currNotebook.getNotes().getFirst());
 
         /* Initialize (MVC) */
-        noteController = new NoteController(noteModel);
+        noteController = new NoteController(noteModel,this);
         noteView = new NoteView(noteController);
+
 
         this.currentNotebook = currNotebook;
         currentPage = currentNotebook.getNotes().getFirst();
@@ -388,6 +389,15 @@ public class NotebookScreenView extends StackPane {
     private HBox searchSection = new HBox();
     private TextField searchField = new TextField();
     private Button searchButton = new Button("Search");
+
+    public void navigateToPage(Page pos) {
+        if(pos != null){
+            setCurrentPage(pos);
+
+        }else{
+            System.err.println("Page is Null");
+        }
+    }
 
 //    private void initializeTagsSection() {
 //        tagInputField.setPromptText("Enter a tag...");

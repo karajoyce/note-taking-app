@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  **/
 
 public class Notebook implements Serializable {
-    private ArrayList<Page> notes;
+    private static ArrayList<Page> notes;
     private String title;
 
     public Notebook(String name) {
@@ -23,7 +24,7 @@ public class Notebook implements Serializable {
         notes = new ArrayList<>();
     }
 
-    public ArrayList<Page> getNotes(){
+    public static ArrayList<Page> getNotes(){
         return notes;
     }
     public String getTitle(){
@@ -45,5 +46,6 @@ public class Notebook implements Serializable {
     public int getSize(){
         return notes.size();
     }
+
 
 }

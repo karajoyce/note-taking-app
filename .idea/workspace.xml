@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="merged to main, fixing bugs caused by the merge">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2024_3_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2024_3_35_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_2024_9_57_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_2024_9_57_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="FileSysSprint2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,28 +54,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.MainUI.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Sprint3__Trushank",
+    "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kjl\Documents\370-01-t05-team4\src\main\resources" />
@@ -367,119 +375,119 @@
     </task>
     <task id="LOCAL-00029" summary="added confidence levels to flashcrds, not storing them yet">
       <option name="closed" value="true" />
-      <created>1732075153229</created>
+      <created>1732515749096</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1732075153229</updated>
+      <updated>1732515749096</updated>
     </task>
-    <task id="LOCAL-00030" summary="adding confidence features">
+    <task id="LOCAL-00030" summary="Okay I am making more progress somewhat?!?!?">
       <option name="closed" value="true" />
-      <created>1732131603478</created>
+      <created>1732518300720</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1732131603478</updated>
+      <updated>1732518300720</updated>
     </task>
-    <task id="LOCAL-00031" summary="fixed toolbar on the rich text editor to be compatible with my screenview">
+    <task id="LOCAL-00031" summary="buttons on the main menu work now!!">
       <option name="closed" value="true" />
-      <created>1732135859675</created>
+      <created>1732524578736</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1732135859675</updated>
+      <updated>1732524578736</updated>
     </task>
-    <task id="LOCAL-00032" summary="making deck generation work">
+    <task id="LOCAL-00032" summary="added some stylinh">
       <option name="closed" value="true" />
-      <created>1732140935817</created>
+      <created>1732526204624</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1732140935817</updated>
+      <updated>1732526204624</updated>
     </task>
-    <task id="LOCAL-00033" summary="made flshcard storage save Deck object with title">
+    <task id="LOCAL-00033" summary="changed the bell icon">
       <option name="closed" value="true" />
-      <created>1732144696211</created>
+      <created>1732532674681</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1732144696211</updated>
+      <updated>1732532674681</updated>
     </task>
-    <task id="LOCAL-00034" summary="set up functionality to switch decks from the json">
+    <task id="LOCAL-00034" summary="figuring out how to make storage work">
       <option name="closed" value="true" />
-      <created>1732156583006</created>
+      <created>1732577095374</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1732156583006</updated>
+      <updated>1732577095374</updated>
     </task>
-    <task id="LOCAL-00035" summary="Fixing functionality on empty decks">
+    <task id="LOCAL-00035" summary="fixed something in the to do list">
       <option name="closed" value="true" />
-      <created>1732159049467</created>
+      <created>1732599403045</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1732159049467</updated>
+      <updated>1732599403045</updated>
     </task>
-    <task id="LOCAL-00036" summary="Starting motivational messages, need to make prettier tomorrow">
+    <task id="LOCAL-00036" summary="Adding kara's stuff for notebook">
       <option name="closed" value="true" />
-      <created>1732162768437</created>
+      <created>1732600767729</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1732162768437</updated>
+      <updated>1732600767729</updated>
     </task>
-    <task id="LOCAL-00037" summary="setting up dynamic pages">
+    <task id="LOCAL-00037" summary="FOLDERS FINALLY WORK!!!">
       <option name="closed" value="true" />
-      <created>1732292376375</created>
+      <created>1732606920059</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1732292376376</updated>
+      <updated>1732606920059</updated>
     </task>
-    <task id="LOCAL-00038" summary="working on integration and pages">
+    <task id="LOCAL-00038" summary="changed the formatting of the folders screen">
       <option name="closed" value="true" />
-      <created>1732299540145</created>
+      <created>1732608926323</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1732299540145</updated>
+      <updated>1732608926323</updated>
     </task>
-    <task id="LOCAL-00039" summary="working on adding pages to notebook">
+    <task id="LOCAL-00039" summary="made the add page button work">
       <option name="closed" value="true" />
-      <created>1732403273774</created>
+      <created>1732656871420</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1732403273774</updated>
+      <updated>1732656871420</updated>
     </task>
-    <task id="LOCAL-00040" summary="added a new screen for adding pages, working on dynamic sync of the json">
+    <task id="LOCAL-00040" summary="making progress">
       <option name="closed" value="true" />
-      <created>1732487685762</created>
+      <created>1732660207512</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1732487685762</updated>
+      <updated>1732660207512</updated>
     </task>
-    <task id="LOCAL-00041" summary="motivational messages done!">
+    <task id="LOCAL-00041" summary="Some tuff is happening">
       <option name="closed" value="true" />
-      <created>1732501784979</created>
+      <created>1732675893491</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1732501784979</updated>
+      <updated>1732675893491</updated>
     </task>
-    <task id="LOCAL-00042" summary="saving css is not fun">
+    <task id="LOCAL-00042" summary="Pushing all my changes because it works stupidly. Tried to fix todolist bs. Working on US7 Linking">
       <option name="closed" value="true" />
-      <created>1732578349505</created>
+      <created>1732685801259</created>
       <option name="number" value="00042" />
       <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1732578349505</updated>
+      <updated>1732685801259</updated>
     </task>
-    <task id="LOCAL-00043" summary="still trying to save pages, flashcard remove now updates in json">
+    <task id="LOCAL-00043" summary="trying to add hyperlinks">
       <option name="closed" value="true" />
-      <created>1732585705605</created>
+      <created>1732741031346</created>
       <option name="number" value="00043" />
       <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />

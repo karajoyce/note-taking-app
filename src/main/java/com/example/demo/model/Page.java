@@ -40,5 +40,14 @@ public class Page implements Serializable {
         title = name;
     }
 
+    public static Page getPageFromTitle(String target){
+        for (Page page: Notebook.getNotes()){
+            if(page.getTitle().equalsIgnoreCase(target)){
+                return page;
+            }
+        }
+        return null;
+    }
+
 }
 

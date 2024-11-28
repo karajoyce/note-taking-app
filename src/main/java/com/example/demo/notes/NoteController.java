@@ -10,10 +10,15 @@
 package com.example.demo.notes;
 
 import java.util.*;
+
+import com.example.demo.model.Notebook;
+import com.example.demo.model.Page;
+import com.example.demo.view.NotebookScreenView;
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 
+import javafx.scene.control.Hyperlink;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -34,11 +39,13 @@ import com.example.demo.model.Deck;
 public class NoteController {
 
     NoteModel noteModel;
+    NotebookScreenView notebookScreenView;
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
     Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
-    public NoteController(NoteModel model) {
+    public NoteController(NoteModel model, NotebookScreenView notebookScreenView) {
         noteModel = model;
+        notebookScreenView = notebookScreenView;
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
 
@@ -486,6 +493,38 @@ public class NoteController {
 
     }
 
+    //Adding HyperLink creation
+    protected void createHyperLink( Page pos ){
+
+        int start = noteModel.getTextArea().getSelection().getStart();
+        int end = noteModel.getTextArea().getSelection().getEnd();
+
+        if(start == end ) {
+            return;
+        }
+
+        String link = noteModel.getTextArea().getSelectedText();
+
+        noteModel.getTextArea().deleteText(start, end);
+
+        Hyperlink hyperlink = new Hyperlink(link);
+
+        noteModel.getTextArea().insertText(start, link);
+
+        for (int i = start; i < start + link.length(); i++) {
+            noteModel.getTextArea().setStyle(i, i + 1, "-fx-underline: true; -fx-text-fill: blue;");
+        }
+
+        hyperlink.setOnMouseClicked(event -> {
+
+                notebookScreenView.navigateToPage(pos);
+
+        });
+    }
+
+
+
+
     /**
      * Change the font type (font family) for either the selected text or
      * next characters the user types
@@ -555,4 +594,6 @@ public class NoteController {
     public boolean searchNoteByKeyword(String keyword){
         return noteModel.containsKeyword(keyword);
     }
+
+
 }

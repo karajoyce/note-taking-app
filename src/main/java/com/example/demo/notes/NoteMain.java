@@ -9,6 +9,8 @@
 
 package com.example.demo.notes;
 
+import com.example.demo.model.Notebook;
+import com.example.demo.view.NotebookScreenView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
@@ -39,7 +41,8 @@ public class NoteMain extends Application{
 
         /* Initialize (MVC) */
         NoteModel model = new NoteModel();
-        NoteController controller = new NoteController(model);
+
+        NoteController controller = new NoteController(model,new NotebookScreenView(new Notebook("test")));
         NoteView view = new NoteView(controller);
 
         InlineCssTextArea textArea = model.getTextArea();

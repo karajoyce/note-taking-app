@@ -107,6 +107,10 @@ public class HelloApplication extends Application {
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
         nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen(foldersScreenView));
 
+        mainMenuScreenView.getNewNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
+        mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
+        mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(notebookScene));
+
 
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
