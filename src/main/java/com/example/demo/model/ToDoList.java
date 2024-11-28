@@ -29,8 +29,10 @@ public class ToDoList {
      * Initializes an empty list of tasks and sets the task counter to 1.
      */
     public ToDoList() {
-        this.tasks = new ArrayList<>();
-        this.taskCounter = 1;
+        //this.tasks = new ArrayList<>();
+        this.tasks = ToDoStorage.LoadToDoList();
+        //this.taskCounter = 1;
+        this.taskCounter = tasks.size();
 
         this.xpModel = xpModel;
     }

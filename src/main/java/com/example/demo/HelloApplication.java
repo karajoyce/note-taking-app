@@ -84,7 +84,7 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView);
 
 
         // Set required references in MainMenuScreenView

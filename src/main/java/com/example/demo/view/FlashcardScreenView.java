@@ -88,6 +88,8 @@ public class FlashcardScreenView extends StackPane {
         toDoListV = new ToDoListView();
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+
+        runDeckUpdate();
     }
 
     /**

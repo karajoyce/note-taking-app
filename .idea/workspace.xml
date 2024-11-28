@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="fixing screens and notebook screen works now">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="ToDoList workss">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FolderStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FolderStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,14 +165,6 @@
       <workItem from="1732745276247" duration="13821000" />
       <workItem from="1732815577756" duration="225000" />
       <workItem from="1732817262553" duration="4148000" />
-    </task>
-    <task id="LOCAL-00006" summary="text area made but buttons look icky and some of them are non functional">
-      <option name="closed" value="true" />
-      <created>1729547176326</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1729547176326</updated>
     </task>
     <task id="LOCAL-00007" summary="all text size gets edited... no..">
       <option name="closed" value="true" />
@@ -555,7 +550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732770112568</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="ToDoList workss">
+      <option name="closed" value="true" />
+      <created>1732825874520</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1732825874520</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +576,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding confidence features" />
     <MESSAGE value="fixed toolbar on the rich text editor to be compatible with my screenview" />
     <MESSAGE value="making deck generation work" />
     <MESSAGE value="made flshcard storage save Deck object with title" />
@@ -598,6 +600,7 @@
     <MESSAGE value="merged to main, fixing bugs caused by the merge still" />
     <MESSAGE value="Notescreen works again" />
     <MESSAGE value="fixing screens and notebook screen works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing screens and notebook screen works now" />
+    <MESSAGE value="ToDoList workss" />
+    <option name="LAST_COMMIT_MESSAGE" value="ToDoList workss" />
   </component>
 </project>
