@@ -30,6 +30,7 @@ public class NewNameController {
         nModel = model;
         nController = controller;
         nView = new NewNameView(stage, this::changeName);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 

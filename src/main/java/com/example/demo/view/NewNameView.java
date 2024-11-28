@@ -41,7 +41,7 @@ public class NewNameView {
 
         GridPane.setConstraints(title, 1, 0);
         GridPane.setColumnSpan(title, 3);
-        namePageButton = new Button("Add Page");
+        namePageButton = new Button("Edit Name");
         namePageButton.getStyleClass().add("editbutton");
         namePageButton.setMinWidth(150);
         GridPane.setConstraints(namePageButton, 1, 3);
@@ -51,6 +51,7 @@ public class NewNameView {
         Scene scene = new Scene(grid, 500, 350);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         grid.getStyleClass().add("grid");
+        stage.setAlwaysOnTop(true);
         stage.setScene(scene);
 
         namePageButton.setOnAction(e -> {

@@ -77,6 +77,9 @@ public class FlashcardScreenController {
             Card temp = new Card("", "");
             fCardModel.getDeck().addCard(temp);
             new EditCardController(temp, fCardModel, this, new Stage());
+            if (temp.getCardFront().isEmpty()){
+                fCardModel.getDeck().removeCard(temp);
+            }
             deckUpdate();
         });
 

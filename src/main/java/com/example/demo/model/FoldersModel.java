@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import com.example.demo.FilerSystem.FolderStorage;
+//import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 //import com.example.demo.FilerSystem.NotesStorage;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class FoldersModel {
         folderNotebooks = new HashMap<>();
 
         // Load folder names from storage
-        folders.addAll(FolderStorage.GenerateNotebookTitles());
+        folders.addAll(NotesStorage.GenerateNotebookTitles());
 
         // Load notebooks for each folder
         for (String folderName : folders) {

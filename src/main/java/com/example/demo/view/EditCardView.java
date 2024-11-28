@@ -59,6 +59,7 @@ public class EditCardView {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         grid.getStyleClass().add("grid");
         stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
 
         updateCardButton.setOnAction(e -> {
             // Call the provided function when the task is created

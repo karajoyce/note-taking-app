@@ -37,6 +37,7 @@ public class NewPageController {
         stage.initStyle(StageStyle.UTILITY);
         stage.setFullScreen(false);
         stage.setResizable(false);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 
@@ -61,9 +62,6 @@ public class NewPageController {
             nController.runUpdate();
             HelloApplication.getStage().setAlwaysOnTop(true);
         }
-        Page newPage = new Page(title);
-        nModel.addPage(newPage);
-        nController.runUpdate();
     }
 }
 

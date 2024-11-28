@@ -78,6 +78,7 @@ public class TaskCreationView {
         grid.getChildren().addAll(titleLabel, taskDescriptionInput, dueDatePicker, buttonContainer);
         Scene scene = new Scene(grid, 300, 200);
         primaryStage.setScene(scene);
+        primaryStage.setAlwaysOnTop(true);
 
         createTaskButton.setOnAction(e -> {
             String description = taskDescriptionInput.getText().trim(); // Trim whitespace
