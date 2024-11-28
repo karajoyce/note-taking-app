@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Setter and Getter Methods for Notebook Tags">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,15 +180,7 @@
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
-      <workItem from="1732786927997" duration="1508000" />
-    </task>
-    <task id="LOCAL-00006" summary="text area made but buttons look icky and some of them are non functional">
-      <option name="closed" value="true" />
-      <created>1729547176326</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1729547176326</updated>
+      <workItem from="1732786927997" duration="2250000" />
     </task>
     <task id="LOCAL-00007" summary="all text size gets edited... no..">
       <option name="closed" value="true" />
@@ -576,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732787096117</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Setter and Getter Methods for Notebook Tags">
+      <option name="closed" value="true" />
+      <created>1732788617920</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1732788617920</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding confidence features" />
     <MESSAGE value="fixed toolbar on the rich text editor to be compatible with my screenview" />
     <MESSAGE value="making deck generation work" />
     <MESSAGE value="made flshcard storage save Deck object with title" />
@@ -619,6 +616,7 @@
     <MESSAGE value="merged to main, fixing bugs caused by the merge still" />
     <MESSAGE value="Notescreen works again" />
     <MESSAGE value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
-    <option name="LAST_COMMIT_MESSAGE" value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
+    <MESSAGE value="Setter and Getter Methods for Notebook Tags" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setter and Getter Methods for Notebook Tags" />
   </component>
 </project>

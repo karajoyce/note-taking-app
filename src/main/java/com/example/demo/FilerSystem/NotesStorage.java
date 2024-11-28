@@ -14,6 +14,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class NotesStorage {
 
@@ -33,8 +35,18 @@ public class NotesStorage {
 
         JsonArray pages = new JsonArray();
         JsonObject jsonobj = new JsonObject();
+        JsonArray tagsArray = new JsonArray();
         jsonobj.add("pages", pages);
         jsonobj.addProperty("name", notebook.getTitle());
+        /*Changes Added from Nathan, adding a property to save the creation date, as well as
+        * the tags*/
+        jsonobj.addProperty("creationDate", notebook.getCreationDate()); //Adding creation date
+         //Trying to save tags
+         // JsonArray tagsArray = new JsonArray();
+         for (String tag: notebook.getTags()) {
+             tagsArray.add(tag);
+         }
+         jsonobj.add("tags", tagsArray);
         for (Page page: notebook.getNotes()){
             JsonObject pageobj = new JsonObject();
             pageobj.addProperty("name", page.getTitle());
@@ -82,6 +94,19 @@ public class NotesStorage {
             JsonObject jsonobj = (JsonObject)JsonParser.parseString(str);
 
             Notebook tempNotebook = new Notebook(jsonobj.get("name").getAsString());
+            /*Changes from Nathan, Trying to load Tags and CreationDate*/
+            //LOADING TAGS, MAY HAVE FUCKY FUNCTIONALITY
+            if (jsonobj.has("creationDate")){
+                tempNotebook.setTitle(String.valueOf(jsonobj.get("creationDate").getAsLong()));
+            }
+            //LOAD TAGS
+            if (jsonobj.has("tags")){
+                JsonArray tagsArray = jsonobj.get("tags").getAsJsonArray();
+                for (int i = 0; i < tagsArray.size(); i++) {
+                    tempNotebook.addTag(tagsArray.get(i).getAsString());
+                }
+            }
+
             JsonArray jsonarr = jsonobj.getAsJsonArray("pages");
             for (int i = 0; i < jsonarr.size(); i++){
 
