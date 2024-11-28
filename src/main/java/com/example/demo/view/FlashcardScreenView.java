@@ -330,6 +330,11 @@ public class FlashcardScreenView extends StackPane {
     public void setFlipCardButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler){
         flip.setOnAction(handler);
     }
+
+    public Button getBackButton() {
+        return pageBack;
+    }
+
     /**
      * An event handler for the back button
      */

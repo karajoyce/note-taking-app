@@ -63,9 +63,9 @@
             <version>0.11.3</version>
         </dependency>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>23</version>
+            <groupId>org.fxmisc.flowless</groupId>
+            <artifactId>flowless</artifactId>
+            <version>0.7.3</version>
         </dependency>
 
     </dependencies>
@@ -98,7 +98,7 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
-                            <addModules>javafx.controls,javafx.fxml,javafx.media</addModules>
+                            <addModules>javafx.base, javafx.controls,javafx.fxml,javafx.media,javafx.graphics,org.fxmisc.flowless,org.fxmisc.richtext</addModules>
                         </configuration>
                     </execution>
                 </executions>
@@ -113,6 +113,30 @@
                         --add-opens=javafx.base/com.sun.javafx.reflect=ALL-UNNAMED
                     </argLine>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.example.demo.HelloApplication
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

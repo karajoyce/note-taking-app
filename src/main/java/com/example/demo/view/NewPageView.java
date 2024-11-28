@@ -51,6 +51,7 @@ public class NewPageView {
         Scene scene = new Scene(grid, 500, 350);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         grid.getStyleClass().add("grid");
+        stage.setAlwaysOnTop(true);
         stage.setScene(scene);
 
         createPageButton.setOnAction(e -> {

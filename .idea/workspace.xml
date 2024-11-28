@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Fixed button size, commented out menu bar.">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Notescreen works again">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TopViewBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TopViewBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderIntervalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderIntervalView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="FileSysSprint2" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Sprint3__Trushank",
+    "git-widget-placeholder": "Sprint3__Kara",
     "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -159,7 +165,7 @@
       <workItem from="1732581128180" duration="10063000" />
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
-      <workItem from="1732745276247" duration="4308000" />
+      <workItem from="1732745276247" duration="12811000" />
     </task>
     <task id="LOCAL-00005" summary="trying to get started on the mvc model (scrapping fxml)">
       <option name="closed" value="true" />
@@ -355,119 +361,119 @@
     </task>
     <task id="LOCAL-00029" summary="added confidence levels to flashcrds, not storing them yet">
       <option name="closed" value="true" />
-      <created>1732515749096</created>
+      <created>1732075153229</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1732515749096</updated>
+      <updated>1732075153229</updated>
     </task>
-    <task id="LOCAL-00030" summary="Okay I am making more progress somewhat?!?!?">
+    <task id="LOCAL-00030" summary="adding confidence features">
       <option name="closed" value="true" />
-      <created>1732518300720</created>
+      <created>1732131603478</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1732518300720</updated>
+      <updated>1732131603478</updated>
     </task>
-    <task id="LOCAL-00031" summary="buttons on the main menu work now!!">
+    <task id="LOCAL-00031" summary="fixed toolbar on the rich text editor to be compatible with my screenview">
       <option name="closed" value="true" />
-      <created>1732524578736</created>
+      <created>1732135859675</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1732524578736</updated>
+      <updated>1732135859675</updated>
     </task>
-    <task id="LOCAL-00032" summary="added some stylinh">
+    <task id="LOCAL-00032" summary="making deck generation work">
       <option name="closed" value="true" />
-      <created>1732526204624</created>
+      <created>1732140935817</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1732526204624</updated>
+      <updated>1732140935817</updated>
     </task>
-    <task id="LOCAL-00033" summary="changed the bell icon">
+    <task id="LOCAL-00033" summary="made flshcard storage save Deck object with title">
       <option name="closed" value="true" />
-      <created>1732532674681</created>
+      <created>1732144696211</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1732532674681</updated>
+      <updated>1732144696211</updated>
     </task>
-    <task id="LOCAL-00034" summary="figuring out how to make storage work">
+    <task id="LOCAL-00034" summary="set up functionality to switch decks from the json">
       <option name="closed" value="true" />
-      <created>1732577095374</created>
+      <created>1732156583006</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1732577095374</updated>
+      <updated>1732156583006</updated>
     </task>
-    <task id="LOCAL-00035" summary="fixed something in the to do list">
+    <task id="LOCAL-00035" summary="Fixing functionality on empty decks">
       <option name="closed" value="true" />
-      <created>1732599403045</created>
+      <created>1732159049467</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1732599403045</updated>
+      <updated>1732159049467</updated>
     </task>
-    <task id="LOCAL-00036" summary="Adding kara's stuff for notebook">
+    <task id="LOCAL-00036" summary="Starting motivational messages, need to make prettier tomorrow">
       <option name="closed" value="true" />
-      <created>1732600767729</created>
+      <created>1732162768437</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1732600767729</updated>
+      <updated>1732162768437</updated>
     </task>
-    <task id="LOCAL-00037" summary="FOLDERS FINALLY WORK!!!">
+    <task id="LOCAL-00037" summary="setting up dynamic pages">
       <option name="closed" value="true" />
-      <created>1732606920059</created>
+      <created>1732292376375</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1732606920059</updated>
+      <updated>1732292376376</updated>
     </task>
-    <task id="LOCAL-00038" summary="changed the formatting of the folders screen">
+    <task id="LOCAL-00038" summary="working on integration and pages">
       <option name="closed" value="true" />
-      <created>1732608926323</created>
+      <created>1732299540145</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1732608926323</updated>
+      <updated>1732299540145</updated>
     </task>
-    <task id="LOCAL-00039" summary="made the add page button work">
+    <task id="LOCAL-00039" summary="working on adding pages to notebook">
       <option name="closed" value="true" />
-      <created>1732656871420</created>
+      <created>1732403273774</created>
       <option name="number" value="00039" />
       <option name="presentableId" value="LOCAL-00039" />
       <option name="project" value="LOCAL" />
-      <updated>1732656871420</updated>
+      <updated>1732403273774</updated>
     </task>
-    <task id="LOCAL-00040" summary="making progress">
+    <task id="LOCAL-00040" summary="added a new screen for adding pages, working on dynamic sync of the json">
       <option name="closed" value="true" />
-      <created>1732660207512</created>
+      <created>1732487685762</created>
       <option name="number" value="00040" />
       <option name="presentableId" value="LOCAL-00040" />
       <option name="project" value="LOCAL" />
-      <updated>1732660207512</updated>
+      <updated>1732487685762</updated>
     </task>
-    <task id="LOCAL-00041" summary="Some tuff is happening">
+    <task id="LOCAL-00041" summary="motivational messages done!">
       <option name="closed" value="true" />
-      <created>1732675893491</created>
+      <created>1732501784979</created>
       <option name="number" value="00041" />
       <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
-      <updated>1732675893491</updated>
+      <updated>1732501784979</updated>
     </task>
-    <task id="LOCAL-00042" summary="Pushing all my changes because it works stupidly. Tried to fix todolist bs. Working on US7 Linking">
+    <task id="LOCAL-00042" summary="saving css is not fun">
       <option name="closed" value="true" />
-      <created>1732685801259</created>
+      <created>1732578349505</created>
       <option name="number" value="00042" />
       <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
-      <updated>1732685801259</updated>
+      <updated>1732578349505</updated>
     </task>
-    <task id="LOCAL-00043" summary="trying to add hyperlinks">
+    <task id="LOCAL-00043" summary="still trying to save pages, flashcard remove now updates in json">
       <option name="closed" value="true" />
-      <created>1732741031346</created>
+      <created>1732585705605</created>
       <option name="number" value="00043" />
       <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
@@ -537,21 +543,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732749146473</updated>
     </task>
-    <task id="LOCAL-00052" summary="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE">
+    <task id="LOCAL-00052" summary="merged to main, fixing bugs caused by the merge still">
       <option name="closed" value="true" />
-      <created>1732782878580</created>
+      <created>1732749932678</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1732782878580</updated>
+      <updated>1732749932678</updated>
     </task>
-    <task id="LOCAL-00053" summary="Fixed button size, commented out menu bar.">
+    <task id="LOCAL-00053" summary="Notescreen works again">
       <option name="closed" value="true" />
-      <created>1732783403439</created>
+      <created>1732754389462</created>
       <option name="number" value="00053" />
       <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
-      <updated>1732783403439</updated>
+      <updated>1732754389462</updated>
     </task>
     <option name="localTasksCounter" value="54" />
     <servers />
@@ -594,8 +600,8 @@
     <MESSAGE value="merging nathan's branch into main" />
     <MESSAGE value="merging trushank's branch into main" />
     <MESSAGE value="merged to main, fixing bugs caused by the merge" />
-    <MESSAGE value="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE" />
-    <MESSAGE value="Fixed button size, commented out menu bar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed button size, commented out menu bar." />
+    <MESSAGE value="merged to main, fixing bugs caused by the merge still" />
+    <MESSAGE value="Notescreen works again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Notescreen works again" />
   </component>
 </project>

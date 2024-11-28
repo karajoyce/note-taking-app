@@ -84,10 +84,8 @@ public class HelloApplication extends Application {
         FoldersScreenView foldersScreenView = new FoldersScreenView();
 
 
-
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, nView, navigationController, foldersScene,toDoListView);
-        foldersController.getNoteBookView();
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView);
 
 
         // Create Scenes
@@ -95,8 +93,7 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        Scene notebookScene = new Scene(new NotebookScreenView(nModel));
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, notebookScene, mainMenuScene, foldersScreenView, toDoListController);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController);
 
 
         // Set required references in MainMenuScreenView
@@ -106,7 +103,7 @@ public class HelloApplication extends Application {
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
-        nView.getBackButton().setOnAction(even -> navigationController.navigateToFoldersScreen(foldersScreenView));
+        fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
 
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
         mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
@@ -122,10 +119,7 @@ public class HelloApplication extends Application {
             primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
 
-        primaryStage.setOnCloseRequest(e -> {
-            NotesStorage.SaveNotes(nModel);
-        });
-
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
     }
 

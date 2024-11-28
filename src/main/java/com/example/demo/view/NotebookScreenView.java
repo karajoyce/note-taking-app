@@ -129,6 +129,10 @@ public class NotebookScreenView extends StackPane {
         currentPage = currentNotebook.getNotes().getFirst();
         currentPage.setContents(noteModel.getTextArea());
 
+//        this.currentNotebook = currNotebook;
+//        currentPage = currentNotebook.getNotes().getFirst();
+//        currentPage.setContents(noteModel.getTextArea());
+//
 //        if (!currentNotebook.getNotes().isEmpty()) {
 //            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
 //        }

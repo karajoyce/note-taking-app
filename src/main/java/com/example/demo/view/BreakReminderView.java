@@ -40,6 +40,7 @@ public class BreakReminderView extends Parent {
         reminderStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
         reminderStage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
         reminderStage.setResizable(false); // Optional: Prevent resizing if desired
+        reminderStage.setAlwaysOnTop(true);
 
         // Create and style the reminder message
         reminderMessage = new Label("You've been working for too long.\nTime to take a break!");
@@ -61,7 +62,7 @@ public class BreakReminderView extends Parent {
         Scene scene = new Scene(layout, 300, 150);
 
         // Apply the stylesheet
-        scene.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         reminderStage.setScene(scene);
     }
 
