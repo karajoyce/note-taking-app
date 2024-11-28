@@ -310,6 +310,12 @@ public class NotebookScreenView extends StackPane {
 
     }
 
+    public NoteController getNoteController() {
+        return this.noteController;
+    }
+
+
+
     public void setChangeButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         pageHandler = handler;
     }

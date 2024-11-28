@@ -10,6 +10,9 @@ import com.example.demo.view.MainMenuScreenView;
 import com.example.demo.view.ToDoListView;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -119,8 +122,6 @@ public class FoldersController {
          */
 
         // Get the notebook associated with the selected folder
-        // Get the notebook associated with the selected folder
-        // Get the notebook associated with the selected folder
         Notebook notebook = foldersModel.getNotebook(folderName);
 
         if (notebook != null) {
@@ -141,6 +142,50 @@ public class FoldersController {
 
                 notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
                 Scene notebookScene = new Scene(notebookView);
+
+                /* Add keybinds */
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleBold();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleItalic();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleUnderline();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleStrikethrough();
+                            }
+                        }
+                );
+
+
                 primaryStage.setScene(notebookScene);
             } else {
                 System.err.println("Failed to load notebook for folder: " + folderName);

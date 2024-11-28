@@ -18,7 +18,6 @@ public class TopViewBar extends HBox {
     private HBox topBar = new HBox();
     private Button flashButton;
     private Button breakButton;
-    private Button settingButton;
     private Button foldersButton; // Add folders button
 
     private Label titleLabel;
@@ -49,8 +48,6 @@ public class TopViewBar extends HBox {
         breakButton = new Button("Break");
         breakButton.getStyleClass().add("break-button");
 
-        settingButton = new Button("Setting");
-        settingButton.getStyleClass().add("setting-button");
 
         titleLabel = new Label("TruNotes");
         titleLabel.getStyleClass().add("main-title-label");
@@ -58,7 +55,7 @@ public class TopViewBar extends HBox {
         foldersButton = new Button("Folders"); // Initialize folders button
         foldersButton.getStyleClass().add("folders-button");
 
-        topBar.getChildren().addAll(logoView, titleLabel, flashButton, breakButton, settingButton, foldersButton);
+        topBar.getChildren().addAll(logoView, titleLabel, flashButton, breakButton, foldersButton);
 
     }
 
@@ -67,9 +64,6 @@ public class TopViewBar extends HBox {
     }
     public Button getBreakButton() {
         return breakButton;
-    }
-    public Button getSettingButton() {
-        return settingButton;
     }
 
     public Button getFoldersButton() {

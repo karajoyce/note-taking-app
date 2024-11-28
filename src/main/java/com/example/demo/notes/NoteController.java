@@ -40,7 +40,15 @@ public class NoteController {
     public NoteController(NoteModel model) {
         noteModel = model;
 
+        /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
+        noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            trackBack(oldText, newText);
+        });
+
+        noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            trackFront(oldText, newText);
+        });
 
     }
 
@@ -106,7 +114,7 @@ public class NoteController {
      * @param oldText
      * @param newText
      */
-    protected void trackBack(String oldText, String newText) {
+    public void trackBack(String oldText, String newText) {
         StringBuilder backBuffer = noteModel.getBackBuffer();
 
         /* Only start gathering data for the back of the card if auto flashcard making is
@@ -143,7 +151,7 @@ public class NoteController {
                         noteModel.setCurrentCardFront("");
                         noteModel.resetBackBuffer("");
 
-                        //printDeck(TEMPORARY_DECK); // REMOVE LATER
+                        printDeck(TEMPORARY_DECK); // REMOVE LATER
 
                     } else {
                         // Else, add the text to the buffer
@@ -160,7 +168,7 @@ public class NoteController {
      * @param oldText previous text
      * @param newText text after typing
      */
-    void trackFront(String oldText, String newText) {
+    public void trackFront(String oldText, String newText) {
 
         if (noteModel.isBoldEnabled() && noteModel.isWaitingforFrontInput() && noteModel.isAutoFlashcardEnabled()) {
 
@@ -195,7 +203,7 @@ public class NoteController {
      * (2) User has not selected text, toggle bold for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleBold() {
+    public void toggleBold() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -249,7 +257,7 @@ public class NoteController {
      * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleStrikethrough() {
+    public void toggleStrikethrough() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -287,7 +295,7 @@ public class NoteController {
      * (2) User has not selected text, toggle italics for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleItalic() {
+    public void toggleItalic() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -324,7 +332,7 @@ public class NoteController {
      * (2) User has not selected text, toggle underline for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleUnderline() {
+    public void toggleUnderline() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
