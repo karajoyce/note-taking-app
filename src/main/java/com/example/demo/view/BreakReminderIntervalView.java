@@ -80,7 +80,7 @@ public class BreakReminderIntervalView {
         Scene scene = new Scene(layout, 350, 150);
 
         // Apply the CSS file with the existing classes
-        scene.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
 
         intervalStage.setScene(scene);

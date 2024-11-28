@@ -22,7 +22,6 @@ public class MainMenuScreenViewController {
     private BreakReminderController breakReminderController;
     private Stage primaryStage;
     private Scene flashcardScene;
-    private Scene notebookScene;
     private Scene mainMenuScene;
     private FoldersScreenView foldersScreenView;
     private XPModel xpModel;
@@ -30,14 +29,13 @@ public class MainMenuScreenViewController {
     private ToDoListController todoC;
 
 
-    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene notebookScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
+    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
 
         this.view = view;
         this.topViewBar = topViewBar;
         this.breakReminderController = breakReminderController;
         this.primaryStage = stage;
         this.flashcardScene = flashcardScene;
-        this.notebookScene = notebookScene;
         this.mainMenuScene = mainMenuScene;
         this.foldersScreenView = foldersScreenView;
         this.xpModel = XPManager.getXPModel();

@@ -62,7 +62,7 @@ public class BreakReminderView extends Parent {
         Scene scene = new Scene(layout, 300, 150);
 
         // Apply the stylesheet
-        scene.getStylesheets().add(getClass().getResource("/stylesToDoList.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         reminderStage.setScene(scene);
     }
 

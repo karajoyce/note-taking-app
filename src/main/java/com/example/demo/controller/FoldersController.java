@@ -21,17 +21,17 @@ public class FoldersController {
     private FoldersModel foldersModel;
     private FoldersScreenView foldersScreenView;
     private Stage primaryStage;
-    private NotebookScreenView notebookScreenView;
     private XPModel xpModel;
     private NavigationController navigationController;
     private Scene foldersScene;
     private ToDoListView toDoListView;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NotebookScreenView notebookView, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView) {
+    Notebook lastOpenedNotebook = null;
+
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView) {
         this.foldersModel = model;
         this.foldersScreenView = view;
         this.primaryStage = stage;
-        this.notebookScreenView = notebookView;
         this.xpModel = XPManager.getXPModel();
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
@@ -43,6 +43,12 @@ public class FoldersController {
             String folderName = selectedButton.getText();
             openNotebook(folderName);
         };
+
+        stage.setOnCloseRequest(e -> {
+            if(lastOpenedNotebook != null) {
+                NotesStorage.SaveNotes(lastOpenedNotebook);
+            }
+        });
 
         // Folder delete handler
         // Create delete handler using the factory method
@@ -94,10 +100,6 @@ public class FoldersController {
         primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
-    public NotebookScreenView getNoteBookView() {
-        return this.notebookScreenView;
-    }
-
     public void addFoldersXp(double xp){
         xpModel.addXP(xp);
     }
@@ -119,16 +121,16 @@ public class FoldersController {
          */
 
         // Get the notebook associated with the selected folder
-        Notebook finalNotebook = NotesStorage.LoadNotes(folderName);
+        lastOpenedNotebook = NotesStorage.LoadNotes(folderName);
 
-        if (finalNotebook != null) {
-            NotebookScreenView notebookView = new NotebookScreenView(finalNotebook);
-            NotebookController notebookController = new NotebookController(finalNotebook, notebookView);
+        if (lastOpenedNotebook != null) {
+            NotebookScreenView notebookView = new NotebookScreenView(lastOpenedNotebook);
+            NotebookController notebookController = new NotebookController(lastOpenedNotebook, notebookView);
             notebookView.runScreenUpdate();
 
             // Save changes to the notebook when navigating back
             notebookView.getBackButton().setOnAction(e -> {
-                saveNotebookState(finalNotebook); // Use the effectively final variable
+                saveNotebookState(lastOpenedNotebook); // Use the effectively final variable
                 primaryStage.setScene(foldersScene); // Reuse the existing scene
             });
 
@@ -146,7 +148,6 @@ public class FoldersController {
     private void saveNotebookState(Notebook notebook) {
         // Save changes to the notebook into the folders model
         NotesStorage.SaveNotes(notebook);
-        System.out.println("Notebook state saved for: " + notebook.getTitle());
     }
 
     private void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
