@@ -223,6 +223,7 @@ public class FoldersScreenView extends StackPane {
         dialog.setGraphic(null); // Remove graphic
         dialog.setContentText("Folder Name:");
 
+
         // Apply styles to the dialog using CSS
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("cardview");

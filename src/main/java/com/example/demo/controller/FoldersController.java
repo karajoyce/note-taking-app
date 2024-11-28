@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.FilerSystem.FlashcardStorage;
 //import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -125,6 +126,7 @@ public class FoldersController {
 
             // Save changes to the notebook when navigating back
             notebookView.getBackButton().setOnAction(e -> {
+                foldersScreenView.runFoldersScreenUpdate();
                 saveNotebookState(lastOpenedNotebook); // Use the effectively final variable
                 primaryStage.setScene(foldersScene); // Reuse the existing scene
             });
