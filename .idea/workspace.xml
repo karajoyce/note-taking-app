@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Notescreen works again">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/Decks/Peyton.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FlashcardScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderIntervalView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderIntervalView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesToDoList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +36,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLabMergeRequestFiltersHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPENED",
+    "assignee": {
+      "type": "org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue",
+      "username": "ncb421",
+      "fullname": "Nathan Balilis (ncb421)"
+    }
+  }
+}]]></component>
+  <component name="GitLabMergeRequestsSettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "first": "https://git.cs.usask.ca/kjl061/370-01-t05-team4.git",
+    "second": "ef3c5907-2a16-4838-8289-3f10ec2edb3b"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -63,7 +70,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Sprint3__Kara",
+    "git-widget-placeholder": "Sprint3__Nathan",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -71,7 +79,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -133,6 +141,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -166,14 +182,7 @@
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
-    </task>
-    <task id="LOCAL-00005" summary="trying to get started on the mvc model (scrapping fxml)">
-      <option name="closed" value="true" />
-      <created>1729544715864</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1729544715865</updated>
+      <workItem from="1732786927997" duration="1508000" />
     </task>
     <task id="LOCAL-00006" summary="text area made but buttons look icky and some of them are non functional">
       <option name="closed" value="true" />
@@ -559,7 +568,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732754389462</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music">
+      <option name="closed" value="true" />
+      <created>1732787096116</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1732787096117</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +594,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added confidence levels to flashcrds, not storing them yet" />
     <MESSAGE value="adding confidence features" />
     <MESSAGE value="fixed toolbar on the rich text editor to be compatible with my screenview" />
     <MESSAGE value="making deck generation work" />
@@ -602,6 +618,7 @@
     <MESSAGE value="merged to main, fixing bugs caused by the merge" />
     <MESSAGE value="merged to main, fixing bugs caused by the merge still" />
     <MESSAGE value="Notescreen works again" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notescreen works again" />
+    <MESSAGE value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
+    <option name="LAST_COMMIT_MESSAGE" value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
   </component>
 </project>

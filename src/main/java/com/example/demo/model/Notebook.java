@@ -17,10 +17,19 @@ import java.util.ArrayList;
 public class Notebook implements Serializable {
     private ArrayList<Page> notes;
     private String title;
+    /* Changes By Nathan, adding fields
+    * one being an ArrayList Checking Tags
+    * and the other grabbing the time a Notebook is created*/
+    private ArrayList<String> tags;
+    private long creationDate;
 
     public Notebook(String name) {
         title = name;
         notes = new ArrayList<>();
+        /*Changes by Nathan, initializing tags and
+        * the creation date*/
+        tags = new ArrayList<>();
+        creationDate = System.currentTimeMillis();
     }
 
     public ArrayList<Page> getNotes(){
@@ -46,4 +55,39 @@ public class Notebook implements Serializable {
         return notes.size();
     }
 
+    /**Changes By Nathan, getter and setter methods for tags, and creation Date*/
+    /**SETTERS AND GETTERS AND OTHER METHODS FOR TAGS*/
+    /*Getter for tags, pretty obv*/
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    /*Setter for tags(this overwrites the current tags tho*/
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+
+    /*Method for adding a SINGLE tag*/
+    public void addTag(String tag){
+        if(!tags.contains(tag)){
+            tags.add(tag);
+        }
+        //Print statement for debugging
+        else{
+            System.out.println("The tag "+tag+" is already found in tags");
+        }
+    }
+    /*Method for Removing a single Tag*/
+    public void removeTag(String tag){
+        tags.remove(tag);
+    }
+
+    /**SETTER AND GETTTER METHODS FOR CREATION DATE*/
+    public long getCreationDate(){
+        return creationDate;
+    }
+
+    public void setCreationDate(long creationDate){
+        this.creationDate = creationDate;
+    }
 }
