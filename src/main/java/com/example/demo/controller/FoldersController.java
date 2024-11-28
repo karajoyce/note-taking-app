@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.FilerSystem.FolderStorage;
-//import com.example.demo.FilerSystem.NotesStorage;
+//import com.example.demo.FilerSystem.FolderStorage;
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -77,7 +77,7 @@ public class FoldersController {
 
 
         // Delete the corresponding JSON file from the filesystem
-        FolderStorage.DeleteNotebook(folderName);
+        NotesStorage.DeleteNotebook(folderName);
 
 
 
@@ -119,40 +119,33 @@ public class FoldersController {
          */
 
         // Get the notebook associated with the selected folder
-        // Get the notebook associated with the selected folder
-        // Get the notebook associated with the selected folder
-        Notebook notebook = foldersModel.getNotebook(folderName);
+        Notebook finalNotebook = NotesStorage.LoadNotes(folderName);
 
-        if (notebook != null) {
-            // Reload the notebook from storage
-            Notebook finalNotebook = FolderStorage.LoadNotes(folderName);
+        if (finalNotebook != null) {
+            NotebookScreenView notebookView = new NotebookScreenView(finalNotebook);
+            NotebookController notebookController = new NotebookController(finalNotebook, notebookView);
+            notebookView.runScreenUpdate();
 
-            if (finalNotebook != null) {
-                NotebookScreenView notebookView = new NotebookScreenView(finalNotebook);
-                NotebookController notebookController = new NotebookController(finalNotebook, notebookView);
-
-                // Save changes to the notebook when navigating back
-                notebookView.getBackButton().setOnAction(e -> {
-                    saveNotebookState(finalNotebook); // Use the effectively final variable
-                    primaryStage.setScene(foldersScene); // Reuse the existing scene
-                });
+            // Save changes to the notebook when navigating back
+            notebookView.getBackButton().setOnAction(e -> {
+                saveNotebookState(finalNotebook); // Use the effectively final variable
+                primaryStage.setScene(foldersScene); // Reuse the existing scene
+            });
 
 
 
-                notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-                Scene notebookScene = new Scene(notebookView);
-                primaryStage.setScene(notebookScene);
-            } else {
-                System.err.println("Failed to load notebook for folder: " + folderName);
-            }
+            notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            Scene notebookScene = new Scene(notebookView);
+            primaryStage.setScene(notebookScene);
         } else {
-            System.err.println("No notebook found for folder: " + folderName);
+            System.err.println("Failed to load notebook for folder: " + folderName);
         }
+
     }
 
     private void saveNotebookState(Notebook notebook) {
         // Save changes to the notebook into the folders model
-        FolderStorage.SaveNotes(notebook);
+        NotesStorage.SaveNotes(notebook);
         System.out.println("Notebook state saved for: " + notebook.getTitle());
     }
 
@@ -167,7 +160,7 @@ public class FoldersController {
                 newNotebook.addPage(new Page("Lecture 1"));
             }
 
-            FolderStorage.SaveNotes(newNotebook); // Save the notebook
+            NotesStorage.SaveNotes(newNotebook); // Save the notebook
 
             // Refresh folder list and reattach handler to all buttons
             foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);

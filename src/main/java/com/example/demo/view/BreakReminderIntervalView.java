@@ -43,6 +43,7 @@ public class BreakReminderIntervalView {
         intervalStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
         intervalStage.setFullScreen(false); // Explicitly ensure it’s not fullscreen
         intervalStage.setResizable(false); // Prevent resizing if desired
+        intervalStage.setAlwaysOnTop(true);
 
         // Layout for interval setting window
         VBox layout = new VBox(10);

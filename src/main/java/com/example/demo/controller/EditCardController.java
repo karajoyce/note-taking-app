@@ -18,6 +18,7 @@ public class EditCardController {
         fModel = model;
         fControl = controller;
         editView = new EditCardView(stage, this::editCard);
+        stage.setAlwaysOnTop(true);
         stage.show();
     }
 

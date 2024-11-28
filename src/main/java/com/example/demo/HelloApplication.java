@@ -70,17 +70,14 @@ public class HelloApplication extends Application {
         //fCardView.setToDoList(toDoListView);
         fCardView.runDeckUpdate();
 
-        Notebook nModel = new Notebook("CMPT281");
-        nModel.addPage(new Page("Lecture 1"));
-        NotebookScreenView nView = new NotebookScreenView(nModel);
-
-//        Notebook nModel = new Notebook("CMPT281");
-//        nModel.addPage(new Page("Lecture 1"));
-        NotebookController notebookController = new NotebookController(nModel, nView);
-        nView.runScreenUpdate();
-
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
+
+        // don't move this at all even though it does nothing
+        Notebook nModel = NotesStorage.LoadNotes("CMPT281");
+        NotebookScreenView nView = new NotebookScreenView(nModel);
+        NotebookController notebookController = new NotebookController(nModel, nView);
+        nView.runScreenUpdate();
 
 
 

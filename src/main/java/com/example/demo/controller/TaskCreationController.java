@@ -36,6 +36,7 @@ public class TaskCreationController {
     public TaskCreationController(ToDoList toDoList, ToDoListController toDoListController, Stage primaryStage) {
         this.toDoList = toDoList;
         this.taskCreationView = new TaskCreationView(primaryStage, this::createTask);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.show(); // Show the TaskCreationView
         this.toDoListController = toDoListController; // Store the reference
     }
