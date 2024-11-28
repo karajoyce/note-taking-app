@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="merged to main, fixing bugs caused by the merge">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2024_3_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_4_2024_3_35_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_2024_9_57_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_22_2024_9_57_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,14 +158,6 @@
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="4308000" />
-    </task>
-    <task id="LOCAL-00003" summary="added some docstrings and getters and setters">
-      <option name="closed" value="true" />
-      <created>1729201678081</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1729201678081</updated>
     </task>
     <task id="LOCAL-00004" summary="tried starting on MVC model of note editor">
       <option name="closed" value="true" />
@@ -557,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732749146473</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE">
+      <option name="closed" value="true" />
+      <created>1732782878580</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1732782878580</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +569,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed deck interpretation to be its own model instead of a list" />
     <MESSAGE value="adding screens to make UI stuff" />
     <MESSAGE value="added confidence levels to flashcrds, not storing them yet" />
     <MESSAGE value="adding confidence features" />
@@ -600,6 +593,7 @@
     <MESSAGE value="merging nathan's branch into main" />
     <MESSAGE value="merging trushank's branch into main" />
     <MESSAGE value="merged to main, fixing bugs caused by the merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged to main, fixing bugs caused by the merge" />
+    <MESSAGE value="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE" />
+    <option name="LAST_COMMIT_MESSAGE" value="GOATED GPATED GOATED IT CREATES THE LINK ONLY IF THERE IS A PAGE. IT UNDERLINES AND BOLDS NEED TO FIX FONT AND BUTTON AND MAKE SURE IT GOES TO OTHER PAGES BUT CANT TEST THAT RN BYEEE" />
   </component>
 </project>

@@ -224,8 +224,11 @@ public class NotebookScreenView extends StackPane {
 
         InlineCssTextArea textArea = noteModel.getTextArea();
 
+        /*
         javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
         menuBar.getStyleClass().add("menuBar");
+        */
+
         ToolBar toolBar = noteView.createToolBar();
 
         HBox menuItems = new HBox();
@@ -237,12 +240,13 @@ public class NotebookScreenView extends StackPane {
 
         HBox fileButton = new HBox();
         fileButton.setStyle("-fx-padding: 0");
+        /*
         menuBar.setMinHeight(50);
         menuBar.setMaxHeight(50);
         fileButton.setMinWidth(55);
         fileButton.setMaxWidth(55);
         fileButton.getChildren().add(menuBar);
-
+*/
         HBox stylesButton = new HBox();
         stylesButton.setMinHeight(50);
         stylesButton.setMaxHeight(50);

@@ -42,7 +42,7 @@ public class NoteView  {
         controller.noteModel.getTextArea().setPrefHeight(800);
 
     }
-
+/*
     public MenuBar createMenuBar(Stage stage) {
         Menu fileMenu = new Menu("File");
         MenuItem openItem = new MenuItem("Open");
@@ -57,11 +57,12 @@ public class NoteView  {
 
         return menuBar;
     }
-
+*/
     public ToolBar createToolBar() {
 
         Button toggleHyperLink = new Button("HL");
-        toggleHyperLink.getStyleClass().add("textEditorButton");
+        toggleHyperLink.getStyleClass().add("hyperLinkButton");
+
         toggleHyperLink.setOnAction( actionEvent -> {
 
             TextInputDialog dialog = new TextInputDialog();

@@ -46,15 +46,16 @@ public class NoteMain extends Application{
         NoteView view = new NoteView(controller);
 
         InlineCssTextArea textArea = model.getTextArea();
-
+        /*
         MenuBar menuBar = view.createMenuBar(stage);
+        */
         ToolBar toolBar = view.createToolBar();
 
         ScrollPane scrollPane = new ScrollPane(textArea);
         scrollPane.setPrefHeight(screenHeight);
 
         BorderPane root = new BorderPane();
-        root.setTop(new HBox(menuBar, toolBar));
+        root.setTop(new HBox(toolBar));
         root.setCenter(scrollPane);
 
         Scene scene = new Scene(root, screenWidth, screenHeight);
