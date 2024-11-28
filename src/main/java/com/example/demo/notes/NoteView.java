@@ -31,6 +31,10 @@ public class NoteView  {
     private Button searchButton = new Button("Search");
 
 
+    /**
+     * Constructor class for the NoteView object.
+     * @param controller the note controller to set actions for some parts of the view
+     */
     public NoteView(NoteController controller) {
         noteController = controller;
 
@@ -39,12 +43,18 @@ public class NoteView  {
 
     }
 
+    /**
+     * Menu bar that saves/opens files into the computer's file system
+     * @param stage the application stage
+     * @return the menu bar with Open/Save functions
+     */
     public MenuBar createMenuBar(Stage stage) {
-        Menu fileMenu = new Menu("File");
+        Menu fileMenu = new Menu("File"); //dropdown
         MenuItem openItem = new MenuItem("Open");
         MenuItem saveItem = new MenuItem("Save");
         fileMenu.getItems().addAll(openItem, saveItem);
 
+        // Set up the buttons
         openItem.setOnAction(actionEvent -> noteController.openFile(stage));
         saveItem.setOnAction(actionEvent -> noteController.saveFile(stage));
 
@@ -54,6 +64,10 @@ public class NoteView  {
         return menuBar;
     }
 
+    /**
+     * Tool bar for all the rich text editing functions
+     * @return
+     */
     public ToolBar createToolBar() {
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
@@ -169,6 +183,7 @@ public class NoteView  {
             }
         });
     }
+    /** Getter functions for the style/formatting buttons */
     protected Button getToggleBoldButton() {
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");
@@ -196,7 +211,7 @@ public class NoteView  {
     protected Button getToggleStrikeThroughButton() {
         Button toggleStrikethroughButton = new Button("S");
 
-        /* NOTE: for some reason strikethrough won't appear on the button */
+        /* NOTE: the strikethrough won't appear on the button, but it works for everything else. */
         toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;");
         toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
 

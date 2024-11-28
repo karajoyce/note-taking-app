@@ -9,6 +9,7 @@
 
 package com.example.demo.notes;
 
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import javafx.scene.control.Alert;
 
@@ -21,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 
 import com.example.demo.model.Card;
@@ -37,6 +37,10 @@ public class NoteController {
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
     Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
+    /**
+     * Constructor method for the text editor's controller
+     * @param model the text editor model
+     */
     public NoteController(NoteModel model) {
         noteModel = model;
 
@@ -88,7 +92,19 @@ public class NoteController {
      * Save the document you're working on
      */
     protected void saveFile(Stage stage) {
-        // Save textarea into a JSON ?
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Text File");
+        File file = fileChooser.showSaveDialog(stage);
+
+        /* Attempt to save the file */
+        if (file != null) {
+            try {
+                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(), StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                displayError("Error saving file", e.getMessage());
+            }
+        }
+
 
     }
 
@@ -150,8 +166,6 @@ public class NoteController {
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");
                         noteModel.resetBackBuffer("");
-
-                        printDeck(TEMPORARY_DECK); // REMOVE LATER
 
                     } else {
                         // Else, add the text to the buffer
@@ -548,7 +562,6 @@ public class NoteController {
             case "Comic Sans MS" -> noteModel.getCurrStyle().add("-fx-font-family: 'Comic Sans MS'; ");
             default -> noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
         }
-        System.out.println(noteModel.getCurrStyle());
     }
 
     /**CHANGES ADDED BY NATHAN FOR TAGS AND WHATNOT**/

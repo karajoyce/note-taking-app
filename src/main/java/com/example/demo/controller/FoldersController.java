@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.FolderStorage;
-//import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -14,8 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -106,20 +102,6 @@ public class FoldersController {
     }
 
     private void openNotebook(String folderName) {
-        // Open the notebook for the selected folder
-        /*
-
-        if (notebookScreenView.getScene() != null) {
-            notebookScreenView.getScene().setRoot(new StackPane()); // Detach it by setting a dummy root
-        }
-        notebookScreenView.setCurrentFolder(folderName);
-        notebookScreenView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        //primaryStage.setScene(new Scene(notebookScreenView)); // Reattach it to the new scene
-
-        Scene notebookScene = new Scene(notebookScreenView);
-        primaryStage.setScene(notebookScene); // Reattach it to the new scene
-
-         */
 
         // Get the notebook associated with the selected folder
         Notebook notebook = foldersModel.getNotebook(folderName);
