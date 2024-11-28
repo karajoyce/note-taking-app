@@ -9,6 +9,7 @@ import com.example.demo.model.Page;
 import com.example.demo.model.XPModel;
 import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
+import com.example.demo.view.TagManagementView;
 import javafx.scene.control.Button;
 import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
@@ -68,6 +69,10 @@ public class NotebookController {
             new NewNameController(this, nModel,new Stage());
             runUpdate();
         });
+
+        /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
+        noteView.setManageTagsButtonAction(this::openTagManagementWindow);
+
     }
     /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
     /*Methods for Adding and Removing Tags from a Notebook*/
@@ -83,6 +88,22 @@ public class NotebookController {
         noteModel.removeTag(tag);
         NotesStorage.SaveNotes(noteModel);
         runUpdate();
+    }
+
+    public void saveNotebookAfterTagsUpdated(){
+        NotesStorage.SaveNotes(noteModel);
+        noteView.updateDisplayedTags();
+    }
+
+    private void openTagManagementWindow(){
+        Stage tagManagementStage = new Stage();
+        TagManagementView tagManagementView = new TagManagementView(noteModel);
+
+        tagManagementView.setOnTagsUpdated(this::saveNotebookAfterTagsUpdated);
+
+        tagManagementStage.setTitle("Manage Tags");
+        tagManagementStage.setScene(new javafx.scene.Scene(tagManagementView, 400, 300));
+        tagManagementStage.show();
     }
 
     public void runUpdate(){

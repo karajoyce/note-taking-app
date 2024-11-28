@@ -94,10 +94,11 @@ public class NotesStorage {
             JsonObject jsonobj = (JsonObject)JsonParser.parseString(str);
 
             Notebook tempNotebook = new Notebook(jsonobj.get("name").getAsString());
+
             /*Changes from Nathan, Trying to load Tags and CreationDate*/
             //LOADING TAGS, MAY HAVE FUCKY FUNCTIONALITY
-            if (jsonobj.has("creationDate")){
-                tempNotebook.setTitle(String.valueOf(jsonobj.get("creationDate").getAsLong()));
+            if (jsonobj.has("creationDate")) {
+                tempNotebook.setCreationDate(jsonobj.get("creationDate").getAsString()); // Properly assign creationDate
             }
             //LOAD TAGS
             if (jsonobj.has("tags")){

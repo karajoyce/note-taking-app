@@ -21,7 +21,7 @@ public class Notebook implements Serializable {
     * one being an ArrayList Checking Tags
     * and the other grabbing the time a Notebook is created*/
     private ArrayList<String> tags;
-    private long creationDate;
+    private String creationDate;
 
     public Notebook(String name) {
         title = name;
@@ -29,7 +29,7 @@ public class Notebook implements Serializable {
         /*Changes by Nathan, initializing tags and
         * the creation date*/
         tags = new ArrayList<>();
-        creationDate = System.currentTimeMillis();
+        creationDate = String.valueOf(System.currentTimeMillis());
     }
 
     public ArrayList<Page> getNotes(){
@@ -83,11 +83,11 @@ public class Notebook implements Serializable {
     }
 
     /**SETTER AND GETTTER METHODS FOR CREATION DATE*/
-    public long getCreationDate(){
+    public String getCreationDate(){
         return creationDate;
     }
 
-    public void setCreationDate(long creationDate){
+    public void setCreationDate(String creationDate){
         this.creationDate = creationDate;
     }
 }

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added Adding and Removing Tags from a Notebook in NotebookController">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/TagManagementView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NotebookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,15 +184,7 @@
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
-      <workItem from="1732786927997" duration="2650000" />
-    </task>
-    <task id="LOCAL-00008" summary="it was working until css ruined my life">
-      <option name="closed" value="true" />
-      <created>1730006710432</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1730006710432</updated>
+      <workItem from="1732786927997" duration="9169000" />
     </task>
     <task id="LOCAL-00009" summary="got font styles to change but there's some bugs i have to fix">
       <option name="closed" value="true" />
@@ -571,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732789378431</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added Adding and Removing Tags from a Notebook in NotebookController">
+      <option name="closed" value="true" />
+      <created>1732789960722</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1732789960722</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="making deck generation work" />
     <MESSAGE value="made flshcard storage save Deck object with title" />
     <MESSAGE value="set up functionality to switch decks from the json" />
     <MESSAGE value="Fixing functionality on empty decks" />
@@ -614,6 +620,7 @@
     <MESSAGE value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
     <MESSAGE value="Setter and Getter Methods for Notebook Tags" />
     <MESSAGE value="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
+    <MESSAGE value="Added Adding and Removing Tags from a Notebook in NotebookController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Adding and Removing Tags from a Notebook in NotebookController" />
   </component>
 </project>

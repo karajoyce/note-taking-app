@@ -9,11 +9,12 @@ import com.example.demo.notes.NoteController;
 import com.example.demo.notes.NoteModel;
 import com.example.demo.notes.NoteView;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,7 @@ import org.fxmisc.richtext.InlineCssTextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.awt.*;
+import javafx.scene.control.Label;
 
 /**
 
@@ -51,6 +53,15 @@ public class NotebookScreenView extends StackPane {
 
     //Digital Tree
     private DigitalTree digitalTree;
+
+    /**CHANGES BY NATHAN FOR TAGS*/
+    //UI things for tags, MIGHT NEED TO CHANGE TO A NEW WINDOW WE'LL SEE
+    private FlowPane tagDisplayPane = new FlowPane();
+    private Button manageTagsButton = new Button("Manage Tags");
+    private VBox tagSection = new VBox();
+    //Action Listeners for tags
+    private OnTagActionListener onAddTagListener;
+    private OnTagActionListener onRemoveTagListener;
 
     private ToDoListView toDoListV;
     private ToDoListController toDoCont;
@@ -131,6 +142,10 @@ public class NotebookScreenView extends StackPane {
 //        if (!currentNotebook.getNotes().isEmpty()) {
 //            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
 //        }
+        /**CHANGES BY NATHAN **/
+        /**Might need to change this later*/
+        initializeTagSection();
+
         runScreenUpdate();
     }
 
@@ -279,9 +294,10 @@ public class NotebookScreenView extends StackPane {
         //todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         //fullBox.getChildren().add(todolist);
-        VBox tags = new VBox();
-//        addTagsAndSearchToLayout(tags);
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);
+        /*CHANGES BY NATHAN TAG SECTION REDO*/
+        ScrollPane tagScrollPane = new ScrollPane(tagDisplayPane);
+        tagScrollPane.setFitToWidth(true);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(),tagScrollPane,manageTagsButton);
         fullBox.getChildren().add(todolist);
 
         // Buttons for pages
@@ -377,93 +393,71 @@ public class NotebookScreenView extends StackPane {
         return this.currentPage;
     }
 
-    // Section for managing tags
-    private VBox tagsSection = new VBox();
-    private TextField tagInputField = new TextField();
-    private Button addTagButton = new Button("Add Tag");
+    /**CHANGES BY NATHAN FOR TAGS*/
+    private void initializeTagSection() {
+        // Configure the "Manage Tags" button
+        manageTagsButton.setOnAction(e -> {
+            System.out.println("Manage Tags button clicked!"); // Placeholder action
+        });
 
-    private VBox displayedTags = new VBox();
+        // Configure the tag display pane (horizontal flow layout)
+        tagDisplayPane.setHgap(10); // Horizontal gap between tags
+        tagDisplayPane.setVgap(10); // Vertical gap (if wrapping occurs)
+        tagDisplayPane.setPadding(new Insets(5));
+        tagDisplayPane.setAlignment(Pos.CENTER_LEFT);
+        tagDisplayPane.setPrefWrapLength(300); // Adjust width to control wrapping
 
-    // Section for searching notes
-    private HBox searchSection = new HBox();
-    private TextField searchField = new TextField();
-    private Button searchButton = new Button("Search");
+        // Add components to the tag section
+        tagSection.getChildren().addAll(tagDisplayPane, manageTagsButton);
+        tagSection.setSpacing(10);
+        tagSection.setAlignment(Pos.CENTER_LEFT);
+        tagSection.setPadding(new Insets(10));
 
-//    private void initializeTagsSection() {
-//        tagInputField.setPromptText("Enter a tag...");
-//        addTagButton.setPrefSize(85, 25);
-//        addTagButton.setStyle("-fx-font-size: 15px;");
-//        addTagButton.setOnAction(e -> {
-//            String newTag = tagInputField.getText();
-//            if (!newTag.isEmpty()) {
-//                noteController.addTagNote(newTag);
-//                tagInputField.clear();
-//                updateDisplayedTags();
-//            }
-//        });
-//        tagsSection.getChildren().addAll(tagInputField, addTagButton, displayedTags);
-//        tagsSection.setSpacing(10);
-//        tagsSection.setAlignment(Pos.CENTER_LEFT);
-//        updateDisplayedTags();
-//    }
+        // Populate the initial tag display
+        updateDisplayedTags();
+    }
 
-//    private void initializeSearchSection() {
-//        searchField.setPromptText("Search for a note...");
-//        searchButton.setPrefSize(85, 25);
-//        searchButton.setStyle("-fx-font-size: 15px;");
-//        searchButton.setOnAction(e -> {
-//            String keyword = searchField.getText();
-//            if (!keyword.isEmpty()) {
-//                boolean found = noteController.searchNoteByKeyword(keyword);
-//                if (found) {
-//                    showSearchResultPopup("FOUND THE TAG");
-//                } else {
-//                    showSearchResultPopup("TAG NOT FOUND :(");
-//                }
-//            }
-//        });
-//        System.out.println("hi");
-//        searchSection.getChildren().addAll(searchField, searchButton);
-//        searchSection.setSpacing(10);
-//        searchSection.setAlignment(Pos.CENTER_LEFT);
-//    }
+    // Allow the controller to set the action for the "Manage Tags" button
+    public void setManageTagsButtonAction(Runnable action) {
+        manageTagsButton.setOnAction(e -> action.run());
+    }
+    public void updateDisplayedTags() {
+        tagDisplayPane.getChildren().clear(); // Clear current tag display
 
-//    private void addTagsAndSearchToLayout(VBox mainLayout) {
-//        initializeSearchSection();
-//        initializeTagsSection();
-//        mainLayout.getChildren().addAll(searchSection, tagsSection);
-//    }
-//    private void updateDisplayedTags() {
-//        displayedTags.getChildren().clear(); // Clear the previous display
-//
-//        for (String tag : noteModel.getTags()) {
-//            HBox tagItem = new HBox();
-//            tagItem.setSpacing(10);
-//
-//            // Display the tag
-//            Label tagLabel = new Label(tag);
-//
-//            // Add a remove button for each tag
-//            Button removeButton = new Button("Remove");
-//            removeButton.setStyle("-fx-font-size: 10px;");
-//            removeButton.setPrefSize(70,25);
-//            removeButton.setOnAction(e -> {
-//                noteController.removeTagFromNote(tag); // Remove the tag
-//                updateDisplayedTags(); // Refresh the display
-//            });
-//
-//            tagItem.getChildren().add(tagLabel);
-//            tagItem.getChildren().add(removeButton);
-//            displayedTags.getChildren().add(tagItem);
-//        }
-//    }
-//    private void showSearchResultPopup(String message) {
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Search Result");
-//        alert.setHeaderText(null); // No header text
-//        alert.setContentText(message);
-//        alert.showAndWait(); // Blocks until the user dismisses the alert
-//    }
+        // Loop through tags and create styled "pill-shaped" labels
+        for (String tag : currentNotebook.getTags()) {
+            HBox tagBox = createTagBox(tag);
+            tagDisplayPane.getChildren().add(tagBox); // Add to the display
+        }
+    }
+
+    private HBox createTagBox(String tag) {
+        HBox tagBox = new HBox();
+        Label tagLabel = new Label(tag);
+        Button removeButton = new Button("x");
+
+        // Style the tag box
+        tagBox.setStyle("-fx-background-color: #e0e0e0; -fx-background-radius: 15; -fx-padding: 5;");
+        tagBox.setAlignment(Pos.CENTER);
+        tagBox.setSpacing(5);
+
+        // Style the tag label
+        tagLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 12px;");
+
+        // Style the remove button
+        removeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 12px;");
+        removeButton.setOnAction(e -> {
+            // Optional: Notify controller of tag removal
+            System.out.println("Remove tag: " + tag);
+        });
+
+        tagBox.getChildren().addAll(tagLabel, removeButton); // Add the label and remove button
+        return tagBox;
+    }
+
+    public interface OnTagActionListener{
+        void onTagAction(String tag);
+    }
 }
 
 
