@@ -70,16 +70,6 @@ public class HelloApplication extends Application {
         //fCardView.setToDoList(toDoListView);
         fCardView.runDeckUpdate();
 
-        Notebook nModel = new Notebook("CMPT281");
-        nModel.addPage(new Page("Lecture 1"));
-        nModel.addPage(new Page("Lecture 2"));
-        NotebookScreenView nView = new NotebookScreenView(nModel);
-
-//        Notebook nModel = new Notebook("CMPT281");
-//        nModel.addPage(new Page("Lecture 1"));
-        NotebookController notebookController = new NotebookController(nModel, nView);
-        nView.runScreenUpdate();
-
         FoldersModel foldersModel = new FoldersModel();
         FoldersScreenView foldersScreenView = new FoldersScreenView();
 
@@ -105,9 +95,9 @@ public class HelloApplication extends Application {
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
         fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
 
-        mainMenuScreenView.getNewNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
-        mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(notebookScene));
-        mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(notebookScene));
+        mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
+        mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(foldersScene));
+        mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(flashcardScene));
 
 
 

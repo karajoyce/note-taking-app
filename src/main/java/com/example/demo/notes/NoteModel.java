@@ -9,11 +9,14 @@
 
 package com.example.demo.notes;
 
+import com.example.demo.model.HyperLink;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -67,11 +70,13 @@ public class NoteModel {
     /** the start of the buffers within the text area */
     private int frontBufferIndex;
     private int backBufferIndex;
+    private ArrayList<HyperLink> hyperLinks;
 
 
     /** Constructor */
     public NoteModel() {
 
+        hyperLinks = new ArrayList<>();
         boldEnabled = false;
         italicEnabled = false;
         underlineEnabled = false;
@@ -96,6 +101,18 @@ public class NoteModel {
         /* prevents text from going off the screen and scrolling horizontally */
         textArea.setWrapText(true);
 
+    }
+    public void addLinks(HyperLink hyperLink){
+        hyperLinks.add(hyperLink);
+    }
+
+    public HyperLink getLinkAtPosition(int index){
+        for(HyperLink link : hyperLinks){
+            if(index >= link.getStart() && index < link.getStart() + index ){
+                return link;
+            }
+        }
+        return null;
     }
 
     /** Getter methods and toggle methods for styles */

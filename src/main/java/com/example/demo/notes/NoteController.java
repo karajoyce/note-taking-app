@@ -9,13 +9,15 @@
 
 package com.example.demo.notes;
 
+import java.awt.event.MouseEvent;
 import java.util.*;
 
-import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
+import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.model.*;
 import com.example.demo.view.NotebookScreenView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 
@@ -25,6 +27,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.fxmisc.richtext.CharacterHit;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,9 +35,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
-
-import com.example.demo.model.Card;
-import com.example.demo.model.Deck;
 
 /**
  * The Controller class of the text editor (MVC Model)
@@ -498,50 +498,58 @@ public class NoteController {
     }
 
     //Adding HyperLink creation
-    protected void createHyperLink( Page pos ){
+    protected void createHyperLink( Page pos ) {
 
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
 
-        if(start == end ) {
+        if (start == end) {
             return;
         }
 
         String link = noteModel.getTextArea().getText(start, end);
-
-        Text newtext = new Text(link);
-        Hyperlink hyperlink = new Hyperlink(link);
-        //works
-        System.out.println(hyperlink);
-        System.out.println(newtext);
-        //doesnt
-        newtext.setCursor(Cursor.HAND);
-        hyperlink.setCursor(Cursor.HAND);
-
         //works
         for (int i = start; i < start + link.length(); i++) {
             noteModel.getTextArea().setStyle(i, i + 1, "-fx-underline: true; -fx-text-fill: blue;");
         }
 
-        newtext.setOnMouseClicked(click ->
-                System.out.println("Sigma bawls"));
-        //doesnt
-        hyperlink.setOnAction(event -> {
+        HyperLink hyperLink = new HyperLink(start, start+link.length(), pos);
 
-                notebookScreenView.navigateToPage(pos);
-        });
+        noteModel.addLinks(hyperLink);
 
-        hyperlink.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-                System.out.println("This link is clicked");
+
+        noteModel.getTextArea().setOnMouseClicked(event -> {
+
+            notebookScreenView.setCurrentPage(pos);
+
+            System.out.println("Here2");
+            Point2D position = noteModel.getTextArea().sceneToLocal(event.getSceneX(), event.getSceneY());
+
+            CharacterHit hit = noteModel.getTextArea().hit(position.getX(), position.getY());
+
+            if(hit != null) {
+
+                int chari = hit.getInsertionIndex();
+
+
+                HyperLink hyperLink1 = new HyperLink(0, 0, null);
+                hyperLink1 = noteModel.getLinkAtPosition(chari);
+                System.out.println(hyperLink1);
+
+                if (hyperLink1 != null) {
+                    event.consume();
+                    System.out.println("Here3");
+                    notebookScreenView.navigateToPage(pos);
+                    System.out.println(hyperLink1.getTargetPage());
+                }
             }
+
+
+
         });
+
 
     }
-
-
-
-
     /**
      * Change the font type (font family) for either the selected text or
      * next characters the user types
