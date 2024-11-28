@@ -49,7 +49,7 @@ public class HelloApplication extends Application {
         toDoListController.updateTaskListView();
 
         // Break Reminder setup
-        long defaultInterval = 10 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
+        long defaultInterval = 15 * 60 * 1000L; //15 * 60 * 1000L;  Default 15 minutes in milliseconds
         BreakReminderModel breakReminderModel = new BreakReminderModel(defaultInterval);
         BreakReminderView breakReminderView = new BreakReminderView();
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
@@ -62,9 +62,6 @@ public class HelloApplication extends Application {
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
         // Deck initialization, needs to change
-        // get from file system here, and upload
-        fCard.addCard("How much wood could a wood chuck chuck if a wood chuck could chuck wood. Would the wood chuck chuck the wood or would he choose to chuck not the wood?", "A wood chuck could chuck all the wood if a wood chuck could chuck wood.");
-        fCard.addCard("What does HTML stand for?", "Hyper Text Markup Language");
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
@@ -76,7 +73,7 @@ public class HelloApplication extends Application {
 
 
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, fCardCont);
 
 
         // Create Scenes
@@ -84,7 +81,7 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView);
 
 
         // Set required references in MainMenuScreenView

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.FilerSystem.FlashcardStorage;
 //import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -32,8 +33,9 @@ public class FoldersController {
     private EventHandler<MouseEvent> folderSelectionHandler;
     private EventHandler<MouseEvent> deleteHandler;
     private String folderName;
+    private FlashcardScreenController fCont;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView) {
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, FlashcardScreenController fController) {
         this.foldersModel = model;
         this.foldersScreenView = view;
         this.primaryStage = stage;
@@ -41,6 +43,7 @@ public class FoldersController {
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
+        this.fCont = fController;
 
         // Define folder selection handler
         folderSelectionHandler = event -> {
@@ -125,6 +128,7 @@ public class FoldersController {
 
             // Save changes to the notebook when navigating back
             notebookView.getBackButton().setOnAction(e -> {
+                foldersScreenView.runFoldersScreenUpdate();
                 saveNotebookState(lastOpenedNotebook); // Use the effectively final variable
                 primaryStage.setScene(foldersScene); // Reuse the existing scene
             });
@@ -150,6 +154,7 @@ public class FoldersController {
         String newFolderName = foldersScreenView.showAddFolderDialog();
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
+            fCont.addFlashcardDeck(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {

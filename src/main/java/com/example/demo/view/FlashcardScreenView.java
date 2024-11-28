@@ -418,7 +418,12 @@ public class FlashcardScreenView extends StackPane {
      * @param model
      */
     public void setCardModel(FlashcardScreen model){
-        currentCard = model.getDeck().getCards().getFirst();
+        if (currentCard==null){
+            model.addCard("Insert cards", "");
+            currentCard = model.getDeck().getCards().getFirst();
+        } else {
+            currentCard = model.getDeck().getCards().getFirst();
+        }
         flashcardModel = model;
         runDeckUpdate();
     }

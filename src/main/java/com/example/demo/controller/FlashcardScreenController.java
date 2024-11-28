@@ -130,5 +130,11 @@ public class FlashcardScreenController {
         xpModel.addXP(xp);
     }
 
+    public void addFlashcardDeck(String name){
+        System.out.println(name);
+        Deck newDeck = new Deck(name);
+        FlashcardStorage.SaveDeck(newDeck);
+    }
+
 }
 

@@ -3,6 +3,7 @@ package com.example.demo.model;
 import com.example.demo.FilerSystem.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
 
@@ -21,7 +22,12 @@ public class FlashcardScreen {
 
     public FlashcardScreen(){ // send in current deck?
         // this needs to access database for proper deck based on controller button function
-        currentDeck = new Deck("Test Deck");
+        List<String> titles = FlashcardStorage.GenerateDeckTitles();
+        if (titles.isEmpty()){
+            currentDeck = new Deck("Empty Deck");
+        } else {
+            currentDeck = FlashcardStorage.LoadFlashCards(titles.getFirst());
+        }
     }
 
     public Deck getDeck(){
