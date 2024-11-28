@@ -396,7 +396,7 @@ public class NotebookScreenView extends StackPane {
 
     public void navigateToPage(Page pos) {
         if(pos != null){
-            setCurrentPage(pos);
+            this.setCurrentPage(pos);
 
         }else{
             System.err.println("Page is Null");

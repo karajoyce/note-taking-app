@@ -11,6 +11,9 @@ package com.example.demo.notes;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -64,6 +67,7 @@ public class NoteModel {
     /** the start of the buffers within the text area */
     private int frontBufferIndex;
     private int backBufferIndex;
+
 
     /** Constructor */
     public NoteModel() {

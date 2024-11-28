@@ -72,6 +72,7 @@ public class HelloApplication extends Application {
 
         Notebook nModel = new Notebook("CMPT281");
         nModel.addPage(new Page("Lecture 1"));
+        nModel.addPage(new Page("Lecture 2"));
         NotebookScreenView nView = new NotebookScreenView(nModel);
 
 //        Notebook nModel = new Notebook("CMPT281");

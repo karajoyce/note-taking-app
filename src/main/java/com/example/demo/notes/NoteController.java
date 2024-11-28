@@ -14,11 +14,15 @@ import java.util.*;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.view.NotebookScreenView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 
 import javafx.scene.control.Hyperlink;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -45,7 +49,7 @@ public class NoteController {
 
     public NoteController(NoteModel model, NotebookScreenView notebookScreenView) {
         noteModel = model;
-        notebookScreenView = notebookScreenView;
+        this.notebookScreenView = notebookScreenView;
 
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
 
@@ -503,23 +507,36 @@ public class NoteController {
             return;
         }
 
-        String link = noteModel.getTextArea().getSelectedText();
+        String link = noteModel.getTextArea().getText(start, end);
 
-        noteModel.getTextArea().deleteText(start, end);
-
+        Text newtext = new Text(link);
         Hyperlink hyperlink = new Hyperlink(link);
+        //works
+        System.out.println(hyperlink);
+        System.out.println(newtext);
+        //doesnt
+        newtext.setCursor(Cursor.HAND);
+        hyperlink.setCursor(Cursor.HAND);
 
-        noteModel.getTextArea().insertText(start, link);
-
+        //works
         for (int i = start; i < start + link.length(); i++) {
             noteModel.getTextArea().setStyle(i, i + 1, "-fx-underline: true; -fx-text-fill: blue;");
         }
 
-        hyperlink.setOnMouseClicked(event -> {
+        newtext.setOnMouseClicked(click ->
+                System.out.println("Sigma bawls"));
+        //doesnt
+        hyperlink.setOnAction(event -> {
 
                 notebookScreenView.navigateToPage(pos);
-
         });
+
+        hyperlink.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                System.out.println("This link is clicked");
+            }
+        });
+
     }
 
 
