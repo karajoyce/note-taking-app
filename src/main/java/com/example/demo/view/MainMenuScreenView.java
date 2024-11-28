@@ -60,6 +60,7 @@ public class MainMenuScreenView extends StackPane {
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
+        newNoteButton = new Button("+");
 
         topViewBar = new TopViewBar();
 
@@ -163,7 +164,6 @@ public class MainMenuScreenView extends StackPane {
         NoteBox.setAlignment(Pos.CENTER);
         NoteBox.setSpacing(35);
 
-        newNoteButton = new Button("+");
         newNoteButton.setMinHeight(375);
         newNoteButton.setMinWidth(275);
         newNoteButton.getStyleClass().add("bignotebox");
