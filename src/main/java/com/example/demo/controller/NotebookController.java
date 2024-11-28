@@ -69,6 +69,21 @@ public class NotebookController {
             runUpdate();
         });
     }
+    /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
+    /*Methods for Adding and Removing Tags from a Notebook*/
+    public void addTagToNoteBook(String tag){
+        if (tag != null && !tag.isBlank()){
+            noteModel.addTag(tag);
+            NotesStorage.SaveNotes(noteModel);
+            runUpdate();
+        }
+    }
+
+    public void removeTagFromNoteBook(String tag){
+        noteModel.removeTag(tag);
+        NotesStorage.SaveNotes(noteModel);
+        runUpdate();
+    }
 
     public void runUpdate(){
         noteView.runScreenUpdate();
