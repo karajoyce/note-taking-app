@@ -34,7 +34,7 @@ public class ToDoListView extends VBox {
     private XPModel xpModel;
     private ListView<HBox> taskListView;
     private Button addTaskButton;
-    private ArrayList<Task> tasks;
+    private ToDoList toDoList;
     public GridPane grid;// Maintain the list of tasks
 
 
@@ -44,9 +44,9 @@ public class ToDoListView extends VBox {
      * for the to-do list application.
      *.
      */
-    public ToDoListView() {
+    public ToDoListView(ToDoList toDoList) {
 
-        tasks = new ArrayList<>(); // Initialize the tasks list
+        this.toDoList = toDoList;
 
         // List View
         taskListView = new ListView<>();
@@ -66,15 +66,13 @@ public class ToDoListView extends VBox {
     /**
      * Updates the task list view with the provided list of tasks.
      *
-     * @param tasks   An ArrayList of Task objects to display in the task list view.
      * @param xpModel
      */
-    public void setTaskList(ArrayList<Task> tasks, XPModel xpModel) {
-        this.tasks = tasks;
+    public void setTaskList(ToDoList toDoList, XPModel xpModel) {
         this.xpModel = xpModel;
         taskListView.getItems().clear();
-        for (Task task : tasks) {
-            TaskItem taskItem = new TaskItem(task, this.xpModel, e -> {
+        for (Task task : toDoList.getTasks()) {
+            TaskItem taskItem = new TaskItem(toDoList, task, this.xpModel, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
             });
@@ -93,6 +91,7 @@ public class ToDoListView extends VBox {
                 // Set a default background for non-overdue tasks
                 itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
             }
+            taskItem.updateBackgroundColor(getTasks());
 
 
             //taskListView.getItems().add(taskItem.getView());
@@ -133,6 +132,7 @@ public class ToDoListView extends VBox {
      */
     private void deleteTask(Task task) {
         // Remove the task from the underlying list
+        ArrayList<Task> tasks = getTasks();
         tasks.remove(task);
 
         // Find the corresponding TaskItem view and remove it from the taskListView
@@ -140,7 +140,6 @@ public class ToDoListView extends VBox {
             TaskItem item = (TaskItem) hBox.getUserData(); // to set user data in TaskItem
             if (item != null && item.getTask().equals(task)) {
                 taskListView.getItems().remove(hBox);
-                //ToDoStorage.LoadToDoList().remove(task);
                 break;
             }
 
@@ -153,7 +152,7 @@ public class ToDoListView extends VBox {
     }
 
     public ArrayList<Task> getTasks() {
-        return tasks;
+        return ToDoStorage.LoadToDoList().getTasks();
 
     }
 }

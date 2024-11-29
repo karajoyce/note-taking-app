@@ -39,8 +39,8 @@ public class MainUI extends Application {
 
         // Create and set up the To-Do List
         XPModel xpModel = null;
-        ToDoList toDoList = new ToDoList();
-        ToDoListView toDoListView = new ToDoListView();
+        ToDoList toDoList = ToDoStorage.LoadToDoList();
+        ToDoListView toDoListView = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView, xpModel);
 
         // Create a VBox to hold the To-Do List and push it to the bottom

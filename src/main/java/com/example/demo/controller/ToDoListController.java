@@ -9,6 +9,7 @@ package com.example.demo.controller;
  Sara Shakeel, gvk731, 11367521
  */
 
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.ToDoList;
 import com.example.demo.model.XPManager;
 import com.example.demo.view.ToDoListView;
@@ -39,7 +40,8 @@ public class ToDoListController  {
 
         // Set the action for the "Add Task" button
         toDoListView.setAddTaskButtonAction(e -> {
-            new TaskCreationController(toDoList, this, new Stage()); // Open task creation window
+            this.toDoListView.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
+            new TaskCreationController(ToDoStorage.LoadToDoList(), this, new Stage()); // Open task creation window
             updateTaskListView(); // Refresh the list after adding
         });
     }
@@ -48,7 +50,7 @@ public class ToDoListController  {
      * Updates the task list view with the current list of tasks from the model.
      */
     public void updateTaskListView() {
-        toDoListView.setTaskList(toDoList.getTasks(), xpModel);
+        toDoListView.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
     }
 }
 

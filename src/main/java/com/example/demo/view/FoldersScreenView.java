@@ -62,9 +62,8 @@ public class FoldersScreenView extends StackPane {
 
 
         motivationalMessagesView = new MotivationalMessagesView();
-        ToDoList toDoList = new ToDoList();
-        this.toDoListV = new ToDoListView();
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
+        this.toDoListV = new ToDoListView(list);
+        ToDoListController toDoListController = new ToDoListController(list, toDoListV, xpModel);
 
 
 
@@ -208,7 +207,7 @@ public class FoldersScreenView extends StackPane {
         }
     }
     public void updateToDoListView() {
-        toDoListV.setTaskList(ToDoList.getTasks(), xpModel);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
     }
 
     public void setFolderSelectionHandler(EventHandler<MouseEvent> handler) {

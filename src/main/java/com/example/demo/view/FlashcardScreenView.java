@@ -75,8 +75,8 @@ public class FlashcardScreenView extends StackPane {
         tempCard = new Card("Insert more cards", "");
         thumbsUpButton = new Button("Confident");
         thumbsDownButton = new Button("Not Confident");
-        ToDoList toDoList = new ToDoList();
-        this.toDoListV = new ToDoListView();
+        ToDoList toDoList = ToDoStorage.LoadToDoList();
+        this.toDoListV = new ToDoListView(toDoList);
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
 
         //Initializing XP bar and system;
@@ -86,8 +86,8 @@ public class FlashcardScreenView extends StackPane {
         digitalTree = new DigitalTree();
         xpController = new XPController(xpModel, xpView, digitalTree);
 
-        toDoListV = new ToDoListView();
-        toDoList = new ToDoList();
+        toDoList = ToDoStorage.LoadToDoList();
+        toDoListV = new ToDoListView(toDoList);
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
     }
 

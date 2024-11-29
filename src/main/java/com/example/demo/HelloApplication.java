@@ -1,5 +1,6 @@
 package com.example.demo;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.controller.NotebookController;
 import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.controller.*;
@@ -43,8 +44,8 @@ public class HelloApplication extends Application {
 
         NavigationController navigationController = new NavigationController(primaryStage);
 
-        ToDoList toDoList = new ToDoList();
-        ToDoListView toDoListView = new ToDoListView();
+        ToDoList toDoList = new ToDoList(ToDoStorage.LoadToDoList().getTasks()); //todo HELP
+        ToDoListView toDoListView = new ToDoListView(ToDoStorage.LoadToDoList());
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListView, xpModel);
         toDoListController.updateTaskListView();
 
@@ -81,12 +82,13 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView, navigationController);
 
 
         // Set required references in MainMenuScreenView
         navigationController.setMainMenuScene(mainMenuScene);
         navigationController.setFoldersScene(foldersScene);
+        navigationController.setFlashcardScene(flashcardScene);
 
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));

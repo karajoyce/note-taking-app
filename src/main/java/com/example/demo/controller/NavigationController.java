@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.view.FlashcardScreenView;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.MainMenuScreenView;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ public class NavigationController {
     private Stage primaryStage;
     private Scene mainMenuScene;
     private Scene foldersScene;
+    private Scene flashcardScene;
 
     public NavigationController(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -24,6 +26,7 @@ public class NavigationController {
     public void setFoldersScene(Scene foldersScene) {
         this.foldersScene = foldersScene;
     }
+    public void setFlashcardScene(Scene flashcardScene) { this.flashcardScene = flashcardScene;}
 
     // Navigate to the main menu
     public void navigateToMainMenu(MainMenuScreenView mainMenuScreenView) {
@@ -40,6 +43,16 @@ public class NavigationController {
         if (foldersScene != null) {
             foldersScreenView.runFoldersScreenUpdate();
             primaryStage.setScene(foldersScene);
+        } else {
+            System.err.println("FoldersScene is not set!");
+        }
+    }
+
+    // Navigate to the flashcard screen
+    public void navigateToFlashcardScreen(FlashcardScreenView fview) {
+        if (flashcardScene != null) {
+            fview.runDeckUpdate();
+            primaryStage.setScene(flashcardScene);
         } else {
             System.err.println("FoldersScene is not set!");
         }

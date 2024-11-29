@@ -12,6 +12,7 @@ package com.example.demo.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Represents a task in a to-do list with a description, due date,
@@ -118,5 +119,18 @@ public class Task {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Set the desired date format
         return taskDescription + " (Due: " + sdf.format(new Date(taskDueDate)) + ")";
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return taskDueDate == task.taskDueDate && taskID == task.taskID && Objects.equals(taskDescription, task.taskDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(taskDescription, taskDueDate, taskID);
     }
 }

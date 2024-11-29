@@ -56,12 +56,7 @@ public class TaskCreationController {
             long dueDateMillis = dueDate.atStartOfDay().toEpochSecond(ZoneOffset.UTC) * 1000; // Convert to milliseconds
             toDoList.addTask(description, dueDateMillis);
 
-
-
-            toDoListController.updateTaskListView();
             ToDoStorage.SaveToDoList(toDoList.getTasks());
-            ToDoStorage.LoadToDoList();
-
 
             taskCreationView.clearInputs();
             toDoListController.updateTaskListView(); // Refresh the task list view

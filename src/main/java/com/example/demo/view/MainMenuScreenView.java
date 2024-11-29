@@ -65,8 +65,8 @@ public class MainMenuScreenView extends StackPane {
         topViewBar = new TopViewBar();
 
         mView = new MotivationalMessagesView();
-        ToDoList toDoList = new ToDoList();
-        this.toDoListV = new ToDoListView();
+        ToDoList toDoList = ToDoStorage.LoadToDoList();
+        this.toDoListV = new ToDoListView(toDoList);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 

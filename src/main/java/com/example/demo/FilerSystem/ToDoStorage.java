@@ -36,7 +36,7 @@ public class ToDoStorage {
         }
     }
 
-    public static ArrayList<Task> LoadToDoList() {
+    public static ToDoList LoadToDoList() {
 
         try {
             FileReader ToDoListPath = new FileReader(filePath);
@@ -46,7 +46,7 @@ public class ToDoStorage {
 
             ArrayList<Task> tasks = gson.fromJson(ToDoListPath, toDoList);
 
-            return tasks;
+            return new ToDoList(tasks);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

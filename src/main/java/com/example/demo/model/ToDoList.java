@@ -21,15 +21,15 @@ import java.util.Comparator;
  */
 public class ToDoList {
 
-    private static ArrayList<Task> tasks; // List of tasks in the to-do list
+    private ArrayList<Task> tasks; // List of tasks in the to-do list
     private int taskCounter; // To generate unique task IDs
     private XPModel xpModel;
     /**
      * Constructs a new ToDoList instance.
      * Initializes an empty list of tasks and sets the task counter to 1.
      */
-    public ToDoList() {
-        this.tasks = new ArrayList<>();
+    public ToDoList(ArrayList<Task> tasks) {
+        this.tasks = tasks;
         this.taskCounter = 1;
 
         this.xpModel = xpModel;
@@ -109,7 +109,7 @@ public class ToDoList {
      *
      * @return An ArrayList of Task objects.
      */
-    public static ArrayList<Task> getTasks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 
