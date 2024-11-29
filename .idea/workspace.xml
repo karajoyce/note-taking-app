@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Removed hyperlinks, pulling from nathan" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Something wrong with the Creation Date and sorting by oldest">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +36,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;ncb421&quot;,
+      &quot;fullname&quot;: &quot;Nathan Balilis (ncb421)&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://git.cs.usask.ca/kjl061/370-01-t05-team4.git&quot;,
+    &quot;second&quot;: &quot;ef3c5907-2a16-4838-8289-3f10ec2edb3b&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -42,28 +63,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.MainUI.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Sprint3__Trushank",
-    "last_opened_file_path": "C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sprint3__Nathan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kjl/Documents/370-01-t05-team4/src/main/resources&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kjl\Documents\370-01-t05-team4\src\main\resources" />
@@ -119,6 +141,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -151,6 +181,8 @@
       <workItem from="1732581128180" duration="10063000" />
       <workItem from="1732653652544" duration="25385000" />
       <workItem from="1732735309242" duration="120000" />
+      <workItem from="1732745276247" duration="12811000" />
+      <workItem from="1732786927997" duration="9169000" />
       <workItem from="1732745276247" duration="13821000" />
       <workItem from="1732815577756" duration="225000" />
       <workItem from="1732817262553" duration="4148000" />
@@ -523,31 +555,63 @@
       <option name="project" value="LOCAL" />
       <updated>1732754389462</updated>
     </task>
-    <task id="LOCAL-00054" summary="fixing screens and notebook screen works now">
+    <task id="LOCAL-00054" summary="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music">
       <option name="closed" value="true" />
-      <created>1732770112568</created>
+      <created>1732787096116</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1732770112568</updated>
+      <updated>1732787096117</updated>
     </task>
-    <task id="LOCAL-00055" summary="ToDoList workss">
+    <task id="LOCAL-00055" summary="Setter and Getter Methods for Notebook Tags">
       <option name="closed" value="true" />
-      <created>1732825874520</created>
+      <created>1732788617920</created>
       <option name="number" value="00055" />
       <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1732825874520</updated>
+      <updated>1732788617920</updated>
     </task>
-    <task id="LOCAL-00056" summary="Removed hyperlinks, pulling from nathan">
+    <task id="LOCAL-00056" summary="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate.">
       <option name="closed" value="true" />
-      <created>1732857828465</created>
+      <created>1732789378431</created>
       <option name="number" value="00056" />
       <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
-      <updated>1732857828465</updated>
+      <updated>1732789378431</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added Adding and Removing Tags from a Notebook in NotebookController">
+      <option name="closed" value="true" />
+      <created>1732789960722</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1732789960722</updated>
+    </task>
+    <task id="LOCAL-00058" summary="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags">
+      <option name="closed" value="true" />
+      <created>1732828316024</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1732828316024</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders">
+      <option name="closed" value="true" />
+      <created>1732842507917</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1732842507917</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Something wrong with the Creation Date and sorting by oldest">
+      <option name="closed" value="true" />
+      <created>1732843489473</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1732843489473</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +653,13 @@
     <MESSAGE value="merged to main, fixing bugs caused by the merge" />
     <MESSAGE value="merged to main, fixing bugs caused by the merge still" />
     <MESSAGE value="Notescreen works again" />
-    <MESSAGE value="Removed hyperlinks, pulling from nathan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed hyperlinks, pulling from nathan" />
+    <MESSAGE value="One Last Rodeo, grabbed updated stuff from Kara manually. Queue the Kanye music" />
+    <MESSAGE value="Setter and Getter Methods for Notebook Tags" />
+    <MESSAGE value="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
+    <MESSAGE value="Added Adding and Removing Tags from a Notebook in NotebookController" />
+    <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
+    <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
+    <MESSAGE value="Something wrong with the Creation Date and sorting by oldest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Something wrong with the Creation Date and sorting by oldest" />
   </component>
 </project>

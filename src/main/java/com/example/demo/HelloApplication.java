@@ -84,7 +84,7 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController);
 
 
         // Set required references in MainMenuScreenView
@@ -94,6 +94,7 @@ public class HelloApplication extends Application {
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
+        fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
         fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
 
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
@@ -110,6 +111,7 @@ public class HelloApplication extends Application {
             primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
 
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
     }
 
