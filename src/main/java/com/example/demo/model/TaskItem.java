@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 
 /*
@@ -41,6 +42,7 @@ public class TaskItem {
     private ImageView reminderIcon; // ImageView for the reminder (bell) icon
     private Task task; // Store reference to Task
     private HBox hBox; // HBox container for the task item
+    private ArrayList<Task> tasks;
 
     private XPModel xpModel;
     private static final String TRASH_ICON_PATH = "deleteIcon.png"; // Update with the correct path
@@ -55,9 +57,10 @@ public class TaskItem {
      * @param task    The Task object containing the task's details.
      * @param xpModel
      */
-    public TaskItem(Task task, XPModel xpModel, EventHandler<ActionEvent> deleteHandler) {
+    public TaskItem(ArrayList<Task> tasks, Task task, XPModel xpModel, EventHandler<ActionEvent> deleteHandler) {
         this.task = task;
-        this.xpModel = xpModel;
+        this.xpModel = XPManager.getXPModel();
+        this.tasks = tasks;
         checkBox = new CheckBox();
         checkBox.setSelected(task.isCompleted());
 
@@ -77,7 +80,10 @@ public class TaskItem {
                 this.xpModel.addXP(10);
             }
             label.setText(task.getTaskDescription() + " (Due: " + formatDueDate(task.getTaskDueDate()) + ")");
-            updateBackgroundColor(); // Update color based on completion status
+            updateBackgroundColor(tasks); // Update color based on completion status
+
+            // Save updated task list to JSON storage
+            ToDoStorage.SaveToDoList(tasks);
         });
 
         // Create delete icon
@@ -117,7 +123,7 @@ public class TaskItem {
         hBox.setUserData(this); // Set the TaskItem as user data for later reference
 
         // Apply initial background color
-        updateBackgroundColor();
+        updateBackgroundColor(tasks);
 
         // Set the background color of the HBox to pink
         //hBox.setStyle("-fx-background-color: red; -fx-padding: 10; -fx-background-radius: 5;");
@@ -146,7 +152,7 @@ public class TaskItem {
     /**
      * Updates the background color based on the task's due date and completion status.
      */
-    private void updateBackgroundColor() {
+    public void updateBackgroundColor(ArrayList<Task> tasks) {
         LocalDate dueDate = LocalDate.ofEpochDay(task.getTaskDueDate() / (1000 * 60 * 60 * 24));
         LocalDate today = LocalDate.now(ZoneId.systemDefault());
 
@@ -158,6 +164,8 @@ public class TaskItem {
         } else {
             hBox.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;"); // on-time tasks
         }
+
+        ToDoStorage.SaveToDoList(this.tasks);
     }
 
     public Task getTask() {

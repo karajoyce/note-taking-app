@@ -2,13 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.model.XPManager;
-import com.example.demo.model.XPModel;
-import com.example.demo.model.Task;
-import com.example.demo.model.TaskItem;
-import com.example.demo.model.ToDoList;
+import com.example.demo.model.*;
 import com.example.demo.view.*;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.event.ChangeEvent;
@@ -27,9 +25,11 @@ public class MainMenuScreenViewController {
     private XPModel xpModel;
     private ToDoListView todoV;
     private ToDoListController todoC;
+    private FoldersController fCont;
+    private FlashcardScreenView flashcardScreenView;
 
 
-    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
+    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView) {
 
         this.view = view;
         this.topViewBar = topViewBar;
@@ -41,6 +41,8 @@ public class MainMenuScreenViewController {
         this.xpModel = XPManager.getXPModel();
         this.todoV = todoV;
         this.todoC = todoC;
+        this.fCont = fController;
+        this.flashcardScreenView = flashcardScreenView;
 
 
         // Set up button actions
@@ -54,6 +56,7 @@ public class MainMenuScreenViewController {
 
             todoC.updateTaskListView();
             ToDoStorage.LoadToDoList();
+            flashcardScreenView.runDeckUpdate();
             primaryStage.setScene(flashcardScene);
 
         });
@@ -70,7 +73,14 @@ public class MainMenuScreenViewController {
             foldersScreenView.updateToDoListView();
             primaryStage.setScene(foldersScreenView.getScene());
         });
+        view.getNewNoteButton().setOnAction(event -> {
+            fCont.addNewFolder(fCont.getFolderSelectionHandler(), fCont.getDeleteHandler());
+            if (!foldersScreenView.getAddButtonText().isEmpty()){
+                fCont.openNotebook(foldersScreenView.getAddButtonText());
+            }
+        });
     }
+
 
     // This method opens a new window for setting the break reminder interval
     private void openIntervalSettingWindow() {

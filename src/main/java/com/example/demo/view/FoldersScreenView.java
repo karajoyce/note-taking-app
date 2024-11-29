@@ -35,6 +35,7 @@ public class FoldersScreenView extends StackPane {
     private Button addFolderButton;
     private XPModel xpModel;
     private ToDoList list;
+    private Optional<String> addButtonText;
 
     private ToDoListController toDoCont;
     private Button deleteButton;
@@ -222,12 +223,18 @@ public class FoldersScreenView extends StackPane {
         dialog.setGraphic(null); // Remove graphic
         dialog.setContentText("Folder Name:");
 
+
         // Apply styles to the dialog using CSS
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("cardview");
 
-        Optional<String> result = dialog.showAndWait();
-        return result.orElse(null);
+        addButtonText = dialog.showAndWait();
+
+        return addButtonText.orElse(null);
+    }
+
+    public String getAddButtonText(){
+        return addButtonText.get();
     }
 
     public StackPane getView() {

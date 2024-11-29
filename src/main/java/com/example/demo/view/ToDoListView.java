@@ -74,7 +74,7 @@ public class ToDoListView extends VBox {
         this.xpModel = xpModel;
         taskListView.getItems().clear();
         for (Task task : tasks) {
-            TaskItem taskItem = new TaskItem(task, this.xpModel, e -> {
+            TaskItem taskItem = new TaskItem(tasks, task, this.xpModel, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
             });
@@ -93,10 +93,12 @@ public class ToDoListView extends VBox {
                 // Set a default background for non-overdue tasks
                 itemView.setStyle("-fx-background-color: lightblue; -fx-padding: 10; -fx-background-radius: 5;");
             }
+            taskItem.updateBackgroundColor(tasks);
 
 
             //taskListView.getItems().add(taskItem.getView());
             taskListView.getItems().add(itemView);// Add the HBox view to the list
+
 
         }
     }

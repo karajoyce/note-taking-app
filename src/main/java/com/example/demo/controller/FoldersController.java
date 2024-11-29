@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.FilerSystem.FlashcardStorage;
 //import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -17,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+import java.util.Optional;
+
 public class FoldersController {
     private FoldersModel foldersModel;
     private FoldersScreenView foldersScreenView;
@@ -27,6 +30,9 @@ public class FoldersController {
     private ToDoListView toDoListView;
 
     Notebook lastOpenedNotebook = null;
+    private EventHandler<MouseEvent> folderSelectionHandler;
+    private EventHandler<MouseEvent> deleteHandler;
+    private String folderName;
 
     public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView) {
         this.foldersModel = model;
@@ -38,9 +44,9 @@ public class FoldersController {
         this.toDoListView = toDoListView;
 
         // Define folder selection handler
-        EventHandler<MouseEvent> folderSelectionHandler = event -> {
+        folderSelectionHandler = event -> {
             Button selectedButton = (Button) event.getSource();
-            String folderName = selectedButton.getText();
+            folderName = selectedButton.getText();
             openNotebook(folderName);
         };
 
@@ -52,7 +58,7 @@ public class FoldersController {
 
         // Folder delete handler
         // Create delete handler using the factory method
-        EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
+        deleteHandler = createDeleteHandler(folderSelectionHandler);
 
         // Populate folders and pass the handler
         foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
@@ -62,20 +68,29 @@ public class FoldersController {
         foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder(folderSelectionHandler, deleteHandler));
     }
 
+    public String getFolderName(){
+        return this.folderName;
+    }
+
+    public EventHandler<MouseEvent> getFolderSelectionHandler(){
+        return folderSelectionHandler;
+    }
+    public EventHandler<MouseEvent> getDeleteHandler(){
+        return deleteHandler;
+    }
+
     private EventHandler<MouseEvent> createDeleteHandler(EventHandler<MouseEvent> folderSelectionHandler) {
         return event -> {
-            System.out.println("Delete button clicked."); // Debug log
             Button deleteButton = (Button) event.getSource();
             VBox folderContainer = (VBox) deleteButton.getParent();
             Button folderButton = (Button) folderContainer.getChildren().get(0);
             String folderName = folderButton.getText();
-            System.out.println("Attempting to delete folder: " + folderName); // Debug log
             deleteFolder(folderName, folderSelectionHandler);
         };
     }
 
     private void deleteFolder(String folderName, EventHandler<MouseEvent> folderSelectionHandler) {
-        System.out.println("Deleting folder: " + folderName);
+
 
 
         // Remove the folder from the model
@@ -85,10 +100,6 @@ public class FoldersController {
         // Delete the corresponding JSON file from the filesystem
         NotesStorage.DeleteNotebook(folderName);
 
-
-
-
-        System.out.println("Deleted folder: " + folderName);
 
         // Refresh the folders list
         EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
@@ -104,22 +115,7 @@ public class FoldersController {
         xpModel.addXP(xp);
     }
 
-    private void openNotebook(String folderName) {
-        // Open the notebook for the selected folder
-        /*
-
-        if (notebookScreenView.getScene() != null) {
-            notebookScreenView.getScene().setRoot(new StackPane()); // Detach it by setting a dummy root
-        }
-        notebookScreenView.setCurrentFolder(folderName);
-        notebookScreenView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        //primaryStage.setScene(new Scene(notebookScreenView)); // Reattach it to the new scene
-
-        Scene notebookScene = new Scene(notebookScreenView);
-        primaryStage.setScene(notebookScene); // Reattach it to the new scene
-
-         */
-
+    public void openNotebook(String folderName) {
         // Get the notebook associated with the selected folder
         lastOpenedNotebook = NotesStorage.LoadNotes(folderName);
 
@@ -130,6 +126,7 @@ public class FoldersController {
 
             // Save changes to the notebook when navigating back
             notebookView.getBackButton().setOnAction(e -> {
+                foldersScreenView.runFoldersScreenUpdate();
                 saveNotebookState(lastOpenedNotebook); // Use the effectively final variable
                 primaryStage.setScene(foldersScene); // Reuse the existing scene
             });
@@ -150,7 +147,7 @@ public class FoldersController {
         NotesStorage.SaveNotes(notebook);
     }
 
-    private void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
+    public void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
         String newFolderName = foldersScreenView.showAddFolderDialog();
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
