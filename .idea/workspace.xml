@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Pulled and it shouldve worked">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sprint3_Sara" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,13 +53,6 @@
 }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -193,9 +182,6 @@
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
       <workItem from="1732786927997" duration="9169000" />
-      <workItem from="1732745276247" duration="13821000" />
-      <workItem from="1732815577756" duration="225000" />
-      <workItem from="1732817262553" duration="4148000" />
     </task>
     <task id="LOCAL-00013" summary="FIXED THE PROBLEM FOR REAL FOR REAL">
       <option name="closed" value="true" />
@@ -581,13 +567,13 @@
       <option name="project" value="LOCAL" />
       <updated>1732843489473</updated>
     </task>
-    <task id="LOCAL-00061" summary="Pulled and it shouldve worked">
+    <task id="LOCAL-00061" summary="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either">
       <option name="closed" value="true" />
-      <created>1732858854030</created>
+      <created>1732870705089</created>
       <option name="number" value="00061" />
       <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1732858854030</updated>
+      <updated>1732870705089</updated>
     </task>
     <option name="localTasksCounter" value="62" />
     <servers />
@@ -607,12 +593,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed toolbar on the rich text editor to be compatible with my screenview" />
-    <MESSAGE value="making deck generation work" />
-    <MESSAGE value="made flshcard storage save Deck object with title" />
-    <MESSAGE value="set up functionality to switch decks from the json" />
-    <MESSAGE value="Fixing functionality on empty decks" />
-    <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
     <MESSAGE value="setting up dynamic pages" />
     <MESSAGE value="working on integration and pages" />
     <MESSAGE value="working on adding pages to notebook" />
@@ -637,22 +617,7 @@
     <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
     <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
     <MESSAGE value="Something wrong with the Creation Date and sorting by oldest" />
-    <MESSAGE value="Pulled and it shouldve worked" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pulled and it shouldve worked" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java</url>
-          <line>38</line>
-          <properties class="com.example.demo.model.Notebook" method="getTitle">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either" />
   </component>
 </project>

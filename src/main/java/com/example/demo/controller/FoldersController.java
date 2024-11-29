@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import java.util.Optional;
@@ -143,6 +144,9 @@ public class FoldersController {
         lastOpenedNotebook = NotesStorage.LoadNotes(folderName);
 
         if (lastOpenedNotebook != null) {
+            // Update the last accessed time of the notebook
+            lastOpenedNotebook.updateLastAccessed();
+
             NotebookScreenView notebookView = new NotebookScreenView(lastOpenedNotebook);
             NotebookController notebookController = new NotebookController(lastOpenedNotebook, notebookView);
             notebookView.runScreenUpdate();

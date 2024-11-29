@@ -34,8 +34,12 @@ public class FoldersModel {
                 /**CHANGES BY NATHAN FOLDER METADATA*/
                 // Retrieve actual creation date if available
                 LocalDateTime creationDate = NotesStorage.GetFolderCreationDate(folderName);
+                LocalDateTime lastAccessed = notebook.getLastAccessed();
                 if (creationDate == null) {
                     creationDate = LocalDateTime.now(); // Fallback to now if not available
+                }
+                if (lastAccessed == null) {
+                    lastAccessed = LocalDateTime.now();
                 }
                 folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
             }
@@ -66,7 +70,6 @@ public class FoldersModel {
                 folderNotebooks.put(folderName, loadedNotebook);
                 /**CHANGES BY NATHAN UPDATING FOLDER META DATA*/
                 folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
-
             }
         }
         return folderNotebooks.get(folderName);
@@ -81,7 +84,7 @@ public class FoldersModel {
         if (!folderNotebooks.containsKey(folderName)) {
             folders.add(folderName); // Add to the list of folder names
             folderNotebooks.put(folderName, new Notebook(folderName)); // Map folder name to a new notebook
-            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now() )); // Ensure metadata is set
+            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now())); // Ensure metadata is set
         }
     }
 
@@ -106,24 +109,25 @@ public class FoldersModel {
     public static class FolderMetaData {
         private LocalDateTime creationDate;
         private List<String> tags;
-        private LocalDateTime accessedDate;
-        public FolderMetaData(LocalDateTime creationDate, List<String> tags, LocalDateTime accessedDate) {
+        private LocalDateTime LastAccessed;
+
+        public FolderMetaData(LocalDateTime creationDate, List<String> tags, LocalDateTime LastAccessed) {
             this.creationDate = creationDate;
             this.tags = tags;
-            this.accessedDate = accessedDate;
-
+            this.LastAccessed = LastAccessed;
         }
 
         public LocalDateTime getCreationDate() {
             return creationDate;
         }
 
-        public List<String> getTags(){
-            return tags;
+        public LocalDateTime getLastAccessed() {
+            this.LastAccessed = LocalDateTime.now();
+            return LastAccessed;
         }
 
-        public LocalDateTime getAccessedDate(){
-            return accessedDate = LocalDateTime.now();
+        public List<String> getTags(){
+            return tags;
         }
 
         public void addTag(String tag) {
