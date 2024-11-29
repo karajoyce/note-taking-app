@@ -41,6 +41,7 @@ public class NotesStorage {
         /*Changes Added from Nathan, adding a property to save the creation date, as well as
          * the tags*/
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
+        System.out.println("Saving creation date: " + notebook.getCreationDate());
         //Trying to save tags
         // JsonArray tagsArray = new JsonArray();
         for (String tag : notebook.getTags()) {
@@ -100,6 +101,7 @@ public class NotesStorage {
             if (jsonobj.has("creationDate")) {
                 String creationDateString = jsonobj.get("creationDate").getAsString();
                 tempNotebook.setCreationDate(LocalDateTime.parse(creationDateString, FORMATTER));
+                System.out.println("Loaded creation date: " + tempNotebook.getCreationDate());
             }
             //LOAD TAGS
             if (jsonobj.has("tags")) {

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,14 +181,6 @@
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
       <workItem from="1732786927997" duration="9169000" />
-    </task>
-    <task id="LOCAL-00010" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
-      <option name="closed" value="true" />
-      <created>1730173742290</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1730173742290</updated>
     </task>
     <task id="LOCAL-00011" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
       <option name="closed" value="true" />
@@ -578,7 +566,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732828316024</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders">
+      <option name="closed" value="true" />
+      <created>1732842507917</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1732842507917</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +592,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set up functionality to switch decks from the json" />
     <MESSAGE value="Fixing functionality on empty decks" />
     <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
     <MESSAGE value="setting up dynamic pages" />
@@ -621,6 +616,7 @@
     <MESSAGE value="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
     <MESSAGE value="Added Adding and Removing Tags from a Notebook in NotebookController" />
     <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
+    <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
   </component>
 </project>
