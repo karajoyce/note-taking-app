@@ -9,12 +9,14 @@
 
 package com.example.demo.notes;
 
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.NotebookScreenView;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
@@ -515,8 +517,10 @@ public class NoteController {
 
         HyperLink hyperLink = new HyperLink(start, start+link.length(), pos);
 
+
         noteModel.addLinks(hyperLink);
 
+        System.out.println(pos);
 
         noteModel.getTextArea().setOnMouseClicked(event -> {
 

@@ -62,7 +62,7 @@ public class NoteView  {
 
         Button toggleHyperLink = new Button("HL");
         toggleHyperLink.getStyleClass().add("hyperLinkButton");
-
+        toggleHyperLink.setStyle("-fx-font-weight: bold;");;
         toggleHyperLink.setOnAction( actionEvent -> {
 
             TextInputDialog dialog = new TextInputDialog();
