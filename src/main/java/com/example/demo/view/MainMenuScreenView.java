@@ -61,6 +61,8 @@ public class MainMenuScreenView extends StackPane {
         pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
+        recentNoteButton = new Button("Recent");
+        recentNoteButton2 = new Button("Recent");
 
         topViewBar = new TopViewBar();
 
@@ -168,12 +170,10 @@ public class MainMenuScreenView extends StackPane {
         newNoteButton.setMinWidth(275);
         newNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton = new Button("Recent");
         recentNoteButton.setMinHeight(375);
         recentNoteButton.setMinWidth(275);
         recentNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton2 = new Button("Recent");
         recentNoteButton2.setMinHeight(375);
         recentNoteButton2.setMinWidth(275);
         recentNoteButton2.getStyleClass().add("bignotebox");

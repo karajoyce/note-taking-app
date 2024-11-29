@@ -39,7 +39,7 @@ public class ToDoListController  {
         // Set the action for the "Add Task" button
         toDoListView.setAddTaskButtonAction(e -> {
             new TaskCreationController(toDoList, this, new Stage()); // Open task creation window
-            //updateTaskListView(); // Refresh the list after adding
+            updateTaskListView(); // Refresh the list after adding
         });
     }
 
