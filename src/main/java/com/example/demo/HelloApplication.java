@@ -90,9 +90,6 @@ public class HelloApplication extends Application {
         navigationController.setFlashcardScene(flashcardScene);
         navigationController.setFlashcardScene(flashcardScene);
 
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView, navigationController);
-
-
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));

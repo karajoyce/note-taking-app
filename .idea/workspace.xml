@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Merge Jinny and Kara into Main so Jinny can work on her final part of her user story">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="TODOLIST WORKS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NavigationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/TaskCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/TaskCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/ToDoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/ToDoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/ToDoListView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +28,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/Sprint3_Jinny" />
+    <option name="BRANCH" value="origin/Sprint5_Sara" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -175,15 +163,7 @@
       <workItem from="1732815577756" duration="225000" />
       <workItem from="1732817262553" duration="12724000" />
       <workItem from="1732841858693" duration="6492000" />
-      <workItem from="1732895854121" duration="9251000" />
-    </task>
-    <task id="LOCAL-00011" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
-      <option name="closed" value="true" />
-      <created>1730174179019</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1730174179019</updated>
+      <workItem from="1732895854121" duration="10808000" />
     </task>
     <task id="LOCAL-00012" summary="nvm it only works for underline im depressed">
       <option name="closed" value="true" />
@@ -569,7 +549,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732849471096</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="TODOLIST WORKS">
+      <option name="closed" value="true" />
+      <created>1732914299007</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1732914299008</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
     <MESSAGE value="setting up dynamic pages" />
     <MESSAGE value="working on integration and pages" />
     <MESSAGE value="working on adding pages to notebook" />
@@ -612,6 +599,7 @@
     <MESSAGE value="decks delete!" />
     <MESSAGE value="made colour change for selected decks/pages" />
     <MESSAGE value="Merge Jinny and Kara into Main so Jinny can work on her final part of her user story" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge Jinny and Kara into Main so Jinny can work on her final part of her user story" />
+    <MESSAGE value="TODOLIST WORKS" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODOLIST WORKS" />
   </component>
 </project>

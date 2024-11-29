@@ -30,7 +30,6 @@ public class MainMenuScreenViewController {
     private FlashcardScreenView fView;
     private NavigationController navigationController;
     private FlashcardScreenView flashcardScreenView;
-    private NavigationController navigationController;
 
 
     public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView, NavigationController navCont) {

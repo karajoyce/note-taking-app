@@ -47,7 +47,6 @@ public class FoldersController {
     private EventHandler<MouseEvent> deleteHandler;
     private String folderName;
     private FlashcardScreenController fCont;
-    Notebook lastOpenedNotebook = null; // Keeps track of the last opened notebook
     private String newFolderName;
 
     public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, FlashcardScreenController fController) {
@@ -255,12 +254,9 @@ public class FoldersController {
      */
     public void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
-        // Pass the current folder names for validation
-        List<String> existingFolders = foldersModel.getFolders();
-        newFolderName = foldersScreenView.showAddFolderDialog(existingFolders);
+        String newFolderName = foldersScreenView.showAddFolderDialog(NotesStorage.GenerateNotebookTitles());
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
-            fCont.addFlashcardDeck(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {
@@ -273,8 +269,7 @@ public class FoldersController {
             foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
         }
     }
-
-    public String getNewFolderName() {
+    public String getNewFolderName(){
         return newFolderName;
     }
 }

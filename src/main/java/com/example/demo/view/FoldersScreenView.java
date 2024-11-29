@@ -79,7 +79,7 @@ public class FoldersScreenView extends StackPane {
 
 
         motivationalMessagesView = new MotivationalMessagesView();
-        this.toDoListV = new ToDoListView(list);
+        this.toDoListV = new ToDoListView(ToDoStorage.LoadToDoList());
         ToDoListController toDoListController = new ToDoListController(list, toDoListV, xpModel);
 
 
