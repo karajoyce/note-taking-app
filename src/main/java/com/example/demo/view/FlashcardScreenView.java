@@ -18,6 +18,7 @@ import javafx.stage.Screen;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
 
@@ -283,6 +284,11 @@ public class FlashcardScreenView extends StackPane {
             tButton.setMinHeight(80);
             tButton.wrapTextProperty().setValue(true);
             tButton.setTextAlignment(TextAlignment.CENTER);
+
+            if (Objects.equals(flashcardModel.getDeck().getTitle(), title)){
+                tButton.setStyle("-fx-background-color: #9f6395");
+            }
+
             buttonBox.getItems().add(tButton);
             tButton.setOnAction(deckHandler);
         }

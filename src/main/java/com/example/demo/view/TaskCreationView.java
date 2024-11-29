@@ -48,9 +48,8 @@ public class TaskCreationView {
         // Layout
         grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
-        grid.setVgap(8);
-        grid.setHgap(10);
-        //grid.setStyle("-fx-background-color: #ff99cc;"); // Set background color for the GridPane
+        grid.setVgap(20);
+        grid.setHgap(25);
 
         // Title label
         titleLabel = new Label("Create New Task");

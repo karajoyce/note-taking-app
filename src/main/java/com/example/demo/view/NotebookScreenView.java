@@ -23,6 +23,7 @@ import org.fxmisc.richtext.InlineCssTextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.awt.*;
+import java.util.Objects;
 
 /**
 
@@ -123,14 +124,6 @@ public class NotebookScreenView extends StackPane {
         /* Initialize (MVC) */
         noteController = new NoteController(noteModel);
         noteView = new NoteView(noteController);
-
-//        this.currentNotebook = currNotebook;
-//        currentPage = currentNotebook.getNotes().getFirst();
-//        currentPage.setContents(noteModel.getTextArea());
-//
-//        if (!currentNotebook.getNotes().isEmpty()) {
-//            setCurrentPage(currentNotebook.getNotes().get(0)); // Load the first page
-//        }
         runScreenUpdate();
     }
 
@@ -304,6 +297,11 @@ public class NotebookScreenView extends StackPane {
             tButton.setMinHeight(160);
             tButton.wrapTextProperty().setValue(true);
             tButton.setTextAlignment(TextAlignment.CENTER);
+
+            if (Objects.equals(currentPage.getTitle(), page.getTitle())){
+                tButton.setStyle("-fx-background-color: #9f6395");
+            }
+
             pageBox.getItems().add(tButton);
             tButton.setOnAction(pageHandler);
         }

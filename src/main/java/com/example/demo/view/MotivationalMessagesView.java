@@ -52,8 +52,8 @@ public class MotivationalMessagesView extends StackPane {
 
         // set up layout
         motivmsg.setPadding(new javafx.geometry.Insets(10));
-        motivmsg.setMinHeight(325);
-        motivmsg.setMaxHeight(325);
+        motivmsg.setMinHeight(300);
+        motivmsg.setMaxHeight(300);
         motivmsg.setMinWidth(375);
         motivmsg.setMaxWidth(375);
         motivmsg.getStyleClass().add("motivmsg");
