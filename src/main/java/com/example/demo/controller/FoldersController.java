@@ -42,8 +42,9 @@ public class FoldersController {
     private EventHandler<MouseEvent> folderSelectionHandler;
     private EventHandler<MouseEvent> deleteHandler;
     private String folderName;
+    private MainMenuScreenView menuScreenView;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView) {
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, MainMenuScreenView menuScreenView) {
     Notebook lastOpenedNotebook = null;
         this.foldersModel = model;
         this.foldersScreenView = view;
@@ -52,6 +53,8 @@ public class FoldersController {
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
+        this.menuScreenView = menuScreenView;
+
 
         // Define folder selection handler
         EventHandler<MouseEvent> folderSelectionHandler = this::handleFolderSelection;
@@ -71,6 +74,7 @@ public class FoldersController {
         // Add event handlers for buttons
         foldersScreenView.getBackButton().setOnAction(e -> goToMainMenu());
         foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder(folderSelectionHandler, deleteHandler));
+        menuScreenView.runMainScreenUpdate();
     }
 
     public String getFolderName(){

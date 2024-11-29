@@ -79,7 +79,7 @@ public class HelloApplication extends Application {
 
 
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, mainMenuScreenView);
 
 
         // Create Scenes
@@ -110,6 +110,7 @@ public class HelloApplication extends Application {
             String title1 = (recent.get(0));
             mainMenuScreenView.getRecentNoteButton().setText(title1);
             mainMenuScreenView.getRecentNoteButton().setOnAction(e -> foldersController.openNotebook(title1));
+            mainMenuScreenView.runMainScreenUpdate();
 
         }else{
             mainMenuScreenView.getRecentNoteButton().setText("Recent");
@@ -119,10 +120,13 @@ public class HelloApplication extends Application {
             String title2 = (recent.get(1));
             mainMenuScreenView.getRecentNoteButton2().setText(title2);
             mainMenuScreenView.getRecentNoteButton2().setOnAction(e -> foldersController.openNotebook(title2) );
+            mainMenuScreenView.runMainScreenUpdate();
         }else{
             mainMenuScreenView.getRecentNoteButton2().setText("Recent");
 
         }
+
+
         mainMenuScreenView.runMainScreenUpdate();
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
