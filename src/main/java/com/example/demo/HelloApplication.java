@@ -30,6 +30,8 @@ import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class HelloApplication extends Application {
 
     private static Stage primaryStage;
@@ -84,7 +86,7 @@ public class HelloApplication extends Application {
 
         Scene flashcardScene = new Scene(fCardView);
         flashcardScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController);
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersModel);
 
 
         // Set required references in MainMenuScreenView
@@ -98,9 +100,10 @@ public class HelloApplication extends Application {
         fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
 
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
-        mainMenuScreenView.getRecentNoteButton().setOnAction(event -> primaryStage.setScene(foldersScene));
-        mainMenuScreenView.getRecentNoteButton2().setOnAction(event -> primaryStage.setScene(flashcardScene));
 
+        mainMenuScreenView.runMainScreenUpdate();
+
+        mainMenuScreenView.setFoldersController(foldersController);
 
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());

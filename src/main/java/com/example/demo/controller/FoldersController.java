@@ -123,7 +123,7 @@ public class FoldersController {
         xpModel.addXP(xp);
     }
 
-    void openNotebook(String folderName) {
+    public void openNotebook(String folderName) {
         // Open the notebook for the selected folder
         /*
 
@@ -173,7 +173,7 @@ public class FoldersController {
         String newFolderName = foldersScreenView.showAddFolderDialog();
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
-
+            foldersModel.getFolderMetadata(newFolderName);
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {
                 newNotebook.addPage(new Page("Lecture 1"));

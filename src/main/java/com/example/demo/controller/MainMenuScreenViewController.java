@@ -6,6 +6,8 @@ import com.example.demo.view.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class MainMenuScreenViewController {
 
     private MainMenuScreenView view;
@@ -20,10 +22,12 @@ public class MainMenuScreenViewController {
     private ToDoListController todoC;
     private FoldersController fCont;
     private FlashcardScreenView flashcardScreenView;
+    private FoldersModel foldersModel;
 
 
- public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
+ public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersModel foldersModel) {
 
+        this.foldersModel = foldersModel;
         this.view = view;
         this.topViewBar = topViewBar;
         this.breakReminderController = breakReminderController;
@@ -72,6 +76,9 @@ public class MainMenuScreenViewController {
                 fCont.openNotebook(foldersScreenView.getAddButtonText());
             }
         });
+
+
+
     }
 
 

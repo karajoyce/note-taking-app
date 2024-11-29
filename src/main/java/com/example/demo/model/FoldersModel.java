@@ -37,7 +37,7 @@ public class FoldersModel {
                 if (creationDate == null) {
                     creationDate = LocalDateTime.now(); // Fallback to now if not available
                 }
-                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>()));
+                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
             }
         }
 
@@ -65,7 +65,8 @@ public class FoldersModel {
             if (loadedNotebook != null) {
                 folderNotebooks.put(folderName, loadedNotebook);
                 /**CHANGES BY NATHAN UPDATING FOLDER META DATA*/
-                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>()));
+                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
+
             }
         }
         return folderNotebooks.get(folderName);
@@ -80,7 +81,7 @@ public class FoldersModel {
         if (!folderNotebooks.containsKey(folderName)) {
             folders.add(folderName); // Add to the list of folder names
             folderNotebooks.put(folderName, new Notebook(folderName)); // Map folder name to a new notebook
-            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>())); // Ensure metadata is set
+            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now() )); // Ensure metadata is set
         }
     }
 
@@ -93,14 +94,24 @@ public class FoldersModel {
         folderNotebooks.remove(folderName); // Remove the associated notebook
     }
 
+    public ArrayList<String> getMostRecentFolders(){
+
+        ArrayList<String> checkList = new ArrayList<>(folderMetadata.keySet());
+        checkList.sort((a,b) -> folderMetadata.get(b).getCreationDate().compareTo(folderMetadata.get(a).creationDate));
+
+        return new ArrayList<>(checkList.subList(0,Math.min(2,checkList.size())));
+    }
+
     /**CHANGES BY NATHAN INNER CLASS FOR STORING FOLDER METADATA*/
     public static class FolderMetaData {
         private LocalDateTime creationDate;
         private List<String> tags;
-
-        public FolderMetaData(LocalDateTime creationDate, List<String> tags) {
+        private LocalDateTime accessedDate;
+        public FolderMetaData(LocalDateTime creationDate, List<String> tags, LocalDateTime accessedDate) {
             this.creationDate = creationDate;
             this.tags = tags;
+            this.accessedDate = accessedDate;
+
         }
 
         public LocalDateTime getCreationDate() {
@@ -109,6 +120,10 @@ public class FoldersModel {
 
         public List<String> getTags(){
             return tags;
+        }
+
+        public LocalDateTime getAccessedDate(){
+            return accessedDate = LocalDateTime.now();
         }
 
         public void addTag(String tag) {
@@ -120,5 +135,6 @@ public class FoldersModel {
         public void removeTag(String tag) {
             tags.remove(tag);
         }
+
     }
 }

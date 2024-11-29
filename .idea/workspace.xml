@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Something wrong with the Creation Date and sorting by oldest" />
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Pulled and it shouldve worked">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,14 +196,6 @@
       <workItem from="1732745276247" duration="13821000" />
       <workItem from="1732815577756" duration="225000" />
       <workItem from="1732817262553" duration="4148000" />
-    </task>
-    <task id="LOCAL-00012" summary="nvm it only works for underline im depressed">
-      <option name="closed" value="true" />
-      <created>1730257373685</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1730257373685</updated>
     </task>
     <task id="LOCAL-00013" summary="FIXED THE PROBLEM FOR REAL FOR REAL">
       <option name="closed" value="true" />
@@ -581,7 +581,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732843489473</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Pulled and it shouldve worked">
+      <option name="closed" value="true" />
+      <created>1732858854030</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1732858854030</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +607,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding confidence features" />
     <MESSAGE value="fixed toolbar on the rich text editor to be compatible with my screenview" />
     <MESSAGE value="making deck generation work" />
     <MESSAGE value="made flshcard storage save Deck object with title" />
@@ -630,6 +637,22 @@
     <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
     <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
     <MESSAGE value="Something wrong with the Creation Date and sorting by oldest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Something wrong with the Creation Date and sorting by oldest" />
+    <MESSAGE value="Pulled and it shouldve worked" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pulled and it shouldve worked" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java</url>
+          <line>38</line>
+          <properties class="com.example.demo.model.Notebook" method="getTitle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

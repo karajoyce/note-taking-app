@@ -91,6 +91,8 @@ public class FoldersScreenView extends StackPane {
     }
 
     public void runFoldersScreenUpdate() {
+
+
         // General setup
         this.getStylesheets().add("/styles.css");
         double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
