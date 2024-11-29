@@ -4,6 +4,7 @@ import com.example.demo.FilerSystem.FlashcardStorage;
 //import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
+import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -11,9 +12,10 @@ import com.example.demo.view.MainMenuScreenView;
 import com.example.demo.view.ToDoListView;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -141,6 +143,58 @@ public class FoldersController {
             primaryStage.setScene(notebookScene);
         } else {
             System.err.println("Failed to load notebook for folder: " + folderName);
+                notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+                Scene notebookScene = new Scene(notebookView);
+
+                /* Add keybinds */
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleBold();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleItalic();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleUnderline();
+                            }
+                        }
+                );
+
+                notebookScene.getAccelerators().put(
+                        new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN),
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                notebookController.getNoteView().getNoteController().toggleStrikethrough();
+                            }
+                        }
+                );
+
+
+                primaryStage.setScene(notebookScene);
+            } else {
+                System.err.println("Failed to load notebook for folder: " + folderName);
+            }
+        } else {
+            System.err.println("No notebook found for folder: " + folderName);
         }
 
     }

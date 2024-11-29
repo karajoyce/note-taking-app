@@ -68,6 +68,7 @@ public class NoteModel {
     /** Constructor */
     public NoteModel() {
 
+        /* Initialize everything */
         boldEnabled = false;
         italicEnabled = false;
         underlineEnabled = false;
@@ -174,6 +175,9 @@ public class NoteModel {
         return autoFlashcardEnabled;
     }
 
+    /**
+     * Turn on / off the auto flashcard mode. Reset all the card's buffers.
+     */
     public void toggleAutoFlashcard() {
         this.autoFlashcardEnabled = !autoFlashcardEnabled;
 

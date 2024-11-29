@@ -174,7 +174,6 @@ public class FoldersScreenView extends StackPane {
 
     public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersGrid.getChildren().clear();
-        //folderNames  = NotesStorage.GenerateNotebookTitles();
         int columns = 3; // Number of columns in the grid
         int row = 0, col = 0;
 

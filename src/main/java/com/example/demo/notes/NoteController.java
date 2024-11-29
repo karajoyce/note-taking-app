@@ -9,6 +9,7 @@
 
 package com.example.demo.notes;
 
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import javafx.scene.control.Alert;
 
@@ -21,7 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 
 import com.example.demo.model.Card;
@@ -37,10 +37,22 @@ public class NoteController {
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
     Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
+    /**
+     * Constructor method for the text editor's controller
+     * @param model the text editor model
+     */
     public NoteController(NoteModel model) {
         noteModel = model;
 
+        /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
+        noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            trackBack(oldText, newText);
+        });
+
+        noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
+            trackFront(oldText, newText);
+        });
 
     }
 
@@ -80,7 +92,19 @@ public class NoteController {
      * Save the document you're working on
      */
     protected void saveFile(Stage stage) {
-        // Save textarea into a JSON ?
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Text File");
+        File file = fileChooser.showSaveDialog(stage);
+
+        /* Attempt to save the file */
+        if (file != null) {
+            try {
+                Files.writeString(Path.of(file.getPath()), noteModel.getTextArea().getText(), StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                displayError("Error saving file", e.getMessage());
+            }
+        }
+
 
     }
 
@@ -106,7 +130,7 @@ public class NoteController {
      * @param oldText
      * @param newText
      */
-    protected void trackBack(String oldText, String newText) {
+    public void trackBack(String oldText, String newText) {
         StringBuilder backBuffer = noteModel.getBackBuffer();
 
         /* Only start gathering data for the back of the card if auto flashcard making is
@@ -143,8 +167,6 @@ public class NoteController {
                         noteModel.setCurrentCardFront("");
                         noteModel.resetBackBuffer("");
 
-                        //printDeck(TEMPORARY_DECK); // REMOVE LATER
-
                     } else {
                         // Else, add the text to the buffer
                         noteModel.resetBackBuffer(newText.substring(noteModel.getBackBufferIndex()));
@@ -160,7 +182,7 @@ public class NoteController {
      * @param oldText previous text
      * @param newText text after typing
      */
-    void trackFront(String oldText, String newText) {
+    public void trackFront(String oldText, String newText) {
 
         if (noteModel.isBoldEnabled() && noteModel.isWaitingforFrontInput() && noteModel.isAutoFlashcardEnabled()) {
 
@@ -195,7 +217,7 @@ public class NoteController {
      * (2) User has not selected text, toggle bold for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleBold() {
+    public void toggleBold() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -249,7 +271,7 @@ public class NoteController {
      * (2) User has not selected text, toggle strikethrough for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleStrikethrough() {
+    public void toggleStrikethrough() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -287,7 +309,7 @@ public class NoteController {
      * (2) User has not selected text, toggle italics for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleItalic() {
+    public void toggleItalic() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -324,7 +346,7 @@ public class NoteController {
      * (2) User has not selected text, toggle underline for the subsequent times they type until
      * it is toggled again.
      */
-    protected void toggleUnderline() {
+    public void toggleUnderline() {
         /* Get the user's selected text */
         int start = noteModel.getTextArea().getSelection().getStart();
         int end = noteModel.getTextArea().getSelection().getEnd();
@@ -540,7 +562,6 @@ public class NoteController {
             case "Comic Sans MS" -> noteModel.getCurrStyle().add("-fx-font-family: 'Comic Sans MS'; ");
             default -> noteModel.getCurrStyle().add("-fx-font-family: " + font + "; ");
         }
-        System.out.println(noteModel.getCurrStyle());
     }
 
     /**CHANGES ADDED BY NATHAN FOR TAGS AND WHATNOT**/
