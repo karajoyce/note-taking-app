@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.Locale;
+
 /**
 
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -22,6 +24,8 @@ public class Notebook implements Serializable {
     * and the other grabbing the time a Notebook is created*/
     private ArrayList<String> tags;
     private LocalDateTime creationDate;
+    /**CHANGES BY NATHAN FOR LAST ACCESSED FOLDER*/
+    private LocalDateTime lastAccessed;
 
     public Notebook(String name) {
         title = name;
@@ -30,6 +34,7 @@ public class Notebook implements Serializable {
         * the creation date*/
         tags = new ArrayList<>();
         creationDate = LocalDateTime.now();
+        lastAccessed = LocalDateTime.now();
     }
 
     public ArrayList<Page> getNotes(){
@@ -45,10 +50,12 @@ public class Notebook implements Serializable {
 
     public void addPage(Page newPage){
         notes.add(newPage);
+        updateLastAccessed();
     }
 
     public void removePage(Page oldPage){
         this.notes.remove(oldPage);
+        updateLastAccessed();
     }
 
     public int getSize(){
@@ -71,6 +78,7 @@ public class Notebook implements Serializable {
     public void addTag(String tag){
         if(!tags.contains(tag)){
             tags.add(tag);
+            updateLastAccessed();
         }
         //Print statement for debugging
         else{
@@ -80,6 +88,7 @@ public class Notebook implements Serializable {
     /*Method for Removing a single Tag*/
     public void removeTag(String tag){
         tags.remove(tag);
+        updateLastAccessed();
     }
 
     /**SETTER AND GETTTER METHODS FOR CREATION DATE*/
@@ -89,5 +98,18 @@ public class Notebook implements Serializable {
 
     public void setCreationDate(LocalDateTime creationDate){
         this.creationDate = creationDate;
+    }
+    // Getter and Setter for Last Accessed
+    public LocalDateTime getLastAccessed() {
+        return lastAccessed;
+    }
+
+    public void setLastAccessed(LocalDateTime lastAccessed) {
+        this.lastAccessed = lastAccessed;
+    }
+
+    // Method to update last accessed time to now
+    public void updateLastAccessed() {
+        this.lastAccessed = LocalDateTime.now();
     }
 }

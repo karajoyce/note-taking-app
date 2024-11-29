@@ -42,6 +42,12 @@ public class NotesStorage {
          * the tags*/
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
         System.out.println("Saving creation date: " + notebook.getCreationDate());
+        /**CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
+        if (notebook.getLastAccessed() != null){
+            jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
+            System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
+        }
+
         //Trying to save tags
         // JsonArray tagsArray = new JsonArray();
         for (String tag : notebook.getTags()) {
@@ -96,7 +102,7 @@ public class NotesStorage {
 
             Notebook tempNotebook = new Notebook(jsonobj.get("name").getAsString());
 
-            /*Changes from Nathan, Trying to load Tags and CreationDate*/
+            /**Changes from Nathan, Trying to load Tags and CreationDate*/
             //LOADING TAGS, MAY HAVE FUCKY FUNCTIONALITY
             if (jsonobj.has("creationDate")) {
                 String creationDateString = jsonobj.get("creationDate").getAsString();
@@ -109,6 +115,17 @@ public class NotesStorage {
                 for (int i = 0; i < tagsArray.size(); i++) {
                     tempNotebook.addTag(tagsArray.get(i).getAsString());
                 }
+            }
+
+            /**Changes from Nathan, Trying to Last Accessed Time*/
+            //LOADING LAST ACCESSED
+            if (jsonobj.has("lastAccessed")) {
+                String lastAccessedString = jsonobj.get("lastAccessed").getAsString();
+                tempNotebook.setLastAccessed(LocalDateTime.parse(lastAccessedString, FORMATTER));
+                System.out.println("Loaded last accessed: " + tempNotebook.getLastAccessed());
+            } else {
+                tempNotebook.setLastAccessed(tempNotebook.getCreationDate());
+                System.out.println("No Last Access so creating a new one: " + tempNotebook.getLastAccessed());
             }
 
             JsonArray jsonarr = jsonobj.getAsJsonArray("pages");
