@@ -64,6 +64,8 @@ public class MainMenuScreenView extends StackPane {
         pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
+        recentNoteButton = new Button("Recent");
+        recentNoteButton2 = new Button("Recent");
 
         topViewBar = new TopViewBar();
 
@@ -176,34 +178,17 @@ public class MainMenuScreenView extends StackPane {
         newNoteButton.setMinWidth(275);
         newNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton = new Button("Recent");
+
         recentNoteButton.setMinHeight(375);
         recentNoteButton.setMinWidth(275);
         recentNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton2 = new Button("Recent");
+
         recentNoteButton2.setMinHeight(375);
         recentNoteButton2.setMinWidth(275);
         recentNoteButton2.getStyleClass().add("bignotebox");
 
-        ArrayList<String> recent = foldersModel.getMostRecentFolders();
-        if(recent.size() > 0) {
-            String title1 = recent.get(0);
-            getRecentNoteButton().setText(title1);
-            getRecentNoteButton().setOnAction(e -> fCont.openNotebook(title1));
-
-        }else{
-            getRecentNoteButton().setText("Recent");
-
-        }
-        if(recent.size() > 1) {
-            String title2 = recent.get(1);
-            getRecentNoteButton2().setText(title2);
-            getRecentNoteButton2().setOnAction(e -> fCont.openNotebook(title2) );
-        }else{
-            getRecentNoteButton2().setText("Recent");
-
-        }
+        updateRecentFolders();
 
         NoteBox.setPadding(new Insets(50,0,0,0));
         NoteBox.getChildren().addAll(newNoteButton, recentNoteButton, recentNoteButton2);
@@ -239,6 +224,28 @@ public class MainMenuScreenView extends StackPane {
         //ToDoStorage.LoadToDoList();
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
+    }
+
+    public void updateRecentFolders(){
+        ArrayList<String> recent = foldersModel.getMostRecentFolders();
+
+        if(recent.size() > 0) {
+            String title1 = recent.get(0);
+            getRecentNoteButton().setText(title1);
+            getRecentNoteButton().setOnAction(e -> fCont.openNotebook(title1));
+
+        }else{
+            getRecentNoteButton().setText("Recent");
+
+        }
+        if(recent.size() > 1) {
+            String title2 = recent.get(1);
+            getRecentNoteButton2().setText(title2);
+            getRecentNoteButton2().setOnAction(e -> fCont.openNotebook(title2) );
+        }else{
+            getRecentNoteButton2().setText("Recent");
+
+        }
     }
 
 }

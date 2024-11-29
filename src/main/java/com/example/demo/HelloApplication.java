@@ -105,6 +105,9 @@ public class HelloApplication extends Application {
 
         mainMenuScreenView.setFoldersController(foldersController);
 
+        mainMenuScreenView.updateRecentFolders();
+
+
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);
