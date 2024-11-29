@@ -228,9 +228,8 @@ public class MainMenuScreenView extends StackPane {
 
     public void updateRecentFolders(){
         ArrayList<String> recent = foldersModel.getMostRecentFolders();
-
         if(recent.size() > 0) {
-            String title1 = recent.get(0);
+            String title1 = (recent.get(0));
             getRecentNoteButton().setText(title1);
             getRecentNoteButton().setOnAction(e -> fCont.openNotebook(title1));
 
@@ -239,7 +238,7 @@ public class MainMenuScreenView extends StackPane {
 
         }
         if(recent.size() > 1) {
-            String title2 = recent.get(1);
+            String title2 = (recent.get(1));
             getRecentNoteButton2().setText(title2);
             getRecentNoteButton2().setOnAction(e -> fCont.openNotebook(title2) );
         }else{
