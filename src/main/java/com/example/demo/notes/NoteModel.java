@@ -9,7 +9,6 @@
 
 package com.example.demo.notes;
 
-import com.example.demo.model.HyperLink;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.awt.*;
@@ -70,13 +69,12 @@ public class NoteModel {
     /** the start of the buffers within the text area */
     private int frontBufferIndex;
     private int backBufferIndex;
-    private ArrayList<HyperLink> hyperLinks;
+
 
 
     /** Constructor */
     public NoteModel() {
 
-        hyperLinks = new ArrayList<>();
         boldEnabled = false;
         italicEnabled = false;
         underlineEnabled = false;
@@ -102,6 +100,7 @@ public class NoteModel {
         textArea.setWrapText(true);
 
     }
+    /*
     public void addLinks(HyperLink hyperLink){
         hyperLinks.add(hyperLink);
     }
@@ -114,6 +113,7 @@ public class NoteModel {
         }
         return null;
     }
+    */
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {

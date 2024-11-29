@@ -1,5 +1,5 @@
 package com.example.demo.model;
-
+/*
 public class HyperLink {
     private int start;
     private int end;
@@ -23,3 +23,5 @@ public class HyperLink {
         return target;
     }
 }
+*/
+

@@ -59,7 +59,7 @@ public class NoteView  {
     }
 */
     public ToolBar createToolBar() {
-
+    /*
         Button toggleHyperLink = new Button("HL");
         toggleHyperLink.getStyleClass().add("hyperLinkButton");
         toggleHyperLink.setStyle("-fx-font-weight: bold;");;
@@ -85,7 +85,7 @@ public class NoteView  {
                 }
             });
         });
-
+*/
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.getStyleClass().add("textEditorButton");
@@ -149,7 +149,7 @@ public class NoteView  {
             }
         });
 
-        ToolBar toolBar = new ToolBar(toggleHyperLink, getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
+        ToolBar toolBar = new ToolBar(getToggleBoldButton(), getToggleItalicButton(), getToggleUnderlineButton(),
                 getToggleStrikeThroughButton(),
                 new Label("Font:"), fontMenu, new Label("Font size:"), fontSizeMenu,
                 alignLeftButton, alignCenterButton, alignRightButton,

@@ -498,7 +498,7 @@ public class NoteController {
         }
 
     }
-
+    /* HyperLinks did not work
     //Adding HyperLink creation
     protected void createHyperLink( Page pos ) {
 
@@ -524,7 +524,7 @@ public class NoteController {
 
         noteModel.getTextArea().setOnMouseClicked(event -> {
 
-            notebookScreenView.setCurrentPage(pos);
+             this.notebookScreenView.setCurrentPage(pos);
 
             System.out.println("Here2");
             Point2D position = noteModel.getTextArea().sceneToLocal(event.getSceneX(), event.getSceneY());
@@ -547,13 +547,10 @@ public class NoteController {
                     System.out.println(hyperLink1.getTargetPage());
                 }
             }
-
-
-
         });
-
-
     }
+
+    */
     /**
      * Change the font type (font family) for either the selected text or
      * next characters the user types

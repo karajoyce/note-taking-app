@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Notescreen works again">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Notescreen works again"/>
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/HyperLink.java" afterDir="false" />
     <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="ToDoList workss">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
