@@ -9,33 +9,21 @@
 
 package com.example.demo.notes;
 
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.util.*;
 
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.NotebookScreenView;
-import javafx.beans.Observable;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
-import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 
-import javafx.scene.control.Hyperlink;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.fxmisc.richtext.CharacterHit;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 import java.util.HashSet;
 
 /**
@@ -49,7 +37,7 @@ public class NoteController {
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
     Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
-    public NoteController(NoteModel model, NotebookScreenView notebookScreenView) {
+    public NoteController(NoteModel model) {
         noteModel = model;
         this.notebookScreenView = notebookScreenView;
 

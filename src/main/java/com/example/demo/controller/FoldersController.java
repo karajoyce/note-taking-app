@@ -123,7 +123,7 @@ public class FoldersController {
         xpModel.addXP(xp);
     }
 
-    private void openNotebook(String folderName) {
+    void openNotebook(String folderName) {
         // Open the notebook for the selected folder
         /*
 
@@ -168,7 +168,7 @@ public class FoldersController {
         NotesStorage.SaveNotes(notebook);
     }
 
-    private void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
+    void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
         String newFolderName = foldersScreenView.showAddFolderDialog();
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {

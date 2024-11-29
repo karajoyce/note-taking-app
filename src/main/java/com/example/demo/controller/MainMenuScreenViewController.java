@@ -1,17 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.*;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.ArrayList;
 
 public class MainMenuScreenViewController {
 
@@ -29,7 +22,7 @@ public class MainMenuScreenViewController {
     private FlashcardScreenView flashcardScreenView;
 
 
- public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView) {
+ public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC) {
 
         this.view = view;
         this.topViewBar = topViewBar;
@@ -41,7 +34,7 @@ public class MainMenuScreenViewController {
         this.xpModel = XPManager.getXPModel();
         this.todoV = todoV;
         this.todoC = todoC;
-        this.fCont = fController;
+
         this.flashcardScreenView = flashcardScreenView;
 
 
