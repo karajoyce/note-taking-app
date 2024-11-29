@@ -97,6 +97,7 @@ public class FoldersController {
 
         // Remove the folder from the model
         foldersModel.removeFolder(folderName);
+        fCont.deleteDeck(folderName);
 
 
         // Delete the corresponding JSON file from the filesystem

@@ -122,6 +122,10 @@ public class FlashcardScreenController {
         deckUpdate();
     }
 
+    public FlashcardScreen getfCardModel() {
+        return fCardModel;
+    }
+
     public void deckUpdate(){
         fCardView.runDeckUpdate();
     }
@@ -134,6 +138,10 @@ public class FlashcardScreenController {
         System.out.println(name);
         Deck newDeck = new Deck(name);
         FlashcardStorage.SaveDeck(newDeck);
+    }
+
+    public void deleteDeck(String name){
+        FlashcardStorage.DeleteDeck(name);
     }
 
 }
