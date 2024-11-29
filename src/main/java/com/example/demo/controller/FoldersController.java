@@ -127,6 +127,7 @@ public class FoldersController {
         if (lastOpenedNotebook != null) {
             // Update the last accessed time of the notebook
             lastOpenedNotebook.updateLastAccessed();
+            NotesStorage.SaveNotes(lastOpenedNotebook);
 
             NotebookScreenView notebookView = new NotebookScreenView(lastOpenedNotebook);
             NotebookController notebookController = new NotebookController(lastOpenedNotebook, notebookView);
