@@ -105,14 +105,6 @@ public class Task {
         return this.taskID;
     }
 
-    /**
-     * Sets the unique identifier for the task.
-     *
-     * @param taskID The new unique identifier for the task.
-     */
-    public void setTaskID(int taskID) {
-        this.taskID = taskID;
-    }
 
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Set the desired date format

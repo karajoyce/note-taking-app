@@ -128,8 +128,5 @@ public class TaskCreationView {
         dueDatePicker.setValue(null);
     }
 
-    public GridPane getTaskCreationView() {
-        return grid;
-    }
 
 }

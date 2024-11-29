@@ -3,23 +3,17 @@ package com.example.demo.view;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.Task;
 import com.example.demo.model.XPModel;
-import com.example.demo.model.ToDoList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
-import javafx.stage.Screen;
-import javafx.stage.StageStyle;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Optional;
+
 
 /**
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -104,13 +98,6 @@ public class ToDoListView extends VBox {
     }
 
     /**
-     * Clears all tasks from the task list view.
-     */
-    public void clearTaskList() {
-        taskListView.getItems().clear();
-    }
-
-    /**
      * Sets the action to be performed when the "Add Task" button is clicked.
      *
      * @param handler An EventHandler that defines the action to be executed on button click.
@@ -119,14 +106,6 @@ public class ToDoListView extends VBox {
         addTaskButton.setOnAction(handler);
     }
 
-    /**
-     * Retrieves the ListView of tasks.
-     *
-     * @return The ListView<Task> instance representing the task list.
-     */
-    public ListView<HBox> getTaskListView() {
-        return taskListView;
-    }
 
     /**
      * Deletes the specified task from the task list view.
@@ -142,7 +121,6 @@ public class ToDoListView extends VBox {
             TaskItem item = (TaskItem) hBox.getUserData(); // to set user data in TaskItem
             if (item != null && item.getTask().equals(task)) {
                 taskListView.getItems().remove(hBox);
-                //ToDoStorage.LoadToDoList().remove(task);
                 break;
             }
 
@@ -154,8 +132,4 @@ public class ToDoListView extends VBox {
         return this;
     }
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
-
-    }
 }

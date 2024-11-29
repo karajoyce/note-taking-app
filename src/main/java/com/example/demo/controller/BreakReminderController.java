@@ -59,18 +59,6 @@ public class BreakReminderController {
     }
 
     /**
-     * Toggles the state of reminders: if reminders are currently active, they are stopped;
-     * if they are inactive, they are started.
-     */
-    public void toggleReminders() {
-        if (isReminderOn) {
-            stopReminders();
-        } else {
-            startReminders();
-        }
-    }
-
-    /**
      * Sets a new interval for the break reminders. If reminders are currently active,
      * they are restarted to apply the new interval.
      *
