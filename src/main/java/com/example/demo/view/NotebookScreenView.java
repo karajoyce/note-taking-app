@@ -49,6 +49,7 @@ public class NotebookScreenView extends StackPane {
     private XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
+    private MotivationalMessagesView motivationalMessagesView;
 
     //Digital Tree
     private DigitalTree digitalTree;
@@ -113,6 +114,7 @@ public class NotebookScreenView extends StackPane {
         toDoListV = new ToDoListView(toDoList);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+        motivationalMessagesView = new MotivationalMessagesView();
 
         currentFolder = new String();
 
@@ -274,7 +276,7 @@ public class NotebookScreenView extends StackPane {
         //fullBox.getChildren().add(todolist);
         VBox tags = new VBox();
 //        addTagsAndSearchToLayout(tags);
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), tags);
+        todolist.getChildren().addAll(motivationalMessagesView.getMotivmsgView(),toDoListV.getToDoListView(), tags);
         fullBox.getChildren().add(todolist);
 
         // Buttons for pages

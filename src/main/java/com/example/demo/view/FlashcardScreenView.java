@@ -263,6 +263,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.setMinHeight(50);
 
         toDoListV.setMaxHeight(350);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);
@@ -463,6 +464,13 @@ public class FlashcardScreenView extends StackPane {
             xpToggleButton.setText("STOP XP TRACKING");
         }
         isTrackingXP = !isTrackingXP;
+    }
+
+    /**
+     * Updates the to-do list view with the latest tasks.
+     */
+    public void updateToDoListView() {
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
     }
 }
 

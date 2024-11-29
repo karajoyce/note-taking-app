@@ -6,9 +6,8 @@ import com.example.demo.model.XPModel;
 import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
@@ -22,9 +21,23 @@ import javafx.stage.Screen;
 import java.util.List;
 import java.util.Optional;
 import javafx.geometry.Insets;
+import javafx.stage.Stage;
 
-import javax.swing.plaf.TableHeaderUI;
 
+/*
+ CMPT 370, T05, Team 4, Prof. Jon Lovering
+ Kara Leier, kjl061, 11293306
+ Nathan Balilis, ncb421, 11295020
+ Trushank Lakdawala, nus429, 11350445
+ Jinny Kim, yek738, 11304174
+ Sara Shakeel, gvk731, 11367521
+ */
+
+/**
+ * Represents the view for managing and displaying folders in the application.
+ * This view allows users to interact with folders, including adding, deleting,
+ * and selecting folders, while also showing motivational messages and a to-do list.
+ */
 public class FoldersScreenView extends StackPane {
 
     private GridPane foldersGrid;
@@ -41,11 +54,15 @@ public class FoldersScreenView extends StackPane {
     private Button deleteButton;
 
 
+
+    /**
+     * Constructs a new `FoldersScreenView` and initializes its components.
+     * This includes the folder grid, motivational messages, and to-do list.
+     */
     public FoldersScreenView() {
         // Initialize components
         addFolderButton = new Button("Add Folder");
 
-        //pageBack = new Button("Back");
         pageBack = new Button("");
         Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
         ImageView imgViewB = new ImageView(imgB);
@@ -77,6 +94,11 @@ public class FoldersScreenView extends StackPane {
         runFoldersScreenUpdate();
     }
 
+    /**
+     * Updates the layout and content of the folders screen.
+     * This method organizes the UI into sections, including the folder grid,
+     * motivational messages, and the to-do list.
+     */
     public void runFoldersScreenUpdate() {
         // General setup
         this.getStylesheets().add("/styles.css");
@@ -88,7 +110,6 @@ public class FoldersScreenView extends StackPane {
         HBox mainLayout = new HBox();
         mainLayout.setSpacing(20); // Space between center and right panels
         mainLayout.setPadding(new Insets(20));
-        //mainLayout.getStyleClass().add("main-layout");
         mainLayout.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
         this.getChildren().add(mainLayout);
 
@@ -97,7 +118,6 @@ public class FoldersScreenView extends StackPane {
         centerBox.setSpacing(20); // Space between top bar and scrollable folder grid
         centerBox.setPadding(new Insets(20));
         centerBox.setAlignment(Pos.TOP_CENTER);
-        //centerBox.getStyleClass().add("center-box");
         centerBox.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
         // Ensure the centerBox grows with the available space
@@ -127,7 +147,6 @@ public class FoldersScreenView extends StackPane {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(foldersGrid);
-        //scrollPane.getStyleClass().add("scroll-pane");
         scrollPane.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
         scrollPane.setPadding(new Insets(10));
 
@@ -151,6 +170,7 @@ public class FoldersScreenView extends StackPane {
         motivContainer.setMinHeight(screenHeight * 0.3);
         motivContainer.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         VBox todoContainer = new VBox(toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         todoContainer.setMinHeight(screenHeight * 0.3);
@@ -163,14 +183,32 @@ public class FoldersScreenView extends StackPane {
         mainLayout.getChildren().addAll(centerBox, rightPanel);
     }
 
+    /**
+     * Retrieves the "Add Folder" button.
+     *
+     * @return The "Add Folder" button.
+     */
     public Button getAddFolderButton() {
         return addFolderButton;
     }
 
+    /**
+     * Retrieves the "Back" button.
+     *
+     * @return The "Back" button.
+     */
     public Button getBackButton() {
         return pageBack;
     }
 
+    /**
+     * Populates the folder grid with the provided folder names.
+     * Attaches the appropriate event handlers for selection and deletion.
+     *
+     * @param folderNames            List of folder names to display.
+     * @param folderSelectionHandler Event handler for folder selection.
+     * @param deleteHandler          Event handler for folder deletion.
+     */
     public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersGrid.getChildren().clear();
         int columns = 3; // Number of columns in the grid
@@ -206,34 +244,95 @@ public class FoldersScreenView extends StackPane {
             }
         }
     }
+
+    /**
+     * Updates the to-do list view with the latest tasks.
+     */
     public void updateToDoListView() {
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
     }
 
-    public void setFolderSelectionHandler(EventHandler<MouseEvent> handler) {
-        this.folderSelectionHandler = handler;
-    }
 
-    public String showAddFolderDialog() {
+    /**
+     * Displays a dialog for adding a new folder and retrieves the entered folder name.
+     *
+     * @return The folder name entered by the user, or `null` if canceled.
+     */
+    public String showAddFolderDialog(List<String> existingFolders) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add Folder");
         dialog.setHeaderText(null); // Remove header
         dialog.setGraphic(null); // Remove graphic
         dialog.setContentText("Folder Name:");
 
+        // Use a custom stage to make it always on top
+        Stage dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        dialogStage.setAlwaysOnTop(true); // Keep dialog on top
+
+
         // Apply styles to the dialog using CSS
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("cardview");
 
+        // Show the dialog and get the result
         addButtonText = dialog.showAndWait();
 
-        return addButtonText.orElse(null);
+        if (addButtonText.isPresent()) {
+            // Trim the input to remove leading/trailing whitespace
+            String folderName = addButtonText.get().trim();
+
+            // Validate the folder name
+            if (folderName.isEmpty()) {
+                showErrorDialog("Invalid Folder Name", "The folder name is required.");
+                return null; // Invalid name
+            }
+
+            if (existingFolders.contains(folderName)) {
+                showErrorDialog("Duplicate Folder Name", "A folder with this name already exists.");
+                return null; // Duplicate name
+            }
+
+            //return folderName; // Valid name
+            return addButtonText.get();
+        }
+
+        return null; // Dialog was canceled
     }
 
+    private void showErrorDialog(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        //alert.setGraphic(null);
+        alert.setContentText(content);
+
+        // Use a custom stage to make it always on top
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alertStage.setAlwaysOnTop(true); // Keep dialog on top
+
+        // Apply styles to the alert using CSS
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("cardview");
+
+        alert.showAndWait();
+    }
+
+
+    /**
+     * Retrieves the text entered in the "Add Folder" dialog.
+     *
+     * @return The text entered in the dialog, or `null` if no text was entered.
+     */
     public String getAddButtonText(){
         return addButtonText.get();
     }
 
+    /**
+     * Retrieves the root view of the folders screen.
+     *
+     * @return The `StackPane` representing the folders screen view.
+     */
     public StackPane getView() {
         return this;
     }

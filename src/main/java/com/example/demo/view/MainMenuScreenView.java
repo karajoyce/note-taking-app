@@ -61,6 +61,8 @@ public class MainMenuScreenView extends StackPane {
         pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
+        recentNoteButton = new Button("Recent");
+        recentNoteButton2 = new Button("Recent");
 
         topViewBar = new TopViewBar();
 
@@ -168,12 +170,10 @@ public class MainMenuScreenView extends StackPane {
         newNoteButton.setMinWidth(275);
         newNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton = new Button("Recent");
         recentNoteButton.setMinHeight(375);
         recentNoteButton.setMinWidth(275);
         recentNoteButton.getStyleClass().add("bignotebox");
 
-        recentNoteButton2 = new Button("Recent");
         recentNoteButton2.setMinHeight(375);
         recentNoteButton2.setMinWidth(275);
         recentNoteButton2.getStyleClass().add("bignotebox");
@@ -205,10 +205,12 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
+
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
 
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
+        //toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         //ToDoStorage.LoadToDoList();
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);

@@ -29,7 +29,9 @@ public class ToDoList {
      * Initializes an empty list of tasks and sets the task counter to 1.
      */
     public ToDoList(ArrayList<Task> tasks) {
+        //this.tasks = new ArrayList<>();
         this.tasks = tasks;
+        //this.taskCounter = 1;
         this.taskCounter = 1;
 
         this.xpModel = xpModel;
@@ -56,53 +58,13 @@ public class ToDoList {
 
     }
 
+    /**
+     * Sorts a task by due date
+     */
     private void sortTasksByDueDate() {
         Collections.sort(tasks, Comparator.comparingLong(Task::getTaskDueDate));
     }
 
-
-    /**
-     * Removes a task from the to-do list based on the task ID.
-     *
-     * @param taskID The unique identifier of the task to be removed.
-     */
-    public void removeTask(int taskID) {
-        tasks.removeIf(task -> task.getTaskID() == taskID);
-
-    }
-
-    /**
-     * Edits an existing task's description and due date.
-     *
-     * @param taskID The unique identifier of the task to be edited.
-     * @param newDescription The new description for the task.
-     * @param newDueDate The new due date for the task, represented as a long value (e.g., a timestamp).
-     */
-    public void editTask(int taskID, String newDescription, long newDueDate) {
-        for (Task task : tasks) {
-            if (task.getTaskID() == taskID) {
-                task.setTaskDescription(newDescription);
-                task.setTaskDueDate(newDueDate);
-                ToDoStorage.SaveToDoList(tasks);
-                break;
-            }
-        }
-
-    }
-
-    /**
-     * Toggles the completion status of a task.
-     *
-     * @param taskID The unique identifier of the task whose completion status is to be toggled.
-     */
-    public void toggleTaskCompletion(int taskID) {
-        for (Task task : tasks) {
-            if (task.getTaskID() == taskID) {
-                task.toggleCompleted();
-                break;
-            }
-        }
-    }
 
     /**
      * Retrieves the list of tasks in the to-do list.
@@ -115,3 +77,4 @@ public class ToDoList {
 
 
 }
+

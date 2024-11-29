@@ -66,7 +66,6 @@ public class HelloApplication extends Application {
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
-        //fCardView.setToDoList(toDoListView);
         fCardView.runDeckUpdate();
 
         FoldersModel foldersModel = new FoldersModel();
@@ -89,6 +88,10 @@ public class HelloApplication extends Application {
         navigationController.setMainMenuScene(mainMenuScene);
         navigationController.setFoldersScene(foldersScene);
         navigationController.setFlashcardScene(flashcardScene);
+        navigationController.setFlashcardScene(flashcardScene);
+
+        MainMenuScreenViewController mainMenuScreenViewController = new MainMenuScreenViewController(toDoListView, mainMenuScreenView, topViewBar, stage, breakReminderController, flashcardScene, mainMenuScene, foldersScreenView, toDoListController, foldersController, fCardView, navigationController);
+
 
         // Set Up Navigation in Views
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
