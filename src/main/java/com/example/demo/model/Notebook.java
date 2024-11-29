@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import java.time.LocalDateTime;
 /**
 
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -21,7 +21,7 @@ public class Notebook implements Serializable {
     * one being an ArrayList Checking Tags
     * and the other grabbing the time a Notebook is created*/
     private ArrayList<String> tags;
-    private String creationDate;
+    private LocalDateTime creationDate;
 
     public Notebook(String name) {
         title = name;
@@ -29,7 +29,7 @@ public class Notebook implements Serializable {
         /*Changes by Nathan, initializing tags and
         * the creation date*/
         tags = new ArrayList<>();
-        creationDate = String.valueOf(System.currentTimeMillis());
+        creationDate = LocalDateTime.now();
     }
 
     public ArrayList<Page> getNotes(){
@@ -83,11 +83,11 @@ public class Notebook implements Serializable {
     }
 
     /**SETTER AND GETTTER METHODS FOR CREATION DATE*/
-    public String getCreationDate(){
+    public LocalDateTime getCreationDate(){
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate){
+    public void setCreationDate(LocalDateTime creationDate){
         this.creationDate = creationDate;
     }
 }

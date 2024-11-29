@@ -7,10 +7,9 @@ import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
+/**CHANGES BY NATHAN*/
+import javafx.beans.value.ChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,6 +34,10 @@ public class FoldersScreenView extends StackPane {
     private Button addFolderButton;
     private XPModel xpModel;
     private ToDoList list;
+    /**CHANGES BY NATHAN*/
+    private TextField searchField;
+    private ChoiceBox<String> sortOptions;
+    private String currentSortOrder;
 
     private ToDoListController toDoCont;
     private Button deleteButton;
@@ -65,6 +68,12 @@ public class FoldersScreenView extends StackPane {
         this.toDoListV = new ToDoListView();
         ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
 
+        /** CHANGES BY NATHAN INITIALIZING*/
+        addFolderButton = new Button("Add Folder");
+        pageBack = new Button("Back");
+        searchField = new TextField();
+        sortOptions = new ChoiceBox<>();
+        currentSortOrder = "Name";
 
 
         // Initialize foldersGrid
@@ -112,6 +121,15 @@ public class FoldersScreenView extends StackPane {
         topBar.setPadding(new Insets(10));
         topBar.getStyleClass().add("top-bar");
 
+        /**CHANGES BY NATHAN SEARCH FIELD SETUP*/
+        /*Search field setup*/
+        searchField.setPromptText("Search folders");
+        searchField.setPrefWidth(screenWidth * 0.5);
+
+        sortOptions.getItems().clear();
+        sortOptions.getItems().addAll("Name", "Creation Date");
+        sortOptions.setValue("Name");
+
         pageBack.setMinWidth(100);
         pageBack.setMinHeight(40);
         pageBack.getStyleClass().add("back-button");
@@ -121,7 +139,7 @@ public class FoldersScreenView extends StackPane {
         addFolderButton.setMinHeight(40);
         addFolderButton.getStyleClass().add("add-folder-button");
 
-        topBar.getChildren().addAll(pageBack, addFolderButton);
+        topBar.getChildren().addAll(pageBack, addFolderButton, searchField, sortOptions);
 
         // Add folders grid to a ScrollPane
         ScrollPane scrollPane = new ScrollPane();
@@ -172,41 +190,39 @@ public class FoldersScreenView extends StackPane {
     }
 
     public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
-        foldersGrid.getChildren().clear();
-        //folderNames  = NotesStorage.GenerateNotebookTitles();
+        foldersGrid.getChildren().clear(); // Clear all current children in the grid
         int columns = 3; // Number of columns in the grid
         int row = 0, col = 0;
 
         for (String folderName : folderNames) {
-            // Create a button for the folder
+            // Create a button to represent the folder
             Button folderButton = new Button(folderName);
-            folderButton.getStyleClass().add("folder-box");
-            folderButton.setPrefSize(150, 150); // Set preferred size of folder boxes
-            folderButton.setWrapText(true); // Allow text wrapping for long folder names
+            folderButton.getStyleClass().add("folder-box"); // Apply folder-box styling from CSS
+            folderButton.setPrefSize(150, 150); // Set preferred size
+            folderButton.setWrapText(true); // Wrap text if folder names are long
+            folderButton.setOnMouseClicked(folderSelectionHandler); // Attach the selection handler
 
-            // Attach the folder selection handler
-
-            folderButton.setOnMouseClicked(folderSelectionHandler);
-
-            // Create a delete button for the folder
+            // Create a delete button
             Button deleteButton = new Button("X");
-            deleteButton.getStyleClass().add("delete-button");
-            deleteButton.setPrefSize(30, 30); // Set size for delete button
-            deleteButton.setOnMouseClicked(deleteHandler);
+            deleteButton.getStyleClass().add("delete-button"); // Apply delete-button styling from CSS
+            deleteButton.setPrefSize(30, 30); // Set preferred size for delete button
+            deleteButton.setOnMouseClicked(deleteHandler); // Attach the delete handler
 
-            // Add folder button and delete button to a container (VBox)
-            VBox folderContainer = new VBox(5); // 5px spacing
-            folderContainer.setAlignment(Pos.CENTER);
+            // Wrap the folder and delete button in a VBox
+            VBox folderContainer = new VBox(5);
+            folderContainer.setAlignment(Pos.CENTER); // Align content to the center
             folderContainer.getChildren().addAll(folderButton, deleteButton);
 
+            // Add the VBox to the grid
             foldersGrid.add(folderContainer, col, row);
             col++;
             if (col >= columns) {
-                col = 0;
-                row++;
+                col = 0; // Reset column index
+                row++;  // Move to the next row
             }
         }
     }
+
     public void updateToDoListView() {
         toDoListV.setTaskList(ToDoList.getTasks(), xpModel);
     }
@@ -228,6 +244,25 @@ public class FoldersScreenView extends StackPane {
 
         Optional<String> result = dialog.showAndWait();
         return result.orElse(null);
+
+    }
+
+    // Getters
+
+    public TextField getSearchField() {
+        return searchField;
+    }
+
+    public ChoiceBox<String> getSortOptions() {
+        return sortOptions;
+    }
+
+    public String getCurrentSortOrder() {
+        return currentSortOrder;
+    }
+
+    public void setCurrentSortOrder(String sortOrder) {
+        this.currentSortOrder = sortOrder;
     }
 
     public StackPane getView() {

@@ -16,6 +16,7 @@ public class FoldersModel {
     /**CHANGES BY NATHAN ADDING METADATA*/
     private Map<String, FolderMetaData> folderMetadata;
 
+
     public FoldersModel() {
         folders = new ArrayList<>();
         folderNotebooks = new HashMap<>();
@@ -31,6 +32,11 @@ public class FoldersModel {
             if (notebook != null) {
                 folderNotebooks.put(folderName, notebook);
                 /**CHANGES BY NATHAN FOLDER METADATA*/
+                // Retrieve actual creation date if available
+                LocalDateTime creationDate = NotesStorage.GetFolderCreationDate(folderName);
+                if (creationDate == null) {
+                    creationDate = LocalDateTime.now(); // Fallback to now if not available
+                }
                 folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>()));
             }
         }
@@ -74,6 +80,7 @@ public class FoldersModel {
         if (!folderNotebooks.containsKey(folderName)) {
             folders.add(folderName); // Add to the list of folder names
             folderNotebooks.put(folderName, new Notebook(folderName)); // Map folder name to a new notebook
+            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>())); // Ensure metadata is set
         }
     }
 

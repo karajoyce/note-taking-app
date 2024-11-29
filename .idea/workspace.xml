@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added Adding and Removing Tags from a Notebook in NotebookController">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,14 +185,6 @@
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
       <workItem from="1732786927997" duration="9169000" />
-    </task>
-    <task id="LOCAL-00009" summary="got font styles to change but there's some bugs i have to fix">
-      <option name="closed" value="true" />
-      <created>1730093626948</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1730093626948</updated>
     </task>
     <task id="LOCAL-00010" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
       <option name="closed" value="true" />
@@ -574,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732789960722</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags">
+      <option name="closed" value="true" />
+      <created>1732828316024</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1732828316024</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="made flshcard storage save Deck object with title" />
     <MESSAGE value="set up functionality to switch decks from the json" />
     <MESSAGE value="Fixing functionality on empty decks" />
     <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
@@ -617,6 +620,7 @@
     <MESSAGE value="Setter and Getter Methods for Notebook Tags" />
     <MESSAGE value="Changed stuff with NotesStorage so it saves and loads the Tags Array, as well as the creationDate." />
     <MESSAGE value="Added Adding and Removing Tags from a Notebook in NotebookController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Adding and Removing Tags from a Notebook in NotebookController" />
+    <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
   </component>
 </project>

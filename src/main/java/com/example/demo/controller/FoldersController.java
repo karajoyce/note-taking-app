@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
-//import com.example.demo.FilerSystem.FolderStorage;
+import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
@@ -16,6 +16,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+
+/**CHANGES BY NATHAN*/
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FoldersController {
     private FoldersModel foldersModel;
@@ -38,21 +44,16 @@ public class FoldersController {
         this.toDoListView = toDoListView;
 
         // Define folder selection handler
-        EventHandler<MouseEvent> folderSelectionHandler = event -> {
-            Button selectedButton = (Button) event.getSource();
-            String folderName = selectedButton.getText();
-            openNotebook(folderName);
-        };
+        EventHandler<MouseEvent> folderSelectionHandler = this::handleFolderSelection;
+        EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
 
         stage.setOnCloseRequest(e -> {
-            if(lastOpenedNotebook != null) {
+            if (lastOpenedNotebook != null) {
                 NotesStorage.SaveNotes(lastOpenedNotebook);
             }
         });
 
-        // Folder delete handler
-        // Create delete handler using the factory method
-        EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
+        attachSearchAndSortListeners(folderSelectionHandler, deleteHandler);
 
         // Populate folders and pass the handler
         foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
@@ -86,8 +87,6 @@ public class FoldersController {
         NotesStorage.DeleteNotebook(folderName);
 
 
-
-
         System.out.println("Deleted folder: " + folderName);
 
         // Refresh the folders list
@@ -100,7 +99,7 @@ public class FoldersController {
         primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
-    public void addFoldersXp(double xp){
+    public void addFoldersXp(double xp) {
         xpModel.addXP(xp);
     }
 
@@ -135,7 +134,6 @@ public class FoldersController {
             });
 
 
-
             notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             Scene notebookScene = new Scene(notebookView);
             primaryStage.setScene(notebookScene);
@@ -166,6 +164,45 @@ public class FoldersController {
             // Refresh folder list and reattach handler to all buttons
             foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
         }
+    }
+
+    private void handleFolderSelection(MouseEvent event) {
+        String selectedFolder = ((Button) event.getSource()).getText();
+        openNotebook(selectedFolder);
+    }
+
+    private void attachSearchAndSortListeners(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
+        foldersScreenView.getSearchField().textProperty().addListener((observable, oldValue, newValue) -> {
+            updateFoldersGrid(newValue, foldersScreenView.getCurrentSortOrder(), folderSelectionHandler, deleteHandler);
+        });
+
+        foldersScreenView.getSortOptions().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            foldersScreenView.setCurrentSortOrder(newValue); // Update the sort order in the view
+            updateFoldersGrid(foldersScreenView.getSearchField().getText(), foldersScreenView.getCurrentSortOrder(), folderSelectionHandler, deleteHandler);
+        });
+    }
+
+
+    /**
+     * Updates the folder grid based on search query and sort order.
+     */
+    private void updateFoldersGrid(String searchQuery, String sortOrder, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
+        // Filter and sort folders
+        List<String> filteredFolders = foldersModel.getFolders().stream()
+                .filter(name -> name.toLowerCase().contains(searchQuery.toLowerCase())) // Apply search filter
+                .sorted((folder1, folder2) -> {
+                    if ("Creation Date".equals(sortOrder)) { // Sort by creation date
+                        LocalDateTime date1 = foldersModel.getFolderMetadata(folder1).getCreationDate();
+                        LocalDateTime date2 = foldersModel.getFolderMetadata(folder2).getCreationDate();
+                        return date1.compareTo(date2);
+                    } else { // Sort by name
+                        return folder1.compareToIgnoreCase(folder2);
+                    }
+                })
+                .collect(Collectors.toList());
+
+        // Populate the grid with filtered/sorted folders
+        foldersScreenView.populateFolders(filteredFolders, folderSelectionHandler, deleteHandler);
     }
 }
 
