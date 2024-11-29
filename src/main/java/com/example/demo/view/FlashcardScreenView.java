@@ -131,8 +131,8 @@ public class FlashcardScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
-        cardSection.setMinWidth((screenWidth*0.6)-20);
-        cardSection.setMaxWidth((screenWidth*0.6)-20);
+        cardSection.setMinWidth((screenWidth*0.6)-30);
+        cardSection.setMaxWidth((screenWidth*0.6)-30);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -262,6 +262,7 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
+        toDoListV.setMaxHeight(350);
         todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);

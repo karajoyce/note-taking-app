@@ -99,14 +99,15 @@ Sara Shakeel, gvk731, 11367521
 
 .task-title {
     -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
-    -fx-font-size: 18px;
+    -fx-font-size: 14px;
     -fx-text-fill: #ffffff; /* White text for contrast */
     -fx-background-color: #ff99cc; /* Pink background */
-    -fx-padding: 10;
+    -fx-padding: 5;
     -fx-alignment: center;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
     -fx-pref-width: 300px; /* Width matching the window size */
+    -fx-pref-height: 20px;
 }
 
 /* DatePicker styling */
@@ -229,7 +230,7 @@ Sara Shakeel, gvk731, 11367521
     -fx-text-fill: purple; /* purple text color */
     -fx-background-color: white; /* Set background color for the text field */
     -fx-font-family: "Comic Sans MS", "Brush Script MT", cursive;
-    -fx-font-size: 14px;
+    -fx-font-size: 12px;
 }
 
 /* styles.css */
@@ -430,5 +431,10 @@ Sara Shakeel, gvk731, 11367521
     -fx-border-color: purple;
     -fx-border-radius: 5;
     -fx-padding: 10;
+}
+
+.task-button {
+    -fx-font-size: 18px;
+
 }
 
