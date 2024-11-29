@@ -3,8 +3,10 @@ package com.example.demo.view;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -50,7 +52,11 @@ public class TaskCreationView {
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
-        //grid.setStyle("-fx-background-color: #ff99cc;"); // Set background color for the GridPane
+        grid.getColumnConstraints().add(new ColumnConstraints(125));
+        grid.getColumnConstraints().add(new ColumnConstraints(125));
+        grid.getRowConstraints().add(new RowConstraints(30));
+        grid.getRowConstraints().add(new RowConstraints(70));
+
 
         // Title label
         titleLabel = new Label("Create New Task");
@@ -61,16 +67,17 @@ public class TaskCreationView {
         taskDescriptionInput = new TextField();
         taskDescriptionInput.setPromptText("Task Description");
         taskDescriptionInput.getStyleClass().add("task-description-input");
-        GridPane.setConstraints(taskDescriptionInput, 0, 0);
+        GridPane.setConstraints(taskDescriptionInput, 0, 1);
 
         dueDatePicker = new DatePicker();
-        GridPane.setConstraints(dueDatePicker, 1, 0);
+        GridPane.setConstraints(dueDatePicker, 1, 1);
 
         // Create Task Button and HBox for centering
         createTaskButton = new Button("Create Task");
         HBox buttonContainer = new HBox(createTaskButton);
+        createTaskButton.getStyleClass().add("task-button");
         buttonContainer.setAlignment(Pos.CENTER);
-        GridPane.setConstraints(buttonContainer, 0, 1, 2, 1); // Span two columns
+        GridPane.setConstraints(buttonContainer, 0, 2, 2, 1); // Span two columns
 
         grid.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 

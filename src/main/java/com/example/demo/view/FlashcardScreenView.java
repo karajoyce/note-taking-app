@@ -89,7 +89,7 @@ public class FlashcardScreenView extends StackPane {
         toDoList = new ToDoList();
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
-        runDeckUpdate();
+        //runDeckUpdate();
     }
 
     /**
@@ -453,6 +453,13 @@ public class FlashcardScreenView extends StackPane {
             xpToggleButton.setText("STOP XP TRACKING");
         }
         isTrackingXP = !isTrackingXP;
+    }
+
+    /**
+     * Updates the to-do list view with the latest tasks.
+     */
+    public void updateToDoListView() {
+        toDoListV.setTaskList(ToDoList.getTasks(), xpModel);
     }
 }
 
