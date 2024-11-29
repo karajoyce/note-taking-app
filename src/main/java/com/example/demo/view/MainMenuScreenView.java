@@ -188,7 +188,6 @@ public class MainMenuScreenView extends StackPane {
         recentNoteButton2.setMinWidth(275);
         recentNoteButton2.getStyleClass().add("bignotebox");
 
-        updateRecentFolders();
 
         NoteBox.setPadding(new Insets(50,0,0,0));
         NoteBox.getChildren().addAll(newNoteButton, recentNoteButton, recentNoteButton2);

@@ -30,6 +30,7 @@ import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HelloApplication extends Application {
@@ -101,13 +102,28 @@ public class HelloApplication extends Application {
 
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
 
-        mainMenuScreenView.runMainScreenUpdate();
 
         mainMenuScreenView.setFoldersController(foldersController);
 
-        mainMenuScreenView.updateRecentFolders();
+        ArrayList<String> recent = foldersModel.getMostRecentFolders();
+        if(recent.size() > 0) {
+            String title1 = (recent.get(0));
+            mainMenuScreenView.getRecentNoteButton().setText(title1);
+            mainMenuScreenView.getRecentNoteButton().setOnAction(e -> foldersController.openNotebook(title1));
 
+        }else{
+            mainMenuScreenView.getRecentNoteButton().setText("Recent");
 
+        }
+        if(recent.size() > 1) {
+            String title2 = (recent.get(1));
+            mainMenuScreenView.getRecentNoteButton2().setText(title2);
+            mainMenuScreenView.getRecentNoteButton2().setOnAction(e -> foldersController.openNotebook(title2) );
+        }else{
+            mainMenuScreenView.getRecentNoteButton2().setText("Recent");
+
+        }
+        mainMenuScreenView.runMainScreenUpdate();
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);

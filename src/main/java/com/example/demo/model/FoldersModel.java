@@ -81,11 +81,13 @@ public class FoldersModel {
     }
 
     public void addFolder(String folderName) {
+
         if (!folderNotebooks.containsKey(folderName)) {
             folders.add(folderName); // Add to the list of folder names
             folderNotebooks.put(folderName, new Notebook(folderName)); // Map folder name to a new notebook
             folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now())); // Ensure metadata is set
         }
+        getMostRecentFolders();
     }
 
     public void removeFolder(String folderName) {
@@ -100,7 +102,7 @@ public class FoldersModel {
     public ArrayList<String> getMostRecentFolders(){
 
         ArrayList<String> checkList = new ArrayList<>(folderMetadata.keySet());
-        checkList.sort((a,b) -> folderMetadata.get(b).getCreationDate().compareTo(folderMetadata.get(a).creationDate));
+        checkList.sort((a,b) -> folderMetadata.get(b).getCreationDate().compareTo(folderMetadata.get(a).getCreationDate()));
 
         return new ArrayList<>(checkList.subList(0,Math.min(2,checkList.size())));
     }
