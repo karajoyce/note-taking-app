@@ -20,6 +20,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+
 import javafx.geometry.Insets;
 
 import javax.swing.plaf.TableHeaderUI;
@@ -38,6 +40,7 @@ public class FoldersScreenView extends StackPane {
     private TextField searchField;
     private ChoiceBox<String> sortOptions;
     private String currentSortOrder;
+    private Consumer<String> sortOptionListener;
 
     private ToDoListController toDoCont;
     private Button deleteButton;
@@ -127,8 +130,9 @@ public class FoldersScreenView extends StackPane {
         searchField.setPrefWidth(screenWidth * 0.5);
 
         sortOptions.getItems().clear();
-        sortOptions.getItems().addAll("Name", "Creation Date");
-        sortOptions.setValue("Name");
+        sortOptions.getItems().addAll("Name", "Oldest First", "Newest First");
+        sortOptions.setValue("Oldest First");
+        sortOptions.setOnAction(e -> onSortOptionChanged());
 
         pageBack.setMinWidth(100);
         pageBack.setMinHeight(40);
@@ -263,6 +267,17 @@ public class FoldersScreenView extends StackPane {
 
     public void setCurrentSortOrder(String sortOrder) {
         this.currentSortOrder = sortOrder;
+    }
+    // Trigger the listener when the user changes the sorting option
+    private void onSortOptionChanged() {
+        if (sortOptionListener != null) {
+            String selectedOption = sortOptions.getValue(); // Get selected sort option
+            sortOptionListener.accept(selectedOption);     // Notify the listener
+        }
+    }
+    // Setter to allow the controller to attach the listener
+    public void setSortOptionListener(Consumer<String> listener) {
+        this.sortOptionListener = listener;
     }
 
     public StackPane getView() {

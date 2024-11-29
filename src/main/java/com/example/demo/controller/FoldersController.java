@@ -183,25 +183,29 @@ public class FoldersController {
     }
 
 
-    /**
-     * Updates the folder grid based on search query and sort order.
-     */
-    private void updateFoldersGrid(String searchQuery, String sortOrder, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
-        // Filter and sort folders
+    private void updateFoldersGrid(String searchQuery, String sortOrder,
+                                   EventHandler<MouseEvent> folderSelectionHandler,
+                                   EventHandler<MouseEvent> deleteHandler) {
+        // Provide a default value if sortOrder is null
+        String effectiveSortOrder = (sortOrder != null) ? sortOrder : "Name";
+
+        // Filter folders based on the search query
         List<String> filteredFolders = foldersModel.getFolders().stream()
                 .filter(name -> name.toLowerCase().contains(searchQuery.toLowerCase())) // Apply search filter
-                .sorted((folder1, folder2) -> {
-                    if ("Creation Date".equals(sortOrder)) { // Sort by creation date
-                        LocalDateTime date1 = foldersModel.getFolderMetadata(folder1).getCreationDate();
-                        LocalDateTime date2 = foldersModel.getFolderMetadata(folder2).getCreationDate();
-                        return date1.compareTo(date2);
-                    } else { // Sort by name
-                        return folder1.compareToIgnoreCase(folder2);
-                    }
-                })
                 .collect(Collectors.toList());
 
-        // Populate the grid with filtered/sorted folders
+        // Sort folders based on the selected sort order
+        if (effectiveSortOrder.equals("Oldest First")) {
+            filteredFolders.sort(Comparator.comparing(folder -> foldersModel.getFolderMetadata(folder).getCreationDate()));
+        } else if (effectiveSortOrder.equals("Newest First")) {
+            filteredFolders.sort((folder1, folder2) ->
+                    foldersModel.getFolderMetadata(folder2).getCreationDate()
+                            .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
+        } else if (effectiveSortOrder.equals("Name")) { // Default to Name sorting
+            filteredFolders.sort(String::compareToIgnoreCase);
+        }
+
+        // Populate the folders view with the sorted and filtered list
         foldersScreenView.populateFolders(filteredFolders, folderSelectionHandler, deleteHandler);
     }
 }

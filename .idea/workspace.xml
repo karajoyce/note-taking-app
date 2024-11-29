@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Something wrong with the Creation Date and sorting by oldest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,14 +183,6 @@
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
       <workItem from="1732786927997" duration="9169000" />
-    </task>
-    <task id="LOCAL-00011" summary="THE FONT CHANGING RETAINS THE PREVIOUS STYKLES LETS GOOO">
-      <option name="closed" value="true" />
-      <created>1730174179019</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1730174179019</updated>
     </task>
     <task id="LOCAL-00012" summary="nvm it only works for underline im depressed">
       <option name="closed" value="true" />
@@ -574,7 +568,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732842507917</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Something wrong with the Creation Date and sorting by oldest">
+      <option name="closed" value="true" />
+      <created>1732843489473</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1732843489473</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +594,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixing functionality on empty decks" />
     <MESSAGE value="Starting motivational messages, need to make prettier tomorrow" />
     <MESSAGE value="setting up dynamic pages" />
     <MESSAGE value="working on integration and pages" />
@@ -617,6 +618,7 @@
     <MESSAGE value="Added Adding and Removing Tags from a Notebook in NotebookController" />
     <MESSAGE value="(Re)Starting implementation for Folder Searching and Tags &#10;Added fields for tracking creation time and tags" />
     <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
+    <MESSAGE value="Something wrong with the Creation Date and sorting by oldest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Something wrong with the Creation Date and sorting by oldest" />
   </component>
 </project>
