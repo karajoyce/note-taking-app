@@ -6,6 +6,7 @@ import com.example.demo.model.XPModel;
 import com.example.demo.model.ToDoList;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
@@ -20,6 +21,8 @@ import javafx.stage.Screen;
 import java.util.List;
 import java.util.Optional;
 import javafx.geometry.Insets;
+import javafx.stage.Stage;
+
 
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -255,22 +258,66 @@ public class FoldersScreenView extends StackPane {
      *
      * @return The folder name entered by the user, or `null` if canceled.
      */
-    public String showAddFolderDialog() {
+    public String showAddFolderDialog(List<String> existingFolders) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Add Folder");
         dialog.setHeaderText(null); // Remove header
         dialog.setGraphic(null); // Remove graphic
         dialog.setContentText("Folder Name:");
 
+        // Use a custom stage to make it always on top
+        Stage dialogStage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        dialogStage.setAlwaysOnTop(true); // Keep dialog on top
+
 
         // Apply styles to the dialog using CSS
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         dialog.getDialogPane().getStyleClass().add("cardview");
 
+        // Show the dialog and get the result
         addButtonText = dialog.showAndWait();
 
-        return addButtonText.orElse(null);
+        if (addButtonText.isPresent()) {
+            // Trim the input to remove leading/trailing whitespace
+            String folderName = addButtonText.get().trim();
+
+            // Validate the folder name
+            if (folderName.isEmpty()) {
+                showErrorDialog("Invalid Folder Name", "The folder name is required.");
+                return null; // Invalid name
+            }
+
+            if (existingFolders.contains(folderName)) {
+                showErrorDialog("Duplicate Folder Name", "A folder with this name already exists.");
+                return null; // Duplicate name
+            }
+
+            //return folderName; // Valid name
+            return addButtonText.get();
+        }
+
+        return null; // Dialog was canceled
     }
+
+    private void showErrorDialog(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
+        //alert.setGraphic(null);
+        alert.setContentText(content);
+
+        // Use a custom stage to make it always on top
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alertStage.setAlwaysOnTop(true); // Keep dialog on top
+
+        // Apply styles to the alert using CSS
+        alert.getDialogPane().getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        alert.getDialogPane().getStyleClass().add("cardview");
+
+        alert.showAndWait();
+    }
+
 
     /**
      * Retrieves the text entered in the "Add Folder" dialog.

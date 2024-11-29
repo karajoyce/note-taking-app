@@ -13,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+import java.util.List;
+
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
  Kara Leier, kjl061, 11293306
@@ -204,7 +206,9 @@ public class FoldersController {
      */
     public void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
-        String newFolderName = foldersScreenView.showAddFolderDialog();
+        // Pass the current folder names for validation
+        List<String> existingFolders = foldersModel.getFolders();
+        String newFolderName = foldersScreenView.showAddFolderDialog(existingFolders);
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
 
