@@ -43,6 +43,7 @@ public class FoldersController {
     private EventHandler<MouseEvent> folderSelectionHandler; // Event handler for selecting a folder
     private EventHandler<MouseEvent> deleteHandler; // Event handler for deleting a folder
     private String folderName; // Name of the currently selected folder
+    private String newFolderName;
 
     /**
      * Constructs a FoldersController instance.
@@ -208,7 +209,7 @@ public class FoldersController {
         // Add a new folder
         // Pass the current folder names for validation
         List<String> existingFolders = foldersModel.getFolders();
-        String newFolderName = foldersScreenView.showAddFolderDialog(existingFolders);
+        newFolderName = foldersScreenView.showAddFolderDialog(existingFolders);
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
 
@@ -222,6 +223,10 @@ public class FoldersController {
             // Refresh folder list and reattach handler to all buttons
             foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
         }
+    }
+
+    public String getNewFolderName() {
+        return newFolderName;
     }
 }
 

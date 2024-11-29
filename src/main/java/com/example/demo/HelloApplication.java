@@ -68,7 +68,6 @@ public class HelloApplication extends Application {
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
-        //fCardView.setToDoList(toDoListView);
         fCardView.runDeckUpdate();
 
         FoldersModel foldersModel = new FoldersModel();

@@ -125,6 +125,8 @@ public class ToDoListView extends VBox {
             }
 
         }
+        System.out.println("tasks left after deletion " + tasks);
+        System.out.println(taskListView.getItems());
         ToDoStorage.SaveToDoList(tasks);
     }
 

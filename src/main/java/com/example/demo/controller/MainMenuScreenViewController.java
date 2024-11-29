@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenuScreenViewController {
 
@@ -83,8 +84,11 @@ public class MainMenuScreenViewController {
         });
         view.getNewNoteButton().setOnAction(event -> {
             fCont.addNewFolder(fCont.getFolderSelectionHandler(), fCont.getDeleteHandler());
-            if (!foldersScreenView.getAddButtonText().isEmpty()){
-                fCont.openNotebook(foldersScreenView.getAddButtonText());
+            if (!foldersScreenView.getAddButtonText().isEmpty() || fCont.getNewFolderName() != null) {
+                if (fCont.getNewFolderName() != null) {
+                    System.out.println("Folder name is : " + fCont.getNewFolderName());
+                    fCont.openNotebook(foldersScreenView.getAddButtonText());
+                }
             }
         });
     }

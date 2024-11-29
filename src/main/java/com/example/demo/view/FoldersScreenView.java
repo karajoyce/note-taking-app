@@ -171,6 +171,7 @@ public class FoldersScreenView extends StackPane {
         motivContainer.setMinHeight(screenHeight * 0.3);
         motivContainer.getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
 
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         VBox todoContainer = new VBox(toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         todoContainer.setMinHeight(screenHeight * 0.3);
