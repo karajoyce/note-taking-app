@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
@@ -259,6 +260,10 @@ public class FoldersController {
             foldersModel.addFolder(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
+            // Make a new deck assigned to the new notebook
+            Deck deck = new Deck(newFolderName);
+            FlashcardStorage.SaveDeck(deck);
+
             if (newNotebook.getNotes().isEmpty()) {
                 newNotebook.addPage(new Page("Lecture 1"));
             }

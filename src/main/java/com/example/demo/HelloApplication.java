@@ -65,6 +65,7 @@ public class HelloApplication extends Application {
         // Deck initialization, needs to change
 
         FlashcardScreenView fCardView = new FlashcardScreenView();
+        fCardView.setFlashcardModel(fCard);
         FlashcardScreenController fCardCont = new FlashcardScreenController(fCard, fCardView);
         fCardView.runDeckUpdate();
 

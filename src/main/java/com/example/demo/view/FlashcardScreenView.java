@@ -91,6 +91,14 @@ public class FlashcardScreenView extends StackPane {
         toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
     }
 
+    public void setFlashcardModel(FlashcardScreen flashcardModel) {
+        this.flashcardModel = flashcardModel;
+    }
+
+    public FlashcardScreen getFlashcardModel() {
+        return this.flashcardModel;
+    }
+
     /**
      * Function that will re-draw the screen when something is changed
      * Post-condition: screen will reflect the newest changes

@@ -64,6 +64,7 @@ public class MainMenuScreenViewController {
 //            primaryStage.setScene(flashcardScene);
 //
 //        });
+        fView.runDeckUpdate();
         topViewBar.getFlashButton().setOnAction(event -> navigationController.navigateToFlashcardScreen((fView)));
         topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {

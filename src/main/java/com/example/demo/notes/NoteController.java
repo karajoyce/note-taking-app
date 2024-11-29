@@ -11,6 +11,8 @@ package com.example.demo.notes;
 
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+
+import com.example.demo.model.Notebook;
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
@@ -34,15 +36,15 @@ import com.example.demo.model.Deck;
 public class NoteController {
 
     NoteModel noteModel;
-    /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
-    Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
+    Deck deck;
 
     /**
      * Constructor method for the text editor's controller
      * @param model the text editor model
      */
-    public NoteController(NoteModel model) {
+    public NoteController(NoteModel model, Notebook currNoteBook) {
         noteModel = model;
+        this.deck = FlashcardStorage.LoadFlashCards(currNoteBook.getTitle());
 
         /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
@@ -159,9 +161,9 @@ public class NoteController {
                         noteModel.setWaitingForBackInput(false);
 
                         // Create the new flashcard
-                        TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
+                        deck.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
                                 backBuffer.toString().strip()));
-                        FlashcardStorage.SaveDeck(TEMPORARY_DECK);
+                        FlashcardStorage.SaveDeck(deck);
 
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");
