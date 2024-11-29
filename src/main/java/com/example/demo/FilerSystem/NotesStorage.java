@@ -43,10 +43,9 @@ public class NotesStorage {
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
         System.out.println("Saving creation date: " + notebook.getCreationDate());
         /**CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
-        if (notebook.getLastAccessed() != null){
-            jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
-            System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
-        }
+        jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
+        System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
+
 
         //Trying to save tags
         // JsonArray tagsArray = new JsonArray();
@@ -202,6 +201,19 @@ public class NotesStorage {
             }
         } catch (Exception e) {
             System.err.println("Error retrieving creation date for folder: " + folderName);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static LocalDateTime GetFolderLastAccess(String folderName) {
+        try {
+            Notebook notebook = LoadNotes(folderName);
+            if (notebook != null && notebook.getLastAccessed() != null) {
+                return notebook.getLastAccessed();
+            }
+        } catch (Exception e) {
+            System.err.println("Error retrieving Last Access for folder: " + folderName);
             e.printStackTrace();
         }
         return null;

@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 
 /**CHANGES BY NATHAN*/
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -199,7 +200,7 @@ public class FoldersController {
                 .collect(Collectors.toList());
 
         // Sort folders based on the selected sort order
-        if (effectiveSortOrder.equals("Oldest First")) {
+        /*if (effectiveSortOrder.equals("Oldest First")) {
             filteredFolders.sort(Comparator.comparing(folder -> foldersModel.getFolderMetadata(folder).getCreationDate()));
         } else if (effectiveSortOrder.equals("Newest First")) {
             filteredFolders.sort((folder1, folder2) ->
@@ -207,6 +208,30 @@ public class FoldersController {
                             .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
         } else if (effectiveSortOrder.equals("Name")) { // Default to Name sorting
             filteredFolders.sort(String::compareToIgnoreCase);
+        } else if (effectiveSortOrder.equals("Last Accessed")) {
+            filteredFolders.sort((folder1, folder2) ->
+                    foldersModel.getFolderMetadata(folder2).getLastAccessed()
+                            .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
+        }*/
+        // Apply sorting logic
+        switch (effectiveSortOrder) {
+            case "Last Accessed":
+                filteredFolders.sort((folder1, folder2) ->
+                        foldersModel.getFolderMetadata(folder2).getLastAccessed()
+                                .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
+                break;
+            case "Oldest First":
+                filteredFolders.sort(Comparator.comparing(folder ->
+                        foldersModel.getFolderMetadata(folder).getCreationDate()));
+                break;
+            case "Newest First":
+                filteredFolders.sort((folder1, folder2) ->
+                        foldersModel.getFolderMetadata(folder2).getCreationDate()
+                                .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
+                break;
+            default: // Sort by Name
+                Collections.sort(filteredFolders);
+                break;
         }
 
         // Populate the folders view with the sorted and filtered list

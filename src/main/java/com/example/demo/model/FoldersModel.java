@@ -34,7 +34,7 @@ public class FoldersModel {
                 /**CHANGES BY NATHAN FOLDER METADATA*/
                 // Retrieve actual creation date if available
                 LocalDateTime creationDate = NotesStorage.GetFolderCreationDate(folderName);
-                LocalDateTime lastAccessed = notebook.getLastAccessed();
+                LocalDateTime lastAccessed = NotesStorage.GetFolderLastAccess(folderName);
                 if (creationDate == null) {
                     creationDate = LocalDateTime.now(); // Fallback to now if not available
                 }
@@ -114,7 +114,6 @@ public class FoldersModel {
         }
 
         public LocalDateTime getLastAccessed() {
-            this.LastAccessed = LocalDateTime.now();
             return LastAccessed;
         }
 

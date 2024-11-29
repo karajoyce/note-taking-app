@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Added LastAccessed on Folders I think, FoldersModel for sure, but for Folders Model as well I think">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,14 +184,6 @@
       <workItem from="1732735309242" duration="120000" />
       <workItem from="1732745276247" duration="12811000" />
       <workItem from="1732786927997" duration="9169000" />
-    </task>
-    <task id="LOCAL-00013" summary="FIXED THE PROBLEM FOR REAL FOR REAL">
-      <option name="closed" value="true" />
-      <created>1730267668770</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1730267668770</updated>
     </task>
     <task id="LOCAL-00014" summary="updated docstrings">
       <option name="closed" value="true" />
@@ -575,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732870705089</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Added LastAccessed on Folders I think, FoldersModel for sure, but for Folders Model as well I think">
+      <option name="closed" value="true" />
+      <created>1732872573788</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1732872573788</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,7 +595,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setting up dynamic pages" />
     <MESSAGE value="working on integration and pages" />
     <MESSAGE value="working on adding pages to notebook" />
     <MESSAGE value="added a new screen for adding pages, working on dynamic sync of the json" />
@@ -618,6 +619,7 @@
     <MESSAGE value="Folders can be sorted by Name, Creation Date(Oldest First), as well as the ability to search for Folders" />
     <MESSAGE value="Something wrong with the Creation Date and sorting by oldest" />
     <MESSAGE value="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a field for Notebooks and Note Storage to handle last Accessed&#10;So far it updated when someone changes a tag, adds a page, or removes either" />
+    <MESSAGE value="Added LastAccessed on Folders I think, FoldersModel for sure, but for Folders Model as well I think" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added LastAccessed on Folders I think, FoldersModel for sure, but for Folders Model as well I think" />
   </component>
 </project>

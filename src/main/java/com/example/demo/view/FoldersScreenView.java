@@ -130,7 +130,7 @@ public class FoldersScreenView extends StackPane {
         searchField.setPrefWidth(screenWidth * 0.5);
 
         sortOptions.getItems().clear();
-        sortOptions.getItems().addAll("Name", "Oldest First", "Newest First");
+        sortOptions.getItems().addAll("Name", "Oldest First", "Newest First", "Last Accessed");
         sortOptions.setValue("Oldest First");
         sortOptions.setOnAction(e -> onSortOptionChanged());
 
