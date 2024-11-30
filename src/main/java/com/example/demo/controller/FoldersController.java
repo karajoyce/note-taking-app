@@ -257,6 +257,7 @@ public class FoldersController {
         String newFolderName = foldersScreenView.showAddFolderDialog(NotesStorage.GenerateNotebookTitles());
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
+            fCont.addFlashcardDeck(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {

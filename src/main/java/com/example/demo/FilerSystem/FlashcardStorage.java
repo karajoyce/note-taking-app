@@ -36,6 +36,7 @@ public class FlashcardStorage {
             gson.toJson(deck, flash);
 
             flash.flush();
+            flash.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

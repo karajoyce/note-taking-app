@@ -36,6 +36,18 @@ public class FlashcardScreen {
     public void setDeck(Deck deck){
         this.currentDeck = deck;
     }
+    public boolean checkCurrentDeck(){
+        List<String> titles = FlashcardStorage.GenerateDeckTitles();
+        if (!titles.contains(currentDeck.getTitle())){
+            if (titles.isEmpty()){
+                currentDeck = new Deck("Empty Deck");
+            } else {
+                currentDeck = FlashcardStorage.LoadFlashCards(titles.getFirst());
+            }
+            return true;
+        }
+        return false;
+    }
 
     public void addCard(String front, String back){
 

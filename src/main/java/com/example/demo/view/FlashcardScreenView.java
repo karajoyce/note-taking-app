@@ -97,6 +97,14 @@ public class FlashcardScreenView extends StackPane {
      */
     public void runDeckUpdate(){
 
+        if (flashcardModel.checkCurrentDeck()){
+            if (flashcardModel.getDeck().getCards().isEmpty()){
+                setCurrentCard(new Card("", ""));
+            } else {
+                setCurrentCard(flashcardModel.getDeck().getCards().getFirst());
+            }
+        }
+
         // General class things/size
         this.getStyleClass().add("wholescreen");
         double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;

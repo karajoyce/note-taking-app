@@ -40,6 +40,7 @@ public class XPStorage {
         try {
             FileReader xpFile = new FileReader(filePath);
             XPModel xp = gson.fromJson(xpFile, XPModel.class);
+            xpFile.close();
             if (xp == null) {
                 return new XPModel(100); // Default maxXP
             }

@@ -30,6 +30,7 @@ public class ToDoStorage {
 
             gson.toJson(todo, write);
             write.flush();
+            write.close();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,11 +47,13 @@ public class ToDoStorage {
 
             ArrayList<Task> tasks = gson.fromJson(ToDoListPath, toDoList);
 
+            ToDoListPath.close();
             return new ToDoList(tasks);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
 
 
     }
