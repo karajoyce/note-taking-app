@@ -11,7 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 
-import java.awt.image.AreaAveragingScaleFilter;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVING UNUSED IMPORT STATEMENTS
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -38,17 +39,19 @@ import java.util.Objects;
  */
 public class TaskItem {
 
-    private CheckBox checkBox; // Checkbox for task completion
-    private Label label; // Label to display task description and due date
-    private ImageView deleteIcon; // ImageView for the trash icon
-    private ImageView reminderIcon; // ImageView for the reminder (bell) icon
-    private Task task; // Store reference to Task
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //MAKING THINGS FINAL
+    private final CheckBox checkBox; // Checkbox for task completion
+    private final Label label; // Label to display task description and due date
+    private final ImageView deleteIcon; // ImageView for the trash icon
+    private final ImageView reminderIcon; // ImageView for the reminder (bell) icon
+    private final Task task; // Store reference to Task
     private HBox hBox; // HBox container for the task item
 
-    private XPModel xpModel;
+    private final XPModel xpModel;
     private static final String TRASH_ICON_PATH = "deleteIcon.png"; // Update with the correct path
     private static final String BELL_ICON_PATH = "bellIcon.png"; // Path for bell icon
-    private ToDoList tasks;
+    private final ToDoList tasks;
 
 
 
@@ -57,7 +60,7 @@ public class TaskItem {
      * Constructs a TaskItem with the specified task.
      *
      * @param task    The Task object containing the task's details.
-     * @param xpModel
+     * @param xpModel Model for XP
      */
     public TaskItem(ToDoList toDoList, Task task, XPModel xpModel, EventHandler<ActionEvent> deleteHandler) {
         this.task = task;
@@ -75,6 +78,8 @@ public class TaskItem {
         label.getStyleClass().add("label");
 
         // Set action for the checkbox to toggle task completion
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //WHY THE E THINGS AGAIN WHYYYYYYY
         checkBox.setOnAction(e -> {
             task.toggleCompleted(); // Toggle task completion status
             //Add implementation that gives more xp anytime this happens
@@ -96,6 +101,8 @@ public class TaskItem {
 
         deleteIcon.setFitHeight(20); // Set the height of the icon
         deleteIcon.setFitWidth(20); // Set the width of the icon
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //WHY THE E THINGS AGAIN WHYYYYYYY
         deleteIcon.setOnMouseClicked(e -> {
             deleteHandler.handle(new ActionEvent()); // Trigger delete action
         });

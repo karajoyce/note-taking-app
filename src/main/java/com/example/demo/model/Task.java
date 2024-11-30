@@ -20,10 +20,14 @@ import java.util.Objects;
  */
 public class Task {
 
-    private String taskDescription;
-    private long taskDueDate;
-    private boolean taskCompleted = false;
-    private int taskID;
+    private final String taskDescription;
+    private final long taskDueDate;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //pparently setting it to false was redundant
+    private boolean taskCompleted;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //CHANGING THINGS TO FINAL
+    private final int taskID;
 
     /**
      * Constructs a new Task with the specified description, due date,
@@ -40,16 +44,16 @@ public class Task {
         this.taskCompleted = taskCompleted;
         this.taskID = taskID;
     }
-
-    /**
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS
+    **
      * Sets the description of the task.
      *
      * @param description The new description for the task.
-     */
+
     public void setTaskDescription(String description) {
         this.taskDescription = description;
 
-    }
+    }*/
 
     /**
      * Returns the description of the task.
@@ -60,15 +64,16 @@ public class Task {
         return this.taskDescription;
     }
 
-    /**
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS
+       **
      * Sets the due date of the task.
      *
      * @param date The new due date for the task, represented as a long value.
-     */
+
     public void setTaskDueDate(long date) {
         this.taskDueDate = date;
 
-    }
+    }*/
 
     /**
      * Returns the due date of the task.
@@ -97,14 +102,16 @@ public class Task {
         return taskCompleted;
     }
 
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     /**
      * Returns the unique identifier of the task.
      *
      * @return The unique identifier of the task.
-     */
+
     public int getTaskID() {
         return this.taskID;
-    }
+    }*/
 
 
     public String toString() {

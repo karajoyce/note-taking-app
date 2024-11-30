@@ -21,9 +21,9 @@ import java.util.Comparator;
  */
 public class ToDoList {
 
-    private ArrayList<Task> tasks; // List of tasks in the to-do list
+    private final ArrayList<Task> tasks; // List of tasks in the to-do list
     private int taskCounter; // To generate unique task IDs
-    private XPModel xpModel;
+
     /**
      * Constructs a new ToDoList instance.
      * Initializes an empty list of tasks and sets the task counter to 1.
@@ -34,9 +34,11 @@ public class ToDoList {
         //this.taskCounter = 1;
         this.taskCounter = 1;
 
-        this.xpModel = xpModel;
+        XPModel xpModel = XPManager.getXPModel();
     }
 
+    /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+    //WHY IS IT TRYING TO MAKE IT VOID AAAAA
     /**
      * Adds a new task to the to-do list.
      *

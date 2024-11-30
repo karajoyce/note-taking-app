@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
 import com.example.demo.FilerSystem.*;
-
-import java.util.ArrayList;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVING UNUSED IMPORT STATEMENTS
 import java.util.List;
 
 /**
@@ -63,10 +63,12 @@ public class FlashcardScreen {
         this.getDeck().removeCard(card);
     }
 
-    public void editCard(Card card, String front, String back){
-        card.setCardFront(front);
-        card.setCardBack(back);
-    }
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //editCard Never used?
+    //public void editCard(Card card, String front, String back){
+        //card.setCardFront(front);
+        //card.setCardBack(back);
+    //}
 
 }
 

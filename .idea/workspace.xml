@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="WARNING: REVERT TO THE COMMIT BEFORE IN CASE THIS ISNT GOOD &#10;I attempted toclear warnings from controllers, there are some problems though :&#10;LOTS OF WARNINGS STILL ON: &#10;FOLDERS CONTROLLER : FIELD CAN BE CONVERTED TO LOCAL VARIABLES&#10;PARAMS MIGHT BE WEIRD&#10;MORE E SHIT &#10;COMMENTED OUT CODE FOR NOW &#10;&#10;SAME FOR MAIN MENU SCREEN VIEW CONTROLLER&#10;&#10;SOME WARNINGS ON: &#10;BREAK REMINDER : ACTION EVENT E IS WEIRD?&#10;EDIT CARD CONTROLLER : THINGS ARE FINE &#10;FLASHCARDSCREENCONTROLLER : MORE e SHIT AND PRIVATE FIELD IS ASSIGNED BUT NOT ACCESSED&#10;NOTEBOOK CONTROLLER&#10;&#9;WEIRD E SHIT AGAIN AND SOME STUFF THAT CAN BE LOCAL VARIABLES OR FIELDS THAT ARE ASSIGNED BUT NOT ACCESSED&#10;&#10;TODOLIST CONTROLLER : &#10;FIELDS CAN BE CONVERTED TO LOCAL VARIABLE &#10;PRIVATE FIELD ASSIGNED BUT NEVER ACCESSED &#10;PARAMETER E IS NEVER USED EEEEEEEEEEEEEEEEEEEEEEEEEEEE">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Filer System warnings are almost cleared, one warning shows up in most with File.mkdirs being ignored???">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/FlashcardStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/ToDoStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/XPStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/XPStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FlashcardScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,15 +197,7 @@
       <workItem from="1732841858693" duration="6492000" />
       <workItem from="1732895854121" duration="17230000" />
       <workItem from="1732947760804" duration="1423000" />
-      <workItem from="1733006670519" duration="1087000" />
-    </task>
-    <task id="LOCAL-00016" summary="added strikethrough option">
-      <option name="closed" value="true" />
-      <created>1730269328171</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1730269328172</updated>
+      <workItem from="1733006670519" duration="2980000" />
     </task>
     <task id="LOCAL-00017" summary="added ability to change paragraph alignment">
       <option name="closed" value="true" />
@@ -583,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733006614906</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Filer System warnings are almost cleared, one warning shows up in most with File.mkdirs being ignored???">
+      <option name="closed" value="true" />
+      <created>1733008079051</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008079052</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +609,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added a new screen for adding pages, working on dynamic sync of the json" />
     <MESSAGE value="motivational messages done!" />
     <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
@@ -626,6 +633,7 @@
     <MESSAGE value="no errors after merge, todolist still works" />
     <MESSAGE value="fixed flashcard bug" />
     <MESSAGE value="WARNING: REVERT TO THE COMMIT BEFORE IN CASE THIS ISNT GOOD &#10;I attempted toclear warnings from controllers, there are some problems though :&#10;LOTS OF WARNINGS STILL ON: &#10;FOLDERS CONTROLLER : FIELD CAN BE CONVERTED TO LOCAL VARIABLES&#10;PARAMS MIGHT BE WEIRD&#10;MORE E SHIT &#10;COMMENTED OUT CODE FOR NOW &#10;&#10;SAME FOR MAIN MENU SCREEN VIEW CONTROLLER&#10;&#10;SOME WARNINGS ON: &#10;BREAK REMINDER : ACTION EVENT E IS WEIRD?&#10;EDIT CARD CONTROLLER : THINGS ARE FINE &#10;FLASHCARDSCREENCONTROLLER : MORE e SHIT AND PRIVATE FIELD IS ASSIGNED BUT NOT ACCESSED&#10;NOTEBOOK CONTROLLER&#10;&#9;WEIRD E SHIT AGAIN AND SOME STUFF THAT CAN BE LOCAL VARIABLES OR FIELDS THAT ARE ASSIGNED BUT NOT ACCESSED&#10;&#10;TODOLIST CONTROLLER : &#10;FIELDS CAN BE CONVERTED TO LOCAL VARIABLE &#10;PRIVATE FIELD ASSIGNED BUT NEVER ACCESSED &#10;PARAMETER E IS NEVER USED EEEEEEEEEEEEEEEEEEEEEEEEEEEE" />
-    <option name="LAST_COMMIT_MESSAGE" value="WARNING: REVERT TO THE COMMIT BEFORE IN CASE THIS ISNT GOOD &#10;I attempted toclear warnings from controllers, there are some problems though :&#10;LOTS OF WARNINGS STILL ON: &#10;FOLDERS CONTROLLER : FIELD CAN BE CONVERTED TO LOCAL VARIABLES&#10;PARAMS MIGHT BE WEIRD&#10;MORE E SHIT &#10;COMMENTED OUT CODE FOR NOW &#10;&#10;SAME FOR MAIN MENU SCREEN VIEW CONTROLLER&#10;&#10;SOME WARNINGS ON: &#10;BREAK REMINDER : ACTION EVENT E IS WEIRD?&#10;EDIT CARD CONTROLLER : THINGS ARE FINE &#10;FLASHCARDSCREENCONTROLLER : MORE e SHIT AND PRIVATE FIELD IS ASSIGNED BUT NOT ACCESSED&#10;NOTEBOOK CONTROLLER&#10;&#9;WEIRD E SHIT AGAIN AND SOME STUFF THAT CAN BE LOCAL VARIABLES OR FIELDS THAT ARE ASSIGNED BUT NOT ACCESSED&#10;&#10;TODOLIST CONTROLLER : &#10;FIELDS CAN BE CONVERTED TO LOCAL VARIABLE &#10;PRIVATE FIELD ASSIGNED BUT NEVER ACCESSED &#10;PARAMETER E IS NEVER USED EEEEEEEEEEEEEEEEEEEEEEEEEEEE" />
+    <MESSAGE value="Filer System warnings are almost cleared, one warning shows up in most with File.mkdirs being ignored???" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filer System warnings are almost cleared, one warning shows up in most with File.mkdirs being ignored???" />
   </component>
 </project>

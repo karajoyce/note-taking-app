@@ -27,7 +27,9 @@ public class ToDoStorage {
         if (!directory.exists()) {
             /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
             //again with this, I don't think we should take it out but idrk how to fix it
-            directory.mkdirs();  // Creates the directory if it doesn't exist
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory");
+            }
         }
 
         try {

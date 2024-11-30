@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class DigitalTree {
-    private ImageView treeImageview;
-    private List<Image> treeStages;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGING THESE INTO FINAL
+    private final ImageView treeImageview;
+    private final List<Image> treeStages;
+    //todo update this maybe?
     private int currentStage = 0;
 
     public DigitalTree() {

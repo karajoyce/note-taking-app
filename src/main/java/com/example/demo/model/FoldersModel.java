@@ -26,10 +26,12 @@ import java.util.Map;
  * persistent storage using `NotesStorage`.
  */
 public class FoldersModel {
-    private List<String> folders; // List of folder names
-    private Map<String, Notebook> folderNotebooks; // Map of folder names to notebooks
-    /**CHANGES BY NATHAN ADDING METADATA*/
-    private Map<String, FolderMetaData> folderMetadata;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGING THESE TO FINAl
+    private final List<String> folders; // List of folder names
+    private final Map<String, Notebook> folderNotebooks; // Map of folder names to notebooks
+    /*CHANGES BY NATHAN ADDING METADATA*/
+    private final Map<String, FolderMetaData> folderMetadata;
 
 
     /**
@@ -39,7 +41,7 @@ public class FoldersModel {
     public FoldersModel() {
         folders = new ArrayList<>();
         folderNotebooks = new HashMap<>();
-        /**CHANGES BY NATHAN FOR FOLDER METADATA*/
+        /*CHANGES BY NATHAN FOR FOLDER METADATA*/
         folderMetadata = new HashMap<>();
 
         // Load folder names from storage
@@ -48,20 +50,22 @@ public class FoldersModel {
         // Load notebooks for each folder
         for (String folderName : folders) {
             Notebook notebook = NotesStorage.LoadNotes(folderName);
-            if (notebook != null) {
-                folderNotebooks.put(folderName, notebook);
-                /**CHANGES BY NATHAN FOLDER METADATA*/
-                // Retrieve actual creation date if available
-                LocalDateTime creationDate = NotesStorage.GetFolderCreationDate(folderName);
-                LocalDateTime lastAccessed = NotesStorage.GetFolderLastAccess(folderName);
-                if (creationDate == null) {
-                    creationDate = LocalDateTime.now(); // Fallback to now if not available
-                }
-                if (lastAccessed == null) {
-                    lastAccessed = LocalDateTime.now();
-                }
-                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+            //WHY DO WE NEED TO UNWRAP THIS
+            //UNWRAPPED IT
+            folderNotebooks.put(folderName, notebook);
+            // Retrieve actual creation date if available
+            LocalDateTime creationDate = NotesStorage.GetFolderCreationDate(folderName);
+            LocalDateTime lastAccessed = NotesStorage.GetFolderLastAccess(folderName);
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //IDK WHAT THIS DID
+            if (creationDate == null) {
+                LocalDateTime.now();
             }
+            if (lastAccessed == null) {
+                LocalDateTime.now();
+            }
+            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
         }
 
     }
@@ -86,16 +90,16 @@ public class FoldersModel {
         if (!folderNotebooks.containsKey(folderName)) {
             // Attempt to load from persistent storage
             Notebook loadedNotebook = NotesStorage.LoadNotes(folderName);
-            if (loadedNotebook != null) {
-                folderNotebooks.put(folderName, loadedNotebook);
-                /**CHANGES BY NATHAN UPDATING FOLDER META DATA*/
-                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
-            }
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //UNWRAPPING IF STATEMENT
+            folderNotebooks.put(folderName, loadedNotebook);
+            /*CHANGES BY NATHAN UPDATING FOLDER META DATA*/
+            folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
         }
         return folderNotebooks.get(folderName);
     }
 
-    /**
+    /*
      * Adds a new folder to the model.
      * Creates a new notebook for the folder and maps it in the `folderNotebooks` collection.
      *
@@ -141,9 +145,9 @@ public class FoldersModel {
 
     /**CHANGES BY NATHAN INNER CLASS FOR STORING FOLDER METADATA*/
     public static class FolderMetaData {
-        private LocalDateTime creationDate;
-        private List<String> tags;
-        private LocalDateTime LastAccessed;
+        private final LocalDateTime creationDate;
+        private final List<String> tags;
+        private final LocalDateTime LastAccessed;
 
         public FolderMetaData(LocalDateTime creationDate, List<String> tags, LocalDateTime LastAccessed) {
             this.creationDate = creationDate;
@@ -158,6 +162,7 @@ public class FoldersModel {
         public LocalDateTime getLastAccessed() {
             return LastAccessed;
         }
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
 
         public List<String> getTags(){
             return tags;

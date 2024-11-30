@@ -25,7 +25,8 @@ public class Notebook implements Serializable {
     /* Changes By Nathan, adding fields
     * one being an ArrayList Checking Tags
     * and the other grabbing the time a Notebook is created*/
-    private ArrayList<String> tags;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    private final ArrayList<String> tags;
     private LocalDateTime creationDate;
     /**CHANGES BY NATHAN FOR LAST ACCESSED FOLDER*/
     private LocalDateTime lastAccessed;
@@ -74,9 +75,10 @@ public class Notebook implements Serializable {
     }
 
     /*Setter for tags(this overwrites the current tags tho*/
-    public void setTags(ArrayList<String> tags) {
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*public void setTags(ArrayList<String> tags) {
         this.tags = tags;
-    }
+    }*/
 
     /*Method for adding a SINGLE tag*/
     public void addTag(String tag){

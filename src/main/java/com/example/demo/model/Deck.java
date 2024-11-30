@@ -1,6 +1,6 @@
 package com.example.demo.model;
-
-import com.example.demo.FilerSystem.FlashcardStorage;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVED UNUSED IMPORT STATEMENTS
 
 import java.util.ArrayList;
 

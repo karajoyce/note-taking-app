@@ -32,7 +32,9 @@ public class NotesStorage {
         File directory = new File(directoryPath);
         /* AGAIN THERE IS A WARNING THAT'S REALLY WEIRD*/
         if (!directory.exists()) {
-            directory.mkdirs();  // Creates the directory if it doesn't exist
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory");
+            }
         }
 
 
@@ -198,12 +200,15 @@ public class NotesStorage {
             Notebook notebook = LoadNotes(folderName);
             /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
             //IF this is changed, and there's no notebook initialized this will cause an error
-            if (notebook != null && notebook.getCreationDate() != null) {
+            //CHANGING IT ANYWAY
+            //if (notebook != null && notebook.getCreationDate() != null) {
+            if (notebook.getCreationDate() != null) {
                 return notebook.getCreationDate();
             }
         } catch (Exception e) {
             System.err.println("Error retrieving creation date for folder: " + folderName);
-            e.printStackTrace();
+            /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+            //e.printStackTrace();
         }
         return null;
     }
@@ -211,12 +216,15 @@ public class NotesStorage {
     public static LocalDateTime GetFolderLastAccess(String folderName) {
         try {
             Notebook notebook = LoadNotes(folderName);
-            if (notebook != null && notebook.getLastAccessed() != null) {
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //if (notebook != null && notebook.getLastAccessed() != null) {
+            if (notebook.getLastAccessed() != null) {
                 return notebook.getLastAccessed();
             }
         } catch (Exception e) {
             System.err.println("Error retrieving Last Access for folder: " + folderName);
-            e.printStackTrace();
+            /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+            //e.printStackTrace();
         }
         return null;
     }

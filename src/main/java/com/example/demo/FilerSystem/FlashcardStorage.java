@@ -32,11 +32,12 @@ public class FlashcardStorage {
         File directory = new File(directoryPath);
         if (!directory.exists()) {
             /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
-            directory.mkdirs();
+            //MAYBE FIXED IT?
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory");
+            }
         }
-
         try {
-
             FileWriter flash = new FileWriter(filePath+deck.getTitle()+".json");
 
             gson.toJson(deck, flash);

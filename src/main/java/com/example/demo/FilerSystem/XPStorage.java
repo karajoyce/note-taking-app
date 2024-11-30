@@ -20,9 +20,9 @@ public class XPStorage {
         File directory = new File(directoryPath);
         if (!directory.exists()) {
             /*CHANGES BY NATHAN THIS iS A LIL WEIRD AND IDK HOW TO GET RID OF THE WARNING*/
-            directory.mkdirs();  // Creates the directory if it doesn't exist
+            //nvm fixed it
             if (!directory.mkdirs()) {
-                throw new RuntimeException("Failed to create directory: " + directory.getAbsolutePath());
+                throw new RuntimeException("Failed to create directory");
             }
         }
 
