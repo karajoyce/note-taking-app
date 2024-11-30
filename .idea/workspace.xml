@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="fixed flashcard bug">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/FilerSystem/NotesStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/NewPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/FoldersModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Notebook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NotebookScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,6 +168,7 @@
       <workItem from="1732817262553" duration="12724000" />
       <workItem from="1732841858693" duration="6492000" />
       <workItem from="1732895854121" duration="17230000" />
+      <workItem from="1732947760804" duration="1423000" />
     </task>
     <task id="LOCAL-00015" summary="updated default font family">
       <option name="closed" value="true" />
@@ -603,16 +606,5 @@
     <MESSAGE value="no errors after merge, todolist still works" />
     <MESSAGE value="fixed flashcard bug" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed flashcard bug" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/view/FoldersScreenView.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

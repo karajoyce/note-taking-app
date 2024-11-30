@@ -81,10 +81,6 @@ public class Notebook implements Serializable {
             tags.add(tag);
             updateLastAccessed();
         }
-        //Print statement for debugging
-        else{
-            System.out.println("The tag "+tag+" is already found in tags");
-        }
     }
     /*Method for Removing a single Tag*/
     public void removeTag(String tag){

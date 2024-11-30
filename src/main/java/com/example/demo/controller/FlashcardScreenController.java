@@ -135,7 +135,6 @@ public class FlashcardScreenController {
     }
 
     public void addFlashcardDeck(String name){
-        System.out.println(name);
         Deck newDeck = new Deck(name);
         newDeck.addCard(new Card("Insert cards", ""));
         FlashcardStorage.SaveDeck(newDeck);

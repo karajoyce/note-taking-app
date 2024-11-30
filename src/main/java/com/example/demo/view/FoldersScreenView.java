@@ -321,7 +321,7 @@ public class FoldersScreenView extends StackPane {
                 return null; // Duplicate name
             }
 
-            //return folderName; // Valid name
+             // Valid name
             return addButtonText.get();
         }
 
@@ -333,7 +333,6 @@ public class FoldersScreenView extends StackPane {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setGraphic(null);
-        //alert.setGraphic(null);
         alert.setContentText(content);
 
         // Use a custom stage to make it always on top

@@ -446,10 +446,6 @@ public class NotebookScreenView extends StackPane {
 
         // Style the remove button
         removeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 12px;");
-        removeButton.setOnAction(e -> {
-            // Optional: Notify controller of tag removal
-            System.out.println("Remove tag: " + tag);
-        });
 
         tagBox.getChildren().addAll(tagLabel, removeButton); // Add the label and remove button
         return tagBox;

@@ -1,15 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
+
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.HelloApplication;
-import com.example.demo.FilerSystem.NotesStorage;
+
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
-import com.example.demo.view.EditCardView;
+
 import com.example.demo.view.NewPageView;
-import com.example.demo.view.NotebookScreenView;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

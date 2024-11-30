@@ -156,7 +156,6 @@ public class FoldersModel {
         }
 
         public LocalDateTime getLastAccessed() {
-            //System.out.println("Last accessed: " + LastAccessed);
             return LastAccessed;
         }
 

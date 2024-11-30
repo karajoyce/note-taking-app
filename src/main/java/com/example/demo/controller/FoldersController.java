@@ -347,29 +347,13 @@ public class FoldersController {
                 .filter(name -> name.toLowerCase().contains(searchQuery.toLowerCase())) // Apply search filter
                 .collect(Collectors.toList());
 
-        // Sort folders based on the selected sort order
-        /*if (effectiveSortOrder.equals("Oldest First")) {
-            filteredFolders.sort(Comparator.comparing(folder -> foldersModel.getFolderMetadata(folder).getCreationDate()));
-        } else if (effectiveSortOrder.equals("Newest First")) {
-            filteredFolders.sort((folder1, folder2) ->
-                    foldersModel.getFolderMetadata(folder2).getCreationDate()
-                            .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
-        } else if (effectiveSortOrder.equals("Name")) { // Default to Name sorting
-            filteredFolders.sort(String::compareToIgnoreCase);
-        } else if (effectiveSortOrder.equals("Last Accessed")) {
-            filteredFolders.sort((folder1, folder2) ->
-                    foldersModel.getFolderMetadata(folder2).getLastAccessed()
-                            .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
-        }*/
         // Apply sorting logic
         switch (effectiveSortOrder) {
             case "Last Accessed":
                 filteredFolders.sort((folder1, folder2) ->
                         foldersModel.getFolderMetadata(folder2).getLastAccessed()
                                 .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
-                //System.out.println("REACHED SORT LAST ACCESSED");
-                /*filteredFolders.sort(Comparator.comparing(folder ->
-                        foldersModel.getFolderMetadata(folder).getLastAccessed()));*/
+
                 break;
             case "Oldest First":
                 filteredFolders.sort(Comparator.comparing(folder ->
