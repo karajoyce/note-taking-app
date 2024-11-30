@@ -117,6 +117,8 @@ public class FoldersScreenView extends StackPane {
      * motivational messages, and the to-do list.
      */
     public void runFoldersScreenUpdate() {
+
+
         // General setup
         this.getStylesheets().add("/styles.css");
         double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;

@@ -55,6 +55,7 @@ public class TopViewBar extends HBox {
         foldersButton = new Button("Folders"); // Initialize folders button
         foldersButton.getStyleClass().add("folders-button");
 
+
         topBar.getChildren().addAll(logoView, titleLabel, flashButton, breakButton, foldersButton);
 
     }

@@ -31,6 +31,9 @@ import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HelloApplication extends Application {
 
     private static Stage primaryStage;
@@ -73,7 +76,7 @@ public class HelloApplication extends Application {
 
 
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, fCardCont);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, mainMenuScreenView);
 
 
         // Create Scenes
@@ -94,8 +97,36 @@ public class HelloApplication extends Application {
         mainMenuScreenView.getFoldersButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView));
         foldersScreenView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
         fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
+        fCardView.getBackButton().setOnAction(event -> navigationController.navigateToMainMenu(mainMenuScreenView));
+
+        mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
 
 
+        mainMenuScreenView.setFoldersController(foldersController);
+
+        ArrayList<String> recent = foldersModel.getMostRecentFolders();
+        if(recent.size() > 0) {
+            String title1 = (recent.get(0));
+            mainMenuScreenView.getRecentNoteButton().setText(title1);
+            mainMenuScreenView.getRecentNoteButton().setOnAction(e -> foldersController.openNotebook(title1));
+            mainMenuScreenView.runMainScreenUpdate();
+
+        }else{
+            mainMenuScreenView.getRecentNoteButton().setText("Recent");
+
+        }
+        if(recent.size() > 1) {
+            String title2 = (recent.get(1));
+            mainMenuScreenView.getRecentNoteButton2().setText(title2);
+            mainMenuScreenView.getRecentNoteButton2().setOnAction(e -> foldersController.openNotebook(title2) );
+            mainMenuScreenView.runMainScreenUpdate();
+        }else{
+            mainMenuScreenView.getRecentNoteButton2().setText("Recent");
+
+        }
+
+
+        mainMenuScreenView.runMainScreenUpdate();
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);

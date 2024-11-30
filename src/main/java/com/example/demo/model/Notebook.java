@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Locale;

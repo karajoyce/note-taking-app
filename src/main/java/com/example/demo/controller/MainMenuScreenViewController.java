@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.*;
@@ -30,10 +29,12 @@ public class MainMenuScreenViewController {
     private FlashcardScreenView fView;
     private NavigationController navigationController;
     private FlashcardScreenView flashcardScreenView;
+    private FoldersModel foldersModel;
 
 
-    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView, NavigationController navCont) {
+    public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView, NavigationController navCont, FoldersModel foldersModel) {
 
+        this.foldersModel = foldersModel;
         this.view = view;
         this.topViewBar = topViewBar;
         this.breakReminderController = breakReminderController;
@@ -48,6 +49,8 @@ public class MainMenuScreenViewController {
         this.fView = flashcardScreenView;
         this.navigationController = navCont;
 
+        this.flashcardScreenView = flashcardScreenView;
+
 
         // Set up button actions
         setupButtonActions();
@@ -56,6 +59,15 @@ public class MainMenuScreenViewController {
 
     private void setupButtonActions() {
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
+        topViewBar.getFlashButton().setOnAction(event -> {
+
+            todoC.updateTaskListView();
+            ToDoStorage.LoadToDoList();
+            flashcardScreenView.runDeckUpdate();
+            primaryStage.setScene(flashcardScene);
+
+        });
+        topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
         topViewBar.getFlashButton().setOnAction(event -> navigationController.navigateToFlashcardScreen((fView)));
         topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {
