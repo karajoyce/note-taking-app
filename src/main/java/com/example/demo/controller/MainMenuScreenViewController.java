@@ -3,33 +3,30 @@ package com.example.demo.controller;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.*;
-import javafx.event.EventHandler;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVING UNUSED IMPORTS
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenuScreenViewController {
 
-    private MainMenuScreenView view;
-    private TopViewBar topViewBar;
-    private BreakReminderController breakReminderController;
-    private Stage primaryStage;
-    private Scene flashcardScene;
-    private Scene mainMenuScene;
-    private FoldersScreenView foldersScreenView;
-    private XPModel xpModel;
-    private ToDoListView todoV;
-    private ToDoListController todoC;
-    private FoldersController fCont;
-    private FlashcardScreenView fView;
-    private NavigationController navigationController;
-    private FlashcardScreenView flashcardScreenView;
-    private FoldersModel foldersModel;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //THESE BECAME FINAL NOTE: STILL SOME WARNINGS BUT DRK HOW TO FIX
+    private final MainMenuScreenView view;
+    private final TopViewBar topViewBar;
+    private final BreakReminderController breakReminderController;
+    private final Stage primaryStage;
+    private final Scene flashcardScene;
+    private final Scene mainMenuScene;
+    private final FoldersScreenView foldersScreenView;
+    private final XPModel xpModel;
+    private final ToDoListView todoV;
+    private final ToDoListController todoC;
+    private final FoldersController fCont;
+    private final FlashcardScreenView fView;
+    private final NavigationController navigationController;
+    private final FlashcardScreenView flashcardScreenView;
+    private final FoldersModel foldersModel;
 
 
     public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView, NavigationController navCont, FoldersModel foldersModel) {
@@ -58,6 +55,8 @@ public class MainMenuScreenViewController {
     }
 
     private void setupButtonActions() {
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //THIS EVENT SHIT AGAIN
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
         topViewBar.getFlashButton().setOnAction(event -> {
 

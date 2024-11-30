@@ -1,10 +1,11 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import java.security.PrivateKey;
+/*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+//import java.security.PrivateKey; DELETE IF REALLY NOT NEEDED
 import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.util.Locale;
+//import java.util.Locale; DELETE IF REALLY NOT NEEDED
 
 /**
 
@@ -18,7 +19,8 @@ import java.util.Locale;
  **/
 
 public class Notebook implements Serializable {
-    private ArrayList<Page> notes;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING: CHANGED TO FINAL*/
+    private final ArrayList<Page> notes;
     private String title;
     /* Changes By Nathan, adding fields
     * one being an ArrayList Checking Tags
@@ -54,17 +56,18 @@ public class Notebook implements Serializable {
         updateLastAccessed();
     }
 
-    public void removePage(Page oldPage){
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*public void removePage(Page oldPage){
         this.notes.remove(oldPage);
         updateLastAccessed();
-    }
+    }*/
 
     public int getSize(){
         return notes.size();
     }
 
-    /**Changes By Nathan, getter and setter methods for tags, and creation Date*/
-    /**SETTERS AND GETTERS AND OTHER METHODS FOR TAGS*/
+    /*Changes By Nathan, getter and setter methods for tags, and creation Date*/
+    /*SETTERS AND GETTERS AND OTHER METHODS FOR TAGS*/
     /*Getter for tags, pretty obv*/
     public ArrayList<String> getTags() {
         return tags;

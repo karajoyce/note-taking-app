@@ -2,9 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+/*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
 //import com.example.demo.FilerSystem.FolderStorage;
-import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.FilerSystem.ToDoStorage;
+//import com.example.demo.FilerSystem.NotesStorage;
+//import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -32,45 +33,40 @@ import java.util.List;
  */
 
 
-/**
+/*
  * Controller class for managing folder-related actions in the application.
  * This class handles user interactions with the folders screen, including
  * opening, deleting, and adding folders.
  */
-/**CHANGES BY NATHAN*/
-import java.time.LocalDateTime;
+/*CHANGES BY NATHAN TOOK OUT UNUSED IMPORT STATEMENTS*/
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import java.util.Optional;
-
 public class FoldersController {
-    private FoldersModel foldersModel; // The model managing folders
-    private FoldersScreenView foldersScreenView; // The view for displaying folder-related UI
-    private Stage primaryStage; // The main application stage
-    private XPModel xpModel; // Model for managing XP-related functionality
-    private NavigationController navigationController; // Handles navigation between screens
-    private Scene foldersScene; // Scene for displaying the folders screen
-    private ToDoListView toDoListView; // Reference to the to-do list view
+    private final FoldersModel foldersModel; // The model managing folders
+    private final FoldersScreenView foldersScreenView; // The view for displaying folder-related UI
+    private final Stage primaryStage; // The main application stage
+    private final XPModel xpModel; // Model for managing XP-related functionality
+    private final Scene foldersScene; // Scene for displaying the folders screen
+    private final ToDoListView toDoListView; // Reference to the to-do list view
 
     Notebook lastOpenedNotebook = null;
-    private EventHandler<MouseEvent> folderSelectionHandler;
-    private EventHandler<MouseEvent> deleteHandler;
+    private final EventHandler<MouseEvent> folderSelectionHandler;
+    private final EventHandler<MouseEvent> deleteHandler;
     private String folderName;
-    private FlashcardScreenController fCont;
+    private final FlashcardScreenController fCont;
     private String newFolderName;
-    private MainMenuScreenView menuScreenView;
 
     public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage,
                              NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView,
                              MainMenuScreenView menuScreenView, FlashcardScreenController fController) {
-    /**
-     * Constructs a FoldersController instance.
-     *
-     * @param model              The folders model containing folder data.
+        //CHANGES MADE BY NATHAN TO FIX WARNING DANGLING COMMENT
+    /*
+      Constructs a FoldersController instance.
+
+      @param model              The folders model containing folder data.
      * @param view               The folders screen view for UI representation.
      * @param stage              The main application stage.
      * @param navigationController Handles navigation between screens.
@@ -82,11 +78,12 @@ public class FoldersController {
         this.foldersScreenView = view;
         this.primaryStage = stage;
         this.xpModel = XPManager.getXPModel();
-        this.navigationController = navigationController;
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        //private final NavigationController navigationController; // Handles navigation between screens
+        // Handles navigation between screens
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
         this.fCont = fController;
-        this.menuScreenView = menuScreenView;
 
 
         // Define folder selection handler
@@ -96,7 +93,9 @@ public class FoldersController {
             openNotebook(folderName);
         };
 
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX THIS E STUFF AGAIN*/
         stage.setOnCloseRequest(e -> {
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
             if(lastOpenedNotebook != null) {
                 NotesStorage.SaveNotes(lastOpenedNotebook);
             }
@@ -107,6 +106,7 @@ public class FoldersController {
         deleteHandler = createDeleteHandler(folderSelectionHandler);
 
         stage.setOnCloseRequest(e -> {
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
             if (lastOpenedNotebook != null) {
                 NotesStorage.SaveNotes(lastOpenedNotebook);
             }
@@ -123,9 +123,10 @@ public class FoldersController {
         menuScreenView.runMainScreenUpdate();
     }
 
-    public String getFolderName(){
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*public String getFolderName(){
         return this.folderName;
-    }
+    }*/
 
     /**
      * Returns the event handler for folder selection.
@@ -196,9 +197,10 @@ public class FoldersController {
         primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
-    public void addFoldersXp(double xp) {
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*public void addFoldersXp(double xp) {
         xpModel.addXP(xp);
-    }
+    }*/
 
 
     /**
@@ -223,49 +225,40 @@ public class FoldersController {
             });
 
 
-
-            notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            notebookView.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
             Scene notebookScene = new Scene(notebookView);
             primaryStage.setScene(notebookScene);
-            notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //notebookView.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            notebookView.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
 
             /* Add keybinds */
 
             notebookScene.getAccelerators().put(
                     new KeyCodeCombination(KeyCode.B, KeyCombination.SHORTCUT_DOWN),
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            notebookController.getNoteView().getNoteController().toggleBold();
-                        }
-                    });
+                    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+                    //CHANGED TO LAMBDA???
+                    () -> notebookController.getNoteView().getNoteController().toggleBold());
 
             notebookScene.getAccelerators().put(
                     new KeyCodeCombination(KeyCode.I, KeyCombination.SHORTCUT_DOWN),
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                                notebookController.getNoteView().getNoteController().toggleItalic();
-                            }
-                    });
+                    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+                    //CHANGED TO LAMBDA???
+                    () -> notebookController.getNoteView().getNoteController().toggleItalic());
 
             notebookScene.getAccelerators().put(
                     new KeyCodeCombination(KeyCode.U, KeyCombination.SHORTCUT_DOWN),
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            notebookController.getNoteView().getNoteController().toggleUnderline();
-                        }
-                    });
+                    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+                    //CHANGED TO LAMBDA???
+                    () -> notebookController.getNoteView().getNoteController().toggleUnderline());
 
             notebookScene.getAccelerators().put(
                     new KeyCodeCombination(KeyCode.S, KeyCombination.SHORTCUT_DOWN),
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            notebookController.getNoteView().getNoteController().toggleStrikethrough();
-                        }
-                    });
+                    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+                    //CHANGED TO LAMBDA???
+                    () -> notebookController.getNoteView().getNoteController().toggleStrikethrough());
 
 
             primaryStage.setScene(notebookScene);
@@ -324,6 +317,8 @@ public class FoldersController {
         openNotebook(selectedFolder);
     }
 
+    //*FROM NATHAN WEIRD WARNING THAT DRK HOW TO FIX*/
+    //UNUSED PARAMs
     private void attachSearchAndSortListeners(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersScreenView.getSearchField().textProperty().addListener((observable, oldValue, newValue) -> {
             updateFoldersGrid(newValue, foldersScreenView.getCurrentSortOrder(), folderSelectionHandler, deleteHandler);

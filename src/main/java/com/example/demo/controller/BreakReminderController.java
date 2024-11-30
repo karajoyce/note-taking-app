@@ -19,8 +19,8 @@ CMPT 370, T05, Team 4, Prof. Jon Lovering
  */
 public class BreakReminderController {
 
-    private BreakReminderModel model;
-    private BreakReminderView view;
+    private final BreakReminderModel model;
+    private final BreakReminderView view;
     private boolean isReminderOn = false;
 
     /**
@@ -35,6 +35,8 @@ public class BreakReminderController {
         this.view = view;
 
         // Set up the dismiss button action to hide the reminder when clicked
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        //view.getDismissButton().setOnAction(e -> view.hideReminder());
         view.getDismissButton().setOnAction(e -> view.hideReminder());
     }
 
@@ -45,7 +47,9 @@ public class BreakReminderController {
      */
     public void startReminders() {
         if (!isReminderOn) {
-            model.startBreakReminder(() -> view.showReminder());
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //model.startBreakReminder(() -> view.showReminder());
+            model.startBreakReminder(view::showReminder);
             isReminderOn = true;
         }
     }

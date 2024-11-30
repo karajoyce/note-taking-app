@@ -14,20 +14,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class NotesStorage {
 
     //file path needed to put the flashcard under a file.
-    private static String directoryPath = "StorageJSONS/Notes";
-    private static String filePath = directoryPath + File.separator;
+    private static final String directoryPath = "StorageJSONS/Notes";
+    private static final String filePath = directoryPath + File.separator;
     //intialize gson
-    private static Gson gson = new Gson();
+    /*COMMENTING THIS OUT FOR NOW TO GET RID OF WARNING, DELETE AFTER CONFIRMING IT'S NOT NEEDED*/
+    //private static final Gson gson = new Gson();
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
 
     public static void SaveNotes(Notebook notebook) {
         // Ensure the directory exists
         File directory = new File(directoryPath);
+        /* AGAIN THERE IS A WARNING THAT'S REALLY WEIRD*/
         if (!directory.exists()) {
             directory.mkdirs();  // Creates the directory if it doesn't exist
         }
@@ -42,7 +45,7 @@ public class NotesStorage {
          * the tags*/
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
 
-        /**CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
+        /*CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
         jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
 
 
@@ -99,14 +102,14 @@ public class NotesStorage {
 
             Notebook tempNotebook = new Notebook(jsonobj.get("name").getAsString());
 
-            /**Changes from Nathan, Trying to load Tags and CreationDate*/
+            /*Changes from Nathan, Trying to load Tags and CreationDate*/
             //LOADING TAGS, MAY HAVE FUCKY FUNCTIONALITY
             if (jsonobj.has("creationDate")) {
                 String creationDateString = jsonobj.get("creationDate").getAsString();
                 tempNotebook.setCreationDate(LocalDateTime.parse(creationDateString, FORMATTER));
 
             }
-            /**Changes from Nathan, Trying to Last Accessed Time*/
+            /*Changes from Nathan, Trying to Last Accessed Time*/
             //LOADING LAST ACCESSED
             if (jsonobj.has("lastAccessed")) {
                 String lastAccessedString = jsonobj.get("lastAccessed").getAsString();
@@ -167,7 +170,7 @@ public class NotesStorage {
 
         File file = new File(filePath);
         if (file.exists()) {
-            for (File page : file.listFiles()) {
+            for (File page : Objects.requireNonNull(file.listFiles())) {
                 titles.add(page.getName().replace(".json", ""));
             }
         }

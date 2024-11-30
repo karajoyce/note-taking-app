@@ -19,7 +19,8 @@ public class Card {
     // The back of the flashcard, the answer to the front.
     private String CardBack;
     // Private confidence level selected by user, default as 0
-    private boolean confidenceLevel;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private boolean confidenceLevel;
 
     /**
      * @param front: the front of the flashcard
@@ -29,7 +30,8 @@ public class Card {
     public Card(String front, String back) {
         this.CardFront = front;
         this.CardBack = back;
-        this.confidenceLevel = false;
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+        //this.confidenceLevel = false;
     }
 
     /**
@@ -60,21 +62,19 @@ public class Card {
         CardBack = cardBack;
     }
 
-    /**
-     *
-     * @return confidence level
-     */
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
+      @return confidence level
+
     public boolean getConfidenceLevel(){
         return confidenceLevel;
-    }
-
+    }*/
+    /*
     /**
-     * @param conf confidence to set
-     */
-    public void setConfidenceLevel(boolean conf) {
+     * @param conf confidence to set    public void setConfidenceLevel(boolean conf) {
         this.confidenceLevel = conf;
     }
-
+    */
     /**
      * @return String, a string example of the instance of this card.
      */

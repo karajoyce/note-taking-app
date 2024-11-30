@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class NavigationController {
 
-    private Stage primaryStage;
+    private final Stage primaryStage;
     private Scene mainMenuScene;
     private Scene foldersScene;
     private Scene flashcardScene;

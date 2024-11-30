@@ -1,13 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//TOOK OUT UNSUSED IMPORT STATEMENTS
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
-import com.example.demo.view.EditCardView;
 import com.example.demo.view.NewNameView;
-import com.example.demo.view.NewPageView;
-import com.example.demo.view.NotebookScreenView;
 import javafx.stage.Stage;
 
 /**
@@ -22,9 +19,11 @@ import javafx.stage.Stage;
  **/
 
 public class NewNameController {
-    private NotebookController nController;
-    private Notebook nModel;
-    private NewNameView nView;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGED THINGS TO FINAL
+    private final NotebookController nController;
+    private final Notebook nModel;
+    private final NewNameView nView;
 
     public NewNameController(NotebookController controller, Notebook model, Stage stage){
         nModel = model;

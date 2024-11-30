@@ -24,9 +24,11 @@ import javafx.stage.StageStyle;
  **/
 
 public class NewPageController {
-    private NotebookController nController;
-    private Notebook nModel;
-    private NewPageView nView;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGED THINGS TO FINAL
+    private final NotebookController nController;
+    private final Notebook nModel;
+    private final NewPageView nView;
 
     public NewPageController(NotebookController controller, Notebook model, Stage stage){
         nModel = model;

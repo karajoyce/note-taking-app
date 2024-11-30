@@ -21,10 +21,11 @@ import javafx.stage.Stage;
  * between the ToDoList model and the ToDoListView.
  */
 public class ToDoListController  {
-
-    private ToDoList toDoList; // The model representing the list of tasks
-    private ToDoListView toDoListView; // The view for displaying the to-do list
-    private XPModel xpModel;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //MADE THINGS FINAL NOTE WEIRD WARNING WITH TODOLIST
+    private final ToDoList toDoList; // The model representing the list of tasks
+    private final ToDoListView toDoListView; // The view for displaying the to-do list
+    private final XPModel xpModel;
 
     /**
      * Constructs a ToDoListController with the specified ToDoList and primary stage.
@@ -38,6 +39,8 @@ public class ToDoListController  {
         updateTaskListView(); // Populate the view with current tasks
 
         // Set the action for the "Add Task" button
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //EEEEEEEEEEEEEEEEEEEEEEEEEE
         toDoListView.setAddTaskButtonAction(e -> {
             this.toDoListView.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
             new TaskCreationController(ToDoStorage.LoadToDoList(), this, new Stage()); // Open task creation window

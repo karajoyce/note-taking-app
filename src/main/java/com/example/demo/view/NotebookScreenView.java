@@ -119,7 +119,7 @@ public class NotebookScreenView extends StackPane {
         xpView = new XPView();
         //Initializing new Tree
         digitalTree = new DigitalTree();
-        xpController = new XPController(xpModel, xpView, digitalTree);
+        xpController = new XPController(xpView, digitalTree);
 
         toDoList = ToDoStorage.LoadToDoList();
         toDoListV = new ToDoListView(toDoList);

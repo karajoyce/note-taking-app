@@ -16,14 +16,14 @@ import java.util.Random;
 import javafx.scene.paint.Color;
 
 public class XPController {
-    private XPModel model;
-    private XPView view;
-    private DigitalTree digitalTree;
+    private final XPModel model;
+    private final XPView view;
+    private final DigitalTree digitalTree;
     private Timeline xpTimeline;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private AudioClip lvlUpSound;
-    public XPController(XPModel model, XPView view, DigitalTree digitalTree) {
+    public XPController( XPView view, DigitalTree digitalTree) {
         this.model = XPManager.getXPModel();
         this.view = view;
         this.digitalTree = digitalTree;
@@ -31,7 +31,7 @@ public class XPController {
         try {
             // Audio Clip came by floraphonic from Pixabay
             //Sound Effect by <a href="https://pixabay.com/users/floraphonic-38928062/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=189853">floraphonic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=189853">Pixabay</a>
-            lvlUpSound = new AudioClip(getClass().getResource("/level-up.mp3").toExternalForm());
+            lvlUpSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/level-up.mp3")).toExternalForm());
             Objects.requireNonNull(lvlUpSound, "Sound file not found");
         } catch (NullPointerException e) {
             System.out.println("Error: Sound file not found. Please check the path.");

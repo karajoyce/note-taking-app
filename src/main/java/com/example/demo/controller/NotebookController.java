@@ -1,19 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//TOOK OUT UNUSED IMPORTS
 import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.model.Card;
-import com.example.demo.model.Deck;
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.model.XPModel;
-import com.example.demo.view.NewPageView;
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.TagManagementView;
 import javafx.scene.control.Button;
-import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 /**
@@ -28,16 +24,20 @@ import javafx.stage.Stage;
  **/
 
 public class NotebookController {
-
-    private Notebook noteModel;
-    private NotebookScreenView noteView;
-    private XPModel xpmodel;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGED THESE TO FINAL
+    private final Notebook noteModel;
+    private final NotebookScreenView noteView;
+    //THIS I DO NOT KNOW HOW TO DEAL WITH
+    private final XPModel xpmodel;
 
     public NotebookController(Notebook nModel, NotebookScreenView nView) {
         noteView = nView;
         noteModel = nModel;
         this.xpmodel = XPManager.getXPModel();
 
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //AAAAAAAAAAA THIS AGAIN
         nView.setAddPage(e -> {
             new NewPageController(this, noteModel, new Stage());
         });
@@ -60,7 +60,9 @@ public class NotebookController {
                 nModel.getNotes().add(page);
 
             } else {
-                nView.setCurrentPage(nModel.getNotes().get(0));
+                /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+                //nView.setCurrentPage(nModel.getNotes().get(0));
+                nView.setCurrentPage(nModel.getNotes().getFirst());
             }
             NotesStorage.SaveNotes(nModel);
             runUpdate();
@@ -70,12 +72,14 @@ public class NotebookController {
             runUpdate();
         });
 
-        /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
+        /*CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
         noteView.setManageTagsButtonAction(this::openTagManagementWindow);
 
     }
     /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
     /*Methods for Adding and Removing Tags from a Notebook*/
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     public void addTagToNoteBook(String tag){
         if (tag != null && !tag.isBlank()){
             noteModel.addTag(tag);
@@ -88,7 +92,7 @@ public class NotebookController {
         noteModel.removeTag(tag);
         NotesStorage.SaveNotes(noteModel);
         runUpdate();
-    }
+    }*/
 
     public void saveNotebookAfterTagsUpdated(){
         NotesStorage.SaveNotes(noteModel);

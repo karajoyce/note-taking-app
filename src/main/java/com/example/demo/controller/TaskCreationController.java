@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.view.ToDoListView;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVED UNUSED IMPORTS
 import javafx.stage.Stage;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
@@ -23,9 +24,10 @@ import com.example.demo.view.TaskCreationView;
  * and updates the ToDoList model with the new tasks.
  */
 public class TaskCreationController {
-    private ToDoList toDoList; // The model representing the list of tasks
-    private TaskCreationView taskCreationView; // The view for creating tasks
-    private ToDoListController toDoListController;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    private final ToDoList toDoList; // The model representing the list of tasks
+    private final TaskCreationView taskCreationView; // The view for creating tasks
+    private final ToDoListController toDoListController;
 
 
 

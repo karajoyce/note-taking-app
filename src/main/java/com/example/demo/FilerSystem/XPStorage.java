@@ -1,29 +1,29 @@
 package com.example.demo.FilerSystem;
 
-import com.example.demo.model.ToDoList;
-import com.example.demo.model.XPManager;
+
 import com.example.demo.model.XPModel;
 import com.google.gson.Gson;
-import com.example.demo.model.Card;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.*;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
+import java.util.Objects;
+
 public class XPStorage {
 
     //file path needed to put the flashcard under a file.
-    private static String directoryPath = "StorageJSONS";
-    private static String filePath = directoryPath + File.separator + "XP.json";
+    private static final String directoryPath = "StorageJSONS";
+    private static final String filePath = directoryPath + File.separator + "XP.json";
     //intialize gson
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
 
     public static void SaveXPBar(XPModel xp) {
         // Ensure the directory exists
         File directory = new File(directoryPath);
         if (!directory.exists()) {
+            /*CHANGES BY NATHAN THIS iS A LIL WEIRD AND IDK HOW TO GET RID OF THE WARNING*/
             directory.mkdirs();  // Creates the directory if it doesn't exist
+            if (!directory.mkdirs()) {
+                throw new RuntimeException("Failed to create directory: " + directory.getAbsolutePath());
+            }
         }
 
         try {
@@ -41,10 +41,8 @@ public class XPStorage {
             FileReader xpFile = new FileReader(filePath);
             XPModel xp = gson.fromJson(xpFile, XPModel.class);
             xpFile.close();
-            if (xp == null) {
-                return new XPModel(100); // Default maxXP
-            }
-            return xp;
+            // Default maxXP
+            return Objects.requireNonNullElseGet(xp, () -> new XPModel(100));
         } catch (FileNotFoundException e) {
             return new XPModel(100); // Default maxXP
         } catch (Exception e) {
@@ -52,9 +50,5 @@ public class XPStorage {
             return new XPModel(100); // Default maxXP
         }
     }
-
-
-
-
 
 }

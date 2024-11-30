@@ -16,8 +16,8 @@ import java.util.ArrayList;
  **/
 
 public class Deck {
-    private String title;
-    private ArrayList<Card> cards; // instance of the deck
+    private final String title;
+    private final ArrayList<Card> cards; // instance of the deck
 
     public Deck(String name){
         this.title = name;
