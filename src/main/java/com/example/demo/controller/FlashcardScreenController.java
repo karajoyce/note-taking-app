@@ -103,8 +103,6 @@ public class FlashcardScreenController {
                 fCardView.flipIsBack();
             }
             deckUpdate();
-
-            // todo save conf level to json
         });
 
         fCardView.setNotConfidentButton(e -> {
@@ -116,8 +114,6 @@ public class FlashcardScreenController {
                 fCardView.flipIsBack();
             }
             deckUpdate();
-
-            // todo save conf level to json
         });
         deckUpdate();
     }
