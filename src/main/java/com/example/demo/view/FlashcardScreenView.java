@@ -287,6 +287,10 @@ public class FlashcardScreenView extends StackPane {
         // Get names from the JSON
         List<String> titles = FlashcardStorage.GenerateDeckTitles();
         for (String title: titles){
+            if (title.equals("Empty Deck") && titles.size() > 1){
+                FlashcardStorage.DeleteDeck("Empty Deck");
+                continue;
+            }
             Button tButton = new Button(title);
             tButton.setAlignment(Pos.CENTER);
             tButton.setMinWidth(buttonBox.getMinWidth()-45);

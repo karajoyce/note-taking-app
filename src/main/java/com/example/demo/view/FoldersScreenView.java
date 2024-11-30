@@ -353,8 +353,6 @@ public class FoldersScreenView extends StackPane {
      */
     public String getAddButtonText(){
         return addButtonText.get();
-        Optional<String> result = dialog.showAndWait();
-        return result.orElse(null);
 
     }
 

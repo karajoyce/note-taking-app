@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.FilerSystem.FlashcardStorage;
-import com.example.demo.FilerSystem.FolderStorage;
-import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;

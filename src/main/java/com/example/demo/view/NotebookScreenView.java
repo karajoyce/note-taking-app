@@ -296,7 +296,7 @@ public class NotebookScreenView extends StackPane {
         /*CHANGES BY NATHAN TAG SECTION REDO*/
         ScrollPane tagScrollPane = new ScrollPane(tagDisplayPane);
         tagScrollPane.setFitToWidth(true);
-        todolist.getChildren().addAll(toDoListV.getToDoListView(),tagScrollPane,manageTagsButton);
+        todolist.getChildren().addAll(tagScrollPane,manageTagsButton);
         fullBox.getChildren().add(todolist);
 
         // Buttons for pages

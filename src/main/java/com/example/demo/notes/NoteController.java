@@ -35,7 +35,6 @@ public class NoteController {
 
     NoteModel noteModel;
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
-    Deck TEMPORARY_DECK = new Deck("TESTING TEMPORARY DECK");
 
     /**
      * Constructor method for the text editor's controller
@@ -157,11 +156,6 @@ public class NoteController {
                     // If the user inputs a '.', the back of the card is ready!
                     if (lastChar == '.') {
                         noteModel.setWaitingForBackInput(false);
-
-                        // Create the new flashcard
-                        TEMPORARY_DECK.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
-                                backBuffer.toString().strip()));
-                        FlashcardStorage.SaveDeck(TEMPORARY_DECK);
 
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");

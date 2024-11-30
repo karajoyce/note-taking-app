@@ -1,5 +1,6 @@
 package com.example.demo.FilerSystem;
 
+import com.example.demo.model.Card;
 import com.example.demo.model.Deck;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -81,6 +82,13 @@ public class FlashcardStorage {
             for (File deck: file.listFiles()){
                 titles.add(deck.getName().replace(".json", ""));
             }
+        }
+
+        if(titles.size() == 0) {
+            titles.add("Empty Deck");
+            Deck deck = new Deck("Empty Deck");
+            deck.addCard(new Card("", ""));
+            SaveDeck(deck);
         }
 
         return titles;
