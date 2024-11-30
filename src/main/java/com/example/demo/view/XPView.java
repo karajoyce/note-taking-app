@@ -11,8 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class XPView extends VBox {
-    private ProgressBar xpProgressBar;
-    private Label xpLabel;
+    private final ProgressBar xpProgressBar;
+    private final Label xpLabel;
 
     public XPView() {
         xpProgressBar = new ProgressBar(0);
@@ -43,9 +43,10 @@ public class XPView extends VBox {
         });
     }
 
-    public ProgressBar getXpProgressBar() {
+    /*REMOVE AFTER MAKING SURE THINGS STILL WORK*/
+    /*public ProgressBar getXpProgressBar() {
         return xpProgressBar;
-    }
+    }*/
 
     public void changeXPBarColor(Color color) {
         xpProgressBar.setStyle("-fx-accent: " + toHexString(color) + ";");

@@ -47,10 +47,6 @@ public class XPModel {
         return currentXP >= maxXP;
     }
 
-    public double getProgress() {
-        return currentXP / maxXP;
-    }
-
     private void saveXP(){
         XPStorage.SaveXPBar(this);
     }
