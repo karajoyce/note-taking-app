@@ -56,14 +56,6 @@ public class MainMenuScreenViewController {
 
     private void setupButtonActions() {
         topViewBar.getBreakButton().setOnAction(event -> openIntervalSettingWindow());
-//        topViewBar.getFlashButton().setOnAction(event -> {
-//
-//            todoC.updateTaskListView();
-//            ToDoStorage.LoadToDoList();
-//            fView.runDeckUpdate();
-//            primaryStage.setScene(flashcardScene);
-//
-//        });
         topViewBar.getFlashButton().setOnAction(event -> navigationController.navigateToFlashcardScreen((fView)));
         topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {

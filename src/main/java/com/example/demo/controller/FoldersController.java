@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.FlashcardStorage;
+import com.example.demo.FilerSystem.FolderStorage;
+import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -33,6 +36,14 @@ import java.util.List;
  * This class handles user interactions with the folders screen, including
  * opening, deleting, and adding folders.
  */
+/**CHANGES BY NATHAN*/
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class FoldersController {
     private FoldersModel foldersModel; // The model managing folders
     private FoldersScreenView foldersScreenView; // The view for displaying folder-related UI
@@ -85,6 +96,14 @@ public class FoldersController {
         // Folder delete handler
         // Create delete handler using the factory method
         deleteHandler = createDeleteHandler(folderSelectionHandler);
+
+        stage.setOnCloseRequest(e -> {
+            if (lastOpenedNotebook != null) {
+                NotesStorage.SaveNotes(lastOpenedNotebook);
+            }
+        });
+
+        attachSearchAndSortListeners(folderSelectionHandler, deleteHandler);
 
         // Populate folders and pass the handler
         foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
@@ -161,6 +180,9 @@ public class FoldersController {
         primaryStage.setScene(new Scene(new MainMenuScreenView()));
     }
 
+    public void addFoldersXp(double xp) {
+        xpModel.addXP(xp);
+    }
 
 
     /**
@@ -234,6 +256,7 @@ public class FoldersController {
         } else {
                 System.err.println("Failed to load notebook for folder: " + folderName);
         }
+
     }
 
     /**
@@ -272,6 +295,76 @@ public class FoldersController {
     }
     public String getNewFolderName(){
         return newFolderName;
+    }
+
+    private void handleFolderSelection(MouseEvent event) {
+        String selectedFolder = ((Button) event.getSource()).getText();
+        openNotebook(selectedFolder);
+    }
+
+    private void attachSearchAndSortListeners(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
+        foldersScreenView.getSearchField().textProperty().addListener((observable, oldValue, newValue) -> {
+            updateFoldersGrid(newValue, foldersScreenView.getCurrentSortOrder(), folderSelectionHandler, deleteHandler);
+        });
+
+        foldersScreenView.getSortOptions().getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            foldersScreenView.setCurrentSortOrder(newValue); // Update the sort order in the view
+            updateFoldersGrid(foldersScreenView.getSearchField().getText(), foldersScreenView.getCurrentSortOrder(), folderSelectionHandler, deleteHandler);
+        });
+    }
+
+
+    private void updateFoldersGrid(String searchQuery, String sortOrder,
+                                   EventHandler<MouseEvent> folderSelectionHandler,
+                                   EventHandler<MouseEvent> deleteHandler) {
+        // Provide a default value if sortOrder is null
+        String effectiveSortOrder = (sortOrder != null) ? sortOrder : "Name";
+
+        // Filter folders based on the search query
+        List<String> filteredFolders = foldersModel.getFolders().stream()
+                .filter(name -> name.toLowerCase().contains(searchQuery.toLowerCase())) // Apply search filter
+                .collect(Collectors.toList());
+
+        // Sort folders based on the selected sort order
+        /*if (effectiveSortOrder.equals("Oldest First")) {
+            filteredFolders.sort(Comparator.comparing(folder -> foldersModel.getFolderMetadata(folder).getCreationDate()));
+        } else if (effectiveSortOrder.equals("Newest First")) {
+            filteredFolders.sort((folder1, folder2) ->
+                    foldersModel.getFolderMetadata(folder2).getCreationDate()
+                            .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
+        } else if (effectiveSortOrder.equals("Name")) { // Default to Name sorting
+            filteredFolders.sort(String::compareToIgnoreCase);
+        } else if (effectiveSortOrder.equals("Last Accessed")) {
+            filteredFolders.sort((folder1, folder2) ->
+                    foldersModel.getFolderMetadata(folder2).getLastAccessed()
+                            .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
+        }*/
+        // Apply sorting logic
+        switch (effectiveSortOrder) {
+            case "Last Accessed":
+                filteredFolders.sort((folder1, folder2) ->
+                        foldersModel.getFolderMetadata(folder2).getLastAccessed()
+                                .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
+                //System.out.println("REACHED SORT LAST ACCESSED");
+                /*filteredFolders.sort(Comparator.comparing(folder ->
+                        foldersModel.getFolderMetadata(folder).getLastAccessed()));*/
+                break;
+            case "Oldest First":
+                filteredFolders.sort(Comparator.comparing(folder ->
+                        foldersModel.getFolderMetadata(folder).getCreationDate()));
+                break;
+            case "Newest First":
+                filteredFolders.sort((folder1, folder2) ->
+                        foldersModel.getFolderMetadata(folder2).getCreationDate()
+                                .compareTo(foldersModel.getFolderMetadata(folder1).getCreationDate()));
+                break;
+            default: // Sort by Name
+                Collections.sort(filteredFolders);
+                break;
+        }
+
+        // Populate the folders view with the sorted and filtered list
+        foldersScreenView.populateFolders(filteredFolders, folderSelectionHandler, deleteHandler);
     }
 }
 

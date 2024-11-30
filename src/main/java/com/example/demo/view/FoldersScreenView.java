@@ -10,6 +10,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+/**CHANGES BY NATHAN*/
+import javafx.beans.value.ChangeListener;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +24,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
+
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 
@@ -49,6 +55,11 @@ public class FoldersScreenView extends StackPane {
     private XPModel xpModel;
     private ToDoList list;
     private Optional<String> addButtonText;
+    /**CHANGES BY NATHAN*/
+    private TextField searchField;
+    private ChoiceBox<String> sortOptions;
+    private String currentSortOrder;
+    private Consumer<String> sortOptionListener;
 
     private ToDoListController toDoCont;
     private Button deleteButton;
@@ -82,6 +93,12 @@ public class FoldersScreenView extends StackPane {
         this.toDoListV = new ToDoListView(ToDoStorage.LoadToDoList());
         ToDoListController toDoListController = new ToDoListController(list, toDoListV, xpModel);
 
+        /** CHANGES BY NATHAN INITIALIZING*/
+        addFolderButton = new Button("Add Folder");
+        pageBack = new Button("Back");
+        searchField = new TextField();
+        sortOptions = new ChoiceBox<>();
+        currentSortOrder = "Name";
 
 
         // Initialize foldersGrid
@@ -132,6 +149,16 @@ public class FoldersScreenView extends StackPane {
         topBar.setPadding(new Insets(10));
         topBar.getStyleClass().add("top-bar");
 
+        /**CHANGES BY NATHAN SEARCH FIELD SETUP*/
+        /*Search field setup*/
+        searchField.setPromptText("Search folders");
+        searchField.setPrefWidth(screenWidth * 0.4);
+
+        sortOptions.getItems().clear();
+        sortOptions.getItems().addAll("Name", "Oldest First", "Newest First");//, "Last Accessed");
+        sortOptions.setValue("Oldest First");
+        sortOptions.setOnAction(e -> onSortOptionChanged());
+
         pageBack.setMinWidth(100);
         pageBack.setMinHeight(40);
         pageBack.getStyleClass().add("back-button");
@@ -141,7 +168,7 @@ public class FoldersScreenView extends StackPane {
         addFolderButton.setMinHeight(40);
         addFolderButton.getStyleClass().add("add-folder-button");
 
-        topBar.getChildren().addAll(pageBack, addFolderButton);
+        topBar.getChildren().addAll(pageBack, addFolderButton, searchField, sortOptions);
 
         // Add folders grid to a ScrollPane
         ScrollPane scrollPane = new ScrollPane();
@@ -211,39 +238,39 @@ public class FoldersScreenView extends StackPane {
      */
     public void populateFolders(List<String> folderNames, EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         foldersGrid.getChildren().clear();
+        foldersGrid.getChildren().clear(); // Clear all current children in the grid
         int columns = 3; // Number of columns in the grid
         int row = 0, col = 0;
 
         for (String folderName : folderNames) {
-            // Create a button for the folder
+            // Create a button to represent the folder
             Button folderButton = new Button(folderName);
-            folderButton.getStyleClass().add("folder-box");
-            folderButton.setPrefSize(150, 150); // Set preferred size of folder boxes
-            folderButton.setWrapText(true); // Allow text wrapping for long folder names
+            folderButton.getStyleClass().add("folder-box"); // Apply folder-box styling from CSS
+            folderButton.setPrefSize(150, 150); // Set preferred size
+            folderButton.setWrapText(true); // Wrap text if folder names are long
+            folderButton.setOnMouseClicked(folderSelectionHandler); // Attach the selection handler
 
-            // Attach the folder selection handler
-
-            folderButton.setOnMouseClicked(folderSelectionHandler);
-
-            // Create a delete button for the folder
+            // Create a delete button
             Button deleteButton = new Button("X");
-            deleteButton.getStyleClass().add("delete-button");
-            deleteButton.setPrefSize(30, 30); // Set size for delete button
-            deleteButton.setOnMouseClicked(deleteHandler);
+            deleteButton.getStyleClass().add("delete-button"); // Apply delete-button styling from CSS
+            deleteButton.setPrefSize(30, 30); // Set preferred size for delete button
+            deleteButton.setOnMouseClicked(deleteHandler); // Attach the delete handler
 
-            // Add folder button and delete button to a container (VBox)
-            VBox folderContainer = new VBox(5); // 5px spacing
-            folderContainer.setAlignment(Pos.CENTER);
+            // Wrap the folder and delete button in a VBox
+            VBox folderContainer = new VBox(5);
+            folderContainer.setAlignment(Pos.CENTER); // Align content to the center
             folderContainer.getChildren().addAll(folderButton, deleteButton);
 
+            // Add the VBox to the grid
             foldersGrid.add(folderContainer, col, row);
             col++;
             if (col >= columns) {
-                col = 0;
-                row++;
+                col = 0; // Reset column index
+                row++;  // Move to the next row
             }
         }
     }
+
 
     /**
      * Updates the to-do list view with the latest tasks.
@@ -326,6 +353,38 @@ public class FoldersScreenView extends StackPane {
      */
     public String getAddButtonText(){
         return addButtonText.get();
+        Optional<String> result = dialog.showAndWait();
+        return result.orElse(null);
+
+    }
+
+    // Getters
+
+    public TextField getSearchField() {
+        return searchField;
+    }
+
+    public ChoiceBox<String> getSortOptions() {
+        return sortOptions;
+    }
+
+    public String getCurrentSortOrder() {
+        return currentSortOrder;
+    }
+
+    public void setCurrentSortOrder(String sortOrder) {
+        this.currentSortOrder = sortOrder;
+    }
+    // Trigger the listener when the user changes the sorting option
+    private void onSortOptionChanged() {
+        if (sortOptionListener != null) {
+            String selectedOption = sortOptions.getValue(); // Get selected sort option
+            sortOptionListener.accept(selectedOption);     // Notify the listener
+        }
+    }
+    // Setter to allow the controller to attach the listener
+    public void setSortOptionListener(Consumer<String> listener) {
+        this.sortOptionListener = listener;
     }
 
     /**

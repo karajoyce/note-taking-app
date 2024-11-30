@@ -105,6 +105,7 @@ public class HelloApplication extends Application {
             primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
 
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
     }
 
