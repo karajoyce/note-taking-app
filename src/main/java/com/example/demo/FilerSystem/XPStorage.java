@@ -31,8 +31,8 @@ public class XPStorage {
             gson.toJson(xp, write);
             write.close();
 
-            System.out.println("Saved to " + filePath);
-            System.out.println("XP saved" + xp.getCurrentXP() + "/" + xp.getMaxXP() + "| Level" + xp.getLevel());
+            //System.out.println("Saved to " + filePath);
+            //System.out.println("XP saved" + xp.getCurrentXP() + "/" + xp.getMaxXP() + "| Level" + xp.getLevel());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,15 +44,15 @@ public class XPStorage {
             FileReader xpFile = new FileReader(filePath);
             XPModel xp = gson.fromJson(xpFile, XPModel.class);
             if (xp == null) {
-                System.out.println("XP file is empty or corrupted. Initializing new XPModel.");
+                //System.out.println("XP file is empty or corrupted. Initializing new XPModel.");
                 return new XPModel(100); // Default maxXP
             }
             return xp;
         } catch (FileNotFoundException e) {
-            System.out.println("XP file not found. Initializing new XPModel.");
+            //System.out.println("XP file not found. Initializing new XPModel.");
             return new XPModel(100); // Default maxXP
         } catch (Exception e) {
-            System.out.println("Error loading XP file: " + e.getMessage());
+            //System.out.println("Error loading XP file: " + e.getMessage());
             return new XPModel(100); // Default maxXP
         }
     }

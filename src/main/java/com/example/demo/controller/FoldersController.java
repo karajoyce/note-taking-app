@@ -220,6 +220,9 @@ public class FoldersController {
                 filteredFolders.sort((folder1, folder2) ->
                         foldersModel.getFolderMetadata(folder2).getLastAccessed()
                                 .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
+                //System.out.println("REACHED SORT LAST ACCESSED");
+                /*filteredFolders.sort(Comparator.comparing(folder ->
+                        foldersModel.getFolderMetadata(folder).getLastAccessed()));*/
                 break;
             case "Oldest First":
                 filteredFolders.sort(Comparator.comparing(folder ->

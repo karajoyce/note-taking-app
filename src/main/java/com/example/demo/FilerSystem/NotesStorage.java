@@ -41,10 +41,10 @@ public class NotesStorage {
         /*Changes Added from Nathan, adding a property to save the creation date, as well as
          * the tags*/
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
-        System.out.println("Saving creation date: " + notebook.getCreationDate());
+        //System.out.println("Saving creation date: " + notebook.getCreationDate());
         /**CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
         jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
-        System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
+        //System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
 
 
         //Trying to save tags
@@ -106,7 +106,17 @@ public class NotesStorage {
             if (jsonobj.has("creationDate")) {
                 String creationDateString = jsonobj.get("creationDate").getAsString();
                 tempNotebook.setCreationDate(LocalDateTime.parse(creationDateString, FORMATTER));
-                System.out.println("Loaded creation date: " + tempNotebook.getCreationDate());
+                //System.out.println("Loaded creation date: " + tempNotebook.getCreationDate());
+            }
+            /**Changes from Nathan, Trying to Last Accessed Time*/
+            //LOADING LAST ACCESSED
+            if (jsonobj.has("lastAccessed")) {
+                String lastAccessedString = jsonobj.get("lastAccessed").getAsString();
+                tempNotebook.setLastAccessed(LocalDateTime.parse(lastAccessedString, FORMATTER));
+                //System.out.println("Loaded last accessed: " + tempNotebook.getLastAccessed());
+            } else {
+                tempNotebook.setLastAccessed(tempNotebook.getLastAccessed());
+                //System.out.println("No Last Access so creating a new one: " + tempNotebook.getLastAccessed());
             }
             //LOAD TAGS
             if (jsonobj.has("tags")) {
@@ -114,17 +124,6 @@ public class NotesStorage {
                 for (int i = 0; i < tagsArray.size(); i++) {
                     tempNotebook.addTag(tagsArray.get(i).getAsString());
                 }
-            }
-
-            /**Changes from Nathan, Trying to Last Accessed Time*/
-            //LOADING LAST ACCESSED
-            if (jsonobj.has("lastAccessed")) {
-                String lastAccessedString = jsonobj.get("lastAccessed").getAsString();
-                tempNotebook.setLastAccessed(LocalDateTime.parse(lastAccessedString, FORMATTER));
-                System.out.println("Loaded last accessed: " + tempNotebook.getLastAccessed());
-            } else {
-                tempNotebook.setLastAccessed(tempNotebook.getCreationDate());
-                System.out.println("No Last Access so creating a new one: " + tempNotebook.getLastAccessed());
             }
 
             JsonArray jsonarr = jsonobj.getAsJsonArray("pages");

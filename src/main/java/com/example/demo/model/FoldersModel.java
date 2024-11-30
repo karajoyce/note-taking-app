@@ -90,7 +90,7 @@ public class FoldersModel {
 
     public void removeFolder(String folderName) {
         if (folders.remove(folderName)) {
-            System.out.println("Folder removed from model: " + folderName);
+            //System.out.println("Folder removed from model: " + folderName);
         } else {
             System.err.println("Failed to remove folder from model: " + folderName);
         }
@@ -114,6 +114,7 @@ public class FoldersModel {
         }
 
         public LocalDateTime getLastAccessed() {
+            //System.out.println("Last accessed: " + LastAccessed);
             return LastAccessed;
         }
 
