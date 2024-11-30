@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 //import com.example.demo.FilerSystem.FolderStorage;
 import com.example.demo.FilerSystem.NotesStorage;
@@ -63,7 +64,9 @@ public class FoldersController {
     private String newFolderName;
     private MainMenuScreenView menuScreenView;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, MainMenuScreenView menuScreenView) {
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage,
+                             NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView,
+                             MainMenuScreenView menuScreenView, FlashcardScreenController fController) {
     /**
      * Constructs a FoldersController instance.
      *
@@ -82,7 +85,7 @@ public class FoldersController {
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
-        //this.fCont = fController;
+        this.fCont = fController;
         this.menuScreenView = menuScreenView;
 
 
@@ -297,6 +300,11 @@ public class FoldersController {
             fCont.addFlashcardDeck(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
+
+            // Make a new deck assigned to the new notebook
+            Deck deck = new Deck(newFolderName);
+            FlashcardStorage.SaveDeck(deck);
+
             if (newNotebook.getNotes().isEmpty()) {
                 newNotebook.addPage(new Page("Lecture 1"));
             }

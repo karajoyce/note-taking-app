@@ -76,7 +76,8 @@ public class HelloApplication extends Application {
 
 
         Scene foldersScene = new Scene(foldersScreenView);
-        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, mainMenuScreenView);
+        FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage,
+                navigationController, foldersScene,toDoListView, mainMenuScreenView, fCardCont);
 
 
         // Create Scenes

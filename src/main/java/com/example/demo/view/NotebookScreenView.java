@@ -135,7 +135,7 @@ public class NotebookScreenView extends StackPane {
         setCurrentPage(currNotebook.getNotes().getFirst());
 
         /* Initialize (MVC) */
-        noteController = new NoteController(noteModel);
+        noteController = new NoteController(noteModel, currNotebook);
         noteView = new NoteView(noteController);
 
         /**CHANGES BY NATHAN **/
@@ -234,11 +234,6 @@ public class NotebookScreenView extends StackPane {
 
         InlineCssTextArea textArea = noteModel.getTextArea();
 
-        /*
-        javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
-        menuBar.getStyleClass().add("menuBar");
-        */
-
         ToolBar toolBar = noteView.createToolBar();
 
         HBox menuItems = new HBox();
@@ -250,13 +245,7 @@ public class NotebookScreenView extends StackPane {
 
         HBox fileButton = new HBox();
         fileButton.setStyle("-fx-padding: 0");
-        /*
-        menuBar.setMinHeight(50);
-        menuBar.setMaxHeight(50);
-        fileButton.setMinWidth(55);
-        fileButton.setMaxWidth(55);
-        fileButton.getChildren().add(menuBar);
-*/
+
         HBox stylesButton = new HBox();
         stylesButton.setMinHeight(50);
         stylesButton.setMaxHeight(50);
@@ -291,11 +280,8 @@ public class NotebookScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        //todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
-        //fullBox.getChildren().add(todolist);
         VBox tags = new VBox();
-//        addTagsAndSearchToLayout(tags);
         todolist.getChildren().addAll(motivationalMessagesView.getMotivmsgView(),toDoListV.getToDoListView(), tags);
         /*CHANGES BY NATHAN TAG SECTION REDO*/
         ScrollPane tagScrollPane = new ScrollPane(tagDisplayPane);

@@ -34,16 +34,15 @@ import java.util.HashSet;
 public class NoteController {
 
     NoteModel noteModel;
-    NotebookScreenView notebookScreenView;
-    /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
+    Deck currDeck;
 
     /**
      * Constructor method for the text editor's controller
      * @param model the text editor model
      */
-    public NoteController(NoteModel model) {
+    public NoteController(NoteModel model, Notebook currNoteBook) {
         noteModel = model;
-        this.notebookScreenView = notebookScreenView;
+        this.currDeck = FlashcardStorage.LoadFlashCards(currNoteBook.getTitle());
 
         /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
@@ -158,6 +157,11 @@ public class NoteController {
                     // If the user inputs a '.', the back of the card is ready!
                     if (lastChar == '.') {
                         noteModel.setWaitingForBackInput(false);
+
+                        // Create the new flashcard
+                        currDeck.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
+                                backBuffer.toString().strip()));
+                        FlashcardStorage.SaveDeck(currDeck);
 
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");
@@ -503,59 +507,7 @@ public class NoteController {
         }
 
     }
-    /* HyperLinks did not work
-    //Adding HyperLink creation
-    protected void createHyperLink( Page pos ) {
 
-        int start = noteModel.getTextArea().getSelection().getStart();
-        int end = noteModel.getTextArea().getSelection().getEnd();
-
-        if (start == end) {
-            return;
-        }
-
-        String link = noteModel.getTextArea().getText(start, end);
-        //works
-        for (int i = start; i < start + link.length(); i++) {
-            noteModel.getTextArea().setStyle(i, i + 1, "-fx-underline: true; -fx-text-fill: blue;");
-        }
-
-        HyperLink hyperLink = new HyperLink(start, start+link.length(), pos);
-
-
-        noteModel.addLinks(hyperLink);
-
-        System.out.println(pos);
-
-        noteModel.getTextArea().setOnMouseClicked(event -> {
-
-             this.notebookScreenView.setCurrentPage(pos);
-
-            System.out.println("Here2");
-            Point2D position = noteModel.getTextArea().sceneToLocal(event.getSceneX(), event.getSceneY());
-
-            CharacterHit hit = noteModel.getTextArea().hit(position.getX(), position.getY());
-
-            if(hit != null) {
-
-                int chari = hit.getInsertionIndex();
-
-
-                HyperLink hyperLink1 = new HyperLink(0, 0, null);
-                hyperLink1 = noteModel.getLinkAtPosition(chari);
-                System.out.println(hyperLink1);
-
-                if (hyperLink1 != null) {
-                    event.consume();
-                    System.out.println("Here3");
-                    notebookScreenView.navigateToPage(pos);
-                    System.out.println(hyperLink1.getTargetPage());
-                }
-            }
-        });
-    }
-
-    */
     /**
      * Change the font type (font family) for either the selected text or
      * next characters the user types
