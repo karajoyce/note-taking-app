@@ -67,7 +67,7 @@ public class MainMenuScreenViewController {
             primaryStage.setScene(flashcardScene);
 
         });
-        topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
+        //topViewBar.getSettingButton().setOnAction(event -> primaryStage.setScene(mainMenuScene));
         topViewBar.getFlashButton().setOnAction(event -> navigationController.navigateToFlashcardScreen((fView)));
         topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {

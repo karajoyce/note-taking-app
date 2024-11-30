@@ -82,7 +82,7 @@ public class FoldersController {
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
-        this.fCont = fController;
+        //this.fCont = fController;
         this.menuScreenView = menuScreenView;
 
 
@@ -122,13 +122,6 @@ public class FoldersController {
 
     public String getFolderName(){
         return this.folderName;
-    }
-
-    public EventHandler<MouseEvent> getFolderSelectionHandler(){
-        return folderSelectionHandler;
-    }
-    public EventHandler<MouseEvent> getDeleteHandler(){
-        return deleteHandler;
     }
 
     /**
