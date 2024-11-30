@@ -160,6 +160,7 @@ public class NotesStorage {
         }
     }
 
+    /*FROM NATHAN: DUPLICATED CODE?*/
     /**
      * Load the title names of all decks
      *
@@ -195,6 +196,8 @@ public class NotesStorage {
     public static LocalDateTime GetFolderCreationDate(String folderName) {
         try {
             Notebook notebook = LoadNotes(folderName);
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+            //IF this is changed, and there's no notebook initialized this will cause an error
             if (notebook != null && notebook.getCreationDate() != null) {
                 return notebook.getCreationDate();
             }

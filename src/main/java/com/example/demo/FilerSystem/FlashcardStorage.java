@@ -8,17 +8,21 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
-import java.nio.file.Path;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVED UNUSED IMPORT STATEMENTS
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FlashcardStorage {
 
     //file path needed to put the flashcard under a file.
-    private static String directoryPath = "StorageJSONS/Decks";
-    private static String filePath = directoryPath + File.separator;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //THINGS BEING NEEDED TO CHANGE TO FINAL
+    private static final String directoryPath = "StorageJSONS/Decks";
+    private static final String filePath = directoryPath + File.separator;
     //intialize gson
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     /**This function should save the flashcards in a filepatg
      * @param deck from list of flashcards
@@ -27,6 +31,7 @@ public class FlashcardStorage {
 
         File directory = new File(directoryPath);
         if (!directory.exists()) {
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
             directory.mkdirs();
         }
 
@@ -62,6 +67,8 @@ public class FlashcardStorage {
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+            /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+            //WHY DO WE NEED TO COLLAPSE HERE?
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -69,6 +76,7 @@ public class FlashcardStorage {
 
     }
 
+    /*NOTE FROM NATHAN DUPLICATED CODE???*/
     /**
      * Load the title names of all decks
      * @return List of names
@@ -79,12 +87,17 @@ public class FlashcardStorage {
 
         File file = new File(filePath);
         if (file.exists()){
-            for (File deck: file.listFiles()){
+            /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+            //CHANGED THIS TO Objects.requireNonNull
+            for (File deck: Objects.requireNonNull(file.listFiles())){
                 titles.add(deck.getName().replace(".json", ""));
             }
         }
 
-        if(titles.size() == 0) {
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        //CAN BE CHANGED TO isEmpty()?
+        //if(titles.size() == 0) {
+        if(titles.isEmpty()) {
             titles.add("Empty Deck");
             Deck deck = new Deck("Empty Deck");
             deck.addCard(new Card("", ""));
