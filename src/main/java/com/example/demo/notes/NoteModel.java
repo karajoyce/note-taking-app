@@ -11,11 +11,6 @@ package com.example.demo.notes;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -70,8 +65,6 @@ public class NoteModel {
     private int frontBufferIndex;
     private int backBufferIndex;
 
-
-
     /** Constructor */
     public NoteModel() {
 
@@ -101,20 +94,6 @@ public class NoteModel {
         textArea.setWrapText(true);
 
     }
-    /*
-    public void addLinks(HyperLink hyperLink){
-        hyperLinks.add(hyperLink);
-    }
-
-    public HyperLink getLinkAtPosition(int index){
-        for(HyperLink link : hyperLinks){
-            if(index >= link.getStart() && index < link.getStart() + index ){
-                return link;
-            }
-        }
-        return null;
-    }
-    */
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {

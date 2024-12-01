@@ -39,17 +39,6 @@ public class Page implements Serializable {
     public void setTitle(String name){
         title = name;
     }
-    /*Used for hyperlinks
-    public static Page getPageFromTitle(String target){
-        for (Page page: Notebook.getNotes()){
-            if(page.getTitle().equalsIgnoreCase(target)){
-                return page;
-            }
-        }
-        return null;
-    }
-    */
-
 
 }
 

@@ -9,16 +9,12 @@
 
 package com.example.demo.notes;
 
-import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
 import javafx.scene.control.*;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -34,7 +30,6 @@ public class NoteView  {
     private TextField searchField = new TextField();
     private Button searchButton = new Button("Search");
 
-    private Notebook notebook;
 
     /**
      * Constructor class for the NoteView object.
@@ -42,6 +37,7 @@ public class NoteView  {
      */
     public NoteView(NoteController controller) {
         noteController = controller;
+
         controller.noteModel.getTextArea().setPrefWidth(800);
         controller.noteModel.getTextArea().setPrefHeight(800);
 
@@ -73,33 +69,6 @@ public class NoteView  {
      * @return
      */
     public ToolBar createToolBar() {
-    /*
-        Button toggleHyperLink = new Button("HL");
-        toggleHyperLink.getStyleClass().add("hyperLinkButton");
-        toggleHyperLink.setStyle("-fx-font-weight: bold;");;
-        toggleHyperLink.setOnAction( actionEvent -> {
-
-            TextInputDialog dialog = new TextInputDialog();
-            dialog.setTitle("Create Hyperlink");
-            dialog.setHeaderText("Enter Target Page");
-            dialog.setContentText("Target Page:");
-
-            Optional<String> result = dialog.showAndWait();
-
-            result.ifPresent(pos -> {
-                Page target = Page.getPageFromTitle(pos);
-                if(!pos.isEmpty() && target.getTitle().equals(pos)){
-
-
-                    noteController.createHyperLink(target);
-
-                }else{
-
-                    System.err.println("Target Page Title does not exist");
-                }
-            });
-        });
-*/
         /* Font style formatting buttons */
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.getStyleClass().add("textEditorButton");
@@ -120,7 +89,6 @@ public class NoteView  {
         toggleStrikethroughButton.getStyleClass().add("textEditorButton");
         toggleStrikethroughButton.setStyle("-fx-strikethrough: true; -fx-font-family: Arial;"); /* For some reason strikethrough doesn't show up on the button */
         toggleStrikethroughButton.setOnAction(actionEvent -> noteController.toggleStrikethrough());
-
 
         /* Font size */
         ComboBox<String> fontSizeMenu = new ComboBox<>();
@@ -249,7 +217,6 @@ public class NoteView  {
 
         return toggleStrikethroughButton;
     }
-
 
 
 }

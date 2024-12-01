@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.NotesStorage;
-//import com.example.demo.FilerSystem.FolderStorage;
-import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -44,8 +41,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import java.util.Optional;
-
 public class FoldersController {
     private FoldersModel foldersModel; // The model managing folders
     private FoldersScreenView foldersScreenView; // The view for displaying folder-related UI
@@ -61,9 +56,8 @@ public class FoldersController {
     private String folderName;
     private FlashcardScreenController fCont;
     private String newFolderName;
-    private MainMenuScreenView menuScreenView;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, MainMenuScreenView menuScreenView) {
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, FlashcardScreenController fController) {
     /**
      * Constructs a FoldersController instance.
      *
@@ -74,7 +68,6 @@ public class FoldersController {
      * @param foldersScene       The scene for the folders screen.
      * @param toDoListView       Reference to the to-do list view.
      */
-    Notebook lastOpenedNotebook = null;
         this.foldersModel = model;
         this.foldersScreenView = view;
         this.primaryStage = stage;
@@ -82,9 +75,7 @@ public class FoldersController {
         this.navigationController = navigationController;
         this.foldersScene = foldersScene;
         this.toDoListView = toDoListView;
-        //this.fCont = fController;
-        this.menuScreenView = menuScreenView;
-
+        this.fCont = fController;
 
         // Define folder selection handler
         folderSelectionHandler = event -> {
@@ -117,11 +108,6 @@ public class FoldersController {
         // Add event handlers for buttons
         foldersScreenView.getBackButton().setOnAction(e -> goToMainMenu());
         foldersScreenView.getAddFolderButton().setOnAction(e -> addNewFolder(folderSelectionHandler, deleteHandler));
-        menuScreenView.runMainScreenUpdate();
-    }
-
-    public String getFolderName(){
-        return this.folderName;
     }
 
     /**
@@ -175,8 +161,6 @@ public class FoldersController {
 
 
         // Delete the corresponding JSON file from the filesystem
-
-
         NotesStorage.DeleteNotebook(folderName);
 
 
@@ -293,7 +277,6 @@ public class FoldersController {
         String newFolderName = foldersScreenView.showAddFolderDialog(NotesStorage.GenerateNotebookTitles());
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
-            foldersModel.getFolderMetadata(newFolderName);
             fCont.addFlashcardDeck(newFolderName);
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);

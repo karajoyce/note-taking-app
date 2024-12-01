@@ -295,18 +295,6 @@ Sara Shakeel, gvk731, 11367521
     -fx-max-height: 40;
     -fx-min-height: 40;
 }
-
-.hyperLinkButton{
-
-        -fx-font-size: 20px;
-        -fx-min-width: 50;
-        -fx-max-height: 49;
-        -fx-min-height: 49;
-        -fx-text-fill: #3434cd;
-        -fx-font-weight: bold
-
-}
-
 .fontmenu {
     -fx-font-size: 15px;
     -fx-min-height: 45;
@@ -364,8 +352,8 @@ Sara Shakeel, gvk731, 11367521
 }
 .main-title-label{
     -fx-font-family: "Trebuchet MS", "Sans Serif Collection";
-    -fx-font-size: 35px;
-
+    -fx-font-size: 40px;
+    -fx-padding: 20px;
 }
 .bignotebox{
 

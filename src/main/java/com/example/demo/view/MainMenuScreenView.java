@@ -3,7 +3,6 @@ package com.example.demo.view;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.HelloApplication;
-import com.example.demo.controller.FoldersController;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
@@ -23,13 +22,11 @@ import org.fxmisc.richtext.InlineCssTextArea;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenuScreenView extends StackPane {
     double screenHeight;
     double screenWidth;
-    private FoldersController fCont;
+
     private ToDoListView toDoListV;
     private ToDoListController toDoCont;
     public ToDoList toDoList;
@@ -53,8 +50,8 @@ public class MainMenuScreenView extends StackPane {
     private XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
-    private FoldersController foldersController;
-    private FoldersModel foldersModel;
+
+
 
     public MainMenuScreenView() {
 
@@ -80,8 +77,6 @@ public class MainMenuScreenView extends StackPane {
         //Initializing XP bar and system;
         xpModel = XPManager.getXPModel();
         xpView = new XPView();
-
-        foldersModel = new FoldersModel();
 
         runMainScreenUpdate();
     }
@@ -118,9 +113,6 @@ public class MainMenuScreenView extends StackPane {
 
     public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
         this.foldersScreenView = foldersScreenView;
-    }
-    public void setFoldersController(FoldersController foldersController) {
-        this.foldersController = foldersController;
     }
 
     public FoldersScreenView getFoldersScreenView() {
@@ -223,28 +215,6 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }
-
-    public void updateRecentFolders(){
-        ArrayList<String> recent = foldersModel.getMostRecentFolders();
-        if(recent.size() > 0) {
-            String title1 = (recent.get(0));
-            getRecentNoteButton().setText(title1);
-            getRecentNoteButton().setOnAction(e -> fCont.openNotebook(title1));
-
-        }else{
-            getRecentNoteButton().setText("Recent");
-
-        }
-        if(recent.size() > 1) {
-            String title2 = (recent.get(1));
-            getRecentNoteButton2().setText(title2);
-            getRecentNoteButton2().setOnAction(e -> fCont.openNotebook(title2) );
-        }else{
-            getRecentNoteButton2().setText("Recent");
-
-        }
-    }
-
 }
 
 
