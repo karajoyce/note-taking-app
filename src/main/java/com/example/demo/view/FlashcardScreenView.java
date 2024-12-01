@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -71,9 +73,29 @@ public class FlashcardScreenView extends StackPane {
         back = new Button(" < ");
         flip = new Button(" ⭯ ");
         edit = new Button(" ✎ ");
-        addFlashcard = new Button(" + ");
-        pageBack = new Button(" Back ");
-        removeCard = new Button(" Remove ");
+
+        addFlashcard = new Button("");
+        Image imgA = new Image(getClass().getResourceAsStream("/plus.png"));
+        ImageView imgViewA = new ImageView(imgA);
+        imgViewA.setFitHeight(15);
+        imgViewA.setPreserveRatio(true);
+        addFlashcard.setGraphic(imgViewA);
+
+
+        pageBack = new Button("");
+        Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
+        ImageView imgViewB = new ImageView(imgB);
+        imgViewB.setFitHeight(15);
+        imgViewB.setPreserveRatio(true);
+        pageBack.setGraphic(imgViewB);
+
+        removeCard = new Button();
+        Image img = new Image(getClass().getResourceAsStream("/trashcan.png"));
+        ImageView imgView = new ImageView(img);
+        imgView.setFitHeight(30);
+        imgView.setPreserveRatio(true);
+        removeCard.setGraphic(imgView);
+
         tempCard = new Card("Insert more cards", "");
         thumbsUpButton = new Button("Confident");
         thumbsDownButton = new Button("Not Confident");

@@ -47,6 +47,7 @@ public class HelloApplication extends Application {
         primaryStage.setAlwaysOnTop(true);
 
         NavigationController navigationController = new NavigationController(primaryStage);
+        //xpModel = new XPModel(100);
 
         ToDoList toDoList = new ToDoList(ToDoStorage.LoadToDoList().getTasks()); //todo HELP
         ToDoListView toDoListView = new ToDoListView(ToDoStorage.LoadToDoList());

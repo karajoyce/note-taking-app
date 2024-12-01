@@ -76,7 +76,6 @@ public class FoldersScreenView extends StackPane {
      */
     public FoldersScreenView() {
         // Initialize components
-        addFolderButton = new Button("Add Folder");
 
         pageBack = new Button("");
         Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
@@ -85,12 +84,12 @@ public class FoldersScreenView extends StackPane {
         imgViewB.setPreserveRatio(true);
         pageBack.setGraphic(imgViewB);
 
-        deleteButton = new Button("");
-        Image imgC = new Image(getClass().getResourceAsStream("/deleteIcon.png"));
-        ImageView imgViewC = new ImageView(imgC);
-        imgViewC.setFitHeight(15);
-        imgViewC.setPreserveRatio(true);
-        deleteButton.setGraphic(imgViewC);
+        addFolderButton = new Button("");
+        Image imgA = new Image(getClass().getResourceAsStream("/plus.png"));
+        ImageView imgViewA = new ImageView(imgA);
+        imgViewA.setFitHeight(15);
+        imgViewA.setPreserveRatio(true);
+        addFolderButton.setGraphic(imgViewA);
 
 
         motivationalMessagesView = new MotivationalMessagesView();
@@ -98,8 +97,6 @@ public class FoldersScreenView extends StackPane {
         ToDoListController toDoListController = new ToDoListController(list, toDoListV, xpModel);
 
         /** CHANGES BY NATHAN INITIALIZING*/
-        addFolderButton = new Button("Add Folder");
-        pageBack = new Button("Back");
         searchField = new TextField();
         sortOptions = new ChoiceBox<>();
         currentSortOrder = "Name";
@@ -127,11 +124,6 @@ public class FoldersScreenView extends StackPane {
         double screenHeight = Screen.getPrimary().getBounds().getMaxY() - SPACING;
         double screenWidth = Screen.getPrimary().getBounds().getMaxX() - SPACING;
 
-
-        /*
-        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
-        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
-        */
         this.getChildren().clear();
 
         // Main layout as HBox (to organize center content and right panel)
@@ -363,7 +355,12 @@ public class FoldersScreenView extends StackPane {
      * @return The text entered in the dialog, or `null` if no text was entered.
      */
     public String getAddButtonText(){
-        return addButtonText.get();
+        // Check if the Optional has a value
+        if (addButtonText.isPresent()) {
+            return addButtonText.get(); // Return the value if present
+        } else {
+            return null; // Return null if no value is present
+        }
 
     }
 
