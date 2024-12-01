@@ -10,10 +10,10 @@ import javafx.scene.layout.VBox;
 
 public class TagManagementView extends VBox {
 
-    private Notebook notebook; // Current notebook being managed
-    private VBox displayedTags = new VBox(); // Display area for tags
-    private TextField tagInputField = new TextField(); // Input for new tags
-    private Button addTagButton = new Button("Add Tag"); // Button to add new tags
+    private final Notebook notebook; // Current notebook being managed
+    private final VBox displayedTags = new VBox(); // Display area for tags
+    private final TextField tagInputField = new TextField(); // Input for new tags
+    private final Button addTagButton = new Button("Add Tag"); // Button to add new tags
 
     // Listener for when tags are updated
     private Runnable onTagsUpdated;

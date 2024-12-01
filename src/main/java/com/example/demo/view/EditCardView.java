@@ -9,17 +9,18 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
+import java.util.Objects;
+
 public class EditCardView {
-    private TextField frontCard; // Input field for the card description
-    private TextField backCard; // Input field for the card description
-    private Button updateCardButton; // Button to update the card
-    private GridPane grid; // to display everything
+    private final TextField frontCard; // Input field for the card description
+    private final TextField backCard; // Input field for the card description
 
     public EditCardView(Stage stage, Runnable onTaskCreated){
         stage.setTitle("Add Card");
 
         // Setting up the layout of the screen
-        grid = new GridPane();
+        // to display everything
+        GridPane grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
@@ -48,7 +49,8 @@ public class EditCardView {
         GridPane.setColumnSpan(frontCard, 3);
         GridPane.setConstraints(backCard, 1, 1);
         GridPane.setColumnSpan(backCard, 3);
-        updateCardButton = new Button("Update Card");
+        // Button to update the card
+        Button updateCardButton = new Button("Update Card");
         updateCardButton.getStyleClass().add("editbutton");
         updateCardButton.setMinWidth(150);
         GridPane.setConstraints(updateCardButton, 2, 3);
@@ -56,7 +58,7 @@ public class EditCardView {
         // Set up the layout
         grid.getChildren().addAll(frontCard, backCard, updateCardButton);
         Scene scene = new Scene(grid, 500, 350);
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         grid.getStyleClass().add("grid");
         stage.setScene(scene);
         stage.setAlwaysOnTop(true);
@@ -76,13 +78,5 @@ public class EditCardView {
         return backCard.getText();
     }
 
-//    public void clearInput(){
-//        frontCard.clear();
-//        backCard.clear();
-//    }
-//
-//    public GridPane getGrid(){
-//        return grid;
-//    }
 }
 

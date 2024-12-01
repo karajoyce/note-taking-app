@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import com.example.demo.controller.BreakReminderController;
 import javafx.stage.StageStyle;
 
+import java.util.Objects;
+
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
  Kara Leier, kjl061, 11293306
@@ -27,7 +29,6 @@ import javafx.stage.StageStyle;
  */
 public class BreakReminderIntervalView {
 
-    private final BreakReminderController breakReminderController;
     private final Stage intervalStage;
 
 
@@ -37,7 +38,6 @@ public class BreakReminderIntervalView {
      * @param breakReminderController the controller that manages the break reminder functionality
      */
     public BreakReminderIntervalView(BreakReminderController breakReminderController) {
-        this.breakReminderController = breakReminderController;
         this.intervalStage = new Stage();
         intervalStage.setTitle("Set Break Reminder Interval");
         intervalStage.initStyle(StageStyle.UTILITY); // Set as a utility pop-up window
@@ -80,7 +80,7 @@ public class BreakReminderIntervalView {
         Scene scene = new Scene(layout, 350, 150);
 
         // Apply the CSS file with the existing classes
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
 
 
         intervalStage.setScene(scene);

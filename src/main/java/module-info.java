@@ -20,4 +20,5 @@ module com.example.demo {
     exports com.example.demo.model;
     exports com.example.demo.view;
     exports com.example.demo.notes;
+    exports com.example.demo.controller;
 }

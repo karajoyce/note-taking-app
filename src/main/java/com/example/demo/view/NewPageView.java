@@ -9,16 +9,17 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
+import java.util.Objects;
+
 public class NewPageView {
-    private TextField title; // Input field for the card description
-    private Button createPageButton; // Button to update the card
-    private GridPane grid; // to display everything
+    private final TextField title; // Input field for the card description
 
     public NewPageView(Stage stage, Runnable onTaskCreated) {
         stage.setTitle("Add Page");
 
         // Setting up the layout of the screen
-        grid = new GridPane();
+        // to display everything
+        GridPane grid = new GridPane();
         grid.setPadding(new javafx.geometry.Insets(10));
         grid.setVgap(8);
         grid.setHgap(10);
@@ -41,7 +42,8 @@ public class NewPageView {
 
         GridPane.setConstraints(title, 1, 0);
         GridPane.setColumnSpan(title, 3);
-        createPageButton = new Button("Add Page");
+        // Button to update the card
+        Button createPageButton = new Button("Add Page");
         createPageButton.getStyleClass().add("editbutton");
         createPageButton.setMinWidth(150);
         GridPane.setConstraints(createPageButton, 1, 3);
@@ -49,7 +51,7 @@ public class NewPageView {
         // Set up the layout
         grid.getChildren().addAll(title, createPageButton);
         Scene scene = new Scene(grid, 500, 350);
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         grid.getStyleClass().add("grid");
         stage.setAlwaysOnTop(true);
         stage.setScene(scene);
