@@ -142,7 +142,7 @@ public class MainMenuScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         cardSection.getStyleClass().add("cardsection");
-        cardSection.setAlignment(Pos.CENTER_LEFT);
+        cardSection.setAlignment(Pos.TOP_LEFT);
         cardSection.setMinWidth((screenWidth * 0.7) - 10);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
@@ -208,7 +208,7 @@ public class MainMenuScreenView extends StackPane {
         NoteBox.setPadding(new Insets(50,0,0,0));
         NoteBox.getChildren().addAll(newNoteButton, recentNoteButton, recentNoteButton2);
         cardSection.getChildren().add(NoteBox);
-
+        xpView.updateXPview(xpModel.getCurrentXP(),xpModel.getMaxXP(),xpModel.getLevel());
         xpView.setPadding(new Insets(20,0,-30,0));
         cardSection.getChildren().add(xpView);
 
@@ -233,7 +233,7 @@ public class MainMenuScreenView extends StackPane {
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
-        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
+        toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
         todolist.setSpacing(30);
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
