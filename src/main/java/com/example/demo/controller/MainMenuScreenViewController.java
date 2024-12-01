@@ -24,12 +24,14 @@ public class MainMenuScreenViewController {
     private Scene mainMenuScene;
     private FoldersScreenView foldersScreenView;
     private XPModel xpModel;
+    private XPController xpController;
     private ToDoListView todoV;
     private ToDoListController todoC;
     private FoldersController fCont;
     private FlashcardScreenView fView;
     private NavigationController navigationController;
     private FlashcardScreenView flashcardScreenView;
+    private DigitalTree digitalTree;
 
 
     public MainMenuScreenViewController(ToDoListView todoV, MainMenuScreenView view, TopViewBar topViewBar, Stage stage, BreakReminderController breakReminderController, Scene flashcardScene, Scene mainMenuScene, FoldersScreenView foldersScreenView, ToDoListController todoC, FoldersController fController, FlashcardScreenView flashcardScreenView, NavigationController navCont) {

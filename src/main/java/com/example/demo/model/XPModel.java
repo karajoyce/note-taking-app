@@ -26,6 +26,11 @@ public class XPModel {
         return maxXP;
     }
 
+    public double setMaxXP(double maxXP) {
+        this.maxXP = maxXP;
+        return maxXP;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -46,6 +51,7 @@ public class XPModel {
         level++;
         currentXP = 0;
         maxXP *= 1.1;
+
     }
 
     public boolean isMaxXPReached(){

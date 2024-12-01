@@ -5,7 +5,6 @@ import com.example.demo.model.DigitalTree;
 import com.example.demo.model.XPManager;
 import com.example.demo.model.XPModel;
 import javafx.scene.media.AudioClip;
-import com.example.demo.view.FlashcardScreenView;
 import com.example.demo.view.XPView;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -31,7 +30,7 @@ public class XPController {
         try {
             // Audio Clip came by floraphonic from Pixabay
             //Sound Effect by <a href="https://pixabay.com/users/floraphonic-38928062/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=189853">floraphonic</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=189853">Pixabay</a>
-            lvlUpSound = new AudioClip(getClass().getResource("/level-up.mp3").toExternalForm());
+            lvlUpSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/level-up.mp3")).toExternalForm());
             Objects.requireNonNull(lvlUpSound, "Sound file not found");
         } catch (NullPointerException e) {
             System.out.println("Error: Sound file not found. Please check the path.");
@@ -67,9 +66,24 @@ public class XPController {
         XPStorage.SaveXPBar(this.model);
     }
 
+    public void addXPNow(double xpAmount){
+        int prevLvl = model.getLevel();
+        model.addXP(xpAmount);
+
+        //Detecting levelup
+        if (model.getLevel() > prevLvl ) {
+            handleLevelUp();
+        }
+
+        updateView();
+        XPStorage.SaveXPBar(this.model);
+    }
+
     public void resetXP(){
         model.setCurrentXP(0);
         model.setLevel(1);
+        model.setMaxXP(100);
+        this.digitalTree.resetTree();
     }
 
     private void handleLevelUp() {
@@ -77,10 +91,13 @@ public class XPController {
         if (model.getLevel() ==  1 && prevLvl == 1) {
             return;
         }
-        digitalTree.Grow();
+        if (model.getLevel() % 5 == 0) {
+            digitalTree.Grow();
+        }
         Color newColor = newRandomColour();
         view.changeXPBarColor(newColor);
         lvlUpSound.play();
+        System.out.println("SOUND IS TO PLAY");
     }
 
     private Color newRandomColour() {

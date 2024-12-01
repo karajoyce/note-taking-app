@@ -49,6 +49,7 @@ public class MainMenuScreenView extends StackPane {
     private XPView xpView;
     private XPController xpController;
     private Button xpToggleButton;
+    private DigitalTree digitalTree;
     private boolean isTrackingXP = false;
 
 
@@ -77,6 +78,7 @@ public class MainMenuScreenView extends StackPane {
         //Initializing XP bar and system;
         xpModel = XPManager.getXPModel();
         xpView = new XPView();
+        xpController = new XPController(xpModel,xpView, digitalTree);
 
         runMainScreenUpdate();
     }

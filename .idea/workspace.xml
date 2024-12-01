@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="More small fixes">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Did some changes with XP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/DigitalTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/TaskItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/XPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/XPModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,15 +175,7 @@
       <workItem from="1732817262553" duration="12724000" />
       <workItem from="1732841858693" duration="6492000" />
       <workItem from="1732895854121" duration="17230000" />
-      <workItem from="1733030416473" duration="11156000" />
-    </task>
-    <task id="LOCAL-00018" summary="time to work on fonts">
-      <option name="closed" value="true" />
-      <created>1730272221621</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1730272221621</updated>
+      <workItem from="1733030416473" duration="15348000" />
     </task>
     <task id="LOCAL-00019" summary="Merging for the deliverable">
       <option name="closed" value="true" />
@@ -562,7 +561,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733040838054</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Did some changes with XP">
+      <option name="closed" value="true" />
+      <created>1733047019150</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1733047019150</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
     <MESSAGE value="STYLES ARE SAVING" />
     <MESSAGE value="load is not working..." />
@@ -605,6 +611,7 @@
     <MESSAGE value="SOME FIXES" />
     <MESSAGE value="Small fixes. Things to Note before Trushank Merge:&#10;Auto-Flashcards and regular flashcards might need a look again&#10;The main menu + button might need to be looked at as well" />
     <MESSAGE value="More small fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="More small fixes" />
+    <MESSAGE value="Did some changes with XP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Did some changes with XP" />
   </component>
 </project>

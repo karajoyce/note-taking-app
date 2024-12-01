@@ -10,12 +10,14 @@ public class DigitalTree {
     private ImageView treeImageview;
     private List<Image> treeStages;
     private int currentStage = 0;
+    private XPModel xpModel;
 
     public DigitalTree() {
         treeImageview = new ImageView();
         treeStages = new ArrayList<>();
         treeImageview.setFitHeight(250);
         treeImageview.setFitWidth(250);
+        xpModel = XPManager.getXPModel();
 
         //Getting every image into the list
         for (int i = 0; i <= 7; i++ ){
@@ -29,8 +31,17 @@ public class DigitalTree {
             }
         }
 
-        if (!treeStages.isEmpty()){
+        int temp = XPManager.getXPModel().getLevel();
+        System.out.println(currentStage);
+        if (temp == 1){
+            currentStage = 0;
             treeImageview.setImage(treeStages.get(currentStage));
+        }
+        else if(temp % 5 ==0) {
+            currentStage = temp - 1;
+            if (!treeStages.isEmpty()) {
+                treeImageview.setImage(treeStages.get(currentStage));
+            }
         }
     }
 

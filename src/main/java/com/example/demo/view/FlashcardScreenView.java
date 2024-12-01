@@ -52,6 +52,7 @@ public class FlashcardScreenView extends StackPane {
     private XPView xpView;
     private XPController xpController;
     private Button xpToggleButton;
+    private Button xpResetButton;
     private boolean isTrackingXP = false;
 
     //Digital Tree
@@ -270,9 +271,12 @@ public class FlashcardScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
+        xpResetButton = new Button("RESET XP");
+        xpResetButton.setOnAction(e -> resetXPtracking());
+
         toDoListV.setMaxHeight(350);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton, xpResetButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);
         //-------------------------END
@@ -323,9 +327,8 @@ public class FlashcardScreenView extends StackPane {
             // Execute original handler logic, if any
             if (handler != null) {
                 handler.handle(event);
-                xpModel.addXP(10);
+                xpController.addXPNow(10);
             }
-
         });
     }
 
@@ -483,6 +486,11 @@ public class FlashcardScreenView extends StackPane {
             xpToggleButton.setText("STOP XP TRACKING");
         }
         isTrackingXP = !isTrackingXP;
+    }
+
+    //BUTTON FUNCTIONS FOR XP TRACKING FOR NOW
+    private void resetXPtracking(){
+       xpController.resetXP();
     }
 
     /**
