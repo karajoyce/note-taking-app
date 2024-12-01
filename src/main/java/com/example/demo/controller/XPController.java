@@ -74,8 +74,6 @@ public class XPController {
         if (model.getLevel() > prevLvl ) {
             handleLevelUp();
         }
-
-        updateView();
         XPStorage.SaveXPBar(this.model);
     }
 
@@ -96,6 +94,7 @@ public class XPController {
         }
         Color newColor = newRandomColour();
         view.changeXPBarColor(newColor);
+        updateView();
         lvlUpSound.play();
     }
 
@@ -103,7 +102,7 @@ public class XPController {
         return Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }
 
-    private void updateView(){
+    public void updateView(){
         view.updateXPview(model.getCurrentXP(), model.getMaxXP(), model.getLevel());
 
     }

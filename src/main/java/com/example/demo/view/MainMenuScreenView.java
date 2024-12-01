@@ -215,7 +215,7 @@ public class MainMenuScreenView extends StackPane {
         cardSection.getChildren().add(NoteBox);
         xpView.setPadding(new Insets(20,0,-30,0));
         startXPtracking();
-        cardSection.getChildren().add(this.xpView);
+        cardSection.getChildren().add(xpView);
 
         //Card text setup
         HBox fCard = new HBox();

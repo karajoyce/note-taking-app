@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Merged Jinny's Branch and then also updated the XP Progress bar in main menu">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Changed a Bit of the XP functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,14 +191,6 @@
       <workItem from="1733030416473" duration="15348000" />
       <workItem from="1733051117329" duration="6600000" />
       <workItem from="1733088715446" duration="717000" />
-    </task>
-    <task id="LOCAL-00023" summary="Fixing UI colouring to prepare for the next screen">
-      <option name="closed" value="true" />
-      <created>1731555502057</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1731555502057</updated>
     </task>
     <task id="LOCAL-00024" summary="Making Notebook Screen, just initial setup of the screen view I already made for the flashcards.">
       <option name="closed" value="true" />
@@ -585,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733090828405</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Changed a Bit of the XP functionality">
+      <option name="closed" value="true" />
+      <created>1733093245523</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1733093245523</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,7 +602,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added renaming, deleting, fixed a bug where saving on exit was not happening" />
     <MESSAGE value="merging jinny's branch into main" />
     <MESSAGE value="merging nathan's branch into main" />
     <MESSAGE value="merging trushank's branch into main" />
@@ -628,6 +626,7 @@
     <MESSAGE value="Fixed Logo, Sorting Logic, and getting started on LastAccessed" />
     <MESSAGE value="took out print statements" />
     <MESSAGE value="Merged Jinny's Branch and then also updated the XP Progress bar in main menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged Jinny's Branch and then also updated the XP Progress bar in main menu" />
+    <MESSAGE value="Changed a Bit of the XP functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed a Bit of the XP functionality" />
   </component>
 </project>
