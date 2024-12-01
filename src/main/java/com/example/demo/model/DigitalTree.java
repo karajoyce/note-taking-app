@@ -32,7 +32,6 @@ public class DigitalTree {
         }
 
         int temp = XPManager.getXPModel().getLevel();
-        System.out.println(currentStage);
         if (temp == 1){
             currentStage = 0;
             treeImageview.setImage(treeStages.get(currentStage));

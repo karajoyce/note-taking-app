@@ -97,7 +97,6 @@ public class XPController {
         Color newColor = newRandomColour();
         view.changeXPBarColor(newColor);
         lvlUpSound.play();
-        System.out.println("SOUND IS TO PLAY");
     }
 
     private Color newRandomColour() {
