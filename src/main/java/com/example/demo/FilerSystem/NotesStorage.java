@@ -152,6 +152,7 @@ public class NotesStorage {
                     JsonObject paragraphObject = (JsonObject) paragraphs.get(x);
                     ArrayList<StyledSegment<String, String>> segments = new ArrayList<>();
                     JsonArray segmentArray = paragraphObject.getAsJsonArray("segments");
+
                     // for each paragraph, rebuild the segments
                     for (int y = 0; y < segmentArray.size(); y++) {
                         JsonObject segmentObject = segmentArray.get(y).getAsJsonObject();
@@ -160,7 +161,7 @@ public class NotesStorage {
                         segments.add(new StyledSegment<>(text, style));
                     }
                     // add the paragraph back to the tempnotebook
-                    document.addParagraph(segments);
+                    document.addParagraph(segments, paragraphObject.get("paragraphStyle").getAsString());
                 }
                 // rebuild the notebook
                 tempPage.setContents(new InlineCssTextArea(new SimpleEditableStyledDocument<>(document.build())));
