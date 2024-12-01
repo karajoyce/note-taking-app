@@ -1,18 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.NotesStorage;
+
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.*;
-import javafx.event.EventHandler;
+
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+
 import javafx.stage.Stage;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenuScreenViewController {
 

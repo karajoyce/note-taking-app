@@ -59,9 +59,6 @@ public class HelloApplication extends Application {
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
 
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
-
-        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
@@ -78,6 +75,8 @@ public class HelloApplication extends Application {
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, fCardCont);
 
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(foldersController);
+        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
