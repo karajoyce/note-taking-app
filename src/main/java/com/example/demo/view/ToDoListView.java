@@ -7,7 +7,6 @@ import com.example.demo.model.XPModel;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import com.example.demo.model.TaskItem;
@@ -26,11 +25,8 @@ import java.util.ArrayList;
  **/
 
 public class ToDoListView extends VBox {
-    private XPModel xpModel;
-    private ListView<HBox> taskListView;
-    private Button addTaskButton;
-    private ToDoList toDoList;
-    public GridPane grid;// Maintain the list of tasks
+    private final ListView<HBox> taskListView;
+    private final Button addTaskButton;
 
 
 
@@ -39,9 +35,8 @@ public class ToDoListView extends VBox {
      * for the to-do list application.
      *.
      */
+    // TODO: delete unused parameter
     public ToDoListView(ToDoList toDoList) {
-
-        this.toDoList = toDoList;
 
         // List View
         taskListView = new ListView<>();
@@ -61,13 +56,12 @@ public class ToDoListView extends VBox {
     /**
      * Updates the task list view with the provided list of tasks.
      *
-     * @param xpModel
+     * @param xpModel the instance of the XP model
      */
     public void setTaskList(ToDoList toDoList, XPModel xpModel) {
-        this.xpModel = xpModel;
         taskListView.getItems().clear();
         for (Task task : toDoList.getTasks()) {
-            TaskItem taskItem = new TaskItem(toDoList, task, this.xpModel, e -> {
+            TaskItem taskItem = new TaskItem(toDoList, task, xpModel, e -> {
                 // Handle delete action using the task object
                 deleteTask(task);
             });

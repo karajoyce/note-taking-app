@@ -1,11 +1,9 @@
 package com.example.demo.view;
 
 import javafx.geometry.Pos;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Screen;
 import javafx.scene.text.Text;
 
 import java.io.BufferedReader;
@@ -13,6 +11,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -28,9 +27,9 @@ import java.util.Random;
 
 public class MotivationalMessagesView extends StackPane {
 
-    private List<String> messages; // hold the messages
-    private Random rand;
-    private HBox motivmsg;
+    private final List<String> messages; // hold the messages
+    private final Random rand;
+    private final HBox motivmsg;
 
 
     /**
@@ -43,7 +42,7 @@ public class MotivationalMessagesView extends StackPane {
         // file found at https://gist.github.com/robatron/a66acc0eed3835119817#file-quotes-txt
         String txtInput = readString("/quotes.txt");
         messages = Arrays.asList(txtInput.split("\n"));
-        this.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
 
         drawMotivationalMessage();
     }

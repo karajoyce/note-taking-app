@@ -43,11 +43,6 @@ public class XPView extends VBox {
         });
     }
 
-    /*REMOVE AFTER MAKING SURE THINGS STILL WORK*/
-    /*public ProgressBar getXpProgressBar() {
-        return xpProgressBar;
-    }*/
-
     public void changeXPBarColor(Color color) {
         xpProgressBar.setStyle("-fx-accent: " + toHexString(color) + ";");
     }
