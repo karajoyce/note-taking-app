@@ -30,7 +30,6 @@ import java.util.Objects;
 public class BreakReminderView extends Parent {
     /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
     private final Stage reminderStage;
-    private final Label reminderMessage;
     private final Button dismissButton;
 
     /**
@@ -46,7 +45,7 @@ public class BreakReminderView extends Parent {
         reminderStage.setAlwaysOnTop(true);
 
         // Create and style the reminder message
-        reminderMessage = new Label("You've been working for too long.\nTime to take a break!");
+        Label reminderMessage = new Label("You've been working for too long.\nTime to take a break!");
 
         // Create and style the dismiss button
         dismissButton = new Button("Dismiss");

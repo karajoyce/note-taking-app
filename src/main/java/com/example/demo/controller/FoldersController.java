@@ -344,12 +344,12 @@ public class FoldersController {
 
         // Apply sorting logic
         switch (effectiveSortOrder) {
-            case "Last Accessed":
+            /*case "Last Accessed":
                 filteredFolders.sort((folder1, folder2) ->
                         foldersModel.getFolderMetadata(folder2).getLastAccessed()
                                 .compareTo(foldersModel.getFolderMetadata(folder1).getLastAccessed()));
 
-                break;
+                break;*/
             case "Oldest First":
                 filteredFolders.sort(Comparator.comparing(folder ->
                         foldersModel.getFolderMetadata(folder).getCreationDate()));

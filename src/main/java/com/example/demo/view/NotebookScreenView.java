@@ -1,8 +1,8 @@
 package com.example.demo.view;
-
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVING UNUSED IMPORT STATEMENTS
 import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.HelloApplication;
-import com.example.demo.controller.ToDoListController;
+//import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
 import com.example.demo.notes.NoteController;
@@ -44,37 +44,34 @@ public class NotebookScreenView extends StackPane {
     double screenHeight;
     double screenWidth;
 
-    private String currentFolder;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //private String currentFolder;
 
-    private XPModel xpModel;
-    private XPView xpView;
-    private XPController xpController;
+    private final XPModel xpModel;
+    private final XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
-    private MotivationalMessagesView motivationalMessagesView;
-
-    //Digital Tree
-    private DigitalTree digitalTree;
+    private final MotivationalMessagesView motivationalMessagesView;
 
     /**CHANGES BY NATHAN FOR TAGS*/
     //UI things for tags, MIGHT NEED TO CHANGE TO A NEW WINDOW WE'LL SEE
-    private FlowPane tagDisplayPane = new FlowPane();
-    private Button manageTagsButton = new Button("Manage Tags");
-    private VBox tagSection = new VBox();
+    private final FlowPane tagDisplayPane = new FlowPane();
+    private final Button manageTagsButton = new Button("Manage Tags");
+    private final VBox tagSection = new VBox();
     //Action Listeners for tags
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     private OnTagActionListener onAddTagListener;
-    private OnTagActionListener onRemoveTagListener;
+    private OnTagActionListener onRemoveTagListener;*/
 
-    private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
-    private Button addPage; // to add a new page to the notebook
-    private Button pageBack;
-    private Button removePage;
-    private Button renamePage;
-    private NoteModel noteModel;
-    private NoteController noteController;
-    private NoteView noteView;
+    private final ToDoListView toDoListV;
+    private final Button addPage; // to add a new page to the notebook
+    private final Button pageBack;
+    private final Button removePage;
+    private final Button renamePage;
+    private final NoteModel noteModel;
+    private final NoteController noteController;
+    private final NoteView noteView;
     private Notebook currentNotebook;
     private Page currentPage;
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
@@ -87,28 +84,28 @@ public class NotebookScreenView extends StackPane {
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
 
         renamePage = new Button("");
-        Image imgR = new Image(getClass().getResourceAsStream("/renameicon.png"));
+        Image imgR = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/renameicon.png")));
         ImageView imgViewR = new ImageView(imgR);
         imgViewR.setFitHeight(30);
         imgViewR.setPreserveRatio(true);
         renamePage.setGraphic(imgViewR);
 
         addPage = new Button("");
-        Image imgA = new Image(getClass().getResourceAsStream("/plus.png"));
+        Image imgA = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/plus.png")));
         ImageView imgViewA = new ImageView(imgA);
         imgViewA.setFitHeight(15);
         imgViewA.setPreserveRatio(true);
         addPage.setGraphic(imgViewA);
 
         pageBack = new Button("");
-        Image imgB = new Image(getClass().getResourceAsStream("/backArrow.png"));
+        Image imgB = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/backArrow.png")));
         ImageView imgViewB = new ImageView(imgB);
         imgViewB.setFitHeight(15);
         imgViewB.setPreserveRatio(true);
         pageBack.setGraphic(imgViewB);
 
         removePage = new Button();
-        Image img = new Image(getClass().getResourceAsStream("/trashcan.png"));
+        Image img = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/trashcan.png")));
         ImageView imgView = new ImageView(img);
         imgView.setFitHeight(30);
         imgView.setPreserveRatio(true);
@@ -116,18 +113,19 @@ public class NotebookScreenView extends StackPane {
 
         //Initializing XP bar and system;
         xpModel = new XPModel(100);
-        xpView = new XPView();
+        XPView xpView = new XPView();
         //Initializing new Tree
-        digitalTree = new DigitalTree();
+        //Digital Tree
+        DigitalTree digitalTree = new DigitalTree();
         xpController = new XPController(xpView, digitalTree);
 
-        toDoList = ToDoStorage.LoadToDoList();
+        ToDoList toDoList = ToDoStorage.LoadToDoList();
         toDoListV = new ToDoListView(toDoList);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+        /*ToDoListController toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);*/
         motivationalMessagesView = new MotivationalMessagesView();
 
-        currentFolder = new String();
+        //currentFolder = "";
 
         noteModel = new NoteModel();
 
@@ -138,8 +136,8 @@ public class NotebookScreenView extends StackPane {
         noteController = new NoteController(noteModel, currNotebook);
         noteView = new NoteView(noteController);
 
-        /**CHANGES BY NATHAN **/
-        /**Might need to change this later*/
+        /*CHANGES BY NATHAN **/
+        /*Might need to change this later*/
         initializeTagSection();
 
         runScreenUpdate();
@@ -149,8 +147,8 @@ public class NotebookScreenView extends StackPane {
         this.currentNotebook = notebook;
         runScreenUpdate();
     }
-
-
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     public void setCurrentFolder(String folderName) {
         // Update the current folder
         this.currentFolder = folderName;
@@ -173,8 +171,10 @@ public class NotebookScreenView extends StackPane {
         headerBox.getChildren().add(folderLabel);
 
         // Add the header box at the top of the UI
-        this.getChildren().add(0, headerBox);
-    }
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING
+        //this.getChildren().add(0, headerBox);
+        this.getChildren().addFirst(headerBox);
+    }*/
 
     public void runScreenUpdate() {
         // General class things/size
@@ -225,7 +225,7 @@ public class NotebookScreenView extends StackPane {
         //-------------------------
         // Set up flashcard middle section
         VBox cardSection = new VBox();
-        cardSection.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        cardSection.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
         cardSection.setMinWidth((screenWidth * 0.6) - 10);
@@ -271,7 +271,7 @@ public class NotebookScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        todolist.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
         //BUTTON FOR NOW MAYBE CHANGE LATER;
@@ -334,9 +334,10 @@ public class NotebookScreenView extends StackPane {
         return pageBack;
     }
 
+    /*
     public void setAddPageButton(javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
         pageHandler = handler;
-    }
+    }*/
 
     /**
      * An event handler for the confident button
@@ -451,9 +452,10 @@ public class NotebookScreenView extends StackPane {
         return tagBox;
     }
 
+    /*
     public interface OnTagActionListener{
         void onTagAction(String tag);
-    }
+    }*/
 }
 
 

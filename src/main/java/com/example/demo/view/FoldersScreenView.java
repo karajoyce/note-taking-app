@@ -151,7 +151,7 @@ public class FoldersScreenView extends StackPane {
 
         sortOptions.getItems().clear();
         sortOptions.getItems().addAll("Name", "Oldest First", "Newest First");//, "Last Accessed");
-        sortOptions.setValue("Oldest First");
+        sortOptions.setValue("Name");
 
         pageBack.setMinWidth(100);
         pageBack.setMinHeight(40);

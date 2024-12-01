@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -28,11 +29,11 @@ import java.time.LocalDate;
  */
 public class TaskCreationView {
 
-    private TextField taskDescriptionInput; // Input field for the task description
-    private DatePicker dueDatePicker; // Date picker for selecting the due date
-    private Button createTaskButton; // Button to create the task
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGED TO FINAL
+    private final TextField taskDescriptionInput; // Input field for the task description
+    private final DatePicker dueDatePicker; // Date picker for selecting the due date
     public GridPane grid;
-    private Label titleLabel; // Title label for the "Create New Task" window
 
     /**
      * Constructs a TaskCreationView with a given primary stage and a callback
@@ -58,7 +59,8 @@ public class TaskCreationView {
         grid.getRowConstraints().add(new RowConstraints(70));
 
         // Title label
-        titleLabel = new Label("Create New Task");
+        // Title label for the "Create New Task" window
+        Label titleLabel = new Label("Create New Task");
         titleLabel.getStyleClass().add("task-title");
         GridPane.setConstraints(titleLabel, 0, 0, 2, 1);
 
@@ -72,13 +74,14 @@ public class TaskCreationView {
         GridPane.setConstraints(dueDatePicker, 1, 1);
 
         // Create Task Button and HBox for centering
-        createTaskButton = new Button("Create Task");
+        // Button to create the task
+        Button createTaskButton = new Button("Create Task");
         HBox buttonContainer = new HBox(createTaskButton);
         createTaskButton.getStyleClass().add("task-button");
         buttonContainer.setAlignment(Pos.CENTER);
         GridPane.setConstraints(buttonContainer, 0, 2, 2, 1); // Span two columns
 
-        grid.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        grid.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
 
         // Set up the layout
         grid.getChildren().addAll(titleLabel, taskDescriptionInput, dueDatePicker, buttonContainer);
@@ -96,7 +99,7 @@ public class TaskCreationView {
                 alert.setHeaderText("Task Description Required");
                 alert.setContentText("Please enter a description for the task.");
                 alert.initStyle(StageStyle.UTILITY);
-                alert.getDialogPane().getStyleClass().add(getClass().getResource("/styles.css").toExternalForm());
+                alert.getDialogPane().getStyleClass().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
                 alert.getDialogPane().getStyleClass().add("custom-alert"); // Add a custom style class
                 alert.showAndWait(); // Display the alert
             } else {

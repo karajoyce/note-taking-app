@@ -4,28 +4,24 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 
-import java.awt.*;
+import java.util.Objects;
 
 public class TopViewBar extends HBox {
-
-    private HBox topBar = new HBox();
-    private Button flashButton;
-    private Button breakButton;
-    private Button foldersButton; // Add folders button
-
-    private Label titleLabel;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //CHANGING TO FINAL
+    private final HBox topBar;
+    private final Button flashButton;
+    private final Button breakButton;
+    private final Button foldersButton; // Add folders button
 
 
     public TopViewBar() {
 
-        Image logo = new Image(getClass().getResource("/file.png").toExternalForm());
+        Image logo = new Image(Objects.requireNonNull(getClass().getResource("/file.png")).toExternalForm());
         ImageView logoView = new ImageView(logo);
         logoView.getStyleClass().add("image-view");
 
@@ -49,7 +45,7 @@ public class TopViewBar extends HBox {
         breakButton.getStyleClass().add("break-button");
 
 
-        titleLabel = new Label("TruNotes");
+        Label titleLabel = new Label("TruNotes");
         titleLabel.getStyleClass().add("main-title-label");
 
         foldersButton = new Button("Folders"); // Initialize folders button
