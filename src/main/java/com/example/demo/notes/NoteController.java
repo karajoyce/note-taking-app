@@ -13,7 +13,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 import com.example.demo.model.*;
-import com.example.demo.view.NotebookScreenView;
+/*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;

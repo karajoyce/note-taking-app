@@ -11,11 +11,8 @@ package com.example.demo.notes;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVED UNUSED IMPORT STATEMENTS
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,8 +27,10 @@ public class NoteModel {
     /** the main text area of the text editor */
     private InlineCssTextArea textArea = new InlineCssTextArea();
 
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //MADE THIS FINAL
     /** the list of styles that is being applied to the typed text */
-    private Set<String> currStyle = new HashSet<>();
+    private final Set<String> currStyle = new HashSet<>();
 
     /** if bold is enabled, true. otherwise, false */
     private boolean boldEnabled;
@@ -52,8 +51,9 @@ public class NoteModel {
     private String fontType;
 
     /**Added by Nathan, Fields for tags and images **/
-    private Set<String> tags = new HashSet<>();
-    private String imagePath;
+    private final Set<String> tags = new HashSet<>();
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private String imagePath;
 
     /** if auto flashcard creating turned on, true. otherwise, false */
     private boolean autoFlashcardEnabled;
@@ -265,7 +265,7 @@ public class NoteModel {
     public void setBackBufferIndex(int index) {
         this.backBufferIndex = index;
     }
-    /** -------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------- */
 
     /**ADDED BY NATHAN SETTERS AND GETTERS FOR TAGS AND IMAGE**/
     public void addTag(String tag){
@@ -276,17 +276,21 @@ public class NoteModel {
         tags.remove(tag);
     }
 
+/*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     public Set<String> getTags() {
         return tags;
-    }
+    }*/
 
+    /*
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-    }
+    }*/
 
+    /*
     public String getImagePath() {
         return imagePath;
-    }
+    }*/
 
     public boolean containsKeyword(String keyword){
         return tags.contains(keyword) || textArea.getText().contains(keyword);

@@ -9,16 +9,13 @@
 
 package com.example.demo.notes;
 
-import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVED UNUSED IMPORT STATEMENTS
 import javafx.scene.control.*;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -27,14 +24,17 @@ import java.util.Set;
  * Creates stuff to put on display (menus, tool bars, buttons)
  */
 public class NoteView  {
-    private NoteController noteController;
-    private TextField tagInputField = new TextField();
-    private Button addTagButton = new Button("Add Tag");
-    private VBox tagContainer = new VBox();
-    private TextField searchField = new TextField();
-    private Button searchButton = new Button("Search");
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //MADE THINGS FINAL
+    private final NoteController noteController;
+    /*private final TextField tagInputField = new TextField();
+    private final Button addTagButton = new Button("Add Tag");
+    private final VBox tagContainer = new VBox();
+    private final TextField searchField = new TextField();
+    private final Button searchButton = new Button("Search");*/
 
-    private Notebook notebook;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //private Notebook notebook;
 
     /**
      * Constructor class for the NoteView object.
@@ -47,11 +47,11 @@ public class NoteView  {
 
     }
 
-    /**
+    /*
      * Menu bar that saves/opens files into the computer's file system
      * @param stage the application stage
      * @return the menu bar with Open/Save functions
-     */
+
     public MenuBar createMenuBar(Stage stage) {
         Menu fileMenu = new Menu("File"); //dropdown
         MenuItem openItem = new MenuItem("Open");
@@ -66,11 +66,11 @@ public class NoteView  {
         menuBar.getMenus().add(fileMenu);
 
         return menuBar;
-    }
+    }*/
 
     /**
      * Tool bar for all the rich text editing functions
-     * @return
+     * @return a tool bar
      */
     public ToolBar createToolBar() {
     /*
@@ -172,6 +172,7 @@ public class NoteView  {
         return toolBar;
     }
 
+    /*
     private void initializeTagsSection(){
         HBox tagInputSection = new HBox(tagInputField, addTagButton);
         tagContainer.getChildren().add(tagInputSection);
@@ -184,8 +185,9 @@ public class NoteView  {
            }
         });
 
-    }
+    }*/
 
+    /*
     public void displayTags(Set<String> tags){
         tagContainer.getChildren().clear();
         initializeTagsSection();
@@ -197,8 +199,9 @@ public class NoteView  {
             HBox tagItem = new HBox(tagLabel, removeButton);
             tagContainer.getChildren().add(tagItem);
         }
-    }
+    }*/
 
+    /*
     private void initializeSearchSection(){
         HBox searchSection = new HBox(searchField,searchButton);
 
@@ -214,7 +217,8 @@ public class NoteView  {
                 }
             }
         });
-    }
+    }*/
+
     /** Getter functions for the style/formatting buttons */
     protected Button getToggleBoldButton() {
         Button toggleBoldButton = new Button("B");
