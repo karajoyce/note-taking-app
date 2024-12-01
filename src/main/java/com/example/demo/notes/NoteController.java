@@ -169,7 +169,10 @@ public class NoteController {
                         noteModel.setCurrentCardFront("");
                         noteModel.resetBackBuffer("");
 
-                    } else {
+                    }
+                    else if(addedText.length() == 1){
+                        noteModel.resetBackBuffer(noteModel.getBackBuffer()+addedText);
+                    }else {
                         // Else, add the text to the buffer
                         noteModel.resetBackBuffer(newText.substring(noteModel.getBackBufferIndex()));
                     }
@@ -240,8 +243,9 @@ public class NoteController {
                 String front = noteModel.getTextArea().getText(start, end);
                 noteModel.setCurrentCardFront(front);
 
-                noteModel.setWaitingForBackInput(true);
+                //noteModel.setWaitingForBackInput(true);
                 noteModel.toggleBold();
+                noteModel.setWaitingForBackInput(true);
 
             }
             return;

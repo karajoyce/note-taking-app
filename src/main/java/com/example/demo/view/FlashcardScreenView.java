@@ -405,7 +405,14 @@ public class FlashcardScreenView extends StackPane {
             // Set up new ID
             int ID = index + 1;
             // Case for hitting the end and wrapping to the beginning
-            newCard = this.flashcardModel.getDeck().getCards().getFirst();
+            if (flashcardModel.getDeck().getCards().isEmpty()) {
+                Card card = new Card("Insert Cards","");
+                flashcardModel.getDeck().getCards().add(card);
+                newCard = card;
+            }
+            else{
+                newCard = this.flashcardModel.getDeck().getCards().getFirst();
+            }
             // Loop to find the next card
             if (ID < this.flashcardModel.getDeck().getSize()){
                 newCard = this.flashcardModel.getDeck().getCards().get(ID);
