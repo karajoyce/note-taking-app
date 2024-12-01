@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Fixed the last warning on Filer System and did a pass through Model">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Note Folder mostly done without warnings, only weak ones with commented code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/notes/NoteView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/BreakReminderView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NewNameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/NewNameView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +88,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -190,15 +197,7 @@
       <workItem from="1732841858693" duration="6492000" />
       <workItem from="1732895854121" duration="17230000" />
       <workItem from="1732947760804" duration="1423000" />
-      <workItem from="1733006670519" duration="4341000" />
-    </task>
-    <task id="LOCAL-00018" summary="time to work on fonts">
-      <option name="closed" value="true" />
-      <created>1730272221621</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1730272221621</updated>
+      <workItem from="1733006670519" duration="9165000" />
     </task>
     <task id="LOCAL-00019" summary="Merging for the deliverable">
       <option name="closed" value="true" />
@@ -584,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733009992977</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Note Folder mostly done without warnings, only weak ones with commented code">
+      <option name="closed" value="true" />
+      <created>1733011430685</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1733011430685</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +609,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
     <MESSAGE value="STYLES ARE SAVING" />
     <MESSAGE value="load is not working..." />
@@ -627,6 +633,7 @@
     <MESSAGE value="WARNING: REVERT TO THE COMMIT BEFORE IN CASE THIS ISNT GOOD &#10;I attempted toclear warnings from controllers, there are some problems though :&#10;LOTS OF WARNINGS STILL ON: &#10;FOLDERS CONTROLLER : FIELD CAN BE CONVERTED TO LOCAL VARIABLES&#10;PARAMS MIGHT BE WEIRD&#10;MORE E SHIT &#10;COMMENTED OUT CODE FOR NOW &#10;&#10;SAME FOR MAIN MENU SCREEN VIEW CONTROLLER&#10;&#10;SOME WARNINGS ON: &#10;BREAK REMINDER : ACTION EVENT E IS WEIRD?&#10;EDIT CARD CONTROLLER : THINGS ARE FINE &#10;FLASHCARDSCREENCONTROLLER : MORE e SHIT AND PRIVATE FIELD IS ASSIGNED BUT NOT ACCESSED&#10;NOTEBOOK CONTROLLER&#10;&#9;WEIRD E SHIT AGAIN AND SOME STUFF THAT CAN BE LOCAL VARIABLES OR FIELDS THAT ARE ASSIGNED BUT NOT ACCESSED&#10;&#10;TODOLIST CONTROLLER : &#10;FIELDS CAN BE CONVERTED TO LOCAL VARIABLE &#10;PRIVATE FIELD ASSIGNED BUT NEVER ACCESSED &#10;PARAMETER E IS NEVER USED EEEEEEEEEEEEEEEEEEEEEEEEEEEE" />
     <MESSAGE value="Filer System warnings are almost cleared, one warning shows up in most with File.mkdirs being ignored???" />
     <MESSAGE value="Fixed the last warning on Filer System and did a pass through Model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the last warning on Filer System and did a pass through Model" />
+    <MESSAGE value="Note Folder mostly done without warnings, only weak ones with commented code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Note Folder mostly done without warnings, only weak ones with commented code" />
   </component>
 </project>

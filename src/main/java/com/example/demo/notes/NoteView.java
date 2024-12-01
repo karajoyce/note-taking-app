@@ -13,10 +13,6 @@ package com.example.demo.notes;
 //REMOVED UNUSED IMPORT STATEMENTS
 import javafx.scene.control.*;
 
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-
-import java.util.Set;
 
 
 /**
@@ -101,6 +97,8 @@ public class NoteView  {
         });
 */
         /* Font style formatting buttons */
+        /*FROM NATHAN WEIRD ERROR THAT DRK HOW TO FIX*/
+        //MORE ACTION EVENT WARNINGS
         Button toggleBoldButton = new Button("B");
         toggleBoldButton.getStyleClass().add("textEditorButton");
         toggleBoldButton.setStyle("-fx-font-weight: bold;");

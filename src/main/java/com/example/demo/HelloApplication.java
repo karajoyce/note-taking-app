@@ -103,7 +103,7 @@ public class HelloApplication extends Application {
         mainMenuScreenView.getNewNoteButton().setOnAction(event -> navigationController.navigateToFoldersScreen(foldersScreenView) );
 
 
-        mainMenuScreenView.setFoldersController(foldersController);
+        //mainMenuScreenView.setFoldersController(foldersController);
 
         ArrayList<String> recent = foldersModel.getMostRecentFolders();
         if(recent.size() > 0) {

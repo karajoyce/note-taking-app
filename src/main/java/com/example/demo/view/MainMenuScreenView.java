@@ -1,67 +1,59 @@
 package com.example.demo.view;
 
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
 import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.FilerSystem.XPStorage;
-import com.example.demo.HelloApplication;
-import com.example.demo.controller.FoldersController;
-import com.example.demo.controller.ToDoListController;
-import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
 import com.example.demo.model.XPModel;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
-import javafx.stage.Stage;
-import org.fxmisc.richtext.InlineCssTextArea;
 
-import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class MainMenuScreenView extends StackPane {
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
     double screenHeight;
     double screenWidth;
-    private FoldersController fCont;
-    private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    public ToDoList toDoList;
-    private Button pageButton; // button to choose a deck
-    private MotivationalMessagesView mView;
-    private TopViewBar topViewBar;
-
-    private Button foldersButton; // New button
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    //private FoldersController fCont;
+    private final ToDoListView toDoListV;
+    private final MotivationalMessagesView mView;
+    private final TopViewBar topViewBar;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private Button foldersButton; // New button
 
     private HBox NoteBox;
-    private Button newNoteButton;
-    private Button recentNoteButton;
-    private Button recentNoteButton2;
+    private final Button newNoteButton;
+    private final Button recentNoteButton;
+    private final Button recentNoteButton2;
 
-    private Stage primaryStage; // Reference to the primary stage
-    private FoldersScreenView foldersScreenView; // Reference to FoldersScreenView
-
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private Stage primaryStage; // Reference to the primary stage
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private FoldersScreenView foldersScreenView; // Reference to FoldersScreenView
+    //private FoldersController folController;
     //Adding XP Bar and System
     private XPModel xpModel;
-    private XPView xpView;
-    private XPController xpController;
+    private final XPView xpView;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*private XPController xpController;
     private Button xpToggleButton;
-    private boolean isTrackingXP = false;
-    private FoldersController foldersController;
-    private FoldersModel foldersModel;
+    private final boolean isTrackingXP = false;*/
 
     public MainMenuScreenView() {
 
         // Deck initialization, needs to change
         screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
         screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
-        pageButton = new Button("Test Page"); // this should be a deck name later
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+        //public ToDoList toDoList;
+        // button to choose a deck
+        //Button pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
         recentNoteButton = new Button("Recent");
@@ -73,7 +65,8 @@ public class MainMenuScreenView extends StackPane {
         ToDoList toDoList = ToDoStorage.LoadToDoList();
         this.toDoListV = new ToDoListView(toDoList);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+        //ToDoListController toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
 
         NoteBox = new HBox();
 
@@ -81,7 +74,8 @@ public class MainMenuScreenView extends StackPane {
         xpModel = XPManager.getXPModel();
         xpView = new XPView();
 
-        foldersModel = new FoldersModel();
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+        //FoldersModel foldersModel = new FoldersModel();
 
         runMainScreenUpdate();
     }
@@ -108,24 +102,33 @@ public class MainMenuScreenView extends StackPane {
         return recentNoteButton2;
     }
 
-    public void setPrimaryStage(Stage stage) {
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*public void setPrimaryStage(Stage stage) {
         this.primaryStage = stage;
-    }
+    }*/
 
+    /*
     public Stage getPrimaryStage() {
         return primaryStage;
-    }
+    }*/
 
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
         this.foldersScreenView = foldersScreenView;
-    }
-    public void setFoldersController(FoldersController foldersController) {
-        this.foldersController = foldersController;
-    }
+    }*/
 
+
+    /*
+    public void setFoldersController(FoldersController foldersController) {
+        folController = foldersController;
+    }*/
+
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
     public FoldersScreenView getFoldersScreenView() {
         return foldersScreenView;
-    }
+    }*/
 
     public void runMainScreenUpdate() {
         // General class things/size
@@ -145,7 +148,7 @@ public class MainMenuScreenView extends StackPane {
         //-------------------------
         // Set up flashcard middle section
         VBox cardSection = new VBox();
-        cardSection.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        cardSection.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
         cardSection.setMinWidth((screenWidth * 0.7) - 10);
@@ -210,7 +213,7 @@ public class MainMenuScreenView extends StackPane {
         VBox todolist = new VBox();
         todolist.setMinWidth(screenWidth * 0.3);
         todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        todolist.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
@@ -223,7 +226,8 @@ public class MainMenuScreenView extends StackPane {
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }
-
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    /*
     public void updateRecentFolders(){
         ArrayList<String> recent = foldersModel.getMostRecentFolders();
         if(recent.size() > 0) {
@@ -243,7 +247,7 @@ public class MainMenuScreenView extends StackPane {
             getRecentNoteButton2().setText("Recent");
 
         }
-    }
+    }*/
 
 }
 

@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Objects;
+
 
 /*
  CMPT 370, T05, Team 4, Prof. Jon Lovering
@@ -26,9 +28,10 @@ import javafx.stage.StageStyle;
  * It displays a reminder message and a dismiss button, which allows the user to close the reminder.
  */
 public class BreakReminderView extends Parent {
-    private Stage reminderStage;
-    private Label reminderMessage;
-    private Button dismissButton;
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+    private final Stage reminderStage;
+    private final Label reminderMessage;
+    private final Button dismissButton;
 
     /**
      * Constructs a BreakReminderView with a styled pop-up window containing a reminder message
@@ -62,7 +65,7 @@ public class BreakReminderView extends Parent {
         Scene scene = new Scene(layout, 300, 150);
 
         // Apply the stylesheet
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         reminderStage.setScene(scene);
     }
 

@@ -1,22 +1,18 @@
 package com.example.demo.view;
-
+/*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+//REMOVING UNUSED IMPORTS
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.ToDoStorage;
-import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,26 +27,26 @@ import java.util.Objects;
 
  **/
 public class FlashcardScreenView extends StackPane {
-
+    /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
     private boolean isBack = false; // checking if we should be on the back of the card
     private FlashcardScreen flashcardModel; // instance of the model
-    private Button next; // button to page next on flashcards
-    private Button flip; // button to turn over flashcard
-    private Button edit; // button to edit a flashcard
-    private Button back; // button to move backwards in the deck
-    private Button pageBack; // button to go back to main menu
-    private Button removeCard; // button to remove card
+    private final Button next; // button to page next on flashcards
+    private final Button flip; // button to turn over flashcard
+    private final Button edit; // button to edit a flashcard
+    private final Button back; // button to move backwards in the deck
+    private final Button pageBack; // button to go back to main menu
+    private final Button removeCard; // button to remove card
 
-    private Button addFlashcard; // button to add a flashcard
-    private Button thumbsUpButton; // button for confidence gauging
-    private Button thumbsDownButton; // button for confidence gauging
-    private Card tempCard; // temporary card for when we remove the only card in a deck
+    private final Button addFlashcard; // button to add a flashcard
+    private final Button thumbsUpButton; // button for confidence gauging
+    private final Button thumbsDownButton; // button for confidence gauging
+    private final Card tempCard; // temporary card for when we remove the only card in a deck
     private Card currentCard = null; // store the card we are on
     private javafx.event.EventHandler<javafx.event.ActionEvent> deckHandler;
     //Adding XP Bar and System
-    private XPModel xpModel;
-    private XPView xpView;
-    private XPController xpController;
+    private final XPModel xpModel;
+    private final XPView xpView;
+    private final XPController xpController;
     private Button xpToggleButton;
     private boolean isTrackingXP = false;
 
@@ -58,8 +54,8 @@ public class FlashcardScreenView extends StackPane {
     DigitalTree digitalTree;
 
     private ToDoListView toDoListV;
-    private ToDoListController toDoCont;
-    private ToDoList toDoList;
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    //private ToDoList toDoList;
 
     public FlashcardScreenView() {
 
@@ -77,7 +73,8 @@ public class FlashcardScreenView extends StackPane {
         thumbsDownButton = new Button("Not Confident");
         ToDoList toDoList = ToDoStorage.LoadToDoList();
         this.toDoListV = new ToDoListView(toDoList);
-        ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
+        /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+        //ToDoListController toDoListController = new ToDoListController(toDoList, toDoListV, xpModel);
 
         //Initializing XP bar and system;
         xpModel = XPManager.getXPModel();
@@ -88,7 +85,8 @@ public class FlashcardScreenView extends StackPane {
 
         toDoList = ToDoStorage.LoadToDoList();
         toDoListV = new ToDoListView(toDoList);
-        toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        //ToDoListController toDoCont = new ToDoListController(toDoList, toDoListV, xpModel);
     }
 
     /**
@@ -260,7 +258,8 @@ public class FlashcardScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setAlignment(Pos.TOP_CENTER);
-        todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        todolist.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles.css")).toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
 
@@ -392,7 +391,9 @@ public class FlashcardScreenView extends StackPane {
      * Update current card by either adding (true) or subtracting (false)
      */
     public void setChangeCard(boolean bool) {
-        Card newCard = null;
+        /*CHANGES MADE BY NATHAN, CHANGING CODE BELOW TO FIX WARNING*/
+        //Card newCard = null;
+        Card newCard;
         int index = 0;
         for (Card card: flashcardModel.getDeck().getCards()){
             if (card == currentCard){
@@ -435,7 +436,7 @@ public class FlashcardScreenView extends StackPane {
 
     /**
      * Function to initiate the card model
-     * @param model
+     * @param model Model
      */
     public void setCardModel(FlashcardScreen model){
         if (currentCard==null){
@@ -477,13 +478,13 @@ public class FlashcardScreenView extends StackPane {
         }
         isTrackingXP = !isTrackingXP;
     }
-
-    /**
+    /*CHANGES MADE BY NATHAN, COMMENTING THE FOLLOWING BELOW TO GET RID OF WARNINGS*/
+    /*
      * Updates the to-do list view with the latest tasks.
-     */
+     *
     public void updateToDoListView() {
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-    }
+    }*/
 }
 
 
