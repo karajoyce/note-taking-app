@@ -287,7 +287,7 @@ public class FoldersController {
 
             Notebook newNotebook = foldersModel.getNotebook(newFolderName);
             if (newNotebook.getNotes().isEmpty()) {
-                newNotebook.addPage(new Page("Lecture 1"));
+                newNotebook.addPage(new Page("Page 1"));
             }
 
             NotesStorage.SaveNotes(newNotebook); // Save the notebook

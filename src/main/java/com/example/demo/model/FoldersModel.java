@@ -60,7 +60,8 @@ public class FoldersModel {
                 if (lastAccessed == null) {
                     lastAccessed = LocalDateTime.now();
                 }
-                folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now()));
+
+                folderMetadata.put(folderName, new FolderMetaData(creationDate, new ArrayList<>(), lastAccessed));
             }
         }
 
