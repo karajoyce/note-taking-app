@@ -11,11 +11,6 @@ package com.example.demo.notes;
 
 import org.fxmisc.richtext.InlineCssTextArea;
 
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -100,21 +95,15 @@ public class NoteModel {
         /* prevents text from going off the screen and scrolling horizontally */
         textArea.setWrapText(true);
 
+        // Continue listening to wrap text if text gets too long
+        textArea.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double newWidth = newVal.doubleValue();
+            textArea.setParagraphGraphicFactory(line -> {
+                textArea.setWrapText(true);
+                return null;
+            });
+        });
     }
-    /*
-    public void addLinks(HyperLink hyperLink){
-        hyperLinks.add(hyperLink);
-    }
-
-    public HyperLink getLinkAtPosition(int index){
-        for(HyperLink link : hyperLinks){
-            if(index >= link.getStart() && index < link.getStart() + index ){
-                return link;
-            }
-        }
-        return null;
-    }
-    */
 
     /** Getter methods and toggle methods for styles */
     public Set<String> getCurrStyle() {

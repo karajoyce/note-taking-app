@@ -22,6 +22,18 @@ public class Page implements Serializable {
     public Page(String pageTitle){
         title = pageTitle;
         contents = new InlineCssTextArea();
+
+        contents.setWrapText(true);
+        // Continue listening to wrap text if text gets too long
+        contents.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double newWidth = newVal.doubleValue();
+            contents.setParagraphGraphicFactory(line -> {
+                contents.setWrapText(true);
+                return null;
+            });
+        });
+
+
     }
 
     public void setContents(InlineCssTextArea contents) {

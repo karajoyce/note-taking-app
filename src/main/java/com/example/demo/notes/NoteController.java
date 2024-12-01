@@ -37,7 +37,6 @@ public class NoteController {
 
     private Deck deck;
     NoteModel noteModel;
-    /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
 
     /**
      * Constructor method for the text editor's controller
@@ -46,6 +45,7 @@ public class NoteController {
     public NoteController(NoteModel model, Notebook currNoteBook) {
         noteModel = model;
         this.deck = FlashcardStorage.LoadFlashCards(currNoteBook.getTitle());
+
         /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
         noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
@@ -141,6 +141,8 @@ public class NoteController {
         if (noteModel.isAutoFlashcardEnabled() && noteModel.isWaitingForBackInput() &&
                 !noteModel.isBoldEnabled() && !noteModel.isWaitingforFrontInput()) {
 
+           // System.out.println("oldText: " + oldText + " \n\nnewText: " + newText);
+
             // User is backspacing. Remove the previous input character from back buffer
             if (newText.length() < oldText.length()) {
 
@@ -169,10 +171,10 @@ public class NoteController {
                         noteModel.setCurrentCardFront("");
                         noteModel.resetBackBuffer("");
 
-                    }
-                    else if(addedText.length() == 1){
+                    } else if(addedText.length() == 1){
+                        //System.out.println("Else if branch! Letter to add: " + addedText);
                         noteModel.resetBackBuffer(noteModel.getBackBuffer()+addedText);
-                    }else {
+                    } else {
                         // Else, add the text to the buffer
                         noteModel.resetBackBuffer(newText.substring(noteModel.getBackBufferIndex()));
                     }

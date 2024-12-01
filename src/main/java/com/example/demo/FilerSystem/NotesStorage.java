@@ -41,14 +41,12 @@ public class NotesStorage {
         /*Changes Added from Nathan, adding a property to save the creation date, as well as
          * the tags*/
         jsonobj.addProperty("creationDate", notebook.getCreationDate().format(FORMATTER)); //Adding creation date
-        //System.out.println("Saving creation date: " + notebook.getCreationDate());
-        /**CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
+
+        /*CHANGES BY NATHAN FOR MOST RECENTLY ACCESSED FOLDER*/
         jsonobj.addProperty("lastAccessed", notebook.getLastAccessed().format(FORMATTER));
-        //System.out.println("Saving Last Accessed: " + notebook.getLastAccessed());
 
 
         //Trying to save tags
-        // JsonArray tagsArray = new JsonArray();
         for (String tag : notebook.getTags()) {
             tagsArray.add(tag);
         }
@@ -76,7 +74,6 @@ public class NotesStorage {
                     segmentObject.addProperty("style", segment.getStyle());
                 }
             }
-            //pageobj.add("content", gson.toJsonTree(page.getContents().getDocument()));
             pages.add(pageobj);
         }
 
@@ -106,17 +103,14 @@ public class NotesStorage {
             if (jsonobj.has("creationDate")) {
                 String creationDateString = jsonobj.get("creationDate").getAsString();
                 tempNotebook.setCreationDate(LocalDateTime.parse(creationDateString, FORMATTER));
-                //System.out.println("Loaded creation date: " + tempNotebook.getCreationDate());
             }
             /**Changes from Nathan, Trying to Last Accessed Time*/
             //LOADING LAST ACCESSED
             if (jsonobj.has("lastAccessed")) {
                 String lastAccessedString = jsonobj.get("lastAccessed").getAsString();
                 tempNotebook.setLastAccessed(LocalDateTime.parse(lastAccessedString, FORMATTER));
-                //System.out.println("Loaded last accessed: " + tempNotebook.getLastAccessed());
             } else {
                 tempNotebook.setLastAccessed(tempNotebook.getLastAccessed());
-                //System.out.println("No Last Access so creating a new one: " + tempNotebook.getLastAccessed());
             }
             //LOAD TAGS
             if (jsonobj.has("tags")) {
@@ -182,7 +176,7 @@ public class NotesStorage {
 
         if (file.exists()) {
             if (file.delete()) {
-                System.out.println("Deleted file: " + fullFilePath);
+                //System.out.println("Deleted file: " + fullFilePath);
             } else {
                 System.err.println("Failed to delete file: " + fullFilePath);
             }

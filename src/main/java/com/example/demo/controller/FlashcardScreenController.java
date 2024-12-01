@@ -104,7 +104,6 @@ public class FlashcardScreenController {
             }
             deckUpdate();
 
-            // todo save conf level to json
         });
 
         fCardView.setNotConfidentButton(e -> {
@@ -117,7 +116,6 @@ public class FlashcardScreenController {
             }
             deckUpdate();
 
-            // todo save conf level to json
         });
         deckUpdate();
     }
@@ -135,7 +133,6 @@ public class FlashcardScreenController {
     }
 
     public void addFlashcardDeck(String name){
-        System.out.println(name);
         Deck newDeck = new Deck(name);
         FlashcardStorage.SaveDeck(newDeck);
     }

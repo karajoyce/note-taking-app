@@ -233,6 +233,14 @@ public class NotebookScreenView extends StackPane {
         fullBox.getChildren().add(cardSection);
 
         InlineCssTextArea textArea = noteModel.getTextArea();
+        // Continue listening to wrap text if text gets too long
+        textArea.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double newWidth = newVal.doubleValue();
+            textArea.setParagraphGraphicFactory(line -> {
+                textArea.setWrapText(true);
+                return null;
+            });
+        });
 
         javafx.scene.control.MenuBar menuBar = noteView.createMenuBar(HelloApplication.getStage());
         menuBar.getStyleClass().add("menuBar");
@@ -263,7 +271,9 @@ public class NotebookScreenView extends StackPane {
         menuItems.getChildren().add(fileButton);
         menuItems.getChildren().add(toolBar);
         cardSection.getChildren().add(menuItems);
+
         ScrollPane sPane = new ScrollPane(textArea);
+        sPane.setFitToWidth(true);
         sPane.setHmax(screenHeight);
         cardSection.getChildren().add(sPane);
 
@@ -287,11 +297,11 @@ public class NotebookScreenView extends StackPane {
         xpToggleButton.getStyleClass().add("xpbar");
         xpToggleButton.setMinHeight(50);
 
-        //todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), xpView, xpToggleButton);
+
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
-        //fullBox.getChildren().add(todolist);
+
         VBox tags = new VBox();
-//        addTagsAndSearchToLayout(tags);
+
         todolist.getChildren().addAll(motivationalMessagesView.getMotivmsgView(),toDoListV.getToDoListView(), tags);
         /*CHANGES BY NATHAN TAG SECTION REDO*/
         ScrollPane tagScrollPane = new ScrollPane(tagDisplayPane);
@@ -407,7 +417,7 @@ public class NotebookScreenView extends StackPane {
     private void initializeTagSection() {
         // Configure the "Manage Tags" button
         manageTagsButton.setOnAction(e -> {
-            System.out.println("Manage Tags button clicked!"); // Placeholder action
+            //System.out.println("Manage Tags button clicked!"); // Placeholder action
         });
 
         // Configure the tag display pane (horizontal flow layout)
@@ -458,7 +468,7 @@ public class NotebookScreenView extends StackPane {
         removeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 12px;");
         removeButton.setOnAction(e -> {
             // Optional: Notify controller of tag removal
-            System.out.println("Remove tag: " + tag);
+            //System.out.println("Remove tag: " + tag);
         });
 
         tagBox.getChildren().addAll(tagLabel, removeButton); // Add the label and remove button

@@ -1,19 +1,18 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
+
 import com.example.demo.FilerSystem.NotesStorage;
-import com.example.demo.model.Card;
-import com.example.demo.model.Deck;
+
 import com.example.demo.model.Notebook;
 import com.example.demo.model.Page;
 import com.example.demo.model.XPModel;
-import com.example.demo.view.NewPageView;
+
 import com.example.demo.view.NotebookScreenView;
 import com.example.demo.view.TagManagementView;
 import javafx.scene.control.Button;
-import com.example.demo.model.XPModel;
+
 import com.example.demo.model.XPManager;
-import javafx.scene.control.Button;
+
 import javafx.stage.Stage;
 
 /**
@@ -70,7 +69,7 @@ public class NotebookController {
             runUpdate();
         });
 
-        /**CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
+        /*CHANGES BY NATHAN, ADDING THINGS TO MANAGE TAGS*/
         noteView.setManageTagsButtonAction(this::openTagManagementWindow);
 
     }
