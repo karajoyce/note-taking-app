@@ -19,27 +19,51 @@ public class Deck {
     private String title;
     private ArrayList<Card> cards; // instance of the deck
 
+    /**
+     * set up the deck
+     * @param name
+     */
     public Deck(String name){
         this.title = name;
         cards = new ArrayList<>();
     }
 
+    /**
+     * add a card to the deck instance
+     * @param newCard = card to add
+     */
     public void addCard(Card newCard){
         cards.add(newCard);
 
     }
 
+    /**
+     * remove a card from the deck instance
+     * @param oldCard = card to remove
+     */
     public void removeCard(Card oldCard){
         this.cards.remove(oldCard);
     }
 
+    /**
+     * get the number of cards in the deck
+     * @return
+     */
     public int getSize(){
         return cards.size();
     }
 
+    /**
+     * get the list of cards in the deck
+     * @return a list of cards
+     */
     public ArrayList<Card> getCards(){
         return this.cards;
     }
+
+    /**
+     * @return the title of the deck
+     */
     public String getTitle(){
         return this.title;
     }

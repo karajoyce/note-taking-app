@@ -210,7 +210,7 @@ public class NoteController {
 
             }
         }
-        // Once user turns off bold again, and the card front bufer is not empty then the card front is ready. Now we wait for the back
+        // Once user turns off bold again, and the card front buffer is not empty then the card front is ready. Now we wait for the back
         if (!noteModel.isBoldEnabled() && noteModel.getCurrentCardFront().length() > 0) {
 
             // Only set the back buffer index once

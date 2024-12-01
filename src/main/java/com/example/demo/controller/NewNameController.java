@@ -1,13 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.Notebook;
-import com.example.demo.model.Page;
-import com.example.demo.view.EditCardView;
 import com.example.demo.view.NewNameView;
-import com.example.demo.view.NewPageView;
-import com.example.demo.view.NotebookScreenView;
 import javafx.stage.Stage;
 
 /**
@@ -22,10 +17,17 @@ import javafx.stage.Stage;
  **/
 
 public class NewNameController {
-    private NotebookController nController;
-    private Notebook nModel;
-    private NewNameView nView;
+    private NotebookController nController; // instance of the notebook controller
+    private Notebook nModel; // instance of the notebook model
+    private NewNameView nView; // instance of the view for renaming
 
+
+    /**
+     * Constructor for the rename feature. will create a view that uses the changeName function
+     * @param controller = notebook controller
+     * @param model = notebook model
+     * @param stage = new stage to display the view
+     */
     public NewNameController(NotebookController controller, Notebook model, Stage stage){
         nModel = model;
         nController = controller;
@@ -34,9 +36,11 @@ public class NewNameController {
         stage.show();
     }
 
+    /**
+     * Function to change the name of the page based on the user input
+     */
     public void changeName(){
         String title = nView.getTitle();
-        System.out.println(title);
         nController.getNoteView().getCurrentPage().setTitle(title);
         NotesStorage.SaveNotes(nModel);
         nController.runUpdate();

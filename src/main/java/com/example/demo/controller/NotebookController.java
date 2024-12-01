@@ -32,14 +32,21 @@ public class NotebookController {
     private NotebookScreenView noteView;
     private XPModel xpmodel;
 
+    /**
+     * setting up the button actions
+     * @param nModel
+     * @param nView
+     */
     public NotebookController(Notebook nModel, NotebookScreenView nView) {
         noteView = nView;
         noteModel = nModel;
         this.xpmodel = XPManager.getXPModel();
 
+        // set an action for when the user wants to add a new page
         nView.setAddPage(e -> {
             new NewPageController(this, noteModel, new Stage());
         });
+        // set an action for when the user wants to switch pages
         nView.setChangeButton(e -> {
             NotesStorage.SaveNotes(noteModel);
             String newPage = ((Button)e.getSource()).getText();
@@ -50,6 +57,7 @@ public class NotebookController {
             }
             runUpdate();
         });
+        // set an action for when the user wants to delete a page
         nView.setDeletePage(e -> {
             int count = nModel.getNotes().size();
             nModel.getNotes().remove(nView.getCurrentPage());
@@ -64,6 +72,7 @@ public class NotebookController {
             NotesStorage.SaveNotes(nModel);
             runUpdate();
         });
+        // set an action for when the user wants to rename a page
         nView.setRenamePage(e -> {
             new NewNameController(this, nModel,new Stage());
             runUpdate();
@@ -105,10 +114,17 @@ public class NotebookController {
         tagManagementStage.show();
     }
 
+    /**
+     * Function for redrawing the screen when there have been changes made via button presses
+     */
     public void runUpdate(){
         noteView.runScreenUpdate();
     }
 
+    /**
+     * function to grab the current notebook view
+     * @return = noteview
+     */
     public NotebookScreenView getNoteView(){
         return this.noteView;
     }

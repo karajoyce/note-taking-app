@@ -28,6 +28,10 @@ public class Notebook implements Serializable {
     /**CHANGES BY NATHAN FOR LAST ACCESSED FOLDER*/
     private LocalDateTime lastAccessed;
 
+    /**
+     * set up the notebook
+     * @param name the title of the notebook
+     */
     public Notebook(String name) {
         title = name;
         notes = new ArrayList<>();
@@ -38,27 +42,50 @@ public class Notebook implements Serializable {
         lastAccessed = LocalDateTime.now();
     }
 
+    /**
+     * get the list of pages
+     * @return the list of pages
+     */
     public ArrayList<Page> getNotes(){
         return notes;
     }
+
+    /**
+     * @return the title
+     */
     public String getTitle(){
         return title;
     }
 
+    /**
+     * re-title the notebook
+     * @param name new title
+     */
     public void setTitle(String name){
         title = name;
     }
 
+    /**
+     * add a new page to the notebook
+     * @param newPage new page to be added
+     */
     public void addPage(Page newPage){
         notes.add(newPage);
         updateLastAccessed();
     }
 
+    /**
+     * remove a page from the notebook
+     * @param oldPage  page to be removed
+     */
     public void removePage(Page oldPage){
         this.notes.remove(oldPage);
         updateLastAccessed();
     }
 
+    /**
+     * @return the number of pages in the notebook
+     */
     public int getSize(){
         return notes.size();
     }
