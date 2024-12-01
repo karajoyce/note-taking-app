@@ -122,6 +122,7 @@ public class NoteView  {
 
         /* Toggle auto flashcards */
         Button autoFlashcardButton = new Button("Auto Flashcards: OFF");
+        autoFlashcardButton.getStyleClass().add("textEditorButton");
         autoFlashcardButton.setOnAction(actionEvent -> {
             noteController.noteModel.toggleAutoFlashcard();
             if (noteController.noteModel.isAutoFlashcardEnabled()) {
