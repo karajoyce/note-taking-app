@@ -84,6 +84,7 @@ public class MainMenuScreenView extends StackPane {
         xpModel = XPManager.getXPModel();
         xpView = new XPView();
         xpController = new XPController(xpModel,xpView, digitalTree);
+        //xpController.stopXPTimer();
 
         runMainScreenUpdate();
     }
@@ -116,6 +117,10 @@ public class MainMenuScreenView extends StackPane {
 
     public void setFoldersScreenView(FoldersScreenView foldersScreenView) {
         this.foldersScreenView = foldersScreenView;
+    }
+    //Adding XP tracking when entering this screen
+    public void startXPtracking(){
+        xpController.startXPTimer();
     }
 
     public FoldersScreenView getFoldersScreenView() {
@@ -208,9 +213,9 @@ public class MainMenuScreenView extends StackPane {
         NoteBox.setPadding(new Insets(50,0,0,0));
         NoteBox.getChildren().addAll(newNoteButton, recentNoteButton, recentNoteButton2);
         cardSection.getChildren().add(NoteBox);
-        xpView.updateXPview(xpModel.getCurrentXP(),xpModel.getMaxXP(),xpModel.getLevel());
         xpView.setPadding(new Insets(20,0,-30,0));
-        cardSection.getChildren().add(xpView);
+        startXPtracking();
+        cardSection.getChildren().add(this.xpView);
 
         //Card text setup
         HBox fCard = new HBox();

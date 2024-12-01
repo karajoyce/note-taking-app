@@ -300,17 +300,17 @@ public class FlashcardScreenView extends StackPane {
 
 
         //BUTTON FOR NOW MAYBE CHANGE LATER;
-        xpToggleButton = new Button("START XP TRACKING ");
+        /*xpToggleButton = new Button("START XP TRACKING ");
         xpToggleButton.setOnAction(e -> toggleXPtracking());
         xpToggleButton.getStyleClass().add("xpbar");
-        xpToggleButton.setMinHeight(50);
-
+        xpToggleButton.setMinHeight(50);*/
+        startXPtracking();
         xpResetButton = new Button("RESET XP");
         xpResetButton.setOnAction(e -> resetXPtracking());
 
         toDoListV.setMaxHeight(350);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
-        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, xpToggleButton, xpResetButton);
+        todolist.getChildren().addAll(toDoListV.getToDoListView(), digitalTree.getTreeImageview(), this.xpView, /*xpToggleButton,*/ xpResetButton);
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
         fullBox.getChildren().add(todolist);
         //-------------------------END

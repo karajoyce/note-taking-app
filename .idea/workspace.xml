@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="took out print statements">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Merged Jinny's Branch and then also updated the XP Progress bar in main menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/XP.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/XP.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/FlashcardScreenView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/view/MainMenuScreenView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,14 +192,6 @@
       <workItem from="1733030416473" duration="15348000" />
       <workItem from="1733051117329" duration="6600000" />
       <workItem from="1733088715446" duration="717000" />
-    </task>
-    <task id="LOCAL-00022" summary="Made new branch for the last sprint">
-      <option name="closed" value="true" />
-      <created>1730754709533</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1730754709533</updated>
     </task>
     <task id="LOCAL-00023" summary="Fixing UI colouring to prepare for the next screen">
       <option name="closed" value="true" />
@@ -584,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733057745407</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Merged Jinny's Branch and then also updated the XP Progress bar in main menu">
+      <option name="closed" value="true" />
+      <created>1733090828405</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1733090828405</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +603,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="addedd some new buttons and fixed loadnotes" />
     <MESSAGE value="added renaming, deleting, fixed a bug where saving on exit was not happening" />
     <MESSAGE value="merging jinny's branch into main" />
     <MESSAGE value="merging nathan's branch into main" />
@@ -627,6 +627,7 @@
     <MESSAGE value="Got some more logic in the XP and Digital Trees" />
     <MESSAGE value="Fixed Logo, Sorting Logic, and getting started on LastAccessed" />
     <MESSAGE value="took out print statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="took out print statements" />
+    <MESSAGE value="Merged Jinny's Branch and then also updated the XP Progress bar in main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged Jinny's Branch and then also updated the XP Progress bar in main menu" />
   </component>
 </project>
