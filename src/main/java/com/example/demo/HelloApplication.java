@@ -29,6 +29,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -123,14 +124,17 @@ public class HelloApplication extends Application {
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);
-        primaryStage.setTitle("Main Menu");
+        primaryStage.setTitle("TruNotes");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
-            primaryStage.setFullScreen(true);  // or false to exit full-screen
+            //primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
 
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
+
+        primaryStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
+        primaryStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
     }
 
     public static Stage getStage(){

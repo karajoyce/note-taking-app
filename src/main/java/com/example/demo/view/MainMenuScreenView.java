@@ -54,14 +54,15 @@ public class MainMenuScreenView extends StackPane {
     private boolean isTrackingXP = false;
 
     private FoldersController foldersController;
+    private final int SPACING = 100;
 
 
     public MainMenuScreenView(FoldersController foldersController) {
 
         this.foldersController = foldersController;
         // Deck initialization, needs to change
-        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
-        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
@@ -122,8 +123,8 @@ public class MainMenuScreenView extends StackPane {
     public void runMainScreenUpdate() {
         // General class things/size
         this.getStylesheets().add("/styles.css");
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - SPACING;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - SPACING;
         this.getChildren().clear();
         //-------------------------END
 

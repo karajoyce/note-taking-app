@@ -61,6 +61,8 @@ public class FlashcardScreenView extends StackPane {
     private ToDoListController toDoCont;
     private ToDoList toDoList;
 
+    private final int SPACING = 180;
+
     public FlashcardScreenView() {
 
         //-------------------------
@@ -107,8 +109,8 @@ public class FlashcardScreenView extends StackPane {
 
         // General class things/size
         this.getStyleClass().add("wholescreen");
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-100;
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY()-SPACING;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX()-SPACING;
         this.getChildren().clear();
         //-------------------------END
 
@@ -139,8 +141,18 @@ public class FlashcardScreenView extends StackPane {
         VBox cardSection = new VBox();
         cardSection.getStyleClass().add("cardsection");
         cardSection.setAlignment(Pos.CENTER_LEFT);
+        /*
         cardSection.setMinWidth((screenWidth*0.6)-30);
         cardSection.setMaxWidth((screenWidth*0.6)-30);
+
+         */
+        double cardWidth = (screenWidth*0.6) - 29;
+        /*
+        cardSection.setMinWidth(cardWidth);
+        cardSection.setMaxWidth(cardWidth);
+
+         */
+        cardSection.setPrefWidth(cardWidth);
         cardSection.setMinHeight(screenHeight);
         fullBox.getChildren().add(cardSection);
 
@@ -198,20 +210,20 @@ public class FlashcardScreenView extends StackPane {
 
         if (currentCard == null){
             Text frontText = new Text(tempCard.getCardFront());
-            frontText.setWrappingWidth(cardSection.getMinWidth() - 40);
+            frontText.setWrappingWidth(cardWidth - 40);
             fCard.getChildren().add(frontText);
             frontText.setTextAlignment(TextAlignment.CENTER);
         } else {
             if (!isBack) {
                 Text frontText = new Text(this.currentCard.getCardFront());
-                frontText.setWrappingWidth(cardSection.getMinWidth() - 40);
+                frontText.setWrappingWidth(cardWidth - 40);
                 fCard.getChildren().add(frontText);
                 frontText.setTextAlignment(TextAlignment.CENTER);
             } else {
                 Text backText = new Text(this.currentCard.getCardBack());
                 HBox textBox = new HBox(backText);
                 textBox.setMinHeight(fCard.getMinHeight()/2);
-                backText.setWrappingWidth(cardSection.getMinWidth() - 40);
+                backText.setWrappingWidth(cardWidth - 40);
 
                 HBox confButtons = new HBox();
                 confButtons.setStyle("-fx-spacing: 20px");

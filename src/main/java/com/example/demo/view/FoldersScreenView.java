@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,6 +23,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
+
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -64,6 +67,7 @@ public class FoldersScreenView extends StackPane {
     private ToDoListController toDoCont;
     private Button deleteButton;
 
+    private final int SPACING = 100;
 
 
     /**
@@ -119,8 +123,15 @@ public class FoldersScreenView extends StackPane {
     public void runFoldersScreenUpdate() {
         // General setup
         this.getStylesheets().add("/styles.css");
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
+
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - SPACING;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - SPACING;
+
+
+        /*
+        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
+        double screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
+        */
         this.getChildren().clear();
 
         // Main layout as HBox (to organize center content and right panel)
