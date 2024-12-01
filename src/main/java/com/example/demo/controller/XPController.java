@@ -16,7 +16,7 @@ import java.util.Random;
 import javafx.scene.paint.Color;
 
 public class XPController {
-    private XPModel model;
+    private final XPModel model;
     private XPView view;
     private DigitalTree digitalTree;
     private Timeline xpTimeline;
@@ -69,6 +69,7 @@ public class XPController {
 
     public void resetXP(){
         model.setCurrentXP(0);
+        model.setLevel(1);
     }
 
     private void handleLevelUp() {

@@ -30,6 +30,11 @@ public class XPModel {
         return level;
     }
 
+    public int setLevel(int level) {
+        this.level = level;
+        return level;
+    }
+
     public void addXP(double xp) {
         currentXP += xp;
         if (isMaxXPReached()) {

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="Small fixes. Things to Note before Trushank Merge:&#10;Auto-Flashcards and regular flashcards might need a look again&#10;The main menu + button might need to be looked at as well">
+    <list default="true" id="33290b72-b619-453c-a60c-298031509233" name="Changes" comment="More small fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StorageJSONS/todo.json" beforeDir="false" afterPath="$PROJECT_DIR$/StorageJSONS/todo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FoldersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MainMenuScreenViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/XPController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +168,7 @@
       <workItem from="1732817262553" duration="12724000" />
       <workItem from="1732841858693" duration="6492000" />
       <workItem from="1732895854121" duration="17230000" />
-      <workItem from="1733030416473" duration="9794000" />
-    </task>
-    <task id="LOCAL-00017" summary="added ability to change paragraph alignment">
-      <option name="closed" value="true" />
-      <created>1730271294229</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1730271294229</updated>
+      <workItem from="1733030416473" duration="11156000" />
     </task>
     <task id="LOCAL-00018" summary="time to work on fonts">
       <option name="closed" value="true" />
@@ -564,7 +554,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733036404139</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="More small fixes">
+      <option name="closed" value="true" />
+      <created>1733040838054</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1733040838054</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="motivational messages done!" />
     <MESSAGE value="saving css is not fun" />
     <MESSAGE value="still trying to save pages, flashcard remove now updates in json" />
     <MESSAGE value="STYLES ARE SAVING" />
@@ -607,6 +604,7 @@
     <MESSAGE value="fixed flashcard bug" />
     <MESSAGE value="SOME FIXES" />
     <MESSAGE value="Small fixes. Things to Note before Trushank Merge:&#10;Auto-Flashcards and regular flashcards might need a look again&#10;The main menu + button might need to be looked at as well" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fixes. Things to Note before Trushank Merge:&#10;Auto-Flashcards and regular flashcards might need a look again&#10;The main menu + button might need to be looked at as well" />
+    <MESSAGE value="More small fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="More small fixes" />
   </component>
 </project>
