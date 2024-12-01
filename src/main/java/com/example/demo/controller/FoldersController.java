@@ -280,7 +280,7 @@ public class FoldersController {
      */
     public void addNewFolder(EventHandler<MouseEvent> folderSelectionHandler, EventHandler<MouseEvent> deleteHandler) {
         // Add a new folder
-        String newFolderName = foldersScreenView.showAddFolderDialog(NotesStorage.GenerateNotebookTitles());
+        newFolderName = foldersScreenView.showAddFolderDialog(NotesStorage.GenerateNotebookTitles());
         if (newFolderName != null && !newFolderName.trim().isEmpty()) {
             foldersModel.addFolder(newFolderName);
             fCont.addFlashcardDeck(newFolderName);

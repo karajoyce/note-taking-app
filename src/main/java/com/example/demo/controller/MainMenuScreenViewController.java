@@ -59,7 +59,6 @@ public class MainMenuScreenViewController {
         topViewBar.getFlashButton().setOnAction(event -> navigationController.navigateToFlashcardScreen((fView)));
         topViewBar.getFoldersButton().setOnAction(event -> {
             if (primaryStage == null) {
-                System.err.println("PrimaryStage is not set!");
                 return;
             }
 
@@ -73,7 +72,6 @@ public class MainMenuScreenViewController {
             fCont.addNewFolder(fCont.getFolderSelectionHandler(), fCont.getDeleteHandler());
             if (!foldersScreenView.getAddButtonText().isEmpty() || fCont.getNewFolderName() != null) {
                 if (fCont.getNewFolderName() != null) {
-                    System.out.println("Folder name is : " + fCont.getNewFolderName());
                     fCont.openNotebook(foldersScreenView.getAddButtonText());
                 }
             }
