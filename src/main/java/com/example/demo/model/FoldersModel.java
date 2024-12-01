@@ -107,11 +107,13 @@ public class FoldersModel {
     }
 
     public void addFolder(String folderName) {
+
         if (!folderNotebooks.containsKey(folderName)) {
             folders.add(folderName); // Add to the list of folder names
             folderNotebooks.put(folderName, new Notebook(folderName)); // Map folder name to a new notebook
             folderMetadata.put(folderName, new FolderMetaData(LocalDateTime.now(), new ArrayList<>(), LocalDateTime.now())); // Ensure metadata is set
         }
+        getMostRecentFolders();
     }
 
     /**
@@ -127,6 +129,14 @@ public class FoldersModel {
             System.err.println("Failed to remove folder from model: " + folderName);
         }
         folderNotebooks.remove(folderName); // Remove the associated notebook
+    }
+
+    public ArrayList<String> getMostRecentFolders(){
+
+        ArrayList<String> checkList = new ArrayList<>(folderMetadata.keySet());
+        checkList.sort((a,b) -> folderMetadata.get(b).getCreationDate().compareTo(folderMetadata.get(a).getCreationDate()));
+
+        return new ArrayList<>(checkList.subList(0,Math.min(2,checkList.size())));
     }
 
     /**CHANGES BY NATHAN INNER CLASS FOR STORING FOLDER METADATA*/
@@ -163,5 +173,6 @@ public class FoldersModel {
         public void removeTag(String tag) {
             tags.remove(tag);
         }
+
     }
 }

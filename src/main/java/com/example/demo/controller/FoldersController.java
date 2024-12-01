@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.NotesStorage;
+import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
 import com.example.demo.view.NotebookScreenView;
@@ -41,6 +43,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import java.util.Optional;
 
 public class FoldersController {
     private FoldersModel foldersModel; // The model managing folders
