@@ -79,12 +79,20 @@ public class NotebookScreenView extends StackPane {
     private Page currentPage;
     private javafx.event.EventHandler<javafx.event.ActionEvent> pageHandler;
 
+    private final int SPACING = 210;
+
     public NotebookScreenView(Notebook currNotebook) {
 
         //-------------------------
         // Screen Initialization
-        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
-        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
+        /*
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
+
+         */
+
+        screenHeight = Screen.getPrimary().getBounds().getMaxY() - SPACING;
+        screenWidth = Screen.getPrimary().getBounds().getMaxX() - SPACING;
 
         renamePage = new Button("");
         Image imgR = new Image(getClass().getResourceAsStream("/renameicon.png"));
@@ -179,8 +187,14 @@ public class NotebookScreenView extends StackPane {
     public void runScreenUpdate() {
         // General class things/size
         this.getStyleClass().add("wholescreen");
+        /*
         double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
         double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
+
+         */
+
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
         this.getChildren().clear();
         //-------------------------END
 
@@ -198,7 +212,8 @@ public class NotebookScreenView extends StackPane {
         VBox sidePanel = new VBox();
         ListView<Button> deckSelection = new ListView<>();
         deckSelection.getStyleClass().add("deck");
-        deckSelection.setMinWidth(screenWidth * 0.15);
+       // deckSelection.setMinWidth(screenWidth * 0.15);
+        deckSelection.setMinWidth(screenWidth * 0.17);
         deckSelection.setMinHeight(screenHeight);
         fullBox.getChildren().add(deckSelection);
 

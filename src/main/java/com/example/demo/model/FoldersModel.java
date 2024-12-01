@@ -130,6 +130,7 @@ public class FoldersModel {
             System.err.println("Failed to remove folder from model: " + folderName);
         }
         folderNotebooks.remove(folderName); // Remove the associated notebook
+        folderMetadata.remove(folderName); // Remove from metadata
     }
 
     public ArrayList<String> getMostRecentFolders(){
@@ -157,7 +158,6 @@ public class FoldersModel {
         }
 
         public LocalDateTime getLastAccessed() {
-            //System.out.println("Last accessed: " + LastAccessed);
             return LastAccessed;
         }
 

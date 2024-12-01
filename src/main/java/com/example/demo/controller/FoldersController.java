@@ -62,7 +62,9 @@ public class FoldersController {
     private FlashcardScreenController fCont;
     private String newFolderName;
 
-    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage, NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView, FlashcardScreenController fController) {
+    public FoldersController(FoldersModel model, FoldersScreenView view, Stage stage,
+                             NavigationController navigationController, Scene foldersScene, ToDoListView toDoListView,
+                             FlashcardScreenController fController) {
     /**
      * Constructs a FoldersController instance.
      *
@@ -149,6 +151,9 @@ public class FoldersController {
         };
     }
 
+    public FoldersModel getFoldersModel() {
+        return foldersModel;
+    }
 
     /**
      * Deletes a folder and updates the UI and model.
@@ -168,7 +173,6 @@ public class FoldersController {
         // Delete the corresponding JSON file from the filesystem
         NotesStorage.DeleteNotebook(folderName);
 
-
         // Refresh the folders list
         EventHandler<MouseEvent> deleteHandler = createDeleteHandler(folderSelectionHandler);
         foldersScreenView.populateFolders(foldersModel.getFolders(), folderSelectionHandler, deleteHandler);
@@ -179,7 +183,7 @@ public class FoldersController {
      */
     private void goToMainMenu() {
         // Navigate back to the main menu
-        primaryStage.setScene(new Scene(new MainMenuScreenView()));
+        primaryStage.setScene(new Scene(new MainMenuScreenView(this)));
     }
 
     public void addFoldersXp(double xp) {

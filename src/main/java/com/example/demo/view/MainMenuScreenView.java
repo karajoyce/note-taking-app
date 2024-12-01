@@ -3,6 +3,8 @@ package com.example.demo.view;
 import com.example.demo.FilerSystem.ToDoStorage;
 import com.example.demo.FilerSystem.XPStorage;
 import com.example.demo.HelloApplication;
+import com.example.demo.controller.FoldersController;
+import com.example.demo.controller.NavigationController;
 import com.example.demo.controller.ToDoListController;
 import com.example.demo.controller.XPController;
 import com.example.demo.model.*;
@@ -22,6 +24,7 @@ import org.fxmisc.richtext.InlineCssTextArea;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainMenuScreenView extends StackPane {
     double screenHeight;
@@ -29,7 +32,6 @@ public class MainMenuScreenView extends StackPane {
 
     private ToDoListView toDoListV;
     private ToDoListController toDoCont;
-    public ToDoList toDoList;
     private Button pageButton; // button to choose a deck
     private MotivationalMessagesView mView;
     private TopViewBar topViewBar;
@@ -52,13 +54,16 @@ public class MainMenuScreenView extends StackPane {
     private DigitalTree digitalTree;
     private boolean isTrackingXP = false;
 
+    private FoldersController foldersController;
+    private final int SPACING = 100;
 
 
-    public MainMenuScreenView() {
+    public MainMenuScreenView(FoldersController foldersController) {
 
+        this.foldersController = foldersController;
         // Deck initialization, needs to change
-        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 100;
-        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 100;
+        screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight() - SPACING;
+        screenWidth = Toolkit.getDefaultToolkit().getScreenSize().getWidth() - SPACING;
         pageButton = new Button("Test Page"); // this should be a deck name later
 
         newNoteButton = new Button("+");
@@ -82,10 +87,6 @@ public class MainMenuScreenView extends StackPane {
 
         runMainScreenUpdate();
     }
-
-    //public void setToDoList(ToDoListView toDoListV) {
-    //    this.toDoListV = toDoListV;
-    //}
 
     public TopViewBar getTopViewBar() {
         return this.topViewBar;
@@ -124,8 +125,8 @@ public class MainMenuScreenView extends StackPane {
     public void runMainScreenUpdate() {
         // General class things/size
         this.getStylesheets().add("/styles.css");
-        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - 100;
-        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - 100;
+        double screenHeight = Screen.getPrimary().getBounds().getMaxY() - SPACING;
+        double screenWidth = Screen.getPrimary().getBounds().getMaxX() - SPACING;
         this.getChildren().clear();
         //-------------------------END
 
@@ -180,6 +181,30 @@ public class MainMenuScreenView extends StackPane {
         recentNoteButton2.setMinWidth(275);
         recentNoteButton2.getStyleClass().add("bignotebox");
 
+        // Update recent folders
+        FoldersModel foldersModel = foldersController.getFoldersModel();
+        ArrayList<String> recent = foldersModel.getMostRecentFolders();
+
+        if(recent.size() > 0) {
+            String title1 = (recent.get(0));
+            this.getRecentNoteButton().setText(title1);
+            this.getRecentNoteButton().setOnAction(e -> foldersController.openNotebook(title1));
+
+        }else{
+            this.getRecentNoteButton().setText("Recent");
+
+        }
+        if(recent.size() > 1) {
+            String title2 = (recent.get(1));
+            this.getRecentNoteButton2().setText(title2);
+            this.getRecentNoteButton2().setOnAction(e -> foldersController.openNotebook(title2) );
+        }else{
+            this.getRecentNoteButton2().setText("Recent");
+
+        }
+
+
+
         NoteBox.setPadding(new Insets(50,0,0,0));
         NoteBox.getChildren().addAll(newNoteButton, recentNoteButton, recentNoteButton2);
         cardSection.getChildren().add(NoteBox);
@@ -213,8 +238,6 @@ public class MainMenuScreenView extends StackPane {
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
 
-        //toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
-        //ToDoStorage.LoadToDoList();
         fullBox.getChildren().add(todolist);
         this.getChildren().add(fullBox);
     }

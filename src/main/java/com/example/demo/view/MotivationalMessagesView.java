@@ -32,6 +32,11 @@ public class MotivationalMessagesView extends StackPane {
     private Random rand;
     private HBox motivmsg;
 
+    // motivational message box sizes
+    private final int WIDTH = 450;
+    private final int HEIGHT = 350;
+    private final int SPACING = 65;
+
 
     /**
      * Constructor for the view of motivational messages
@@ -52,15 +57,16 @@ public class MotivationalMessagesView extends StackPane {
 
         // set up layout
         motivmsg.setPadding(new javafx.geometry.Insets(10));
-        motivmsg.setMinHeight(350);
-        motivmsg.setMaxHeight(350);
-        motivmsg.setMinWidth(450);
-        motivmsg.setMaxWidth(450);
+
+        motivmsg.setPrefHeight(HEIGHT);
+        motivmsg.setPrefWidth(WIDTH);
+
         motivmsg.getStyleClass().add("motivmsg");
         motivmsg.setAlignment(Pos.CENTER);
 
         Text display = new Text(messages.get(rand.nextInt(94,137)));
-        display.setWrappingWidth(motivmsg.getMinWidth()-30);
+
+        display.setWrappingWidth(WIDTH - SPACING);
         display.setTextAlignment(TextAlignment.CENTER);
         motivmsg.getChildren().add(display);
 

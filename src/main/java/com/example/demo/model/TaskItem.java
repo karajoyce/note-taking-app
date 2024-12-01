@@ -61,6 +61,7 @@ public class TaskItem {
      */
     public TaskItem(ToDoList toDoList, Task task, XPModel xpModel, EventHandler<ActionEvent> deleteHandler) {
         this.task = task;
+        //this.xpModel = xpModel;
         this.xpModel = XPManager.getXPModel();
         checkBox = new CheckBox();
         checkBox.setSelected(task.isCompleted());

@@ -19,6 +19,11 @@ public class Page implements Serializable {
 
     private String title;
     private InlineCssTextArea contents;
+
+    /**
+     * set up the page
+     * @param pageTitle
+     */
     public Page(String pageTitle){
         title = pageTitle;
         contents = new InlineCssTextArea();
@@ -36,31 +41,36 @@ public class Page implements Serializable {
 
     }
 
+    /**
+     * change contents of the text area
+     * @param contents new text area
+     */
     public void setContents(InlineCssTextArea contents) {
         this.contents = contents;
     }
 
+    /**
+     * @return the contents of the text area
+     */
     public InlineCssTextArea getContents(){
         return contents;
     }
 
+    /**
+     * @return the title of the page
+     */
     public String getTitle(){
         return title;
     }
 
+    /**
+     * set the title of the page
+     * @param name new title
+     */
     public void setTitle(String name){
         title = name;
     }
-    /*Used for hyperlinks
-    public static Page getPageFromTitle(String target){
-        for (Page page: Notebook.getNotes()){
-            if(page.getTitle().equalsIgnoreCase(target)){
-                return page;
-            }
-        }
-        return null;
-    }
-    */
+
 
 
 }

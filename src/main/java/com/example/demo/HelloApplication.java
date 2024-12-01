@@ -29,6 +29,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import com.example.demo.model.XPModel;
 import com.example.demo.model.XPManager;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class HelloApplication extends Application {
         primaryStage.setAlwaysOnTop(true);
 
         NavigationController navigationController = new NavigationController(primaryStage);
+        //xpModel = new XPModel(100);
 
         ToDoList toDoList = new ToDoList(ToDoStorage.LoadToDoList().getTasks()); //todo HELP
         ToDoListView toDoListView = new ToDoListView(ToDoStorage.LoadToDoList());
@@ -59,9 +61,6 @@ public class HelloApplication extends Application {
         this.breakReminderController = new BreakReminderController(breakReminderModel, breakReminderView);
         breakReminderController.startReminders();
 
-        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView();
-
-        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
         // Create and set up the Flashcard Screen
         FlashcardScreen fCard = new FlashcardScreen();
@@ -78,6 +77,8 @@ public class HelloApplication extends Application {
         Scene foldersScene = new Scene(foldersScreenView);
         FoldersController foldersController = new FoldersController(foldersModel, foldersScreenView, primaryStage, navigationController, foldersScene,toDoListView, fCardCont);
 
+        MainMenuScreenView mainMenuScreenView = new MainMenuScreenView(foldersController);
+        TopViewBar topViewBar = mainMenuScreenView.getTopViewBar();
 
         // Create Scenes
         Scene mainMenuScene = new Scene(mainMenuScreenView);
@@ -124,14 +125,17 @@ public class HelloApplication extends Application {
 
         mainMenuScene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         primaryStage.setScene(mainMenuScene);
-        primaryStage.setTitle("Main Menu");
+        primaryStage.setTitle("TruNotes");
         // Wrap full-screen mode changes inside Platform.runLater
         Platform.runLater(() -> {
-            primaryStage.setFullScreen(true);  // or false to exit full-screen
+            //primaryStage.setFullScreen(true);  // or false to exit full-screen
         });
 
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
+
+        primaryStage.setWidth(Screen.getPrimary().getBounds().getMaxX());
+        primaryStage.setHeight(Screen.getPrimary().getBounds().getMaxY());
     }
 
     public static Stage getStage(){

@@ -20,7 +20,10 @@ public class FlashcardScreen {
 
     private Deck currentDeck; // storing the deck of cards
 
-    public FlashcardScreen(){ // send in current deck?
+    /**
+     * set up the flashcard model
+     */
+    public FlashcardScreen(){
         // this needs to access database for proper deck based on controller button function
         List<String> titles = FlashcardStorage.GenerateDeckTitles();
         if (titles.isEmpty()){
@@ -30,12 +33,25 @@ public class FlashcardScreen {
         }
     }
 
+    /**
+     * @return the current deck
+     */
     public Deck getDeck(){
         return this.currentDeck;
     }
+
+    /**
+     * reset the deck
+     * @param deck new deck to be
+     */
     public void setDeck(Deck deck){
         this.currentDeck = deck;
     }
+
+    /**
+     * makes sure the current deck exists in the storage
+     * @return true if it does, false if it doesn't
+     */
     public boolean checkCurrentDeck(){
         List<String> titles = FlashcardStorage.GenerateDeckTitles();
         if (!titles.contains(currentDeck.getTitle())){
@@ -49,6 +65,11 @@ public class FlashcardScreen {
         return false;
     }
 
+    /**
+     * add a card to the deck
+     * @param front front text
+     * @param back back text
+     */
     public void addCard(String front, String back){
 
 
@@ -59,6 +80,10 @@ public class FlashcardScreen {
 
     }
 
+    /**
+     * function to remove a card from the deck
+     * @param card card to remove
+     */
     public void removeCard(Card card){
         this.getDeck().removeCard(card);
     }
