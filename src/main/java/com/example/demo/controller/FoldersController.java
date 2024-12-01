@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.FilerSystem.FlashcardStorage;
 import com.example.demo.FilerSystem.NotesStorage;
 import com.example.demo.model.*;
 import com.example.demo.view.FoldersScreenView;
@@ -198,6 +199,7 @@ public class FoldersController {
 
             // Save changes to the notebook when navigating back
             notebookView.getBackButton().setOnAction(e -> {
+                fCont.getfCardModel().setDeck(FlashcardStorage.LoadFlashCards(lastOpenedNotebook.getTitle()));
                 foldersScreenView.runFoldersScreenUpdate();
                 saveNotebookState(lastOpenedNotebook); // Use the effectively final variable
                 primaryStage.setScene(foldersScene); // Reuse the existing scene

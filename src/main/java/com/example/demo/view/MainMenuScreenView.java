@@ -201,12 +201,13 @@ public class MainMenuScreenView extends StackPane {
         //-------------------------
         VBox todolist = new VBox();
         todolist.setMinWidth(screenWidth * 0.3);
+        toDoListV.setMinHeight(screenHeight * 0.6);
         todolist.setAlignment(Pos.TOP_CENTER);
         todolist.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         todolist.getStyleClass().add("rightVbox");
 
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), this.xpModel);
-
+        todolist.setSpacing(30);
         todolist.getChildren().addAll(mView.getMotivmsgView(), toDoListV.getToDoListView());
         toDoListV.setTaskList(ToDoStorage.LoadToDoList(), xpModel);
 

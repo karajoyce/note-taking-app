@@ -11,6 +11,8 @@ package com.example.demo.notes;
 
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+
+import com.example.demo.model.Notebook;
 import javafx.scene.control.Alert;
 
 import com.example.demo.FilerSystem.FlashcardStorage;
@@ -33,6 +35,7 @@ import com.example.demo.model.Deck;
  */
 public class NoteController {
 
+    private Deck deck;
     NoteModel noteModel;
     /* !!!!!!! REMOVE AFTER !!!!! JUST TEMPORARY !!!!!! */
 
@@ -40,9 +43,9 @@ public class NoteController {
      * Constructor method for the text editor's controller
      * @param model the text editor model
      */
-    public NoteController(NoteModel model) {
+    public NoteController(NoteModel model, Notebook currNoteBook) {
         noteModel = model;
-
+        this.deck = FlashcardStorage.LoadFlashCards(currNoteBook.getTitle());
         /* Set up listeners */
         noteModel.getTextArea().textProperty().addListener(((observableValue, s, t1) -> applyCurrentStyleToNewText()));
         noteModel.getTextArea().textProperty().addListener((obs, oldText, newText) -> {
@@ -156,6 +159,11 @@ public class NoteController {
                     // If the user inputs a '.', the back of the card is ready!
                     if (lastChar == '.') {
                         noteModel.setWaitingForBackInput(false);
+
+                        // Create the new flashcard
+                        deck.addCard(new Card(noteModel.getCurrentCardFront().toString().strip(),
+                                backBuffer.toString().strip()));
+                        FlashcardStorage.SaveDeck(deck);
 
                         // Once the card is made, reset the front and back buffers for the next card to be made
                         noteModel.setCurrentCardFront("");

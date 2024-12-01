@@ -135,7 +135,7 @@ public class NotebookScreenView extends StackPane {
         setCurrentPage(currNotebook.getNotes().getFirst());
 
         /* Initialize (MVC) */
-        noteController = new NoteController(noteModel);
+        noteController = new NoteController(noteModel, currentNotebook);
         noteView = new NoteView(noteController);
 
         /**CHANGES BY NATHAN **/
