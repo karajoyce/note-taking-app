@@ -47,3 +47,4 @@ We are not open to contributors at the moment.
 
 ## Authors and acknowledgment
 We want to acknowledge the hardwork that all five of our authors have put in. This project was completed to this state on December 1st, 2024 and was started on September 9th, 2024. 
+Our five lovely authors are, Kara Leier, Trushank Lakdawala, Sara Shakeel, Nathan Balilis, and Jinny Kim.
