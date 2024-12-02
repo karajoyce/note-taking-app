@@ -3,7 +3,7 @@
 ## TruNotes
 TruNotes is a note-taking application for the average student, for the working student, and for the organizing student. TruNotes offers an agenda-like to do list, a notebook system, and a flashcards system.
 
-TruNotes allows you to make Folders that each have their own name and list of Pages/Notes in them that are unique to that folder. Each folder will automatically get their own flashcard deck when they are made. You can choose to manually make flashcards or follow our automated flshcard system.
+TruNotes allows you to make Folders that each have their own name and list of Pages/Notes in them that are unique to that folder. Each folder will automatically get their own flashcard deck when they are made. You can choose to manually make flashcards or follow our automated flshcard system explained below in [Usage](#usage).
 
 For automated flashcards, you must follow these simple steps!
 - When you are in class taking notes:
