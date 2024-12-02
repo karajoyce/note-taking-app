@@ -6,10 +6,12 @@ TruNotes is a Java-FX note-taking application for the average student, for the w
 TruNotes allows you to make Folders that each have their own name and list of Pages/Notes in them that are unique to that folder. Each folder will automatically get their own flashcard deck when they are made. You can choose to manually make flashcards or follow our automated flshcard system explained below in [Usage](#usage).
 
 ## Installation
-Below is the link to the final product:
+Below is the link to the final product as well as the Video in case the Canvas submission went wrong:
 https://drive.google.com/drive/folders/1MqCJ2syO-SozMfRiyAIM68sEWmr8FpBS?usp=sharing
+
 Copy and Paste this line in the terminal to start.
-java --module-path .\javafx-sdk-23.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.media -jar .\target\demo-1.0-SNAPSHOT-jar-with-dependencies.ja
+
+java --module-path .\javafx-sdk-23.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.media -jar .\target\demo-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ## Requirements
 Java Runtime 21
