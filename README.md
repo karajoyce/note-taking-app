@@ -30,6 +30,7 @@ Java Runtime 21
 ## Usage
 This application may have some errors when users who are on MacOS enter into fullscreen mode. We would advice MacOS users to not enter fullscreen mode for best use. 
 A to-do item that has a warning symbol in-line with it means it is due within 5 days.
+Folder names that are unsupported: "Empty Deck"
 
 ## Support
 
