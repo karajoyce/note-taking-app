@@ -8,8 +8,7 @@ TruNotes allows you to make Folders that each have their own name and list of Pa
 ## Installation
 Below is the link to the final product:
 https://drive.google.com/drive/folders/1MqCJ2syO-SozMfRiyAIM68sEWmr8FpBS?usp=sharing
-
-:
+Copy and Paste this line in the terminal to start.
 java --module-path .\javafx-sdk-23.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.media -jar .\target\demo-1.0-SNAPSHOT-jar-with-dependencies.ja
 
 ## Requirements
