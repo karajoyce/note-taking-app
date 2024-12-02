@@ -1,15 +1,20 @@
 # 370-01-T05-Team4
 
 ## TruNotes
-TruNotes is a note-taking application for the average student, for the working student, and for the organizing student. TruNotes offers an agenda-like to do list, a notebook system, and a flashcards system.
+TruNotes is a Java-FX note-taking application for the average student, for the working student, and for the organizing student. TruNotes offers an agenda-like to do list, a notebook system, and a flashcards system.
 
 TruNotes allows you to make Folders that each have their own name and list of Pages/Notes in them that are unique to that folder. Each folder will automatically get their own flashcard deck when they are made. You can choose to manually make flashcards or follow our automated flshcard system explained below in [Usage](#usage).
 
 ## Installation
+Below is the link to the final product:
+https://drive.google.com/drive/folders/1MqCJ2syO-SozMfRiyAIM68sEWmr8FpBS?usp=sharing
+
+:
+java --module-path .\javafx-sdk-23.0.1\lib --add-modules javafx.controls,javafx.fxml,javafx.media -jar .\target\demo-1.0-SNAPSHOT-jar-with-dependencies.ja
 
 ## Requirements
 Java Runtime 21
-
+Openjdk23/21 SDK
 
 ## Usage
 This application may have some errors when users who are on MacOS enter into fullscreen mode. We would advice MacOS users to not enter fullscreen mode for best use. 
