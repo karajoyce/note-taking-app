@@ -1,5 +1,7 @@
 # 370-01-T05-Team4
 
+This Project was copied over from my school GitLab repository to store in my personal repository. Contributors are actually, Trushank L, Jinny K, Sara S, Nathan B, and myself, Kara L.
+
 ## TruNotes
 TruNotes is a Java-FX note-taking application for the average student, for the working student, and for the organizing student. TruNotes offers an agenda-like to do list, a notebook system, and a flashcards system.
 
